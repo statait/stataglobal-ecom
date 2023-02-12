@@ -8,7 +8,7 @@ STATA
 {{-- Page Load Modal --}}
 
 @php
-	Cookie::queue(Cookie::make('modal_shown', true, .05));
+	Cookie::queue(Cookie::make('modal_shown', true, 5));
 
 @endphp
 
