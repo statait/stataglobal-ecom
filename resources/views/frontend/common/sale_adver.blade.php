@@ -1,5 +1,5 @@
 @php
-$sale = App\Models\Product::where('sale',1)->where('discount_price','!=',NULL)->orderBy('id','DESC')->limit(3)->get();
+$sale = App\Models\Product::where('sale',1)->where('discount_price','!=',NULL)->orderBy('id','DESC')->limit(10)->get();
 @endphp
 
 <div style="border: 3px solid #ed174a; border-radius:5%; margin-top:20px" class="sidebar-widget hot-deals wow fadeInUp outer-bottom-xs">
