@@ -60,7 +60,9 @@ Route::get('/', function () {
 
     $justforyou = Product::where('status',1)->inRandomOrder()->get();
 
-    return view('frontend.index', compact('categories', 'sliders', 'products','best_seller','sale','new','combo','justforyou','brands'));
+    $combobars = Product::where('status',1)->where('combo',1)->inRandomOrder()->get();
+
+    return view('frontend.index', compact('categories', 'sliders', 'products','best_seller','sale','new','combo','justforyou','brands','combobars'));
     })->name('homepagee');
 
 
