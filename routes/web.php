@@ -284,6 +284,8 @@ Route::prefix('product')->group(function(){
 
     Route::get('/todays/offer', [homePageController::class, 'TodaysOffer'])->name('todays.offer');
 
+    Route::get('/sale', [homePageController::class, 'SaleWiseProduct'])->name('sale.offer');
+
     Route::get('/location/store', [homePageController::class, 'LocationStore'])->name('frontend.location');
 
     // Product View Modal with Ajax

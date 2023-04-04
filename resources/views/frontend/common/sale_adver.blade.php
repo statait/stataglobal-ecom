@@ -3,7 +3,9 @@ $sale = App\Models\Product::where('sale',1)->where('discount_price','!=',NULL)->
 @endphp
 
 <div style="border: 3px solid #ed174a; border-radius:5%; margin-top:20px" class="sidebar-widget hot-deals wow fadeInUp outer-bottom-xs">
-    <h3 class="section-title">SALE</h3>
+    {{-- <h3 class="section-title" > --}}
+      <a href=" {{route('sale.offer')}}"><b> SALE</b></a> 
+    </h3>
     <div class="owl-carousel sidebar-carousel custom-carousel owl-theme outer-top-ss">
     @foreach($sale as $product)
       <div class="item">
