@@ -60,7 +60,9 @@ Route::get('/', function () {
 
     $justforyou = Product::where('status',1)->inRandomOrder()->get();
 
-    return view('frontend.index', compact('categories', 'sliders', 'products','best_seller','sale','new','combo','justforyou','brands'));
+    $combobars = Product::where('status',1)->where('combo',1)->inRandomOrder()->get();
+
+    return view('frontend.index', compact('categories', 'sliders', 'products','best_seller','sale','new','combo','justforyou','brands','combobars'));
     })->name('homepagee');
 
 
@@ -283,6 +285,8 @@ Route::prefix('product')->group(function(){
     Route::get('/subcategory/product/{subcat_id}', [homePageController::class, 'SubCatWiseeProduct']);
 
     Route::get('/todays/offer', [homePageController::class, 'TodaysOffer'])->name('todays.offer');
+
+    Route::get('/sale', [homePageController::class, 'SaleWiseProduct'])->name('sale.offer');
 
     Route::get('/location/store', [homePageController::class, 'LocationStore'])->name('frontend.location');
 
