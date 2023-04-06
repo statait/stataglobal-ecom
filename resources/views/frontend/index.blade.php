@@ -63,7 +63,8 @@ STATA
 		  <!-- ============================================== SPECIAL OFFER ============================================== -->
 		  
 		  <div class="sidebar-widget outer-bottom-small wow fadeInUp">
-			<h3 class="section-title">Combo Offer</h3>
+			<a href=" {{route('combo.offer')}}"><b>COMBO OFFER</b></a> 
+			<h3 class="section-title"></h3>
 			<div class="sidebar-widget-body outer-top-xs">
 			  <div class="owl-carousel sidebar-carousel special-offer custom-carousel owl-theme outer-top-xs">
 				<div class="item">

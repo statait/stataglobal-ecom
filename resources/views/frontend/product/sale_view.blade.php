@@ -1,7 +1,7 @@
 @extends('frontend.main_master')
 @section('content')
 @section('title')
-Products on SALE
+Product List
 @endsection
 
 

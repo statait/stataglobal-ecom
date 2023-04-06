@@ -288,6 +288,8 @@ Route::prefix('product')->group(function(){
 
     Route::get('/sale', [homePageController::class, 'SaleWiseProduct'])->name('sale.offer');
 
+    Route::get('/combo', [homePageController::class, 'ComboWiseProduct'])->name('combo.offer');
+
     Route::get('/location/store', [homePageController::class, 'LocationStore'])->name('frontend.location');
 
     // Product View Modal with Ajax
