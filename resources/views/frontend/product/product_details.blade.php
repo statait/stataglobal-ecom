@@ -307,7 +307,7 @@
 								
 								<div id="description" class="tab-pane in active">
 									<div class="product-tab">
-										<p class="text">{{$product->long_descp}}</p>
+										<p class="text">{!! nl2br(e($product->long_descp)) !!}</p>
 									</div>	
 								</div><!-- /.tab-pane -->
 
