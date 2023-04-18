@@ -152,7 +152,7 @@
             <li><img src="assets/images/payments/3.png" alt=""></li>
             <li><img src="assets/images/payments/4.png" alt=""></li>
             <a href="https://statait.com/">
-            <p style="color: whitesmoke">© Copyright STATA 2022 | Proudly Powered by STATA IT LIMITED</p>
+            <p style="color: whitesmoke">&copy; Copyright STATA <script>document.write(new Date().getFullYear());</script> | Proudly Powered by STATA IT LIMITED</p>
           </a>
           </ul>
         </div>
