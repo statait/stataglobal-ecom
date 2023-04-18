@@ -127,7 +127,8 @@ class homePageController extends Controller
 	
 		}
 
-		// Sale wise data
+		
+		// combo wise data
 		public function ComboWiseProduct(){
 			$products = Product::where('combo',1)->orderBy('id','DESC')->paginate(50);
 			$categories = Category::orderBy('category_name','ASC')->get();
