@@ -52,7 +52,6 @@ class productController extends Controller
 
       	'short_descp' => $request->short_descp,
       	'long_descp' => $request->long_descp,
-
       	'new' => $request->new,
       	'sale' => $request->sale,
       	'best_seller' => $request->best_seller,
