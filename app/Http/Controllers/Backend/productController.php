@@ -45,16 +45,9 @@ class productController extends Controller
 
       	'selling_price' => $request->selling_price,
       	'discount_price' => $request->discount_price,
-		
-		if($request->discount_price == NULL)
-		{
-			'discount' => NULL,
-		}
-		else{
-			'discount' => $discount,
-		}
-		
 
+		'discount' => $request->discount_price == null ? null : $discount,
+		
 		'video_link' => $request->video_link,
 
       	'short_descp' => $request->short_descp,
