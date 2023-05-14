@@ -103,6 +103,7 @@
               <li class="first"><a title="Your Account" href="https://statabd.com/about-us/">About us</a></li>
               <li><a title="Information" href="{{route('frontend.location')}}">Store Location</a></li>
               <li><a title="Addresses" href="https://statabd.com/">Company</a></li>
+              <li><a title="Addresses" href="{{route('faq')}}">F.A.Q</a></li>
             </ul>
           </div>
           <!-- /.module-body --> 
