@@ -104,6 +104,7 @@
               <li><a title="Information" href="{{route('frontend.location')}}">Store Location</a></li>
               <li><a title="Addresses" href="https://statabd.com/">Company</a></li>
               <li><a title="Addresses" href="{{route('faq')}}">F.A.Q</a></li>
+              <li><a title="Addresses" href="{{route('blog')}}">Blog</a></li>
             </ul>
           </div>
           <!-- /.module-body --> 

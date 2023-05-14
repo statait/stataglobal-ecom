@@ -4,7 +4,6 @@
 STATA Store 
 @endsection
 
-
 <style>
     body{margin-top:10px;}
 .section_padding_130 {

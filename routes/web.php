@@ -79,6 +79,12 @@ Route::get('/faq', function () {
     })->name('faq');
 
 
+Route::get('/blog', function () {
+    
+    return view('frontend.blog.blog');
+    })->name('blog');
+
+
 // Admin All Routes
     Route::get('admin/logout', [Admincontroller::class, 'destroy'])->name('admin.logout');
 
