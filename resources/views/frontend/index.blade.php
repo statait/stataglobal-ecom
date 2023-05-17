@@ -21,7 +21,7 @@ STATA
                     <button type="button" class="close " style="color: red; font-size: 3em;" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="img">
-                    <img width="797" src="{{ asset('frontend/assets/images/modal.png') }}" alt="modal.png">
+                    <img width="797" src="{{ asset('frontend/assets/images/modal.png') }}" alt="modal">
                 </div>
 				<br>
                     <form method="post" action="{{ route('news.store') }}">
@@ -704,14 +704,14 @@ STATA
 			<div class="row">
 			  <div class="col-md-7 col-sm-7">
 				<div class="wide-banner cnt-strip">
-				  <div class="image"> <img class="img-responsive" src="assets/images/banners/home-banner1.jpg" alt="home-banner1.jpg"> </div>
+				  <div class="image"> <img class="img-responsive" src="assets/images/banners/home-banner1.jpg" alt="home-banner1"> </div>
 				</div>
 				<!-- /.wide-banner --> 
 			  </div>
 			  <!-- /.col -->
 			  <div class="col-md-5 col-sm-5">
 				<div class="wide-banner cnt-strip">
-				  <div class="image"> <img class="img-responsive" src="assets/images/banners/home-banner2.jpg" alt="home-banner2.jpg"> </div>
+				  <div class="image"> <img class="img-responsive" src="assets/images/banners/home-banner2.jpg" alt="home-banner2"> </div>
 				</div>
 				<!-- /.wide-banner --> 
 			  </div>
@@ -949,7 +949,7 @@ STATA
 			<div class="row">
 			  <div class="col-md-12">
 				<div class="wide-banner cnt-strip">
-				  <div class="image"> <img class="img-responsive" src="assets/images/banners/home-banner.jpg" alt="home-banner.jpg"> </div>
+				  <div class="image"> <img class="img-responsive" src="assets/images/banners/home-banner.jpg" alt="home-banner"> </div>
 				  <div class="strip strip-text">
 					<div class="strip-inner">
 					  <h2 class="text-right">New Mens Fashion<br>
@@ -1059,7 +1059,7 @@ STATA
 				<div class="item">
 				  <div class="blog-post">
 					<div class="blog-post-image">
-					  <div class="image"> <a href=""><img src="assets/img/home-decor-1.png" alt="home-decor-1.png"></a> </div>
+					  <div class="image"> <a href=""><img src="assets/img/home-decor-1.png" alt="home-decor-1"></a> </div>
 					</div>
 					<!-- /.blog-post-image -->
 					
@@ -1074,7 +1074,7 @@ STATA
 				<div class="item">
 				  <div class="blog-post">
 					<div class="blog-post-image">
-					  <div class="image"> <a href=""><img src="assets/img/home-decor-2.png" alt="home-decor-2.png"></a> </div>
+					  <div class="image"> <a href=""><img src="assets/img/home-decor-2.png" alt="home-decor-2"></a> </div>
 					</div>
 					<!-- /.blog-post-image -->
 					
