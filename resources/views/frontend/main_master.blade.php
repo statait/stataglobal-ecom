@@ -482,7 +482,7 @@ function productView(id){
                     miniCart += `<div class="cart-item product-summary">
                   <div class="row">
                     <div class="col-xs-4">
-                      <div class="image"> <a href="detail.html"><img src="/${value.options.image}" alt=""></a> </div>
+                      <div class="image"> <a href="detail.html"><img src="/${value.options.image}" alt="${value.name}"></a> </div>
                     </div>
                     <div class="col-xs-7">
                       <h3 class="name"><a href="index.php?page-detail">${value.name}</a></h3>
@@ -590,7 +590,7 @@ function productView(id){
                var rows = ""
                $.each(response, function(key,value){
                    rows += `<tr>
-                   <td class="col-md-2"><img src="/${value.product.product_thambnail} " alt="imga"></td>
+                   <td class="col-md-2"><img src="/${value.product.product_thambnail} " alt="${value.product.product_name}"></td>
                    <td class="col-md-7">
                        <div class="product-name"><a href="#">${value.product.product_name}</a></div>
                         
@@ -667,7 +667,7 @@ function wishlistRemove(id){
    var rows = ""
    $.each(response.carts, function(key,value){
        rows += `<tr>
-       <td class="col-md-2"><img src="/${value.options.image} " alt="imga" style="width:60px; height:60px;"></td>
+       <td class="col-md-2"><img src="/${value.options.image} " alt="${value.name}" style="width:60px; height:60px;"></td>
        
        <td class="col-md-2">
            <div class="product-name"><a href="#">${value.name}</a></div>
