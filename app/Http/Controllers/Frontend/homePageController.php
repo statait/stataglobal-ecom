@@ -106,6 +106,7 @@ class homePageController extends Controller
 
 	// Category wise data
 	public function CatWiseProduct($cat_id,$slug){
+		// $name = Category::find($cat_id);
 		$products = Product::where('status',1)->where('category_id',$cat_id)->orderBy('id','DESC')->paginate(50);
 		$categories = Category::orderBy('category_name','ASC')->get();
 		return view('frontend.product.subcategory_view',compact('products','categories'));
@@ -113,9 +114,10 @@ class homePageController extends Controller
 	}
 
 	public function CatWiseeProduct($cat_id){
+		$name = Category::find($cat_id);
 		$products = Product::where('status',1)->where('category_id',$cat_id)->orderBy('id','DESC')->paginate(50);
 		$categories = Category::orderBy('category_name','ASC')->get();
-		return view('frontend.product.subcategory_view',compact('products','categories'));
+		return view('frontend.product.subcategory_view',compact('products','categories','name'));
 
 	}
 
