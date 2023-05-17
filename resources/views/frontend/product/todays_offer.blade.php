@@ -114,7 +114,7 @@ Todays's Offer
 
             <!-- ============================================== Testimonials: END ============================================== -->
 
-            <div class="home-banner">  <img style="height: 200px; width:260px;" src="{{ asset('frontend/assets/images/banners/LHS-banner.jpg') }}" class="img-fluid" alt="..."> </div>
+            <div class="home-banner">  <img style="height: 200px; width:260px;" src="{{ asset('frontend/assets/images/banners/LHS-banner.jpg') }}" class="img-fluid" alt="LHS-banner"> </div>
            
           </div>
           <!-- /.sidebar-filter --> 
