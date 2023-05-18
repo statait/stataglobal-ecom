@@ -700,7 +700,7 @@ STATA
 		  <!-- /.scroll-tabs --> 
 		  <!-- ============================================== SCROLL TABS : END ============================================== --> 
 		  <!-- ============================================== WIDE PRODUCTS ============================================== -->
-		  <div class="wide-banners wow fadeInUp outer-bottom-xs">
+		  {{-- <div class="wide-banners wow fadeInUp outer-bottom-xs">
 			<div class="row">
 			  <div class="col-md-7 col-sm-7">
 				<div class="wide-banner cnt-strip">
@@ -718,7 +718,7 @@ STATA
 			  <!-- /.col --> 
 			</div>
 			<!-- /.row --> 
-		  </div>
+		  </div> --}}
 		  <!-- /.wide-banners --> 
 		  
 		  <!-- ============================================== WIDE PRODUCTS : END ============================================== --> 
@@ -945,7 +945,7 @@ STATA
 		  <!-- /.section --> 
 		  <!-- ============================================== FEATURED PRODUCTS : END ============================================== --> 
 		  <!-- ============================================== WIDE PRODUCTS ============================================== -->
-		  <div class="wide-banners wow fadeInUp outer-bottom-xs">
+		  {{-- <div class="wide-banners wow fadeInUp outer-bottom-xs">
 			<div class="row">
 			  <div class="col-md-12">
 				<div class="wide-banner cnt-strip">
@@ -967,7 +967,7 @@ STATA
 			  
 			</div>
 			<!-- /.row --> 
-		  </div>
+		  </div> --}}
 		  <!-- /.wide-banners --> 
 		  <!-- ============================================== WIDE PRODUCTS : END ============================================== --> 
 		  <!-- ============================================== BEST SELLER ============================================== -->
