@@ -33,9 +33,9 @@ $seo = App\Models\Seo::find(1);
 <link rel="icon"  href="{{ asset('frontend/assets/images/statafav.png') }}">
 
 <!-- /// Google Analytics Code // -->
-<script type="text/javascript">
-    {{ $seo->google_analytics }}
-</script>
+
+   <p hidden> {{ $seo->google_analytics }} </p>
+
 <!-- /// Google Analytics Code // -->
 
 <!-- Google Tag Manager -->
