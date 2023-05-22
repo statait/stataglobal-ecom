@@ -78,7 +78,7 @@
 
         	@foreach($multiImag as $img)
             <div class="single-product-gallery-item" id="slide{{ $img->id }}">
-  <a data-lightbox="image-1" data-title="Gallery" href="{{ asset($img->photo_name ) }} ">
+  <a data-lightbox="image-1" data-title="Gallery" href="#">
                     <img class="img-responsive" alt="{{$product->product_name}}" src="{{ asset($img->photo_name ) }} " data-echo="{{ asset($img->photo_name ) }} " />
                 </a>
             </div> <!-- /.single-product-gallery-item -->
