@@ -1,7 +1,7 @@
 @extends('frontend.main_master')
 @section('content')
 @section('title')
-STATA
+STATA IT LIMITED | Smart Home Automation In Bangladesh
 @endsection
 
 
