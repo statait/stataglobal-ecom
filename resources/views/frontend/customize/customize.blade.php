@@ -4,30 +4,31 @@
 STATA Customize Product 
 @endsection
 
+<div class="container p-5">
+  <img class="productImage" id="productImage" src="{{ asset('frontend/assets/images/banners/test.png') }}"  alt="Your Image">
+  <button id="changeButton">Change Background</button>
+  <button id="changeFrameButton">Change Frame</button>
+  <button data-toggle="modal" data-target="#cexampleModal" onclick="productCustomizeView($('#productId').val(), $('#frameId').val())" class="btn btn-primary icon" type="button" title="Add Cart"> <i class="fa fa-shopping-cart"></i></button>
+</div>
 
-<div class="breadcrumb">
-	<div class="container">
-		<div class="breadcrumb-inner">
-			<ul class="list-inline list-unstyled">
-				<li><a href="#">Home</a></li>
-				<li class='active'>Customize Design</li>
-			</ul>
-		</div><!-- /.breadcrumb-inner -->
-	</div><!-- /.container -->
-</div><!-- /.breadcrumb -->
+<div class="container" style="position: relative; background-image: url('https://static.vecteezy.com/system/resources/previews/004/365/884/original/empty-white-wooden-wall-on-wooden-floor-interior-design-3d-rendering-free-photo.jpg'); background-size: cover; background-repeat: no-repeat; height: 621px; width: 1177px; display: flex; justify-content: center; align-items: center;">
+  <div>
+    <img class="productImage" id="productImage" src="{{ asset('frontend/assets/images/banners/test.png') }}" style="max-width: 60px; max-height: 60px; background-size: cover;" alt="Your Image">
+    <img class="productImage" id="productImage" src="{{ asset('frontend/assets/images/banners/test.png') }}" style="max-width: 60px; max-height: 60px; background-size: cover;" alt="Your Image">
+  </div>
+</div>
 
 <div class="body-content">
 	<div class="container">
 		<div class="row">
-			<div class="blog-page">
+			<div class="">
 				<div class="col-md-12">
-					<div class="blog-post wow fadeInUp">
-	{{-- <img class="img-responsive" src="" alt=""> --}}
-	
 
-	<h1>Select Design</h1>
+					{{-- <div class="blog-post wow fadeInUp">	
+
+	          <h1>Select Design</h1>
 	 
-</div>
+          </div> --}}
 
 
 
@@ -35,18 +36,19 @@ STATA Customize Product
 
 
 
-			<div class="blog-write-comment outer-bottom-xs outer-top-xs">
-	<div class="row" style="background-image: url('https://media.istockphoto.com/id/1271897890/photo/living-room-interior-in-loft-industrial-style.jpg?b=1&s=612x612&w=0&k=20&c=oycfu04DNQ7epVWputuDZjmqX_uBfdjRnpoagZH4n9I=')">
+			<div class="">
+	<div class="row">
 		<div class="col-md-4">
-		<div class="background">
-			<img id="productImage" src="{{ asset('frontend/assets/images/banners/test.png') }}">
-			<input type="hidden" id="productId" value="">
-      <input type="hidden" id="frameId" value="">
+		<div class="background ">
+			{{-- <img id="productImage" src="{{ asset('frontend/assets/images/banners/test.png') }}"> --}}
+      <input type="hidden"  id="productId" class="productId" value="">
+      <input type="hidden" class="productId" value="">
+      <input type="hidden" id="frameId" class="frameId" value="">
+      <input type="hidden" class="frameId" value="">
+   
+      
 		</div>
     <br>
-			<button id="changeButton">Change Background</button>
-      <button id="changeFrameButton">Change Frame</button>
-			<button data-toggle="modal" data-target="#cexampleModal" onclick="productCustomizeView($('#productId').val(), $('#frameId').val())" class="btn btn-primary icon" type="button" title="Add Cart"> <i class="fa fa-shopping-cart"></i></button>
 		</div>
 		
 
@@ -57,8 +59,6 @@ STATA Customize Product
 </div>
 				</div>
 				<div class="col-md-12 sidebar">
-                
-                
                 
 					<div class="sidebar-module-container">
 						<div class="search-area outer-bottom-small">
@@ -199,20 +199,21 @@ STATA Customize Product
 
     $(document).ready(function() {
       var productCount = 0;
+    var customproducts = @json($customproducts);
+    var productInputs = $(".productId");
     
     $("#changeButton").click(function(event) {
-        var customproducts = @json($customproducts);
-        // console.log(customproducts.length);
       event.preventDefault();
       
       productCount++;
-    //   console.log(productCount);
       if (productCount >= customproducts.length) {
-      productCount = 0;
-        // console.log(customproducts.length);
+        productCount = 0;
       }
-      $("#productImage").css("background-image", "url(" + customproducts[productCount].image + ")");
-      $("#productId").val(customproducts[productCount].id);
+      
+      productInputs.each(function(index) {
+        $(".productImage").css("background-image", "url(" + customproducts[productCount].image + ")");
+        $(this).val(customproducts[productCount].id);
+      });
     
       var productId = $('#productId').val();
       var frameId = $('#frameId').val();
@@ -227,9 +228,11 @@ STATA Customize Product
 
     $(document).ready(function() {
       var frameCount = 0;
+      var customframes = @json($customframes);
+      var frameInputs = $(".frameId");
     
     $("#changeFrameButton").click(function(event) {
-        var customframes = @json($customframes);
+        // var customframes = @json($customframes);
         // console.log(customproducts.length);
       event.preventDefault();
       
@@ -239,8 +242,14 @@ STATA Customize Product
       frameCount = 0;
         // console.log(customproducts.length);
       }
-      $("#productImage").attr("src", customframes[frameCount].image);
-      $("#frameId").val(customframes[frameCount].id);
+
+      frameInputs.each(function(index) {
+        $(".productImage").attr("src", customframes[frameCount].image);
+        $(this).val(customframes[frameCount].id);
+      });
+
+      // $(".productImage").attr("src", customframes[frameCount].image);
+      // $("#frameId").val(customframes[frameCount].id);
     
       var frameId = $('#frameId').val();
       var productId = $('#productId').val();
