@@ -198,6 +198,12 @@ rel="stylesheet">
     src="https://www.facebook.com/tr?id=1228693334521587&ev=PageView&noscript=1"
     /></noscript>
 
+{{-- <script>
+    // Include and parse the JSON file
+    $customizeProductsJson = file_get_contents('customize.json');
+    $products = json_decode($customizeProductsJson, true);
+</script> --}}
+
 </head>
 <body class="cnt-home">
 
@@ -286,7 +292,7 @@ rel="stylesheet">
          <div class="col-md-4">
  
              <div class="card" style="width: 18rem;">
-       <img src=" " class="card-img-top" alt="..." style="height: 200px; width: 200px;" id="pimage">
+       <img src="" class="card-img-top" alt="..." style="height: 200px; width: 200px;" id="pimage">
 
  </div>
  
@@ -350,6 +356,7 @@ rel="stylesheet">
    </div>
  </div>
  <!-- End Add to Cart Product Modal -->
+
 
  <script type="text/javascript">
    $.ajaxSetup({
@@ -537,6 +544,7 @@ function productView(id){
  //  end mini cart remove 
 </script>
 
+
 <!--  /// Start Add Wishlist Page  //// -->
 
 <script type="text/javascript">
@@ -667,7 +675,7 @@ function wishlistRemove(id){
    var rows = ""
    $.each(response.carts, function(key,value){
        rows += `<tr>
-       <td class="col-md-2"><img src="/${value.options.image} " alt="imga" style="width:60px; height:60px;"></td>
+       <td class="col-md-2"><img src="${value.options.image} " alt="imga" style="width:60px; height:60px;"></td>
        
        <td class="col-md-2">
            <div class="product-name"><a href="#">${value.name}</a></div>
@@ -709,6 +717,8 @@ function wishlistRemove(id){
            }
        })
     }
+
+
 cart();
 
 ///  Cart remove Start 
@@ -1014,5 +1024,51 @@ function topFunction() {
 }
 </script>
 
+
+
+
+{{-- CUSTOMIZE PRODUCT ADD --}}
+<script type="text/javascript">
+    function minicCart(){
+         $.ajax({
+             type: 'GET',
+             url: '/product/mini/cart',
+             dataType:'json',
+             success:function(response){
+  
+                $('span[id="cartSubTotal"]').text(response.cartTotal);
+                 $('#cartQty').text(response.cartQty);
+  
+                var miniCart = ""
+  
+                 $.each(response.carts, function(key,value){
+                     miniCart += `<div class="cart-item product-summary">
+                   <div class="row">
+                     <div class="col-xs-4">
+                       <div class="image"> <a href="detail.html"><img src="${value.options.image}" alt=""></a> </div>
+                     </div>
+                     <div class="col-xs-7">
+                       <h3 class="name"><a href="index.php?page-detail">${value.name}</a></h3>
+                       <div class="price"> ${value.price} * ${value.qty} </div>
+                     </div>
+                     <div class="col-xs-1 action"> 
+             <button type="submit" id="${value.rowId}" onclick="miniCartRemove(this.id)"><i class="fa fa-trash"></i></button> </div>
+                   </div>
+                 </div>
+                 <!-- /.cart-item -->
+                 <div class="clearfix"></div>
+                 <hr>`
+                 });
+                 
+                 $('#miniCart').html(miniCart);
+             }
+         })
+      }
+     minicCart();
+  </script>
+
+
+
+{{-- END CUSTOMIZE PRODUCT ADD --}}
 </body>
 </html>

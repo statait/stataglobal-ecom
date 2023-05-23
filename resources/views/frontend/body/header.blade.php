@@ -137,7 +137,7 @@
             <!-- /.dropdown-menu--> 
           </div>
 
-            <a href="https://statait.com/"><button style="padding: 11px" class="btn btn-primary top-cart-row dropdown-cart lnk-cart ">Create Your Brand</button></a>
+            <a href="{{route('customize.product')}}"><button style="padding: 11px" class="btn btn-primary top-cart-row dropdown-cart lnk-cart ">Create Your Brand</button></a>
 
           <!-- /.dropdown-cart -->
           <!-- ============================================================= SHOPPING CART DROPDOWN : END============================================================= --> </div>

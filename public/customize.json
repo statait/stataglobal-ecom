@@ -1,0 +1,29 @@
+[
+    {
+      "id": 1,
+      "image": "/frontend/assets/images/banners/test1.png",
+      "name": "Product 1",
+      "code": "Code 1",
+      "category": "Switch",
+      "brand": "STATA",
+      "color": "Customize"
+    },
+    {
+      "id": 2,
+      "image": "/frontend/assets/images/banners/test2.png",
+      "name": "Product 2",
+      "code": "Code 2",
+      "category": "Switch",
+      "brand": "STATA",
+      "color": "Customize"
+    },
+    {
+      "id": 3,
+      "image": "/frontend/assets/images/banners/test3.png",
+      "name": "Product 3",
+      "code": "Code 3",
+      "category": "Switch",
+      "brand": "STATA",
+      "color": "Customize"
+    }
+  ]

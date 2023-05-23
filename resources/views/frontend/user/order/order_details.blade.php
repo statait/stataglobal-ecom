@@ -186,21 +186,73 @@
         
         
                       @foreach($orderItem as $item)
+
+                      <?php
+                      $jsonFile = 'customize.json';
+                      $jsonData = file_get_contents($jsonFile);
+                      $data = json_decode($jsonData, true);
+                      $imageUrl = null;
+                      $pName = null;
+                      $pCode = null;
+
+                      $productsId = App\Models\Product::find($item->product_id);
+
+                      if (!$productsId) {
+                        foreach ($data as $product) {
+                          if ($product['id'] === $item->product_id) {
+                              $imageUrl = $product['image'];
+                              $pName = $product['name'];
+                              $pCode = $product['code'];
+                              break;
+                          }
+                    }
+                      }
+                      ?>
                <tr>
                         <td class="col-md-1">
                           {{-- <label for=""><img src="{{ asset($item->product->product_thambnail) }}" height="50px;" width="50px;"> </label> --}}
-                          <label for=""><img src="{{ asset($item->product->product_thambnail) }}" height="50px;" width="50px;"> </label>
+                          @if ($item->product && $item->product->product_thambnail)
+                          <label for=""><img src="{{ asset($item->product->product_thambnail) }}" height="50px;" width="50px;"></label>
+                      @else
+                         
+                          @if ($imageUrl)
+                              <label for=""><img src="{{ $imageUrl }}" height="50px;" width="50px;"></label>
+                          @else
+                              <label for=""><img src="default-image-url.jpg" height="50px;" width="50px;"></label>
+                              <p>Didnt find</p>
+                          @endif
+                      @endif
                         </td>
         
                         <td class="col-md-2">
-                          <label for=""> {{ $item->product->product_name }}</label>
+                          @if ($item->product && $item->product->product_thambnail)
+                            <label for=""> {{ $item->product->product_name }}</label>
+                      @else
+                         
+                          @if ($pName)
+                          <label for=""> {{ $pName }}</label>
+                          @else
+                          <label for="">No Product name</label>
+                          @endif
+                      @endif
+                          {{-- <label for=""> {{ $item->product->product_name }}</label> --}}
                           {{-- <label for=""></label> --}}
                         </td>
         
         
                          <td class="col-md-2">
+                          @if ($item->product && $item->product->product_thambnail)
                           <label for=""> {{ $item->product->product_code }}</label>
-                          {{-- <label for=""> </label> --}}
+                    @else
+                       
+                        @if ($pCode)
+                        <label for=""> {{ $pCode }}</label>
+                        @else
+                        <label for="">No Product Code</label>
+                        @endif
+                    @endif
+                          {{-- <label for=""> {{ $item->product->product_code }}</label> --}}
+                         
                         </td>
         
                         <td class="col-md-2">

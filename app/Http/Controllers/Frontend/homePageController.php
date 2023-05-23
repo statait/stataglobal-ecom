@@ -187,6 +187,57 @@ class homePageController extends Controller
 	} // end method 
 
 
+	/// Product View With Ajax
+	public function ProductCustomizeViewAjax($productId, $frameId){
+		$jsonFile = 'customize.json';
+		$jsonData = file_get_contents($jsonFile);
+		$data = json_decode($jsonData, true);
+
+		// Frame
+		$jsonframeFile = 'framecustomize.json';
+		$jsonFrameData = file_get_contents($jsonframeFile);
+		$dataFrame = json_decode($jsonFrameData, true);
+		
+		$foundItem = null;
+		$foundFrameItem = null;
+
+
+		foreach ($data as $item) {
+			if ($item['id'] == $productId) {
+				$foundItem = $item;
+				break;
+			}
+		}
+
+		foreach ($dataFrame as $item) {
+			if ($item['id'] == $frameId) {
+				$foundFrameItem = $item;
+				break;
+			}
+		}
+
+		if ($jsonData === false) {
+			// Error handling if the file cannot be read
+			return response()->json("1");
+			// Or you can throw an exception or return an appropriate response
+		} else {
+			$data = json_decode($jsonData, true);
+		
+			if ($data === null) {
+				// Error handling if the JSON data cannot be decoded
+				return response()->json("2");
+				// Or you can throw an exception or return an appropriate response
+			} else {
+				// JSON data loaded and decoded successfully
+				return response()->json(['product' => $foundItem, 'frame' => $foundFrameItem]);
+				// You can perform further processing or return the data
+			}
+		}
+
+	
+	}
+
+
 	// Product Seach 
 	public function ProductSearch(Request $request){
 

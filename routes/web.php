@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admincontroller;
+use App\Http\Controllers\CustomizeController;
 use App\Http\Controllers\Backend\AdminProfileController;
 use App\Http\Controllers\Backend\AdminUserController;
 use App\Http\Controllers\Backend\BrandController;
@@ -61,6 +62,10 @@ Route::get('/', function () {
     $justforyou = Product::where('status',1)->inRandomOrder()->get();
 
     $combobars = Product::where('status',1)->where('combo',1)->inRandomOrder()->get();
+
+    // // Inside your controller method
+    // $customizeProductsJson = file_get_contents('customize.json');
+    // $customproducts = json_decode($customizeProductsJson, true);
 
     return view('frontend.index', compact('categories', 'sliders', 'products','best_seller','sale','new','combo','justforyou','brands','combobars'));
     })->name('homepagee');
@@ -286,6 +291,8 @@ Route::prefix('product')->group(function(){
 
     Route::get('/todays/offer', [homePageController::class, 'TodaysOffer'])->name('todays.offer');
 
+    Route::get('/customize/product', [CustomizeController::class, 'CustomizeView'])->name('customize.product');
+
     Route::get('/sale', [homePageController::class, 'SaleWiseProduct'])->name('sale.offer');
 
     Route::get('/combo', [homePageController::class, 'ComboWiseProduct'])->name('combo.offer');
@@ -294,6 +301,9 @@ Route::prefix('product')->group(function(){
 
     // Product View Modal with Ajax
     Route::get('/product/view/modal/{id}', [homePageController::class, 'ProductViewAjax']); 
+
+    // Product Cstomize View Modal with Ajax
+    Route::get('/product/view/modals/{productId}/{frameId}', [homePageController::class, 'ProductCustomizeViewAjax']); 
 
     /// Product Search Route 
     Route::post('/search', [homePageController::class, 'ProductSearch'])->name('product.search');
@@ -305,8 +315,14 @@ Route::prefix('product')->group(function(){
     // Add to Cart Store Data
     Route::post('/cart/data/store/{id}', [CartController::class, 'AddToCart']); 
 
+    // Add Customize to Cart Store Data
+    Route::post('/customize/cart/data/store/{productId}/{frameId}', [CartController::class, 'AddCustomizeToCart']); 
+
     // Get Data from mini cart
     Route::get('/product/mini/cart/', [CartController::class, 'AddMiniCart']);
+
+    //  // Get Data from mini cart
+    //  Route::get('/customize/product/mini/cart/', [CartController::class, 'AddCustomizeMiniCart']);
 
     // Remove mini cart
     Route::get('/minicart/product-remove/{rowId}', [CartController::class, 'RemoveMiniCart']); 
