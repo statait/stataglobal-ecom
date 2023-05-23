@@ -33,9 +33,9 @@ $seo = App\Models\Seo::find(1);
 <link rel="icon"  href="{{ asset('frontend/assets/images/statafav.png') }}">
 
 <!-- /// Google Analytics Code // -->
-<script>
-    {{ $seo->google_analytics }}
-</script>
+
+   <p hidden> {{ $seo->google_analytics }} </p>
+
 <!-- /// Google Analytics Code // -->
 
 <!-- Google Tag Manager -->
@@ -172,7 +172,7 @@ rel="stylesheet">
 
 
 <!-- Fonts -->
-<link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic,800' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -237,7 +237,7 @@ rel="stylesheet">
 <script src="{{ asset('frontend/assets/js/jquery.easing-1.3.min.js') }}"></script> 
 <script src="{{ asset('frontend/assets/js/bootstrap-slider.min.js') }}"></script> 
 <script src="{{ asset('frontend/assets/js/jquery.rateit.min.js') }}"></script> 
-<script type="text/javascript" src="{{ asset('frontend/assets/js/lightbox.min.js') }}"></script> 
+<script src="{{ asset('frontend/assets/js/lightbox.min.js') }}"></script> 
 <script src="{{ asset('frontend/assets/js/bootstrap-select.min.js') }}"></script> 
 <script src="{{ asset('frontend/assets/js/wow.min.js') }}"></script> 
 <script src="{{ asset('frontend/assets/js/scripts.js') }}"></script>
@@ -489,7 +489,7 @@ function productView(id){
                     miniCart += `<div class="cart-item product-summary">
                   <div class="row">
                     <div class="col-xs-4">
-                      <div class="image"> <a href="detail.html"><img src="/${value.options.image}" alt=""></a> </div>
+                      <div class="image"> <a href="detail.html"><img src="/${value.options.image}" alt="${value.name}"></a> </div>
                     </div>
                     <div class="col-xs-7">
                       <h3 class="name"><a href="index.php?page-detail">${value.name}</a></h3>
@@ -598,7 +598,7 @@ function productView(id){
                var rows = ""
                $.each(response, function(key,value){
                    rows += `<tr>
-                   <td class="col-md-2"><img src="/${value.product.product_thambnail} " alt="imga"></td>
+                   <td class="col-md-2"><img src="/${value.product.product_thambnail} " alt="${value.product.product_name}"></td>
                    <td class="col-md-7">
                        <div class="product-name"><a href="#">${value.product.product_name}</a></div>
                         
@@ -675,7 +675,7 @@ function wishlistRemove(id){
    var rows = ""
    $.each(response.carts, function(key,value){
        rows += `<tr>
-       <td class="col-md-2"><img src="${value.options.image} " alt="imga" style="width:60px; height:60px;"></td>
+       <td class="col-md-2"><img src="${value.options.image} " alt="${value.name}" style="width:60px; height:60px;"></td>
        
        <td class="col-md-2">
            <div class="product-name"><a href="#">${value.name}</a></div>

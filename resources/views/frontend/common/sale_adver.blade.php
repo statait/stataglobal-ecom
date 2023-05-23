@@ -12,7 +12,7 @@ $sale = App\Models\Product::where('sale',1)->where('discount_price','!=',NULL)->
         <div class="products">
           <div class="hot-deal-wrapper">
             
-            <div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug ) }}"> <img src="{{ asset($product->product_thambnail) }}" alt=""></a></div>
+            <div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug ) }}"> <img src="{{ asset($product->product_thambnail) }}" alt="{{ $product->product_name }}"></a></div>
 
             @php
             $amount = $product->selling_price - $product->discount_price;

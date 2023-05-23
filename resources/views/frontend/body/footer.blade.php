@@ -100,9 +100,11 @@
           
           <div class="module-body">
             <ul class='list-unstyled'>
-              <li class="first"><a title="Your Account" href="https://statabd.com/about-us/">About us</a></li>
+              <li class="first"><a title="Your Account" href="https://statait.com/">About us</a></li>
               <li><a title="Information" href="{{route('frontend.location')}}">Store Location</a></li>
               <li><a title="Addresses" href="https://statabd.com/">Company</a></li>
+              <li><a title="Addresses" href="{{route('faq')}}">F.A.Q</a></li>
+              <li><a title="Addresses" href="{{route('blog')}}">Blog</a></li>
             </ul>
           </div>
           <!-- /.module-body --> 
@@ -147,10 +149,6 @@
       <div class="col-xs-12 col-sm-6 no-padding">
         <div class="clearfix payment-methods">
           <ul>
-            <li><img src="assets/images/payments/1.png" alt=""></li>
-            <li><img src="assets/images/payments/2.png" alt=""></li>
-            <li><img src="assets/images/payments/3.png" alt=""></li>
-            <li><img src="assets/images/payments/4.png" alt=""></li>
             <a href="https://statait.com/">
             <p style="color: whitesmoke">&copy; Copyright STATA <script>document.write(new Date().getFullYear());</script> | Proudly Powered by STATA IT LIMITED</p>
           </a>

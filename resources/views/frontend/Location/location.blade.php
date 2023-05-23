@@ -215,7 +215,7 @@ STATA Store
     <div class="products">
       <div class="product">
         <div class="product-image">
-          <div class="image"> <a href="{{ $product->map }}"><img style="width: 180px; height:200px" src="{{ asset($product->store_image) }}" alt=""></a> </div>
+          <div class="image"> <a href="{{ $product->map }}"><img style="width: 180px; height:200px" src="{{ asset($product->store_image) }}" alt=" {{ $product->store_name }}"></a> </div>
           <!-- /.image -->    
 
 

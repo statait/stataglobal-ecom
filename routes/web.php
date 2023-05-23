@@ -77,6 +77,19 @@ Route::middleware('admin:admin')->group(function (){
     Route::post('admin/login', [Admincontroller::class, 'store'])->name('admin.login');
 });
 
+
+Route::get('/faq', function () {
+    
+    return view('frontend.faq.faq');
+    })->name('faq');
+
+
+Route::get('/blog', function () {
+    
+    return view('frontend.blog.blog');
+    })->name('blog');
+
+
 // Admin All Routes
     Route::get('admin/logout', [Admincontroller::class, 'destroy'])->name('admin.logout');
 

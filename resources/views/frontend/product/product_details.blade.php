@@ -78,8 +78,8 @@
 
         	@foreach($multiImag as $img)
             <div class="single-product-gallery-item" id="slide{{ $img->id }}">
-  <a data-lightbox="image-1" data-title="Gallery" href="{{ asset($img->photo_name ) }} ">
-                    <img class="img-responsive" alt="" src="{{ asset($img->photo_name ) }} " data-echo="{{ asset($img->photo_name ) }} " />
+  <a data-lightbox="image-1" data-title="Gallery" href="#">
+                    <img class="img-responsive" alt="{{$product->product_name}}" src="{{ asset($img->photo_name ) }} " data-echo="{{ asset($img->photo_name ) }} " />
                 </a>
             </div> <!-- /.single-product-gallery-item -->
             @endforeach
@@ -95,7 +95,7 @@
 			@foreach($multiImag as $img)
                 <div class="item">
                     <a class="horizontal-thumb active" data-target="#owl-single-product" data-slide="1" href="#slide{{ $img->id }}">
-     <img class="img-responsive" width="85" alt="" src="{{ asset($img->photo_name ) }} " data-echo="{{ asset($img->photo_name ) }} " />
+     <img class="img-responsive" width="85" alt="{{$product->product_name}}" src="{{ asset($img->photo_name ) }} " data-echo="{{ asset($img->photo_name ) }} " />
                     </a>
                 </div>
 				@endforeach
@@ -458,7 +458,7 @@
 
 		<div class="product-image">
 			<div class="image">
-				<a href="{{ url('product/details/'.$upsellProduct->id) }}"><img  src="{{ asset($upsellProduct->product_thambnail) }}" alt=""></a>
+				<a href="{{ url('product/details/'.$upsellProduct->id) }}"><img  src="{{ asset($upsellProduct->product_thambnail) }}" alt="{{$product->product_name}}"></a>
 			</div><!-- /.image -->			
 
 			@php

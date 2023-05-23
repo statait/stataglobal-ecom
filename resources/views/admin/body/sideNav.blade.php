@@ -16,7 +16,7 @@
 				  <!-- logo for regular state and mobile devices -->
 					 <div class="d-flex align-items-center justify-content-center">		
             <a href="{{ url('admin/dashboard') }}"> 
-              <img style="width: 100px; height:105px;" src="{{ asset('backend/images/logo/stata.png') }}" alt="">
+              <img style="width: 100px; height:105px;" src="{{ asset('backend/images/logo/stata.png') }}" alt="stata">
             </a>			 	
 						 
 						  <h3><b></b></h3>

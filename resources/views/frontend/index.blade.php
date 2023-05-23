@@ -1,7 +1,7 @@
 @extends('frontend.main_master')
 @section('content')
 @section('title')
-STATA
+STATA IT LIMITED | Smart Home Automation In Bangladesh
 @endsection
 
 
@@ -21,7 +21,7 @@ STATA
                     <button type="button" class="close " style="color: red; font-size: 3em;" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="img">
-                    <img width="797" src="{{ asset('frontend/assets/images/modal.png') }}" alt="">
+                    <img width="797" src="{{ asset('frontend/assets/images/modal.png') }}" alt="modal">
                 </div>
 				<br>
                     <form method="post" action="{{ route('news.store') }}">
@@ -75,7 +75,7 @@ STATA
 						<div class="row product-micro-row">
 						  <div class="col col-xs-5">
 							<div class="product-image">
-							  <div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}"> <img src="{{ asset($product->product_thambnail) }}" alt=""> </a> </div>
+							  <div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}"> <img src="{{ asset($product->product_thambnail) }}" alt="{{ $product->product_name }}"> </a> </div>
 							  <!-- /.image --> 
 				  
 							</div>
@@ -534,7 +534,7 @@ STATA
 						<div class="product">
 							<a href="{{ url('product/details/'.$product->id) }}">
 						  <div class="product-image">
-							<div class="image"> <a href="{{ url('product/details/'.$product->id) }}"><img  src="{{ asset($product->product_thambnail) }}" alt=""></a> </div>
+							<div class="image"> <a href="{{ url('product/details/'.$product->id) }}"><img  src="{{ asset($product->product_thambnail) }}" alt="{{ $product->product_name }}"></a> </div>
 							<!-- /.image -->
 							
 							@php
@@ -619,7 +619,7 @@ STATA
 					  <div class="products">
 						<div class="product">
 						  <div class="product-image">
-							<div class="image"> <a href="{{ url('product/details/'.$product->id) }}"><img  src="{{ asset($product->product_thambnail) }}" alt=""></a> </div>
+							<div class="image"> <a href="{{ url('product/details/'.$product->id) }}"><img  src="{{ asset($product->product_thambnail) }}" alt="{{ $product->product_name }}"></a> </div>
 							<!-- /.image -->
   
 		  @php
@@ -700,25 +700,25 @@ STATA
 		  <!-- /.scroll-tabs --> 
 		  <!-- ============================================== SCROLL TABS : END ============================================== --> 
 		  <!-- ============================================== WIDE PRODUCTS ============================================== -->
-		  <div class="wide-banners wow fadeInUp outer-bottom-xs">
+		  {{-- <div class="wide-banners wow fadeInUp outer-bottom-xs">
 			<div class="row">
 			  <div class="col-md-7 col-sm-7">
 				<div class="wide-banner cnt-strip">
-				  <div class="image"> <img class="img-responsive" src="assets/images/banners/home-banner1.jpg" alt=""> </div>
+				  <div class="image"> <img class="img-responsive" src="assets/images/banners/home-banner1.jpg" alt="home-banner1"> </div>
 				</div>
 				<!-- /.wide-banner --> 
 			  </div>
 			  <!-- /.col -->
 			  <div class="col-md-5 col-sm-5">
 				<div class="wide-banner cnt-strip">
-				  <div class="image"> <img class="img-responsive" src="assets/images/banners/home-banner2.jpg" alt=""> </div>
+				  <div class="image"> <img class="img-responsive" src="assets/images/banners/home-banner2.jpg" alt="home-banner2"> </div>
 				</div>
 				<!-- /.wide-banner --> 
 			  </div>
 			  <!-- /.col --> 
 			</div>
 			<!-- /.row --> 
-		  </div>
+		  </div> --}}
 		  <!-- /.wide-banners --> 
 		  
 		  <!-- ============================================== WIDE PRODUCTS : END ============================================== --> 
@@ -733,7 +733,7 @@ STATA
 				<div class="products">
 				  <div class="product">
 					<div class="product-image">
-						<div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug ) }}"><img  src="{{ asset($product->product_thambnail) }}" alt=""></a> </div>
+						<div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug ) }}"><img  src="{{ asset($product->product_thambnail) }}" alt="{{ $product->product_name }}"></a> </div>
 						<!-- /.image -->
 
 	  @php
@@ -945,11 +945,11 @@ STATA
 		  <!-- /.section --> 
 		  <!-- ============================================== FEATURED PRODUCTS : END ============================================== --> 
 		  <!-- ============================================== WIDE PRODUCTS ============================================== -->
-		  <div class="wide-banners wow fadeInUp outer-bottom-xs">
+		  {{-- <div class="wide-banners wow fadeInUp outer-bottom-xs">
 			<div class="row">
 			  <div class="col-md-12">
 				<div class="wide-banner cnt-strip">
-				  <div class="image"> <img class="img-responsive" src="assets/images/banners/home-banner.jpg" alt=""> </div>
+				  <div class="image"> <img class="img-responsive" src="assets/images/banners/home-banner.jpg" alt="home-banner"> </div>
 				  <div class="strip strip-text">
 					<div class="strip-inner">
 					  <h2 class="text-right">New Mens Fashion<br>
@@ -967,7 +967,7 @@ STATA
 			  
 			</div>
 			<!-- /.row --> 
-		  </div>
+		  </div> --}}
 		  <!-- /.wide-banners --> 
 		  <!-- ============================================== WIDE PRODUCTS : END ============================================== --> 
 		  <!-- ============================================== BEST SELLER ============================================== -->
@@ -1059,7 +1059,7 @@ STATA
 				<div class="item">
 				  <div class="blog-post">
 					<div class="blog-post-image">
-					  <div class="image"> <a href=""><img src="assets/img/home-decor-1.png" alt=""></a> </div>
+					  <div class="image"> <a href=""><img src="assets/img/home-decor-1.png" alt="home-decor-1"></a> </div>
 					</div>
 					<!-- /.blog-post-image -->
 					
@@ -1074,7 +1074,7 @@ STATA
 				<div class="item">
 				  <div class="blog-post">
 					<div class="blog-post-image">
-					  <div class="image"> <a href=""><img src="assets/img/home-decor-2.png" alt=""></a> </div>
+					  <div class="image"> <a href=""><img src="assets/img/home-decor-2.png" alt="home-decor-2"></a> </div>
 					</div>
 					<!-- /.blog-post-image -->
 					
@@ -1113,7 +1113,7 @@ STATA
 				<div class="products">
 				  <div class="product">
 					<div class="product-image">
-						<div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug ) }}"><img  src="{{ asset($product->product_thambnail) }}" alt=""></a> </div>
+						<div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug ) }}"><img  src="{{ asset($product->product_thambnail) }}" alt="{{ $product->product_name }}"></a> </div>
 						<!-- /.image -->
 
 	  @php
@@ -1189,7 +1189,7 @@ STATA
 				<div class="products">
 				  <div class="product">
 					<div class="product-image">
-						<div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug ) }}"><img  src="{{ asset($product->product_thambnail) }}" alt=""></a> </div>
+						<div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug ) }}"><img  src="{{ asset($product->product_thambnail) }}" alt="{{ $product->product_name }}"></a> </div>
 						<!-- /.image -->
 
 	  @php
@@ -1263,7 +1263,7 @@ STATA
 				<div class="products">
 				  <div class="product">
 					<div class="product-image">
-						<div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug ) }}"><img  src="{{ asset($product->product_thambnail) }}" alt=""></a> </div>
+						<div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug ) }}"><img  src="{{ asset($product->product_thambnail) }}" alt="{{ $product->product_name }}"></a> </div>
 						<!-- /.image -->
 
 	  @php

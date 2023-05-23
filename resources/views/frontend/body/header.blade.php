@@ -9,8 +9,8 @@
           
             {{-- <li><a href="#"><i class="icon fa fa-user"></i>My Account</a></li> --}}
             <li><a href="tel:09678200509"><i class="icon fa fa-phone"></i>09678200509</a></li>
-            <li><a href="http://stataglobal.com/?fbclid=IwAR3fc-HAITZqvW9S2DCYf0O2SziZBagMNYFixFrueUG5rRj0SiinHV4YCzg"><img height="25" src="{{ asset('frontend/assets/images/bd.png') }}" alt=""></a></li>
-            <li><a href="https://www.statauae.com/?fbclid=IwAR3NYuT09tKDpE0aELT5j3P8eMxsBwu3pEU2xoo7SJHNLDCQKnjajtTTCR8"><img height="25" src="{{ asset('frontend/assets/images/uae.png') }}" alt=""></a></li>
+            <li><a href="http://stataglobal.com/?fbclid=IwAR3fc-HAITZqvW9S2DCYf0O2SziZBagMNYFixFrueUG5rRj0SiinHV4YCzg"><img height="25" src="{{ asset('frontend/assets/images/bd.png') }}" alt="BD Flag"></a></li>
+            <li><a href="https://www.statauae.com/?fbclid=IwAR3NYuT09tKDpE0aELT5j3P8eMxsBwu3pEU2xoo7SJHNLDCQKnjajtTTCR8"><img height="25" src="{{ asset('frontend/assets/images/uae.png') }}" alt="U.A.E Flag"></a></li>
             <li><a href="{{route('todays.offer')}}"><i class="icon fa fa-money"></i>Today's Offer</a></li>
             <li><a href="https://statabd.com/store-locator/"><i class="icon fa fa-map-marker"></i>Store Location</a></li>
             {{-- <li><a href="{{route('frontend.location')}}"><i class="icon fa fa-map-marker"></i>Store Location</a></li> --}}
