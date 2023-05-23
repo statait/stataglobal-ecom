@@ -30,16 +30,11 @@ STATA Customize Product
 </div>
 
 
-
-
-
-
-
 			<div class="blog-write-comment outer-bottom-xs outer-top-xs">
 	<div class="row" style="">
-		<div class="col-md-12">
+		{{-- <div class="col-md-12">
 			<h4>Leave A Comment</h4>
-		</div>
+		</div> --}}
 		<div class="col-md-4">
 		<div class="background">
 			<img id="productImage" src="{{ asset('frontend/assets/images/banners/test.png') }}">
@@ -49,6 +44,7 @@ STATA Customize Product
     <br>
 			<button id="changeButton">Change Background</button>
       <button id="changeFrameButton">Change Frame</button>
+      <br><br>
 			<button data-toggle="modal" data-target="#cexampleModal" onclick="productCustomizeView($('#productId').val(), $('#frameId').val())" class="btn btn-primary icon" type="button" title="Add Cart"> <i class="fa fa-shopping-cart"></i></button>
 		</div>
 		
@@ -60,21 +56,19 @@ STATA Customize Product
 </div>
 				</div>
 				<div class="col-md-3 sidebar">
-                
-                
-                
+                                 
 					<div class="sidebar-module-container">
-						<div class="search-area outer-bottom-small">
+						{{-- <div class="search-area outer-bottom-small">
 </div>		
 
 <div class="home-banner outer-top-n outer-bottom-xs">
 <img src="" alt="Image">
-</div>
+</div> --}}
 		
 
 		<!-- ======== ====CATEGORY======= === -->
 <div class="sidebar-widget outer-bottom-xs wow fadeInUp">
-	<h3 class="section-title">Blog Category</h3>
+	<h3 class="section-title">Custom Design</h3>
 	<div class="sidebar-widget-body m-t-10">
 		<div class="accordion">
 
