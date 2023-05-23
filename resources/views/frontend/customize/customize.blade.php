@@ -20,7 +20,7 @@ STATA Customize Product
 	<div class="container">
 		<div class="row">
 			<div class="blog-page">
-				<div class="col-md-9">
+				<div class="col-md-12">
 					<div class="blog-post wow fadeInUp">
 	{{-- <img class="img-responsive" src="" alt=""> --}}
 	
@@ -31,10 +31,7 @@ STATA Customize Product
 
 
 			<div class="blog-write-comment outer-bottom-xs outer-top-xs">
-	<div class="row" style="">
-		{{-- <div class="col-md-12">
-			<h4>Leave A Comment</h4>
-		</div> --}}
+	<div class="row" style="background-image: url('https://media.istockphoto.com/id/1271897890/photo/living-room-interior-in-loft-industrial-style.jpg?b=1&s=612x612&w=0&k=20&c=oycfu04DNQ7epVWputuDZjmqX_uBfdjRnpoagZH4n9I=')">
 		<div class="col-md-4">
 		<div class="background">
 			<img id="productImage" src="{{ asset('frontend/assets/images/banners/test.png') }}">
@@ -55,8 +52,10 @@ STATA Customize Product
 	</div>
 </div>
 				</div>
-				<div class="col-md-3 sidebar">
-                                 
+				<div class="col-md-12 sidebar">
+                
+                
+                
 					<div class="sidebar-module-container">
 						{{-- <div class="search-area outer-bottom-small">
 </div>		
