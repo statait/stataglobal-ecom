@@ -61,39 +61,38 @@ STATA Customize Product
 				<div class="col-md-12 sidebar">
                 
 					<div class="sidebar-module-container">
-						<div class="search-area outer-bottom-small">
-</div>		
+						{{-- <div class="search-area outer-bottom-small">
+</div>		 --}}
 
-<div class="home-banner outer-top-n outer-bottom-xs">
+{{-- <div class="home-banner outer-top-n outer-bottom-xs">
 <img src="" alt="Image">
-</div>
+</div> --}}
 		
 
 		<!-- ======== ====CATEGORY======= === -->
-<div class="sidebar-widget outer-bottom-xs wow fadeInUp">
-	<h3 class="section-title">Blog Category</h3>
-	<div class="sidebar-widget-body m-t-10">
-		<div class="accordion">
-
-	    	 <ul class="list-group">
-          @foreach ($customproducts as $product)
-          <div>
-           
-              <h2>{{ $product['name'] }}</h2>
-              <img src=" {{ asset($product['image']) }}" alt="Product Image">
-              <p>ID: {{ $product['id'] }}</p>
-          </div>
-      @endforeach
-  <a href=""><li class="list-group-item"></li></a>
-   
-   </ul>
-
-	       
- 
-
-	    </div><!-- /.accordion -->
-	</div><!-- /.sidebar-widget-body -->
-</div><!-- /.sidebar-widget -->
+    <div class="outer-bottom-xs wow fadeInUp">
+      {{-- <h3 class="section-title"></h3> --}}
+      <div class="sidebar-widget-body m-t-10">
+        <div class="accordion">
+    
+          <div style="padding-left: 10px">
+              @foreach ($customproducts as $product)
+              
+                <div class="col-md-3">
+                
+                    <h2>{{ $product['name'] }}</h2>
+                    <img src=" {{ asset($product['image']) }}" alt="Product Image">
+                    <p>ID: {{ $product['id'] }}</p>
+                </div>
+              
+          @endforeach
+      {{-- <a href=""><li class="list-group-item"></li></a> --}}
+       
+    </div>
+    
+          </div><!-- /.accordion -->
+      </div><!-- /.sidebar-widget-body -->
+    </div><!-- /.sidebar-widget -->
 	<!-- ===== ======== CATEGORY : END ==== = -->	
 
 
