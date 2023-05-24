@@ -4,10 +4,51 @@
 STATA Customize Product 
 @endsection
 
+<style>
+  .btn {
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 8px 14px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  }
+
+  .btn:hover {
+    background-color: #000;
+    color: #fff;
+    border-color: #000;
+  }
+
+  .btn-danger {
+    background-color: #ff0000;
+  }
+
+  /* .btn-primary {
+    color: #fff;
+    background-color: #007bff;
+  } */
+
+  label {
+    font-size: 12px;
+  }
+</style>
+
+
 <div class="container p-5">
   <img class="productImage" id="productImage" src="{{ asset('frontend/assets/images/banners/test.png') }}"  alt="Your Image">
-  <button id="changeButton">Change Background</button>
-  <button id="changeFrameButton">Change Frame</button>
+  {{-- Background --}}
+  <button class="btn btn-danger icon" id="changeButtonP" type="button" title="Previous Background"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
+  <label>Background</label>
+  <button class="btn btn-primary icon" id="changeButton" type="button" title="Next Background"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+
+  {{-- Gang --}}
+  <button class="btn btn-danger icon" id="changeFrameButtonP" type="button" title="Previous Background"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
+  <label>Gang</label>
+  <button class="btn btn-primary icon" id="changeFrameButton" type="button" title="Next Background"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+
+  {{-- <button id="changeButton">Change Background</button> --}}
+  {{-- <button id="changeFrameButton">Change Frame</button> --}}
   <button data-toggle="modal" data-target="#cexampleModal" onclick="productCustomizeView($('#productId').val(), $('#frameId').val())" class="btn btn-primary icon" type="button" title="Add Cart"> <i class="fa fa-shopping-cart"></i></button>
 </div>
 
@@ -221,6 +262,27 @@ STATA Customize Product
       
    
     });
+
+    $("#changeButtonP").click(function(event) {
+      event.preventDefault();
+      
+      productCount--;
+  if (productCount < 0) {
+    productCount = customproducts.length - 1;
+  }
+      
+      productInputs.each(function(index) {
+        $(".productImage").css("background-image", "url(" + customproducts[productCount].image + ")");
+        $(this).val(customproducts[productCount].id);
+      });
+    
+      var productId = $('#productId').val();
+      var frameId = $('#frameId').val();
+      console.log("Change Button Product ID:" + productId);
+      console.log("Change Button Frame ID:" + frameId);
+      
+   
+    });
     
     });
 
@@ -239,6 +301,33 @@ STATA Customize Product
     //   console.log(productCount);
       if (frameCount >= customframes.length) {
       frameCount = 0;
+        // console.log(customproducts.length);
+      }
+
+      frameInputs.each(function(index) {
+        $(".productImage").attr("src", customframes[frameCount].image);
+        $(this).val(customframes[frameCount].id);
+      });
+
+      // $(".productImage").attr("src", customframes[frameCount].image);
+      // $("#frameId").val(customframes[frameCount].id);
+    
+      var frameId = $('#frameId').val();
+      var productId = $('#productId').val();
+      console.log("Change Button Frame ID:" + frameId);
+      console.log("Change Button Product ID:" + productId);
+   
+    });
+
+    $("#changeFrameButtonP").click(function(event) {
+        // var customframes = @json($customframes);
+        // console.log(customproducts.length);
+      event.preventDefault();
+      
+      frameCount--;
+    //   console.log(productCount);
+      if (frameCount < 0) {
+        frameCount = customframes.length - 1;
         // console.log(customproducts.length);
       }
 
