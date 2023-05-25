@@ -36,6 +36,7 @@ STATA Customize Product
 
 
 <div class="container p-5">
+  {{-- Image Switch --}}
   <img class="productImage" id="productImage" src="{{ asset('frontend/assets/images/banners/test.png') }}"  alt="Your Image">
   {{-- Background --}}
   <button class="btn btn-danger icon" id="changeButtonP" type="button" title="Previous Background"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
@@ -47,10 +48,17 @@ STATA Customize Product
   <label>Gang</label>
   <button class="btn btn-primary icon" id="changeFrameButton" type="button" title="Next Background"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
 
-  {{-- <button id="changeButton">Change Background</button> --}}
-  {{-- <button id="changeFrameButton">Change Frame</button> --}}
+{{-- Shopping Cart --}}
   <button data-toggle="modal" data-target="#cexampleModal" onclick="productCustomizeView($('#productId').val(), $('#frameId').val())" class="btn btn-primary icon" type="button" title="Add Cart"> <i class="fa fa-shopping-cart"></i></button>
+
+  <span id="showGang"></span>
+  
+  <br><br>
+  @foreach ($customproducts as $product)
+      <img src=" {{ asset($product['image']) }}" alt="Product Image" height="20px" width="20px">
+  @endforeach
 </div>
+<br>
 
 <div class="container" style="position: relative; background-image: url('https://static.vecteezy.com/system/resources/previews/004/365/884/original/empty-white-wooden-wall-on-wooden-floor-interior-design-3d-rendering-free-photo.jpg'); background-size: cover; background-repeat: no-repeat; height: 621px; width: 1177px; display: flex; justify-content: center; align-items: center;">
   <div>
