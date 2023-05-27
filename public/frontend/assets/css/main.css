@@ -5452,7 +5452,7 @@ header {
   }
 
   .top-cart-row .dropdown-cart .lnk-cart {
-    display: block;
+    /* display: block; */
     overflow: hidden
   }
 
