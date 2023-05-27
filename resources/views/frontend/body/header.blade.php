@@ -1,4 +1,58 @@
 <header class="header-style-1"> 
+
+  <style>
+    .a-glow {
+ position: absolute;
+ top: 50%;
+ left: 75%; 
+ transform: translate(-50%,-50%);
+ width: 150px;
+ height: 50px;
+ text-align: center;
+ /* line-height: 60px; */
+ color: #fff;
+ font-size: 14px;
+ text-transform: uppercase;
+ text-decoration: none;
+ font-family: sans-serif;
+ box-sizing: border-box;
+ background: linear-gradient(90deg, #03a9f4, #f441a4, #ffeb3b, #03a9f4);
+ background-size: 400%;
+ border-radius: 10px;
+ z-index: 1; 
+}
+.a-glow:hover {
+ animation: animate 8s linear infinite;
+}
+@keyframes animate {
+ 0% {
+  background-position: 0%;
+ }
+ 100% {
+  background-position: 400%;
+ }
+}
+.a-glow:before {
+ content: '';
+ position: absolute;
+ top: -5px;
+ bottom: -5px;
+ right: -5px;
+ left: -5px;
+ z-index: -1;
+ background: linear-gradient(90deg, #03a9f4, #f441a4, #ffeb3b, #03a9f4);
+ background-size: 400%;
+ border-radius: 40px;
+ filter: blur(20px);
+ opacity: 0;
+ transition: 0.5s;
+}
+.a-glow:hover:before {
+ filter: blur(20px);
+ opacity: 1;
+ animation: animate 8s linear infinite;
+}
+  </style>
   
   <!-- ============================================== TOP MENU ============================================== -->
   <div class="top-bar animate-dropdown">
@@ -137,7 +191,8 @@
             <!-- /.dropdown-menu--> 
           </div>
 
-            <a href="{{route('customize.product')}}"><button style="padding: 11px" class="btn btn-primary top-cart-row dropdown-cart lnk-cart ">Create Your Brand</button></a>
+            <a href="{{route('customize.product')}}"><button class="a-glow">Create Your Brand</button></a>
+            {{-- <a href="{{route('customize.product')}}"><button style="padding: 11px" class="btn btn-primary top-cart-row dropdown-cart lnk-cart ">Create Your Brand</button></a> --}}
 
           <!-- /.dropdown-cart -->
           <!-- ============================================================= SHOPPING CART DROPDOWN : END============================================================= --> </div>
