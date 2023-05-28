@@ -16,7 +16,7 @@
  text-decoration: none;
  font-family: sans-serif;
  box-sizing: border-box;
- background: linear-gradient(90deg, #03a9f4, #f441a4, #ffeb3b, #03a9f4);
+ background: linear-gradient(90deg, #1663d8, #0dc253, #23ff2e, #26c77c);
  background-size: 400%;
  border-radius: 10px;
  z-index: 1; 
@@ -191,7 +191,7 @@
             <!-- /.dropdown-menu--> 
           </div>
 
-            <a href="{{route('customize.product')}}"><button class="a-glow">Create Your Brand</button></a>
+            {{-- <a href="{{route('customize.product')}}"><button class="a-glow">Create Your Brand</button></a> --}}
             {{-- <a href="{{route('customize.product')}}"><button style="padding: 11px" class="btn btn-primary top-cart-row dropdown-cart lnk-cart ">Create Your Brand</button></a> --}}
 
           <!-- /.dropdown-cart -->
