@@ -1,7 +1,8 @@
 @extends('frontend.main_master')
 @section('content')
 @section('title')
-{{$name->category_name}} in Bangladesh - Stata IT Limited
+{{-- {{$name->category_name}} in Bangladesh - Stata IT Limited --}}
+STATA IT LIMITED | Smart Home Automation In Bangladesh
 @endsection
 
 
@@ -166,15 +167,6 @@
   </div>
   <!-- /.item -->
   @endforeach
-
-
-
-
-
-
-
-
-
 
 
                 </div>

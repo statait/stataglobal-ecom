@@ -1010,10 +1010,10 @@ function scrollFunction1() {
 }
 
 function myFunction() {
-    if (document.body.scrollTop > 120 || document.documentElement.scrollTop > 350) {
-      document.getElementById("navbar").style.top = "0";
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 450) {
+      document.getElementById("navbar").style.top = "0px";
     } else {
-      document.getElementById("navbar").style.top = "-50px";
+      document.getElementById("navbar").style.top = "-90px";
     }
   }
 
