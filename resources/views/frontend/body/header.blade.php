@@ -374,7 +374,7 @@
                 @foreach ($categories as $category)
                 {{-- <li class="dropdown"> <a href="contact.html">Kids & Girls</a> </li> --}}
                 <li class="dropdown"> <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">{{$category->category_name}}</a>
-                  <ul class="dropdown-menu pages">
+                  {{-- <ul class="dropdown-menu pages">
                     <li>
                       <div class="yamm-content">
                         <div class="row">
@@ -392,7 +392,7 @@
                         </div>
                       </div>
                     </li>
-                  </ul>
+                  </ul> --}}
                 </li>
                 @endforeach
 
