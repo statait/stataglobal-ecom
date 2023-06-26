@@ -37,15 +37,6 @@ $subcategories = App\Models\subCategory::where('category_id',$category->id)->ord
 @endforeach              
 
 
-
-
-
-
-
-
-
-
-
       </div>
       <!-- /.accordion --> 
     </div>

@@ -86,7 +86,7 @@ STATA IT LIMITED | Smart Home Automation In Bangladesh
           <!-- /.row --> 
         </div>
 
-        <h3>{{$name->category_name}}</h3>
+        {{-- <h3>{{$name->category_name}}</h3> --}}
 
 <!--    //////////////////// START Product Grid View  ////////////// -->
 

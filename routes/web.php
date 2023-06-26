@@ -532,16 +532,9 @@ Route::prefix('product')->group(function(){
     });
 
 
-
-
     /// Frontend Product Review Routes
 
     Route::post('/review/store', [ReviewController::class, 'ReviewStore'])->name('review.store');
-
-
-
-
-
 
 
     // Frontend Coupon Option
