@@ -8,7 +8,7 @@
 <div>
    <h1>{{ $item->heading }} </h1>
    <p>{{ $item->details1 }}</p>
-   <p>{{ $item->details2 }}</p>
+   <h2>{{ $item->details2 }}</h2>
 </div>
 @php
    $multiImgs = App\Models\ContentImage::where('content_id',$item->id)->get();

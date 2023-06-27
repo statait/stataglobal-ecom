@@ -219,7 +219,7 @@ rel="stylesheet">
 @yield('content')
 <!-- /#top-banner-and-menu --> 
 
-@include('frontend.common.contents')
+
 <!-- ============================================================= FOOTER ============================================================= -->
 @include('frontend.body.footer')
 

@@ -301,7 +301,15 @@ STATA IT LIMITED | Smart Home Automation In Bangladesh
 
         </div>
         <!-- /.search-result-container --> 
-
+  {{-- CONTENTS --}}
+		  		  {{-- COMBO PRODUCTS --}}
+            <section class="section wow fadeInUp new-arriavls">
+              <h3 class="section-title">CONTENTS</h3>
+  
+              @include('frontend.common.contents')
+              
+              </section>
+        {{-- CONTENTS END --}}
       </div>
       <!-- /.col --> 
     </div>

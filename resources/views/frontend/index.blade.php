@@ -11,21 +11,35 @@ STATA IT LIMITED | Smart Home Automation In Bangladesh
 	Cookie::queue(Cookie::make('modal_shown', true, 5));
 
 @endphp
-
-	@if (!Cookie::get('modal_shown'))
-    	<div id="myModal" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content" style="">
-                <div class="">
-                    {{-- <h5 class="modal-title">Subscribe our Newsletter for best offers</h5> --}}
-                    <button type="button" class="close " style="color: red; font-size: 3em;" data-dismiss="modal">&times;</button>
+@if (!Cookie::get('modal_shown'))
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    {{-- <h5 class="modal-title">Subscribe to Our Newsletter for Best Offers</h5> --}}
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                <div class="img">
-                    <img width="797" src="{{ asset('frontend/assets/images/modal.png') }}" alt="modal">
-                </div>
-				<br>
+                <div class="modal-body">
+                    <div class="img">
+                        <img width="100%" src="{{ asset('frontend/assets/images/modal.png') }}" alt="modal">
+                    </div>
+                    <br>
                     <form method="post" action="{{ route('news.store') }}">
                         @csrf
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="First Name" name="f_name">
+                            @error('f_name') 
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror 
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Last Name" name="l_name">
+                        </div>
+
                         <div class="form-group">
                             <input type="email" class="form-control" placeholder="Email Address" name="emailNews">
                             @error('emailNews') 
@@ -37,7 +51,9 @@ STATA IT LIMITED | Smart Home Automation In Bangladesh
                 </div>
             </div>
         </div>
-		@endif
+    </div>
+@endif
+
 {{-- END PAGE LOAD MODAL --}}
 
 <div class="body-content outer-top-xs" id="top-banner-and-menu">
@@ -183,7 +199,7 @@ STATA IT LIMITED | Smart Home Automation In Bangladesh
 							  <!-- /.image --> 
 							  
 							</div>
-							<!-- /.product-image --> 
+							<!-- /.product-imagmyModale --> 
 						  </div>
 						  <!-- /.col -->
 						  <div class="col col-xs-7">
@@ -1325,6 +1341,16 @@ STATA IT LIMITED | Smart Home Automation In Bangladesh
 			<!-- /.home-owl-carousel --> 
 		  </section>
 		  {{-- END COMBO PRODUCTS --}}
+
+		  {{-- CONTENTS --}}
+		  		  {{-- COMBO PRODUCTS --}}
+					<section class="section wow fadeInUp new-arriavls">
+						<h3 class="section-title">CONTENTS</h3>
+
+						@include('frontend.common.contents')
+						
+					  </section>
+		  {{-- CONTENTS END --}}
 		  <!-- /.section -->
 		  <!-- ============================================== FEATURED PRODUCTS : END ============================================== --> 
 		  

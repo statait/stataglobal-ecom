@@ -43,7 +43,7 @@
 	<div class="form-group">
 			<h5>Details 2</h5>
 			<div class="controls">
-	<textarea name="details_2" id="textarea" class="form-control" required></textarea>     
+	<textarea name="details_2" id="textarea" class="form-control"></textarea>     
 	 		 </div>
 		</div>
 

@@ -108,12 +108,16 @@ class AllUserController extends Controller
 
     	$request->validate([
     		'emailNews' => 'required',
+            'f_name' => 'required',
     	],[
     		'emailNews.required' => 'Enter Email to subscribe',
+            'f_name.required' => 'First Name cannot be empty',
     	]);
 
 	NewsLetter::insert([
 		'email' => $request->emailNews,
+		'f_name' => $request->f_name,
+		'l_name' => $request->l_name,
 		'created_at' => Carbon::now(),   
 
     	]);
