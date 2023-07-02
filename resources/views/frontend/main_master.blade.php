@@ -238,7 +238,8 @@ rel="stylesheet">
 <script src="{{ asset('frontend/assets/js/jquery.easing-1.3.min.js') }}"></script> 
 <script src="{{ asset('frontend/assets/js/bootstrap-slider.min.js') }}"></script> 
 <script src="{{ asset('frontend/assets/js/jquery.rateit.min.js') }}"></script> 
-<script src="{{ asset('frontend/assets/js/lightbox.min.js') }}"></script> 
+{{-- <script src="{{ asset('frontend/assets/js/lightbox.min.js') }}"></script>  --}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/css/lightbox.min.css">
 <script src="{{ asset('frontend/assets/js/bootstrap-select.min.js') }}"></script> 
 <script src="{{ asset('frontend/assets/js/wow.min.js') }}"></script> 
 <script src="{{ asset('frontend/assets/js/scripts.js') }}"></script>
@@ -358,6 +359,7 @@ rel="stylesheet">
  </div>
  <!-- End Add to Cart Product Modal -->
 
+ <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/js/lightbox.min.js"></script>
 
  <script type="text/javascript">
    $.ajaxSetup({

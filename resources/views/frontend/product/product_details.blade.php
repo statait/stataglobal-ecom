@@ -77,12 +77,12 @@
         <div id="owl-single-product">
 
         	@foreach($multiImag as $img)
-            <div class="single-product-gallery-item" id="slide{{ $img->id }}">
-  <a data-lightbox="image-1" data-title="Gallery" href="#">
-                    <img class="img-responsive" alt="{{$product->product_name}}" src="{{ asset($img->photo_name ) }} " data-echo="{{ asset($img->photo_name ) }} " />
-                </a>
-            </div> <!-- /.single-product-gallery-item -->
-            @endforeach
+<div class="single-product-gallery-item" id="slide{{ $img->id }}">
+  <a data-lightbox="{{$product->product_name}}" data-title="{{$product->product_name}}" href="{{ asset($img->photo_name) }}">
+    <img class="img-responsive" alt="{{$product->product_name}}" src="{{ asset($img->photo_name) }}" data-echo="{{ asset($img->photo_name) }}" />
+  </a>
+</div> <!-- /.single-product-gallery-item -->
+@endforeach
 
 
         </div><!-- /.single-product-slider -->
