@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admincontroller;
 use App\Http\Controllers\CustomizeController;
+use App\Http\Controllers\ContentController;
 use App\Http\Controllers\Backend\AdminProfileController;
 use App\Http\Controllers\Backend\AdminUserController;
 use App\Http\Controllers\Backend\BrandController;
@@ -463,7 +464,17 @@ Route::prefix('product')->group(function(){
 
     Route::get('/view', [AdminProfileController::class, 'AllUsers'])->name('all-users');
     
-    
+    });
+
+
+    // Content Routes 
+    Route::prefix('content')->group(function(){
+
+        Route::get('/view', [ContentController::class, 'AddContent'])->name('add.content');
+
+        Route::post('/store', [ContentController::class, 'ContentStore'])->name('content.store');
+            
+        Route::get('/manage', [ContentController::class, 'ManageContent'])->name('manage.content');
     });
 
 

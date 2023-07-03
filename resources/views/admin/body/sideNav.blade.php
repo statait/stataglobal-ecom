@@ -291,6 +291,26 @@
     @else
     @endif    
 
+
+    @if($alluser == true)
+    <li class="treeview {{ ($prefix == '/users')?'active':'' }}  ">
+      <a href="#">
+        <i data-feather="file"></i>
+        <span>Content </span>
+        <span class="pull-right-container">
+          <i class="fa fa-angle-right pull-right"></i>
+        </span>
+      </a>
+      <ul class="treeview-menu">
+    <li class="{{ ($route == 'add.content')? 'active':'' }}"><a href="{{ route('add.content') }}"><i class="ti-more"></i>Add Content</a></li>
+
+    <li class="{{ ($route == 'manage.content')? 'active':'' }}"><a href="{{ route('manage.content') }}"><i class="ti-more"></i>Manage Content</a></li>
+
+      </ul>
+    </li> 
+@else
+@endif
+
    
 
 
