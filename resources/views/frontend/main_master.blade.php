@@ -219,7 +219,6 @@ rel="stylesheet">
 @yield('content')
 <!-- /#top-banner-and-menu --> 
 
-
 <!-- ============================================================= FOOTER ============================================================= -->
 @include('frontend.body.footer')
 
@@ -238,8 +237,7 @@ rel="stylesheet">
 <script src="{{ asset('frontend/assets/js/jquery.easing-1.3.min.js') }}"></script> 
 <script src="{{ asset('frontend/assets/js/bootstrap-slider.min.js') }}"></script> 
 <script src="{{ asset('frontend/assets/js/jquery.rateit.min.js') }}"></script> 
-{{-- <script src="{{ asset('frontend/assets/js/lightbox.min.js') }}"></script>  --}}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/css/lightbox.min.css">
+<script src="{{ asset('frontend/assets/js/lightbox.min.js') }}"></script> 
 <script src="{{ asset('frontend/assets/js/bootstrap-select.min.js') }}"></script> 
 <script src="{{ asset('frontend/assets/js/wow.min.js') }}"></script> 
 <script src="{{ asset('frontend/assets/js/scripts.js') }}"></script>
@@ -359,7 +357,6 @@ rel="stylesheet">
  </div>
  <!-- End Add to Cart Product Modal -->
 
- <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/js/lightbox.min.js"></script>
 
  <script type="text/javascript">
    $.ajaxSetup({
@@ -971,6 +968,63 @@ function cartIncrement(rowId){
     src="https://www.facebook.com/tr?id=2334286266732019&ev=PageView&noscript=1"
     /></noscript>
     <!-- End Meta Pixel Code -->
+
+
+    {{-- TOP BUTTON JS --}}
+<script>
+    //Get the button:
+mybutton = document.getElementById("myBtn");
+mybutton1 = document.getElementById("myBt");
+mysp = document.getElementById("sp");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction(); myFunction(); scrollFunction1(); sp1()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+
+   
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+function sp1() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    sp.style.display = "none";
+
+  } else {
+    sp.style.display = "";
+  }
+}
+
+function scrollFunction1() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton1.style.display = "block";
+
+   
+  } else {
+    mybutton1.style.display = "";
+  }
+}
+
+function myFunction() {
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 450) {
+      document.getElementById("navbar").style.top = "0px";
+    } else {
+      document.getElementById("navbar").style.top = "-90px";
+    }
+  }
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+</script>
+
+
 
 
 {{-- CUSTOMIZE PRODUCT ADD --}}
