@@ -1,25 +1,25 @@
 [
     {
       "id": 1,
-      "image": "/frontend/assets/images/banners/1-Gang_Blue.png",
+      "image": "/frontend/assets/images/banners/1-Gang_Red.png",
       "size": "1 Gang",
       "price": "1000"
     },
     {
       "id": 2,
-      "image": "/frontend/assets/images/banners/2-Gang_Blue.png",
+      "image": "/frontend/assets/images/banners/2-Gang_Red.png",
       "size": "2 Gang",
       "price": "2000"
     },
     {
       "id": 3,
-      "image": "/frontend/assets/images/banners/3-Gang_Blue.png",
+      "image": "/frontend/assets/images/banners/3-Gang_Red.png",
       "size": "3 Gang",
       "price": "3000"
     },
     {
       "id": 4,
-      "image": "/frontend/assets/images/banners/4-Gang_Blue.png",
+      "image": "/frontend/assets/images/banners/4-Gang_Red.png",
       "size": "4 Gang",
       "price": "4000"
     }

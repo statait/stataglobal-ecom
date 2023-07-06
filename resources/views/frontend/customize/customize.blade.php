@@ -4,6 +4,10 @@
 STATA Customize Product 
 @endsection
 
+</head>
+
+<body>
+
 <style>
   .btn {
     background-color: #fff;
@@ -48,6 +52,9 @@ STATA Customize Product
   <label>Gang</label>
   <button class="btn btn-primary icon" id="changeFrameButton" type="button" title="Next Background"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
 
+    {{-- Switch ON/OFF --}}
+    <button class="btn icon" id="toggleButton" type="button" title="Switch On/Off"><i class="fa-solid fa-toggle-on fa-2xl" aria-hidden="true"></i></button>
+
 {{-- Shopping Cart --}}
   <button data-toggle="modal" data-target="#cexampleModal" onclick="productCustomizeView($('#productId').val(), $('#frameId').val())" class="btn btn-primary icon" type="button" title="Add Cart"> <i class="fa fa-shopping-cart"></i></button>
 
@@ -60,7 +67,7 @@ STATA Customize Product
 </div>
 <br>
 
-<div class="container" style="position: relative; background-image: url('https://static.vecteezy.com/system/resources/previews/004/365/884/original/empty-white-wooden-wall-on-wooden-floor-interior-design-3d-rendering-free-photo.jpg'); background-size: cover; background-repeat: no-repeat; height: 621px; width: 1177px; display: flex; justify-content: center; align-items: center;">
+<div class="container"  id="container" style="position: relative; background-image: url('/frontend/assets/customize/switch_on.png'); background-size: cover; background-repeat: no-repeat; height: 621px; width: 1177px; display: flex; justify-content: center; align-items: center;">
   <div>
     <img class="productImage" id="productImage" src="{{ asset('frontend/assets/images/banners/test.png') }}" style="max-width: 60px; max-height: 60px; background-size: cover;" alt="Your Image">
     <img class="productImage" id="productImage" src="{{ asset('frontend/assets/images/banners/test.png') }}" style="max-width: 60px; max-height: 60px; background-size: cover;" alt="Your Image">
@@ -243,7 +250,30 @@ STATA Customize Product
   </div>
   <!-- End CUSTOMIZE Add to Cart Product Modal -->
 
-  <script>
+<script>
+  window.isImage1 = true;
+</script>
+{{-- Switch ON?OFF --}}
+<script>
+
+  const container = document.getElementById('container');
+  const toggleButton = document.getElementById('toggleButton');
+  
+  toggleButton.addEventListener('click', function() {
+    if (isImage1) {
+      container.style.backgroundImage = "url('/frontend/assets/customize/switch_off.png')";
+      isImage1 = false;
+      console.log("Image iss", isImage1);
+    } else {
+      container.style.backgroundImage = "url('/frontend/assets/customize/switch_on.png')";
+      isImage1 = true;
+      console.log("Image is", isImage1);
+    }
+  });
+  </script>
+  {{-- END Switch ON?OFF --}}
+
+<script>
 
     $(document).ready(function() {
       var productCount = 0;
@@ -299,6 +329,8 @@ STATA Customize Product
       var frameCount = 0;
       var customframes = @json($customframes);
       var frameInputs = $(".frameId");
+      var off_customframes = @json($off_customframes);
+      var off_frameInputs = $(".frameId");
     
     $("#changeFrameButton").click(function(event) {
         // var customframes = @json($customframes);
@@ -327,6 +359,9 @@ STATA Customize Product
    
     });
 
+    // window.isImage1 = true;
+    
+    if(!isImage1){
     $("#changeFrameButtonP").click(function(event) {
         // var customframes = @json($customframes);
         // console.log(customproducts.length);
@@ -349,10 +384,40 @@ STATA Customize Product
     
       var frameId = $('#frameId').val();
       var productId = $('#productId').val();
-      console.log("Change Button Frame ID:" + frameId);
-      console.log("Change Button Product ID:" + productId);
+      console.log("Change ON Button Frame ID:" + frameId);
+      console.log("Change ON Button Product ID:" + productId);
    
-    });
+    }
+    );
+  }else{
+      $("#changeFrameButtonP").click(function(event) {
+        // var customframes = @json($customframes);
+        // console.log(customproducts.length);
+      event.preventDefault();
+      console.log("else loop");
+      frameCount--;
+    //   console.log(productCount);
+      if (frameCount < 0) {
+        frameCount = off_customframes.length - 1;
+        // console.log(customproducts.length);
+      }
+
+      off_frameInputs.each(function(index) {
+        $(".productImage").attr("src", off_customframes[frameCount].image);
+        $(this).val(off_customframes[frameCount].id);
+      });
+
+      // $(".productImage").attr("src", customframes[frameCount].image);
+      // $("#frameId").val(customframes[frameCount].id);
+    
+      var frameId = $('#frameId').val();
+      var productId = $('#productId').val();
+      console.log("Change OFF Button Frame ID:" + frameId);
+      console.log("Change OFF Button Product ID:" + productId);
+   
+    }
+    );
+    }
     
     });
     
@@ -503,6 +568,8 @@ STATA Customize Product
     }
    miniCart();
 </script>
+
+
 
 
 

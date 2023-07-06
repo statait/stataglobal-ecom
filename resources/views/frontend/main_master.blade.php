@@ -166,10 +166,12 @@ $seo = App\Models\Seo::find(1);
 
 <!-- Icons/Glyphs -->
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/font-awesome.css') }}">
+
+{{-- awesome cdn --}}
+<script src="https://kit.fontawesome.com/b99be68059.js" crossorigin="anonymous"></script>
+
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 rel="stylesheet">
-
-
 
 <!-- Fonts -->
 <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
