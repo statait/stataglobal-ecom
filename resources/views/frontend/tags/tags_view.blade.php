@@ -4,7 +4,6 @@
 Tag Wise Product 
 @endsection
 
-
 {{-- <div class="breadcrumb">
   <div class="container">
     <div class="breadcrumb-inner">
@@ -19,6 +18,7 @@ Tag Wise Product
 </div> --}}
 <!-- /.breadcrumb -->
 <div class="body-content outer-top-xs">
+ 
   <div class='container'>
     <div class='row'>
       <div class='col-md-3 sidebar'> 
