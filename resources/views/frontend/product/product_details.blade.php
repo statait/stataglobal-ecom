@@ -2,10 +2,12 @@
 @section('content')
 
 @section('title')
-{{ $product->product_name }} Details
+{{ $product->c_meta_title }}
 @endsection
 
-
+@section('meta')
+<meta name="description" content="{{ $product->c_meta_description }}">
+@endsection
 
 <div class="breadcrumb">
 	<div class="container">

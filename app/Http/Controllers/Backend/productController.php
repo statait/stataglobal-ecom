@@ -59,7 +59,11 @@ class productController extends Controller
 
       	'product_thambnail' => $save_url,
       	'status' => 1,
-      	'created_at' => Carbon::now(),   
+
+		'c_meta_title' => $request->c_meta_title,
+		'c_meta_description' => $request->c_meta_description,  
+
+		'created_at' => Carbon::now(),   
 
       ]);
 
@@ -140,6 +144,9 @@ class productController extends Controller
 
       	'long_descp' => $request->long_descp,
 		'video_link' => $request->video_link,
+
+		'c_meta_title' => $request->c_meta_title,
+		'c_meta_description' => $request->c_meta_description,  
 
       	'new' => $request->new,
       	'sale' => $request->sale,

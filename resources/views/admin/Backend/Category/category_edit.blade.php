@@ -22,7 +22,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Add Category </h3>
+				  <h3 class="box-title">Edit Category </h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -43,23 +43,25 @@
 	 @enderror 
 	</div>
 	</div>
-
-
-	{{-- <div class="form-group">
-		<h5>Category Icon  <span class="text-danger">*</span></h5>
+	 <div class="form-group">
+		<h5>Meta Title</h5>
 		<div class="controls">
-	 <input type="text" name="category_icon" class="form-control"  value="{{ $category->category_icon }}" >
-     @error('category_icon') 
-	 <span class="text-danger">{{ $message }}</span>
-	 @enderror 
-	  </div>
-	</div>  --}}
+	 <input type="text"  name="c_meta_title" class="form-control" value="{{ $category->c_meta_title }}" > 
+	</div>
+	</div>
+	 <div class="form-group">
+		<h5>Meta Description</h5>
+		<div class="controls">
+	 <input type="text"  name="c_meta_description" class="form-control" value="{{ $category->c_meta_description }}" > 
+	
+	</div>
+	</div>
 					 
 
 			 <div class="text-xs-right">
 	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update">					 
 						</div>
-					</form>
+			</form>
 
 
 

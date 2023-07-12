@@ -28,8 +28,9 @@ class categoryController extends Controller
 
 	Category::insert([
 		'category_name' => $request->category_name,
-	
-		// 'category_icon' => $request->category_icon,
+		'c_meta_title' => $request->c_meta_title,
+		'c_meta_description' => $request->c_meta_description,
+
 		'created_at' => Carbon::now(),   
 
     	]);
@@ -52,12 +53,11 @@ class categoryController extends Controller
 
     public function CategoryUpdate(Request $request ,$id){
 
-    	 
-
+		// dd($id);
       Category::findOrFail($id)->update([
 		'category_name' => $request->category_name,
-		// 'category_slug' => strtolower(str_replace(' ', '-',$request->category_name)),
-		// 'category_icon' => $request->category_icon,
+		'c_meta_title' => $request->c_meta_title,
+		'c_meta_description' => $request->c_meta_description,
 
     	]);
 

@@ -339,6 +339,35 @@
 			
 		</div> <!-- end 8th row  -->
 
+
+<div class="row"> <!-- start 8th row  -->
+			<div class="col-md-4">
+
+				<div class="form-group">
+					<h6>Meta Title<span class="text-danger">*</span></h6>
+					<div class="controls">
+				 <input type="text"  name="c_meta_title" class="form-control" > 
+				
+				</div>
+				</div>
+			</div> <!-- end col md 6 -->
+
+
+			<div class="col-md-4">
+				<div class="form-group">
+					<h6>Meta Description<span class="text-danger">*</span></h6>
+					<div class="controls">
+				 <input type="text"  name="c_meta_description" class="form-control" > 
+			
+				</div>
+				</div>
+			   
+		   </div> <!-- end col md 4 -->
+
+<!-- end col md 6 -->		 
+			
+		</div> <!-- end 8th row  -->
+
 	 
 	 <hr>
  

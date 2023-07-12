@@ -22,7 +22,13 @@ $seo = App\Models\Seo::find(1);
 <!-- Meta -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+@hasSection('meta')
+@yield('meta')
+@else
 <meta name="description" content="{{ $seo->meta_description }}">
+@endif
+
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <meta name="author" content="{{ $seo->meta_author }}">
 <meta name="keywords" content="{{ $seo->meta_keyword }}">

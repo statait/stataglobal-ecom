@@ -86,6 +86,20 @@
 	 @enderror 
 	</div>
 	</div>
+	 <div class="form-group">
+		<h6>Meta Title<span class="text-danger">*</span></h6>
+		<div class="controls">
+	 <input type="text"  name="c_meta_title" class="form-control" > 
+	
+	</div>
+	</div>
+	 <div class="form-group">
+		<h6>Meta Description<span class="text-danger">*</span></h6>
+		<div class="controls">
+	 <input type="text"  name="c_meta_description" class="form-control" > 
+
+	</div>
+	</div>
 
 {{-- 
 

@@ -2,7 +2,11 @@
 @section('content')
 @section('title')
 {{-- {{$name->category_name}} in Bangladesh - Stata IT Limited --}}
-STATA IT LIMITED | Smart Home Automation In Bangladesh
+{{ $name->c_meta_title }}
+@endsection
+
+@section('meta')
+<meta name="description" content="{{ $name->c_meta_description }}">
 @endsection
 
 
