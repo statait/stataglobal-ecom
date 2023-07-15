@@ -18,4 +18,8 @@ class CustomizeController extends Controller
     return view('frontend.customize.customize')->with('customproducts', $customproducts)->with('customframes', $customframes)->with('off_customframes', $off_customframes);
 
     }
+    public function Campaign(){
+  
+    return view('frontend.customize.campaing');
+    }
 }

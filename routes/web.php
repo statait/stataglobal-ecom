@@ -306,6 +306,9 @@ Route::prefix('product')->group(function(){
     Route::get('/todays/offer', [homePageController::class, 'TodaysOffer'])->name('todays.offer');
 
     Route::get('/customize/product', [CustomizeController::class, 'CustomizeView'])->name('customize.product');
+    
+    // CAMPAIGN CUSTOM 
+    Route::get('/helicopter-ride/campaign', [CustomizeController::class, 'Campaign'])->name('helicopter.campaign');
 
     Route::get('/sale', [homePageController::class, 'SaleWiseProduct'])->name('sale.offer');
 
