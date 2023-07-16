@@ -4,69 +4,56 @@
 STATA Helicopter Ride Campaign 
 @endsection
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
+
+
 <div class="container p-5">
     <br>
     <input type="file" id="imageUpload">
     <button onclick="setBackground()">Set Background</button>
-    <button onclick="downloadImages()">Download Image</button>
+    <button onclick="downloadImage()">Download Image</button>
     <br> <br>
 
-    <img class="productImage" style="border: 2px solid black; padding: 5px;  background-size: cover;" id="productImage" src="{{ asset('frontend/assets/images/banners/3-Gang_Red.png') }}"  alt="Your Image">
+    <div id="imageContainer" style="position: relative; width: 482px; height: 682px;">
+        <img src="{{ asset('frontend/assets/images/banners/frame.png') }}" style="position: absolute; top: 0; left: 0; width: 482px; height: 682px;" alt="Image 1">
+        <img src="{{ asset('frontend/assets/images/banners/3-Gang_Red.png') }}" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 55%; height:40%"  id="image3" alt="Image 2">
+        <img src="{{ asset('frontend/assets/images/banners/3-Gang_Red.png') }}" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 55%; height:40%" id="image2" alt="Image 3">
+      </div>
+      
+
     <br> <br>
 </div>
+
 <script>
-    var originalImageSrc = "{{ asset('frontend/assets/images/banners/3-Gang_Red.png') }}";
-    var uploadedImageSrc = null;
-
     function setBackground() {
-        var input = document.getElementById('imageUpload');
-        var image = document.getElementById('productImage');
-        var file = input.files[0];
-        var reader = new FileReader();
-
-        reader.onloadend = function() {
-            image.style.backgroundImage = 'url(' + reader.result + ')';
-            uploadedImageSrc = reader.result;
-        }
-
-        if (file) {
-            reader.readAsDataURL(file);
-        } else {
-            image.style.backgroundImage = null;
-            uploadedImageSrc = null;
-        }
+      var fileInput = document.getElementById("imageUpload");
+      var file = fileInput.files[0];
+      var reader = new FileReader();
+      
+      reader.onload = function(e) {
+        var image3 = document.getElementById("image3");
+        image3.src = e.target.result;
+      }
+      
+      if (file) {
+        reader.readAsDataURL(file);
+      }
     }
 
-    function downloadImages() {
-        var canvas = document.createElement('canvas');
-        var context = canvas.getContext('2d');
-        var combinedImage = new Image();
-        var originalImage = new Image();
-        var uploadedImage = new Image();
+    function downloadImage() {
+    var imageContainer = document.getElementById("imageContainer");
 
-        originalImage.crossOrigin = 'anonymous';
-        originalImage.src = originalImageSrc;
-        uploadedImage.src = uploadedImageSrc;
+    html2canvas(imageContainer).then(function (canvas) {
+      var dataURL = canvas.toDataURL('image/png');
+      var link = document.createElement('a');
+      link.href = dataURL;
+      link.download = 'combined_image.png';
+      link.target = '_blank';
+      link.click();
+    });
+  }
+  </script>
 
-        originalImage.onload = function() {
-            canvas.width = originalImage.width;
-            canvas.height = originalImage.height;
-
-            context.drawImage(originalImage, 0, 0);
-            if (uploadedImageSrc) {
-                context.globalAlpha = .6; // Adjust opacity of the uploaded image
-                context.drawImage(uploadedImage, 0, 0, originalImage.width, originalImage.height);
-            }
-
-            combinedImage.src = canvas.toDataURL();
-            combinedImage.onload = function() {
-                var link = document.createElement('a');
-                link.href = combinedImage.src;
-                link.download = 'combined_image.png';
-                link.click();
-            };
-        };
-    }
-</script>
 
 @endsection
