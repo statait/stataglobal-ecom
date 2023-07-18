@@ -478,6 +478,8 @@ Route::prefix('product')->group(function(){
         Route::post('/store', [ContentController::class, 'ContentStore'])->name('content.store');
             
         Route::get('/manage', [ContentController::class, 'ManageContent'])->name('manage.content');
+
+        Route::get('/delete/{id}', [ContentController::class, 'DeleteContent'])->name('delete.content');
     });
 
 
