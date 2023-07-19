@@ -61,5 +61,22 @@ class ContentController extends Controller
 		$contents = Content::latest()->get();
 		return view('admin.Backend.Content.manage_content',compact('contents'));
 	}
+
+  public function DeleteContent($id){
+
+    // $content = Brand::findOrFail($id);
+    // $img = $content->brand_image;
+    // unlink($img);
+
+    Content::findOrFail($id)->delete();
+
+     $notification = array(
+    'message' => 'Content Deleted Successfully',
+    'alert-type' => 'info'
+  );
+
+  return redirect()->back()->with($notification);
+
+  } // end method 
 }
 
