@@ -1,11 +1,13 @@
 @extends('frontend.main_master')
 @section('content')
 @section('title')
-STATA Helicopter Ride Campaign 
+
 @endsection
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
+
 <style>
-.upload-btn,
+  .upload-btn,
 .action-btn {
   background-color: #f5f5f5;
   color: #333;
@@ -50,16 +52,18 @@ STATA Helicopter Ride Campaign
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Image */
 
 </style>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
-
-
-<div class="container p-5" style="max-width: 1200px; margin: 0 auto;">
-  <br>
-  <input type="file" id="imageUpload" style="display: none;">
+<div class="body-content outer-top-xs">
+  <div class='container'>
+    <div class='row'>
+      <div class='col-md-2 sidebar'> 
+        <div class="sidebar-module-container">
+          <div class="sidebar-filter"> 
+            {{-- START --}}
+            <input type="file" id="imageUpload" style="display: none;">
   <label for="imageUpload" class="upload-btn">
     <i class="fas fa-upload"></i> Choose File
   </label>
@@ -69,47 +73,63 @@ STATA Helicopter Ride Campaign
   <button onclick="downloadImage()" class="action-btn">
     <i class="fas fa-download"></i> Download
   </button>
+            {{-- END --}}
+            
+          </div>
+          <!-- /.sidebar-filter --> 
+        </div>
+        <!-- /.sidebar-module-container --> 
+      </div>
 
-  <br><br>
+      <div class='col-md-6'> 
+        
+        {{-- IMAGE --}}
+        <div id="imageContainer" style="position: relative; max-width: 100%; height: 0; padding-bottom: 141.08%; overflow: hidden;">
+          <img src="{{ asset('frontend/assets/images/banners/frame.png') }}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" alt="Image 1">
+          <img src="{{ asset('frontend/assets/images/banners/3-Gang_Red.png') }}" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 100%; max-height: 100%; width: auto; height: auto;" alt="Image 2" id="image3">
+          <img src="{{ asset('frontend/assets/images/banners/3-Gang_Red.png') }}" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 100%; max-height: 100%; width: auto; height: auto;" alt="Image 3" id="image2">
+        </div>
+        
+         
+        {{-- END IMAGE --}}
 
-  <div id="imageContainer" style="position: relative; max-width: 100%; height: 0; padding-bottom: 141.08%; overflow: hidden;">
-      <img src="{{ asset('frontend/assets/images/banners/frame.png') }}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;" alt="Image 1">
-      <img src="{{ asset('frontend/assets/images/banners/3-Gang_Red.png') }}" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 100%; max-height: 100%; width: auto; height: auto;" id="image3" alt="Image 2">
-      <img src="{{ asset('frontend/assets/images/banners/3-Gang_Red.png') }}" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 100%; max-height: 100%; width: auto; height: auto;" id="image2" alt="Image 3">
-  </div>
+      </div>
 
-  <br><br>
+    </div>
+ </div>
+
+
 </div>
 
+
 <script>
-    function setBackground() {
-      var fileInput = document.getElementById("imageUpload");
-      var file = fileInput.files[0];
-      var reader = new FileReader();
-      
-      reader.onload = function(e) {
-        var image3 = document.getElementById("image3");
-        image3.src = e.target.result;
-      }
-      
-      if (file) {
-        reader.readAsDataURL(file);
-      }
+  function setBackground() {
+    var fileInput = document.getElementById("imageUpload");
+    var file = fileInput.files[0];
+    var reader = new FileReader();
+    
+    reader.onload = function(e) {
+      var image3 = document.getElementById("image3");
+      image3.src = e.target.result;
     }
-
-    function downloadImage() {
-    var imageContainer = document.getElementById("imageContainer");
-
-    html2canvas(imageContainer).then(function (canvas) {
-      var dataURL = canvas.toDataURL('image/png');
-      var link = document.createElement('a');
-      link.href = dataURL;
-      link.download = 'combined_image.png';
-      link.target = '_blank';
-      link.click();
-    });
+    
+    if (file) {
+      reader.readAsDataURL(file);
+    }
   }
-  </script>
 
+  function downloadImage() {
+  var imageContainer = document.getElementById("imageContainer");
+
+  html2canvas(imageContainer).then(function (canvas) {
+    var dataURL = canvas.toDataURL('image/png');
+    var link = document.createElement('a');
+    link.href = dataURL;
+    link.download = 'combined_image.png';
+    link.target = '_blank';
+    link.click();
+  });
+}
+</script>
 
 @endsection

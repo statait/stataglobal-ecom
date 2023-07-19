@@ -292,7 +292,7 @@
     @endif    
 
 
-    @if($alluser == true)
+    @if($category == true)
     <li class="treeview {{ ($prefix == '/users')?'active':'' }}  ">
       <a href="#">
         <i data-feather="file"></i>
