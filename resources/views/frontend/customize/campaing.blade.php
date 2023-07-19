@@ -110,8 +110,22 @@
     
     reader.onload = function(e) {
       var image3 = document.getElementById("image3");
-      image3.src = e.target.result;
-    }
+    var image2 = document.getElementById("image2");
+
+    // Set the source of image3 with the uploaded image
+    image3.src = e.target.result;
+
+    // Set the size of image3 to match the size of image2
+    image3.style.width = image2.offsetWidth + "px";
+    image3.style.height = image2.offsetHeight + "px";
+
+    // Apply the positioning styles
+    image3.style.position = "absolute";
+    image3.style.top = image2.style.top;
+    image3.style.left = image2.style.left;
+    image3.style.transform = image2.style.transform;
+  }
+
     
     if (file) {
       reader.readAsDataURL(file);
