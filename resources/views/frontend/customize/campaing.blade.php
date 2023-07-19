@@ -95,6 +95,9 @@
 
       </div>
 
+      <div class='col-md-4'> 
+        <img src="{{ asset('frontend/assets/images/banners/info.png') }}" height="100%" width="87%" alt="">
+      </div>
     </div>
  </div>
 
