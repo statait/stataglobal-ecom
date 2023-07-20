@@ -3,11 +3,16 @@
           $contents = App\Models\Content::all();
           // $multiImgs = App\Models\ContentImage::where('product_id',$id)->get();
         @endphp
+        <style>
+          .co{
+            padding-right: 30%;
+          }
+        </style>
 <div class="container">
 @foreach($contents as $item)
 <div>
    <h1>{{ $item->heading }} </h1>
-   <p>{{ $item->details1 }}</p>
+   <p class="co">{{ $item->details1 }}</p>
    <h2>{{ $item->details2 }}</h2>
 </div>
 @php

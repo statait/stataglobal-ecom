@@ -307,12 +307,12 @@
         <!-- /.search-result-container --> 
   {{-- CONTENTS --}}
 		  		  {{-- COMBO PRODUCTS --}}
-            <section class="section wow fadeInUp new-arriavls">
+            {{-- <section class="section wow fadeInUp new-arriavls">
               <h3 class="section-title">CONTENTS</h3>
   
               @include('frontend.common.contents')
               
-              </section>
+              </section> --}}
         {{-- CONTENTS END --}}
       </div>
       <!-- /.col --> 
