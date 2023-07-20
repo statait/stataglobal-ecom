@@ -55,9 +55,6 @@
   transition: background-color 0.3s ease;
 }
 
-/* .action-btn-1:hover {
-  background-color: #b80000;
-} */
 
 /* Common style for all buttons */
 .common-btn {
