@@ -1,940 +1,1609 @@
--- MySQL dump 10.13  Distrib 8.0.33, for Linux (x86_64)
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost    Database: ecom
--- ------------------------------------------------------
--- Server version	8.0.33-0ubuntu0.22.10.2
+-- Host: 127.0.0.1
+-- Generation Time: Jul 30, 2023 at 09:28 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8mb4 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `ecom`
+--
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `admins`
 --
 
-DROP TABLE IF EXISTS `admins`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `admins` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `brand` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `category` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `product` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `slider` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `coupons` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `shipping` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `setting` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `returnorder` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `review` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `orders` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `locations` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `stock` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `reports` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `alluser` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `adminuserrole` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `quotation` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `type` int DEFAULT NULL,
-  `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `current_team_id` bigint unsigned DEFAULT NULL,
-  `profile_photo_path` varchar(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `brand` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `category` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `product` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slider` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `coupons` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `shipping` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `setting` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `returnorder` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `review` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `orders` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `locations` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `stock` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `reports` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `alluser` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `adminuserrole` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `quotation` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `type` int(11) DEFAULT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `current_team_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `profile_photo_path` varchar(2048) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `admins_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `admins`
 --
 
-LOCK TABLES `admins` WRITE;
-/*!40000 ALTER TABLE `admins` DISABLE KEYS */;
-INSERT INTO `admins` VALUES (1,'Admin','admin@gmail.com','2022-06-05 03:57:32','$2y$10$ZCoqCSNCiRbqRM3OmRpa4O6sMZk8baoKX2lOgql3fz6DxKpD1YU16','01964870827','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1',1,'8X3QUVbzoZl9Q8JHTltKDlUJ9c3w3QnOmMyb9Esg7P0U7QmcSCwUlia6ZwK8',NULL,'202209251620LOGOMOCKUP.jpg','2022-06-05 03:57:32','2023-03-25 05:09:11'),(9,'Yeasin Arafat','yeasin.stata@gmail.com',NULL,'$2y$10$gw.WFqGWWmXKMnG06wvu9.awK5FwhRHXyOupRGN6uodgxNfny2yrS','01908497296',NULL,'1','1','1','1','1','1','1','1','1','1','1','1','1',NULL,NULL,2,NULL,NULL,'upload/admin_images/1743754440115459.png','2022-09-26 07:07:56','2022-09-26 07:07:56'),(10,'Rahul','rahul@stata.com',NULL,'$2y$10$LEyf85toH2zVihpoP30L.OdFAyaehh/SGyer.Ok1dUuKNdm20.jBi','01720514565',NULL,'1','1','1','1','1','1','1','1','1','1','1','1','1',NULL,NULL,2,NULL,NULL,'upload/admin_images/1743757510562601.png','2022-09-26 07:08:36','2022-09-26 07:08:36'),(13,'Syed Tasdiq','tasdiqsyed96@gmail.com',NULL,'$2y$10$/nlXa7LGsBFyCmXJ5jfXGOy3oe5RMD7LtFzP3IN0Ab/hWXOKt2KyS','017422005557','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1',2,NULL,NULL,'upload/admin_images/1744663765164243.png','2022-09-26 07:08:21','2022-09-26 07:08:21'),(14,'MD Omar','omar@gmail.com',NULL,'$2y$10$tIOG4M8CZJr29g.ofPURWOZJsxsa34gnrUDkQWh1CsJuqcW1FnzVS','01322896409',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1',NULL,NULL,NULL,NULL,NULL,2,NULL,NULL,'upload/admin_images/1745015270567925.png','2022-09-26 07:10:45',NULL),(15,'Elhum','elhum.stata@gmail.com',NULL,'$2y$10$K/twoibNf8IoaQxvP3UG3eXfw6ycT3PsmoVmyijV/avGhgqepPY4.','01908931973',NULL,NULL,'1','1','1',NULL,NULL,NULL,NULL,'1',NULL,'1',NULL,NULL,NULL,NULL,2,NULL,NULL,'upload/admin_images/1749630131590847.png','2022-11-16 05:41:59',NULL),(16,'Shahriar Tasnim','shahriar@statait.com',NULL,'$2y$10$Zmkv9zxfQZMS6JXjbBBtXe8xkY8TyHmp74rckIOMDL0SVkjNfEUpW','+8801677341032','1','1','1','1','1','1','1','1','1','1','1','1','1','1',NULL,'1',2,NULL,NULL,'upload/admin_images/1755809909600289.png','2023-02-12 04:44:40','2023-02-12 04:44:40'),(17,'Antu','antu@gmail.com',NULL,'$2y$10$bWPcZOjOobV/HO2j6hu2KOvUl2JpG6Rh5BA0ZpoVvmgIzdwbWBOZC','12345678',NULL,'1','1',NULL,NULL,NULL,'1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1',2,NULL,NULL,'upload/admin_images/1771196258115496.png','2023-07-12 06:46:20',NULL);
-/*!40000 ALTER TABLE `admins` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `admins` (`id`, `name`, `email`, `email_verified_at`, `password`, `phone`, `brand`, `category`, `product`, `slider`, `coupons`, `shipping`, `setting`, `returnorder`, `review`, `orders`, `locations`, `stock`, `reports`, `alluser`, `adminuserrole`, `quotation`, `type`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', 'admin@gmail.com', '2022-06-05 03:57:32', '$2y$10$ZCoqCSNCiRbqRM3OmRpa4O6sMZk8baoKX2lOgql3fz6DxKpD1YU16', '01964870827', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 1, 'CdZ4ujVVzcc3RJyHPwrJNFRo8EpZjyOtUhhXvaMoEwNm1OpTzoclYPCffY09', NULL, '202209251620LOGOMOCKUP.jpg', '2022-06-05 03:57:32', '2023-03-25 05:09:11'),
+(9, 'Yeasin Arafat', 'yeasin.stata@gmail.com', NULL, '$2y$10$gw.WFqGWWmXKMnG06wvu9.awK5FwhRHXyOupRGN6uodgxNfny2yrS', '01908497296', NULL, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', NULL, NULL, 2, NULL, NULL, 'upload/admin_images/1743754440115459.png', '2022-09-26 07:07:56', '2022-09-26 07:07:56'),
+(10, 'Rahul', 'rahul@stata.com', NULL, '$2y$10$LEyf85toH2zVihpoP30L.OdFAyaehh/SGyer.Ok1dUuKNdm20.jBi', '01720514565', NULL, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', NULL, NULL, 2, NULL, NULL, 'upload/admin_images/1743757510562601.png', '2022-09-26 07:08:36', '2022-09-26 07:08:36'),
+(13, 'Syed Tasdiq', 'tasdiqsyed96@gmail.com', NULL, '$2y$10$/nlXa7LGsBFyCmXJ5jfXGOy3oe5RMD7LtFzP3IN0Ab/hWXOKt2KyS', '017422005557', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 2, NULL, NULL, 'upload/admin_images/1744663765164243.png', '2022-09-26 07:08:21', '2022-09-26 07:08:21'),
+(14, 'MD Omar', 'omar@gmail.com', NULL, '$2y$10$tIOG4M8CZJr29g.ofPURWOZJsxsa34gnrUDkQWh1CsJuqcW1FnzVS', '01322896409', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, 'upload/admin_images/1745015270567925.png', '2022-09-26 07:10:45', NULL),
+(15, 'Elhum', 'elhum.stata@gmail.com', NULL, '$2y$10$K/twoibNf8IoaQxvP3UG3eXfw6ycT3PsmoVmyijV/avGhgqepPY4.', '01908931973', NULL, NULL, '1', '1', '1', NULL, NULL, NULL, NULL, '1', NULL, '1', NULL, NULL, NULL, NULL, 2, NULL, NULL, 'upload/admin_images/1749630131590847.png', '2022-11-16 05:41:59', NULL),
+(16, 'Shahriar Tasnim', 'shahriar@statait.com', NULL, '$2y$10$Zmkv9zxfQZMS6JXjbBBtXe8xkY8TyHmp74rckIOMDL0SVkjNfEUpW', '+8801677341032', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', NULL, '1', 2, NULL, NULL, 'upload/admin_images/1755809909600289.png', '2023-02-12 04:44:40', '2023-02-12 04:44:40');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `brands`
 --
 
-DROP TABLE IF EXISTS `brands`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `brands` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `brand_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `brand_image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `brand_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `brand_image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `brands`
 --
 
-LOCK TABLES `brands` WRITE;
-/*!40000 ALTER TABLE `brands` DISABLE KEYS */;
-INSERT INTO `brands` VALUES (19,'STATA','upload/brand/1745610538135217.png','2022-09-11 04:47:15','2022-10-02 20:52:18');
-/*!40000 ALTER TABLE `brands` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `brands` (`id`, `brand_name`, `brand_image`, `created_at`, `updated_at`) VALUES
+(19, 'STATA', 'upload/brand/1745610538135217.png', '2022-09-11 04:47:15', '2022-10-02 20:52:18');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `carts`
 --
 
-DROP TABLE IF EXISTS `carts`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `carts` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `prod_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `prod_qty` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `prod_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `prod_qty` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `carts`
---
-
-LOCK TABLES `carts` WRITE;
-/*!40000 ALTER TABLE `carts` DISABLE KEYS */;
-/*!40000 ALTER TABLE `carts` ENABLE KEYS */;
-UNLOCK TABLES;
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `categories`
 --
 
-DROP TABLE IF EXISTS `categories`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `categories` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `category_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `c_meta_title` varchar(258) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `c_meta_description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `category_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `c_meta_title` varchar(258) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `c_meta_description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `categories`
 --
 
-LOCK TABLES `categories` WRITE;
-/*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` VALUES (14,'Smart Security','Smart Security Product in Bangladesh- Stata IT Limited','Discover top-notch smart security products in Bangladesh for high protection. Our smart product features like real-time video monitoring, motion detection, and remote access','2022-09-10 07:18:07','2023-07-12 08:23:57'),(15,'Switch and Sockets','Smart Switch and Socket Price in Bangladesh- Stata It Limited','Modernize your home with Wi-Fi smart switch and sockets. Effortlessly control your devices, schedule operations, and manage energy consumption. Discover the perfect solution for your needs.','2022-09-12 09:14:58','2023-07-24 07:18:54'),(16,'Smart Door Locks','Smart door lock in Bangladesh- Stata It Limited','Secure your home with a smart door lock in Bangladesh. Keyless entry with advanced security features. Find the perfect smart door lock for your home today','2022-09-18 11:09:59','2023-07-12 08:50:24'),(17,'Smart Home Appliances','Smart Home Appliance in Bangladesh- Stata It Limited','Transform your home with smart home appliances in Bangladesh. Experience and Explore a range of intelligent appliances for an upgraded living experience','2022-09-20 05:04:14','2023-07-12 09:52:46'),(18,'Smart Lighting','Smart Wi-Fi light in Bangladesh- Stata It Limited','Upgrade your home with smart Wi-Fi lights. Enjoy customizable settings, voice control, and energy efficiency. Discover the perfect smart lighting solution for your space','2022-09-21 09:58:03','2023-07-12 10:18:35'),(19,'Smart Home Package','Upgrade Your Lifestyle with a Smart Home Package- Stata IT','Our smart home package offers a range of features tailored to suit your needs. Buy now Stata Smart product and embrace the future of living.','2023-04-02 18:45:04','2023-07-13 06:12:45'),(21,'Smart Hotel Solution','Smart Hotel Solution in Bangladesh-Stata IT Limited','Looking for the best Smart Hotel Solution in Bangladesh? Look no further! we offer customized solutions to enhance guest experiences and streamline operations. Discover the future of hospitality with our cutting-edge technology and personalized approach.','2023-05-28 16:34:33','2023-07-12 09:59:41'),(24,'Touch Switch','Buy Premium Touch Switch- Stata IT Limited','Buy now and transform your living space with our Touch switches. Control your lights with a simple touch and add a touch of modern elegance.','2023-07-12 17:55:51','2023-07-13 09:24:31');
-/*!40000 ALTER TABLE `categories` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `categories` (`id`, `category_name`, `c_meta_title`, `c_meta_description`, `created_at`, `updated_at`) VALUES
+(14, 'Security', NULL, NULL, '2022-09-10 07:18:07', '2023-07-11 23:55:47'),
+(15, 'Switches and Sockets', NULL, NULL, '2022-09-12 09:14:58', '2022-09-12 09:15:03'),
+(16, 'Smart Door Locks', NULL, NULL, '2022-09-18 11:09:59', NULL),
+(17, 'Smart Home Appliances', NULL, NULL, '2022-09-20 05:04:14', '2022-09-20 05:04:33'),
+(18, 'Smart Lighting', NULL, NULL, '2022-09-21 09:58:03', NULL),
+(19, 'Smart Home Package', NULL, NULL, '2023-04-02 18:45:04', NULL),
+(21, 'Smart Hotel Solution', NULL, NULL, '2023-05-28 16:34:33', NULL);
 
---
--- Table structure for table `content_images`
---
-
-DROP TABLE IF EXISTS `content_images`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `content_images` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `content_id` int NOT NULL,
-  `photo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `content_images`
---
-
-LOCK TABLES `content_images` WRITE;
-/*!40000 ALTER TABLE `content_images` DISABLE KEYS */;
-/*!40000 ALTER TABLE `content_images` ENABLE KEYS */;
-UNLOCK TABLES;
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `contents`
 --
 
-DROP TABLE IF EXISTS `contents`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `contents` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `heading` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `details1` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `details2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `heading` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `details1` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `details2` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `contents`
+-- Table structure for table `content_images`
 --
 
-LOCK TABLES `contents` WRITE;
-/*!40000 ALTER TABLE `contents` DISABLE KEYS */;
-INSERT INTO `contents` VALUES (13,'Smart Home Automation in Bangladesh','Welcome to Stata IT Limited, the leading provider of Smart Home Automation solutions in Bangladesh. 𝗕𝗮𝗻𝗴𝗹𝗮𝗱𝗲𝘀𝗵\'𝘀 𝟭\'𝘀𝘁 𝗛𝗼𝗺𝗲 𝗔𝘂𝘁𝗼𝗺𝗮𝘁𝗶𝗼𝗻 𝗖𝗼𝗺𝗽𝗮𝗻𝘆. Transforming your home into a smart and connected space has never been easier, thanks to our advanced technology and expertise. With our range of innovative products and services, we strive to enhance your lifestyle, improve efficiency, and provide unparalleled convenience. At Stata IT Limited, we are committed to delivering the best smart home automation experience to our valued customers.',NULL,'2023-07-19 09:33:36',NULL),(15,NULL,NULL,'Benefits of Smart Home Automation','2023-07-19 09:40:35',NULL),(16,NULL,'Smart home automation offers a wide array of benefits that go beyond mere convenience. Its benefits cannot be overstated. So, few benefits are mentioned:',NULL,'2023-07-19 09:41:07',NULL),(17,NULL,NULL,'Convenience and Comfort','2023-07-19 09:41:34',NULL),(18,NULL,'Imagine controlling your lights, appliances, and security systems with just a simple voice command or a tap on your smartphone. Smart home automation brings unparalleled convenience and comfort to your fingertips. You can automate routine tasks, such as turning on/off lights, adjusting thermostats, and even brewing your morning coffee, all from the comfort of your bed or while you\'re away from home.',NULL,'2023-07-19 09:41:45',NULL),(19,NULL,NULL,'Energy Efficiency and Cost Savings','2023-07-19 09:42:17',NULL),(20,NULL,'With smart home automation, you can optimize energy usage in your home, resulting in significant cost savings over time. By automating your lighting and HVAC systems, you can ensure lights are only on when needed and adjust temperatures based on occupancy or time of day. Additionally, smart energy monitoring systems allow you to track and analyze your energy consumption, empowering you to make informed decisions and reduce waste.',NULL,'2023-07-19 09:42:35',NULL),(21,NULL,NULL,'Increased Security and Safety','2023-07-19 09:43:02',NULL),(22,NULL,'Smart home automation provides robust security features, including smart locks, surveillance cameras, and motion sensors. You can monitor your home remotely, receive real-time notifications of any suspicious activities, and even integrate with professional monitoring services for added peace of mind. Moreover, smart smoke detectors and carbon monoxide sensors can help prevent disasters and protect your family from potential harm.',NULL,'2023-07-19 09:43:12',NULL),(23,NULL,NULL,'Enhanced Entertainment and Ambiance','2023-07-19 09:43:24',NULL),(24,NULL,'Transform your living space into a personalized entertainment hub with smart home automation. Seamlessly integrate your audio and video systems, streaming services, and gaming consoles for an immersive entertainment experience. Adjust the lighting and set the perfect ambiance for movie nights or parties with just a few taps on your smartphone. With smart home automation, your home becomes a haven of relaxation and enjoyment.',NULL,'2023-07-19 09:43:35',NULL),(25,NULL,NULL,'Stata global Smart Home Automation Solution','2023-07-19 09:43:45',NULL),(26,NULL,'At Stata IT Limited, we offer a comprehensive range of smart home automation solutions tailored to your specific needs. Our products and services are designed to bring intelligence and connectivity to every aspect of your home. Now we give you an overview of what Stata IT Limited offer:',NULL,'2023-07-19 09:43:56',NULL),(27,NULL,NULL,'Overview of Products and Services','2023-07-19 09:44:06',NULL),(28,NULL,'We provide a wide selection of smart devices and systems, including smart lighting, smart door lock, smart switch, smart socket, thermostats, security systems, audio/video integration, and much more. Our solutions seamlessly integrate with each other, creating a unified ecosystem that simplifies your daily routines and enhances your overall lifestyle.',NULL,'2023-07-19 09:44:14',NULL),(29,NULL,NULL,'Integration of Different Smart Devices and Systems','2023-07-19 09:44:27',NULL),(30,NULL,'Our smart home automation systems are compatible with a variety of popular smart devices and platforms. Whether you have existing smart devices or want to start from scratch, our solutions can seamlessly integrate with popular platforms like Amazon Alexa, Google Assistant, and Apple HomeKit. This allows you to control your entire smart home ecosystem from a single interface, making your life even easier.',NULL,'2023-07-19 09:44:39',NULL),(31,NULL,NULL,'Customization Options for Individual Needs','2023-07-19 09:44:52',NULL),(32,NULL,'We try to understand every homeowner and their unique requirements. That\'s why we offer customization options to ensure our smart home automation solutions meet your specific needs. Our expert team works very hard with our client for doing the best smart home that aligns perfectly with smart lifestyle.',NULL,'2023-07-19 09:45:07',NULL),(33,NULL,NULL,'Key Features of Stata global Smart Home Automation','2023-07-19 09:45:21',NULL),(34,NULL,'At Stata IT Limited, we take pride in our cutting-edge technology and feature-rich smart home automation solutions. Here are some top features:',NULL,'2023-07-19 09:45:34',NULL),(35,NULL,NULL,'Voice Control and Mobile App Accessibility','2023-07-19 09:45:45',NULL),(36,NULL,'Take control of your smart home with just your voice using popular voice assistants like Amazon Alexa or Google Assistant. Additionally, our intuitive mobile app StataLife enables you to manage and monitor your smart home devices from anywhere, providing unmatched convenience and flexibility.',NULL,'2023-07-19 09:45:59',NULL),(37,NULL,NULL,'Intelligent Scheduling and Automation Routines','2023-07-19 09:46:11',NULL),(38,NULL,'Simplify your daily routines with intelligent scheduling and automation routines. Set up automatic actions like turning on/off lights, adjusting temperatures, and even starting your favorite playlist at specific times or events. Our smart home automation system learns your habits and adapts to your preferences, making your home work for you.',NULL,'2023-07-19 09:46:24',NULL),(39,NULL,NULL,'Energy Monitoring and Optimization','2023-07-19 09:46:40',NULL),(40,NULL,'Track and monitor your energy consumption in real-time with our energy monitoring features. Identify energy-hungry appliances and optimize your usage to reduce waste and lower your utility bills. With our smart home automation system, you\'ll have the power to make informed decisions about your energy usage.',NULL,'2023-07-19 09:46:52',NULL),(41,NULL,NULL,'Security and Surveillance Capabilities','2023-07-19 09:47:02',NULL),(42,NULL,'Rest easy knowing that your home is secure with our advanced security and surveillance capabilities. From smart locks and video doorbells to motion sensors and security cameras, our smart home automation system keeps a watchful eye on your property, even when you\'re away. Receive instant notifications and remotely monitor your home\'s security status for ultimate peace of mind.',NULL,'2023-07-19 09:47:20',NULL),(43,NULL,NULL,'Compatibility with Popular Smart Home Platforms','2023-07-19 09:47:32',NULL),(44,NULL,'Our smart home automation solutions are designed to integrate seamlessly with popular smart home platforms, ensuring compatibility with a wide range of devices and services. Whether you prefer Amazon Alexa, Google Assistant, or Apple HomeKit, our systems work harmoniously with your preferred platform, allowing for a truly connected smart home experience.',NULL,'2023-07-19 09:47:46',NULL),(45,NULL,NULL,'How to Get Started with Stata global Smart Home Automation','2023-07-19 09:47:58',NULL),(46,NULL,'Getting started with Stata global smart home automation is easy. Follow these steps to begin your journey towards a smarter home: Visit our website Stata IT Limited and explore our range of smart home automation products and services. Contact our sales team via +8809678200509 and schedule a consultation to discuss your specific requirements. Our team of experts will guide you through the product selection process and help create a customized solution for your home. Once you\'ve finalized your order, our professional installation team will ensure a seamless installation and setup. Enjoy the benefits of a fully automated and connected home, and rely on our dedicated after-sales support for 5 years any assistance you may need.',NULL,'2023-07-19 09:48:14',NULL),(47,NULL,NULL,'Conclusion','2023-07-19 09:48:23',NULL),(48,NULL,'With Stata IT Limited smart home automation solutions, you can elevate your living experience and enjoy the convenience, comfort, and efficiency that a smart home brings. Our comprehensive range of products and services, along with our commitment to customer satisfaction, make us the best choice for smart home automation in Bangladesh. Embrace the future of home automation and unlock the full potential of your living space with Stata IT Limited.',NULL,'2023-07-19 09:48:41',NULL);
-/*!40000 ALTER TABLE `contents` ENABLE KEYS */;
-UNLOCK TABLES;
+CREATE TABLE `content_images` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `content_id` int(11) NOT NULL,
+  `photo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `coupons`
 --
 
-DROP TABLE IF EXISTS `coupons`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `coupons` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `coupon_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `coupon_discount` int NOT NULL,
-  `coupon_validity` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` int NOT NULL DEFAULT '1',
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `coupon_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `coupon_discount` int(11) NOT NULL,
+  `coupon_validity` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `coupons`
+-- Table structure for table `c_contents`
 --
 
-LOCK TABLES `coupons` WRITE;
-/*!40000 ALTER TABLE `coupons` DISABLE KEYS */;
-/*!40000 ALTER TABLE `coupons` ENABLE KEYS */;
-UNLOCK TABLES;
+CREATE TABLE `c_contents` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `heading` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `details1` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `details2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `c_content_images`
+--
+
+CREATE TABLE `c_content_images` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `c_content_id` int(11) NOT NULL,
+  `photo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `failed_jobs`
 --
 
-DROP TABLE IF EXISTS `failed_jobs`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `failed_jobs` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `uuid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `failed_jobs`
---
-
-LOCK TABLES `failed_jobs` WRITE;
-/*!40000 ALTER TABLE `failed_jobs` DISABLE KEYS */;
-/*!40000 ALTER TABLE `failed_jobs` ENABLE KEYS */;
-UNLOCK TABLES;
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `locations`
 --
 
-DROP TABLE IF EXISTS `locations`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `locations` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `store_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `store_image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `map` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `store_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `store_image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `map` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `locations`
---
-
-LOCK TABLES `locations` WRITE;
-/*!40000 ALTER TABLE `locations` DISABLE KEYS */;
-/*!40000 ALTER TABLE `locations` ENABLE KEYS */;
-UNLOCK TABLES;
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `migrations`
 --
 
-DROP TABLE IF EXISTS `migrations`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `migrations` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
 --
 
-LOCK TABLES `migrations` WRITE;
-/*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_resets_table',1),(3,'2014_10_12_200000_add_two_factor_columns_to_users_table',1),(4,'2019_08_19_000000_create_failed_jobs_table',1),(5,'2019_12_14_000001_create_personal_access_tokens_table',1),(6,'2022_06_05_035221_create_sessions_table',1),(7,'2022_06_05_093510_create_admins_table',2),(8,'2022_06_08_050819_create_brands_table',3),(9,'2022_06_11_072712_create_sliders_table',4),(10,'2022_06_11_080003_create_sliders_table',5),(11,'2022_06_12_044009_create_categories_table',6),(12,'2022_06_12_044635_create_sub_categories_table',6),(13,'2022_06_12_101831_create_products_table',7),(14,'2022_06_12_102120_create_multi_imgs_table',7),(15,'2022_06_15_111136_create_carts_table',8),(16,'2022_06_18_051335_create_wishlists_table',9),(17,'2022_06_19_061429_create_coupons_table',10),(18,'2022_06_20_055345_create_ship_divisions_table',11),(19,'2022_06_20_082833_create_ship_districts_table',12),(20,'2022_06_21_050936_create_ship_states_table',13),(21,'2022_06_22_153813_create_shippings_table',14),(22,'2022_06_25_052407_create_oders_table',14),(23,'2022_06_25_075304_create_orders_table',15),(24,'2022_06_25_075738_create_order_items_table',15),(25,'2022_06_30_065319_create_site_settings_table',16),(26,'2022_06_30_110044_create_seos_table',17),(27,'2022_07_02_062717_create_reviews_table',18),(29,'2022_08_01_044732_create_locations_table',19),(30,'2023_01_22_112102_create_news_letters_table',20),(31,'2023_06_26_060628_create_contents_table',20),(32,'2023_06_26_064646_create_content_images_table',21);
-/*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_resets_table', 1),
+(3, '2014_10_12_200000_add_two_factor_columns_to_users_table', 1),
+(4, '2019_08_19_000000_create_failed_jobs_table', 1),
+(5, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(6, '2022_06_05_035221_create_sessions_table', 1),
+(7, '2022_06_05_093510_create_admins_table', 2),
+(8, '2022_06_08_050819_create_brands_table', 3),
+(9, '2022_06_11_072712_create_sliders_table', 4),
+(10, '2022_06_11_080003_create_sliders_table', 5),
+(11, '2022_06_12_044009_create_categories_table', 6),
+(12, '2022_06_12_044635_create_sub_categories_table', 6),
+(13, '2022_06_12_101831_create_products_table', 7),
+(14, '2022_06_12_102120_create_multi_imgs_table', 7),
+(15, '2022_06_15_111136_create_carts_table', 8),
+(16, '2022_06_18_051335_create_wishlists_table', 9),
+(17, '2022_06_19_061429_create_coupons_table', 10),
+(18, '2022_06_20_055345_create_ship_divisions_table', 11),
+(19, '2022_06_20_082833_create_ship_districts_table', 12),
+(20, '2022_06_21_050936_create_ship_states_table', 13),
+(21, '2022_06_22_153813_create_shippings_table', 14),
+(22, '2022_06_25_052407_create_oders_table', 14),
+(23, '2022_06_25_075304_create_orders_table', 15),
+(24, '2022_06_25_075738_create_order_items_table', 15),
+(25, '2022_06_30_065319_create_site_settings_table', 16),
+(26, '2022_06_30_110044_create_seos_table', 17),
+(27, '2022_07_02_062717_create_reviews_table', 18),
+(29, '2022_08_01_044732_create_locations_table', 19),
+(30, '2023_01_22_112102_create_news_letters_table', 20),
+(31, '2023_06_26_060628_create_contents_table', 20),
+(32, '2023_06_26_064646_create_content_images_table', 21),
+(33, '2023_07_30_055130_create_c_contents_table', 22),
+(34, '2023_07_30_055545_create_c_content_images_table', 23);
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `multi_imgs`
 --
 
-DROP TABLE IF EXISTS `multi_imgs`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `multi_imgs` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `product_id` int NOT NULL,
-  `photo_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `photo_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=227 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `multi_imgs`
 --
 
-LOCK TABLES `multi_imgs` WRITE;
-/*!40000 ALTER TABLE `multi_imgs` DISABLE KEYS */;
-INSERT INTO `multi_imgs` VALUES (1,1,'upload/products/multi-image/1735512591630339.jpg','2022-06-13 03:49:44',NULL),(2,1,'upload/products/multi-image/1735512591886649.jpg','2022-06-13 03:49:44',NULL),(3,1,'upload/products/multi-image/1735512592221241.jpg','2022-06-13 03:49:45',NULL),(4,2,'upload/products/multi-image/1735513072310916.jpg','2022-06-13 03:57:23',NULL),(5,2,'upload/products/multi-image/1735513072611697.jpg','2022-06-13 03:57:23',NULL),(6,2,'upload/products/multi-image/1735513072855222.jpg','2022-06-13 03:57:23',NULL),(7,3,'upload/products/multi-image/1735513599401796.jpg','2022-06-13 04:05:45',NULL),(8,3,'upload/products/multi-image/1735513599686734.jpg','2022-06-13 04:05:46',NULL),(11,5,'upload/products/multi-image/1735581720124153.jpg','2022-06-13 22:08:30',NULL),(12,5,'upload/products/multi-image/1735581720432680.jpg','2022-06-13 22:08:31',NULL),(13,5,'upload/products/multi-image/1735581720737548.jpg','2022-06-13 22:08:31',NULL),(14,5,'upload/products/multi-image/1735581721024869.jpg','2022-06-13 22:08:31',NULL),(15,6,'upload/products/multi-image/1735582540510473.jpg','2022-06-13 22:21:33',NULL),(16,6,'upload/products/multi-image/1735582540824561.jpg','2022-06-13 22:21:33',NULL),(17,6,'upload/products/multi-image/1735582541268855.jpg','2022-06-13 22:21:33',NULL),(18,7,'upload/products/multi-image/1735600022370111.png','2022-06-14 02:59:27',NULL),(19,7,'upload/products/multi-image/1735600024918135.png','2022-06-14 02:59:29',NULL),(20,7,'upload/products/multi-image/1735600027316408.png','2022-06-14 02:59:30',NULL),(21,8,'upload/products/multi-image/1735601079138720.png','2022-06-14 03:16:15',NULL),(22,8,'upload/products/multi-image/1735601081674839.png','2022-06-14 03:16:17',NULL),(23,8,'upload/products/multi-image/1735601084029124.png','2022-06-14 03:16:17',NULL),(24,9,'upload/products/multi-image/1735606312768959.jpg','2022-06-14 04:39:24',NULL),(25,9,'upload/products/multi-image/1735606313072461.jpg','2022-06-14 04:39:24',NULL),(26,9,'upload/products/multi-image/1735606313315540.jpg','2022-06-14 04:39:24',NULL),(27,9,'upload/products/multi-image/1735606313592829.jpg','2022-06-14 04:39:24',NULL),(28,10,'upload/products/multi-image/1738595912035419.jfif','2022-07-17 04:37:49',NULL),(30,11,'upload/products/multi-image/1739487564477420.jpg','2022-07-27 00:50:14',NULL),(31,11,'upload/products/multi-image/1739487564917185.jpg','2022-07-27 00:50:14',NULL),(32,11,'upload/products/multi-image/1739487565246422.png','2022-07-27 00:50:15',NULL),(33,12,'upload/products/multi-image/1739487957485719.jpg','2022-07-27 00:56:29',NULL),(34,12,'upload/products/multi-image/1739487957864802.jpg','2022-07-27 00:56:29',NULL),(35,13,'upload/products/multi-image/1740521266670096.PNG','2022-08-07 10:40:29',NULL),(36,13,'upload/products/multi-image/1740521267056518.PNG','2022-08-07 10:40:29',NULL),(37,13,'upload/products/multi-image/1740521267356526.PNG','2022-08-07 10:40:30',NULL),(38,13,'upload/products/multi-image/1740521267670678.PNG','2022-08-07 10:40:30',NULL),(39,14,'upload/products/multi-image/1740569090190132.jpg','2022-08-07 23:20:37',NULL),(40,14,'upload/products/multi-image/1740569090440327.jpg','2022-08-07 23:20:37',NULL),(41,14,'upload/products/multi-image/1740569090739141.jpg','2022-08-07 23:20:38',NULL),(42,15,'upload/products/multi-image/1741659940676835.PNG','2022-08-20 00:19:13',NULL),(43,15,'upload/products/multi-image/1741659940920304.PNG','2022-08-20 00:19:13',NULL),(44,15,'upload/products/multi-image/1741659941163835.PNG','2022-08-20 00:19:14',NULL),(45,15,'upload/products/multi-image/1741659941444909.PNG','2022-08-20 00:19:14',NULL),(46,15,'upload/products/multi-image/1741659941699541.PNG','2022-08-20 00:19:14',NULL),(47,16,'upload/products/multi-image/1742232122383863.png','2022-08-26 07:53:48',NULL),(48,16,'upload/products/multi-image/1742232122598752.png','2022-08-26 07:53:48',NULL),(49,16,'upload/products/multi-image/1742232122922178.png','2022-08-26 07:53:49',NULL),(105,43,'upload/products/multi-image/1771571432001992.webp','2022-09-18 05:53:34','2023-07-16 10:09:34'),(106,43,'upload/products/multi-image/1771571432054322.webp','2022-09-18 05:53:34','2023-07-16 10:09:34'),(107,44,'upload/products/multi-image/1744380695911358.png','2022-09-18 10:59:24','2022-09-19 07:04:27'),(108,44,'upload/products/multi-image/1744380695970087.png','2022-09-18 10:59:25','2022-09-19 07:04:27'),(109,45,'upload/products/multi-image/1744380830854053.png','2022-09-18 11:02:40','2022-09-19 07:06:36'),(110,45,'upload/products/multi-image/1744380830931200.png','2022-09-18 11:02:40','2022-09-19 07:06:36'),(111,46,'upload/products/multi-image/1744305449106935.jpg','2022-09-18 11:08:27',NULL),(112,46,'upload/products/multi-image/1744305449888488.png','2022-09-18 11:08:27',NULL),(113,46,'upload/products/multi-image/1744462701644491.png','2022-09-18 11:08:28','2022-09-20 04:47:54'),(114,47,'upload/products/multi-image/1744306060589701.jpg','2022-09-18 11:18:10',NULL),(115,47,'upload/products/multi-image/1744306061400007.jpg','2022-09-18 11:18:11',NULL),(119,49,'upload/products/multi-image/1762587350025275.png','2022-09-20 05:00:33','2023-04-08 06:11:26'),(120,50,'upload/products/multi-image/1744464518596312.png','2022-09-20 05:16:47',NULL),(121,50,'upload/products/multi-image/1744464518671262.png','2022-09-20 05:16:47',NULL),(122,51,'upload/products/multi-image/1744505679133755.png','2022-09-20 16:11:01',NULL),(123,52,'upload/products/multi-image/1763033624913285.png','2022-09-21 07:02:00','2023-04-13 04:24:47'),(124,52,'upload/products/multi-image/1744561735258673.png','2022-09-21 07:02:00',NULL),(125,53,'upload/products/multi-image/1744656377162738.png','2022-09-21 09:25:47','2022-09-22 08:06:17'),(128,55,'upload/products/multi-image/1744571582492356.png','2022-09-21 09:38:31',NULL),(130,56,'upload/products/multi-image/1744656453522976.png','2022-09-21 09:51:42','2022-09-22 08:07:30'),(132,57,'upload/products/multi-image/1744665585813222.jpeg','2022-09-21 09:57:34','2022-09-22 10:32:40'),(134,58,'upload/products/multi-image/1744574859975556.png','2022-09-21 10:30:37',NULL),(135,58,'upload/products/multi-image/1744574860050949.png','2022-09-21 10:30:37',NULL),(137,60,'upload/products/multi-image/1744575249365209.jpg','2022-09-21 10:36:48',NULL),(138,61,'upload/products/multi-image/1754847764095300.png','2022-09-21 10:45:56','2023-01-13 01:54:02'),(143,63,'upload/products/multi-image/1744602194369180.png','2022-09-21 17:45:05',NULL),(144,64,'upload/products/multi-image/1744663002294635.png','2022-09-21 18:01:58','2022-09-22 09:51:36'),(146,65,'upload/products/multi-image/1744663295235650.png','2022-09-21 18:12:15','2022-09-22 09:56:15'),(147,66,'upload/products/multi-image/1744664859691170.png','2022-09-21 18:33:36','2022-09-22 10:21:07'),(149,67,'upload/products/multi-image/1744663403221303.png','2022-09-21 18:40:54','2022-09-22 09:57:58'),(151,68,'upload/products/multi-image/1744649384252408.png','2022-09-22 06:15:09',NULL),(152,68,'upload/products/multi-image/1744649384375739.png','2022-09-22 06:15:09',NULL),(153,69,'upload/products/multi-image/1772107367342515.webp','2022-09-22 06:22:58','2023-07-22 08:08:02'),(154,69,'upload/products/multi-image/1772107367524188.webp','2022-09-22 06:22:58','2023-07-22 08:08:02'),(155,70,'upload/products/multi-image/1744651073829353.png','2022-09-22 06:42:00',NULL),(156,70,'upload/products/multi-image/1744651073924732.png','2022-09-22 06:42:00',NULL),(157,71,'upload/products/multi-image/1744663222200938.png','2022-09-22 09:55:06',NULL),(158,72,'upload/products/multi-image/1745287970746030.png','2022-09-29 07:25:12',NULL),(159,73,'upload/products/multi-image/1745288231254192.png','2022-09-29 07:29:21',NULL),(162,75,'upload/products/multi-image/1754848160282478.png','2023-01-13 02:00:20',NULL),(163,76,'upload/products/multi-image/1754850231465031.jpeg','2023-01-13 02:33:15',NULL),(164,76,'upload/products/multi-image/1754850231609573.jpeg','2023-01-13 02:33:15',NULL),(165,76,'upload/products/multi-image/1754850231701875.jpeg','2023-01-13 02:33:15',NULL),(166,76,'upload/products/multi-image/1754850231798302.jpeg','2023-01-13 02:33:15',NULL),(167,77,'upload/products/multi-image/1761785191504239.jpg','2023-03-30 09:41:28',NULL),(168,77,'upload/products/multi-image/1761785191545129.jpg','2023-03-30 09:41:28',NULL),(169,77,'upload/products/multi-image/1761785191576153.jpg','2023-03-30 09:41:28',NULL),(170,78,'upload/products/multi-image/1761959307967061.png','2023-04-01 07:48:58',NULL),(171,79,'upload/products/multi-image/1761960931221440.jpg','2023-04-01 08:14:46',NULL),(172,79,'upload/products/multi-image/1761960931268999.jpg','2023-04-01 08:14:46',NULL),(173,79,'upload/products/multi-image/1761960931317331.jpg','2023-04-01 08:14:46',NULL),(174,79,'upload/products/multi-image/1761960931363487.jpg','2023-04-01 08:14:46',NULL),(175,79,'upload/products/multi-image/1761960931410352.jpg','2023-04-01 08:14:46',NULL),(191,84,'upload/products/multi-image/1762229899854569.png','2023-04-04 07:29:55',NULL),(192,84,'upload/products/multi-image/1762229900087764.jpg','2023-04-04 07:29:55',NULL),(193,84,'upload/products/multi-image/1762229900116597.png','2023-04-04 07:29:55',NULL),(194,84,'upload/products/multi-image/1762229900177599.png','2023-04-04 07:29:55',NULL),(195,84,'upload/products/multi-image/1762229900252948.png','2023-04-04 07:29:55',NULL),(196,84,'upload/products/multi-image/1762229900407599.png','2023-04-04 07:29:55',NULL),(197,84,'upload/products/multi-image/1762229900568627.png','2023-04-04 07:29:55',NULL),(198,85,'upload/products/multi-image/1762230964611981.png','2023-04-04 07:46:50',NULL),(199,85,'upload/products/multi-image/1762230964664239.png','2023-04-04 07:46:50',NULL),(200,85,'upload/products/multi-image/1762230964893559.png','2023-04-04 07:46:50',NULL),(201,85,'upload/products/multi-image/1762230964954130.png','2023-04-04 07:46:50',NULL),(202,85,'upload/products/multi-image/1762230965025379.png','2023-04-04 07:46:51',NULL),(203,85,'upload/products/multi-image/1762230965147212.png','2023-04-04 07:46:51',NULL),(204,85,'upload/products/multi-image/1762230965304099.png','2023-04-04 07:46:51',NULL),(205,85,'upload/products/multi-image/1762230965800223.png','2023-04-04 07:46:51',NULL),(206,85,'upload/products/multi-image/1762230965849030.png','2023-04-04 07:46:51',NULL),(207,85,'upload/products/multi-image/1762230965935623.png','2023-04-04 07:46:51',NULL),(208,85,'upload/products/multi-image/1762230966012866.png','2023-04-04 07:46:51',NULL),(209,85,'upload/products/multi-image/1762230966091003.png','2023-04-04 07:46:52',NULL),(210,86,'upload/products/multi-image/1762231584032962.png','2023-04-04 07:56:41',NULL),(211,86,'upload/products/multi-image/1762231584095986.png','2023-04-04 07:56:41',NULL),(212,86,'upload/products/multi-image/1762231584169762.png','2023-04-04 07:56:41',NULL),(213,86,'upload/products/multi-image/1762231584230301.png','2023-04-04 07:56:41',NULL),(214,86,'upload/products/multi-image/1762231584390140.png','2023-04-04 07:56:41',NULL),(215,86,'upload/products/multi-image/1762231584546151.png','2023-04-04 07:56:41',NULL),(216,86,'upload/products/multi-image/1762231584632279.png','2023-04-04 07:56:41',NULL),(217,44,'upload/products/multi-image/1862230965304099.png','2022-09-18 10:59:24','2022-09-19 07:04:27'),(218,43,'upload/products/multi-image/1771571432113194.webp','2022-09-18 05:53:34','2023-07-16 10:09:34'),(219,87,'upload/products/multi-image/1771559133431447.webp','2023-05-28 16:57:51','2023-07-16 06:54:05'),(220,88,'upload/products/multi-image/1768479514295674.png','2023-06-12 07:04:52',NULL),(221,89,'upload/products/multi-image/1768482435026234.webp','2023-06-12 07:21:36','2023-06-12 07:51:17'),(222,90,'upload/products/multi-image/1768482406439403.webp','2023-06-12 07:45:39','2023-06-12 07:50:50'),(223,91,'upload/products/multi-image/1771238785744910.png','2023-07-12 18:02:18',NULL),(224,92,'upload/products/multi-image/1771302466771952.webp','2023-07-12 18:04:48','2023-07-13 10:54:29'),(225,93,'upload/products/multi-image/1771239063552098.png','2023-07-12 18:06:43',NULL),(226,94,'upload/products/multi-image/1771239336163922.png','2023-07-12 18:11:03',NULL);
-/*!40000 ALTER TABLE `multi_imgs` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `multi_imgs` (`id`, `product_id`, `photo_name`, `created_at`, `updated_at`) VALUES
+(1, 1, 'upload/products/multi-image/1735512591630339.jpg', '2022-06-13 03:49:44', NULL),
+(2, 1, 'upload/products/multi-image/1735512591886649.jpg', '2022-06-13 03:49:44', NULL),
+(3, 1, 'upload/products/multi-image/1735512592221241.jpg', '2022-06-13 03:49:45', NULL),
+(4, 2, 'upload/products/multi-image/1735513072310916.jpg', '2022-06-13 03:57:23', NULL),
+(5, 2, 'upload/products/multi-image/1735513072611697.jpg', '2022-06-13 03:57:23', NULL),
+(6, 2, 'upload/products/multi-image/1735513072855222.jpg', '2022-06-13 03:57:23', NULL),
+(7, 3, 'upload/products/multi-image/1735513599401796.jpg', '2022-06-13 04:05:45', NULL),
+(8, 3, 'upload/products/multi-image/1735513599686734.jpg', '2022-06-13 04:05:46', NULL),
+(11, 5, 'upload/products/multi-image/1735581720124153.jpg', '2022-06-13 22:08:30', NULL),
+(12, 5, 'upload/products/multi-image/1735581720432680.jpg', '2022-06-13 22:08:31', NULL),
+(13, 5, 'upload/products/multi-image/1735581720737548.jpg', '2022-06-13 22:08:31', NULL),
+(14, 5, 'upload/products/multi-image/1735581721024869.jpg', '2022-06-13 22:08:31', NULL),
+(15, 6, 'upload/products/multi-image/1735582540510473.jpg', '2022-06-13 22:21:33', NULL),
+(16, 6, 'upload/products/multi-image/1735582540824561.jpg', '2022-06-13 22:21:33', NULL),
+(17, 6, 'upload/products/multi-image/1735582541268855.jpg', '2022-06-13 22:21:33', NULL),
+(18, 7, 'upload/products/multi-image/1735600022370111.png', '2022-06-14 02:59:27', NULL),
+(19, 7, 'upload/products/multi-image/1735600024918135.png', '2022-06-14 02:59:29', NULL),
+(20, 7, 'upload/products/multi-image/1735600027316408.png', '2022-06-14 02:59:30', NULL),
+(21, 8, 'upload/products/multi-image/1735601079138720.png', '2022-06-14 03:16:15', NULL),
+(22, 8, 'upload/products/multi-image/1735601081674839.png', '2022-06-14 03:16:17', NULL),
+(23, 8, 'upload/products/multi-image/1735601084029124.png', '2022-06-14 03:16:17', NULL),
+(24, 9, 'upload/products/multi-image/1735606312768959.jpg', '2022-06-14 04:39:24', NULL),
+(25, 9, 'upload/products/multi-image/1735606313072461.jpg', '2022-06-14 04:39:24', NULL),
+(26, 9, 'upload/products/multi-image/1735606313315540.jpg', '2022-06-14 04:39:24', NULL),
+(27, 9, 'upload/products/multi-image/1735606313592829.jpg', '2022-06-14 04:39:24', NULL),
+(28, 10, 'upload/products/multi-image/1738595912035419.jfif', '2022-07-17 04:37:49', NULL),
+(30, 11, 'upload/products/multi-image/1739487564477420.jpg', '2022-07-27 00:50:14', NULL),
+(31, 11, 'upload/products/multi-image/1739487564917185.jpg', '2022-07-27 00:50:14', NULL),
+(32, 11, 'upload/products/multi-image/1739487565246422.png', '2022-07-27 00:50:15', NULL),
+(33, 12, 'upload/products/multi-image/1739487957485719.jpg', '2022-07-27 00:56:29', NULL),
+(34, 12, 'upload/products/multi-image/1739487957864802.jpg', '2022-07-27 00:56:29', NULL),
+(35, 13, 'upload/products/multi-image/1740521266670096.PNG', '2022-08-07 10:40:29', NULL),
+(36, 13, 'upload/products/multi-image/1740521267056518.PNG', '2022-08-07 10:40:29', NULL),
+(37, 13, 'upload/products/multi-image/1740521267356526.PNG', '2022-08-07 10:40:30', NULL),
+(38, 13, 'upload/products/multi-image/1740521267670678.PNG', '2022-08-07 10:40:30', NULL),
+(39, 14, 'upload/products/multi-image/1740569090190132.jpg', '2022-08-07 23:20:37', NULL),
+(40, 14, 'upload/products/multi-image/1740569090440327.jpg', '2022-08-07 23:20:37', NULL),
+(41, 14, 'upload/products/multi-image/1740569090739141.jpg', '2022-08-07 23:20:38', NULL),
+(42, 15, 'upload/products/multi-image/1741659940676835.PNG', '2022-08-20 00:19:13', NULL),
+(43, 15, 'upload/products/multi-image/1741659940920304.PNG', '2022-08-20 00:19:13', NULL),
+(44, 15, 'upload/products/multi-image/1741659941163835.PNG', '2022-08-20 00:19:14', NULL),
+(45, 15, 'upload/products/multi-image/1741659941444909.PNG', '2022-08-20 00:19:14', NULL),
+(46, 15, 'upload/products/multi-image/1741659941699541.PNG', '2022-08-20 00:19:14', NULL),
+(47, 16, 'upload/products/multi-image/1742232122383863.png', '2022-08-26 07:53:48', NULL),
+(48, 16, 'upload/products/multi-image/1742232122598752.png', '2022-08-26 07:53:48', NULL),
+(49, 16, 'upload/products/multi-image/1742232122922178.png', '2022-08-26 07:53:49', NULL),
+(105, 43, 'upload/products/multi-image/1744380437996643.png', '2022-09-18 05:53:34', '2022-09-19 07:00:21'),
+(106, 43, 'upload/products/multi-image/1744380448885628.png', '2022-09-18 05:53:34', '2022-09-19 07:00:32'),
+(107, 44, 'upload/products/multi-image/1744380695911358.png', '2022-09-18 10:59:24', '2022-09-19 07:04:27'),
+(108, 44, 'upload/products/multi-image/1744380695970087.png', '2022-09-18 10:59:25', '2022-09-19 07:04:27'),
+(109, 45, 'upload/products/multi-image/1744380830854053.png', '2022-09-18 11:02:40', '2022-09-19 07:06:36'),
+(110, 45, 'upload/products/multi-image/1744380830931200.png', '2022-09-18 11:02:40', '2022-09-19 07:06:36'),
+(111, 46, 'upload/products/multi-image/1744305449106935.jpg', '2022-09-18 11:08:27', NULL),
+(112, 46, 'upload/products/multi-image/1744305449888488.png', '2022-09-18 11:08:27', NULL),
+(113, 46, 'upload/products/multi-image/1744462701644491.png', '2022-09-18 11:08:28', '2022-09-20 04:47:54'),
+(114, 47, 'upload/products/multi-image/1744306060589701.jpg', '2022-09-18 11:18:10', NULL),
+(115, 47, 'upload/products/multi-image/1744306061400007.jpg', '2022-09-18 11:18:11', NULL),
+(119, 49, 'upload/products/multi-image/1762587350025275.png', '2022-09-20 05:00:33', '2023-04-08 06:11:26'),
+(120, 50, 'upload/products/multi-image/1744464518596312.png', '2022-09-20 05:16:47', NULL),
+(121, 50, 'upload/products/multi-image/1744464518671262.png', '2022-09-20 05:16:47', NULL),
+(122, 51, 'upload/products/multi-image/1744505679133755.png', '2022-09-20 16:11:01', NULL),
+(123, 52, 'upload/products/multi-image/1763033624913285.png', '2022-09-21 07:02:00', '2023-04-13 04:24:47'),
+(124, 52, 'upload/products/multi-image/1744561735258673.png', '2022-09-21 07:02:00', NULL),
+(125, 53, 'upload/products/multi-image/1744656377162738.png', '2022-09-21 09:25:47', '2022-09-22 08:06:17'),
+(128, 55, 'upload/products/multi-image/1744571582492356.png', '2022-09-21 09:38:31', NULL),
+(130, 56, 'upload/products/multi-image/1744656453522976.png', '2022-09-21 09:51:42', '2022-09-22 08:07:30'),
+(132, 57, 'upload/products/multi-image/1744665585813222.jpeg', '2022-09-21 09:57:34', '2022-09-22 10:32:40'),
+(134, 58, 'upload/products/multi-image/1744574859975556.png', '2022-09-21 10:30:37', NULL),
+(135, 58, 'upload/products/multi-image/1744574860050949.png', '2022-09-21 10:30:37', NULL),
+(137, 60, 'upload/products/multi-image/1744575249365209.jpg', '2022-09-21 10:36:48', NULL),
+(138, 61, 'upload/products/multi-image/1754847764095300.png', '2022-09-21 10:45:56', '2023-01-13 01:54:02'),
+(143, 63, 'upload/products/multi-image/1744602194369180.png', '2022-09-21 17:45:05', NULL),
+(144, 64, 'upload/products/multi-image/1744663002294635.png', '2022-09-21 18:01:58', '2022-09-22 09:51:36'),
+(146, 65, 'upload/products/multi-image/1744663295235650.png', '2022-09-21 18:12:15', '2022-09-22 09:56:15'),
+(147, 66, 'upload/products/multi-image/1744664859691170.png', '2022-09-21 18:33:36', '2022-09-22 10:21:07'),
+(149, 67, 'upload/products/multi-image/1744663403221303.png', '2022-09-21 18:40:54', '2022-09-22 09:57:58'),
+(151, 68, 'upload/products/multi-image/1744649384252408.png', '2022-09-22 06:15:09', NULL),
+(152, 68, 'upload/products/multi-image/1744649384375739.png', '2022-09-22 06:15:09', NULL),
+(153, 69, 'upload/products/multi-image/1744649876891707.png', '2022-09-22 06:22:58', NULL),
+(154, 69, 'upload/products/multi-image/1744649876975083.png', '2022-09-22 06:22:58', NULL),
+(155, 70, 'upload/products/multi-image/1744651073829353.png', '2022-09-22 06:42:00', NULL),
+(156, 70, 'upload/products/multi-image/1744651073924732.png', '2022-09-22 06:42:00', NULL),
+(157, 71, 'upload/products/multi-image/1744663222200938.png', '2022-09-22 09:55:06', NULL),
+(158, 72, 'upload/products/multi-image/1745287970746030.png', '2022-09-29 07:25:12', NULL),
+(159, 73, 'upload/products/multi-image/1745288231254192.png', '2022-09-29 07:29:21', NULL),
+(162, 75, 'upload/products/multi-image/1754848160282478.png', '2023-01-13 02:00:20', NULL),
+(163, 76, 'upload/products/multi-image/1754850231465031.jpeg', '2023-01-13 02:33:15', NULL),
+(164, 76, 'upload/products/multi-image/1754850231609573.jpeg', '2023-01-13 02:33:15', NULL),
+(165, 76, 'upload/products/multi-image/1754850231701875.jpeg', '2023-01-13 02:33:15', NULL),
+(166, 76, 'upload/products/multi-image/1754850231798302.jpeg', '2023-01-13 02:33:15', NULL),
+(167, 77, 'upload/products/multi-image/1761785191504239.jpg', '2023-03-30 09:41:28', NULL),
+(168, 77, 'upload/products/multi-image/1761785191545129.jpg', '2023-03-30 09:41:28', NULL),
+(169, 77, 'upload/products/multi-image/1761785191576153.jpg', '2023-03-30 09:41:28', NULL),
+(170, 78, 'upload/products/multi-image/1761959307967061.png', '2023-04-01 07:48:58', NULL),
+(171, 79, 'upload/products/multi-image/1761960931221440.jpg', '2023-04-01 08:14:46', NULL),
+(172, 79, 'upload/products/multi-image/1761960931268999.jpg', '2023-04-01 08:14:46', NULL),
+(173, 79, 'upload/products/multi-image/1761960931317331.jpg', '2023-04-01 08:14:46', NULL),
+(174, 79, 'upload/products/multi-image/1761960931363487.jpg', '2023-04-01 08:14:46', NULL),
+(175, 79, 'upload/products/multi-image/1761960931410352.jpg', '2023-04-01 08:14:46', NULL),
+(191, 84, 'upload/products/multi-image/1762229899854569.png', '2023-04-04 07:29:55', NULL),
+(192, 84, 'upload/products/multi-image/1762229900087764.jpg', '2023-04-04 07:29:55', NULL),
+(193, 84, 'upload/products/multi-image/1762229900116597.png', '2023-04-04 07:29:55', NULL),
+(194, 84, 'upload/products/multi-image/1762229900177599.png', '2023-04-04 07:29:55', NULL),
+(195, 84, 'upload/products/multi-image/1762229900252948.png', '2023-04-04 07:29:55', NULL),
+(196, 84, 'upload/products/multi-image/1762229900407599.png', '2023-04-04 07:29:55', NULL),
+(197, 84, 'upload/products/multi-image/1762229900568627.png', '2023-04-04 07:29:55', NULL),
+(198, 85, 'upload/products/multi-image/1762230964611981.png', '2023-04-04 07:46:50', NULL),
+(199, 85, 'upload/products/multi-image/1762230964664239.png', '2023-04-04 07:46:50', NULL),
+(200, 85, 'upload/products/multi-image/1762230964893559.png', '2023-04-04 07:46:50', NULL),
+(201, 85, 'upload/products/multi-image/1762230964954130.png', '2023-04-04 07:46:50', NULL),
+(202, 85, 'upload/products/multi-image/1762230965025379.png', '2023-04-04 07:46:51', NULL),
+(203, 85, 'upload/products/multi-image/1762230965147212.png', '2023-04-04 07:46:51', NULL),
+(204, 85, 'upload/products/multi-image/1762230965304099.png', '2023-04-04 07:46:51', NULL),
+(205, 85, 'upload/products/multi-image/1762230965800223.png', '2023-04-04 07:46:51', NULL),
+(206, 85, 'upload/products/multi-image/1762230965849030.png', '2023-04-04 07:46:51', NULL),
+(207, 85, 'upload/products/multi-image/1762230965935623.png', '2023-04-04 07:46:51', NULL),
+(208, 85, 'upload/products/multi-image/1762230966012866.png', '2023-04-04 07:46:51', NULL),
+(209, 85, 'upload/products/multi-image/1762230966091003.png', '2023-04-04 07:46:52', NULL),
+(210, 86, 'upload/products/multi-image/1762231584032962.png', '2023-04-04 07:56:41', NULL),
+(211, 86, 'upload/products/multi-image/1762231584095986.png', '2023-04-04 07:56:41', NULL),
+(212, 86, 'upload/products/multi-image/1762231584169762.png', '2023-04-04 07:56:41', NULL),
+(213, 86, 'upload/products/multi-image/1762231584230301.png', '2023-04-04 07:56:41', NULL),
+(214, 86, 'upload/products/multi-image/1762231584390140.png', '2023-04-04 07:56:41', NULL),
+(215, 86, 'upload/products/multi-image/1762231584546151.png', '2023-04-04 07:56:41', NULL),
+(216, 86, 'upload/products/multi-image/1762231584632279.png', '2023-04-04 07:56:41', NULL),
+(217, 44, 'upload/products/multi-image/1862230965304099.png', '2022-09-18 10:59:24', '2022-09-19 07:04:27'),
+(218, 43, 'upload/products/multi-image/1962230965304099.png', '2022-09-18 05:53:34', '2022-09-19 07:00:21'),
+(219, 87, 'upload/products/multi-image/1767157867835956.jpeg', '2023-05-28 16:57:51', NULL),
+(220, 88, 'upload/products/multi-image/1768479514295674.png', '2023-06-12 07:04:52', NULL),
+(221, 89, 'upload/products/multi-image/1768482435026234.webp', '2023-06-12 07:21:36', '2023-06-12 07:51:17'),
+(222, 90, 'upload/products/multi-image/1768482406439403.webp', '2023-06-12 07:45:39', '2023-06-12 07:50:50');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `news_letters`
 --
 
-DROP TABLE IF EXISTS `news_letters`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `news_letters` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `f_name` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `l_name` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `f_name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `l_name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `news_letters`
 --
 
-LOCK TABLES `news_letters` WRITE;
-/*!40000 ALTER TABLE `news_letters` DISABLE KEYS */;
-INSERT INTO `news_letters` VALUES (1,'CIdGLarB','gLTjXRsg','Mfma_generic_0977eb18_stataglobal.com@data-backup-store.com','2023-07-07 02:39:26',NULL),(2,'Tousif','Ahmad Noor','tatousif444@gmail.com','2023-07-17 16:13:51',NULL),(3,'MD','Al Amin','imdalamin16@gmail.com','2023-07-19 09:32:12',NULL),(4,'Md Motiur','Rahman','mdmotiurrahman779@gmail.com','2023-07-20 09:28:28',NULL),(5,'Bappy','Munshi','fahimbappy1@gmail.com','2023-07-20 09:29:15',NULL),(6,'Omar','Sunjer','omarsunjery@gmail.com','2023-07-20 09:29:18',NULL),(7,'Mid Motiur','Rahman','motiur.statabd@gmail.com','2023-07-20 09:30:47',NULL),(8,'Rahul','Chakrabarty','rahulchakrabarty552@gmail.com','2023-07-20 09:31:03',NULL),(9,'Al','kaif','alkaif1219@gmail.com','2023-07-21 19:53:30',NULL),(10,'Jobayer','Ahmmed Efaz','jubu1401@gmail.com','2023-07-27 20:09:38',NULL);
-/*!40000 ALTER TABLE `news_letters` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `news_letters` (`id`, `f_name`, `l_name`, `email`, `created_at`, `updated_at`) VALUES
+(1, 'CIdGLarB', 'gLTjXRsg', 'Mfma_generic_0977eb18_stataglobal.com@data-backup-store.com', '2023-07-07 02:39:26', NULL);
 
---
--- Table structure for table `order_items`
---
-
-DROP TABLE IF EXISTS `order_items`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `order_items` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `order_id` bigint unsigned NOT NULL,
-  `product_id` bigint unsigned NOT NULL,
-  `color` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `size` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `qty` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `price` double(8,2) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `order_items_order_id_foreign` (`order_id`),
-  CONSTRAINT `order_items_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `order_items`
---
-
-LOCK TABLES `order_items` WRITE;
-/*!40000 ALTER TABLE `order_items` DISABLE KEYS */;
-INSERT INTO `order_items` VALUES (83,76,64,'RGB','Regular','1',3300.00,'2023-01-17 20:16:38',NULL),(93,82,70,'Black','Regular','1',1700.00,'2023-01-25 12:29:46',NULL),(94,83,72,'White','Regular','1',7500.00,'2023-02-05 10:28:09',NULL),(100,87,79,'White','Regular','1',5850.00,'2023-04-11 19:45:59',NULL),(101,88,71,'Black','Regular','1',2610.00,'2023-04-26 06:36:41',NULL),(102,89,60,'White','Regular','1',5199.00,'2023-07-06 14:30:32',NULL);
-/*!40000 ALTER TABLE `order_items` ENABLE KEYS */;
-UNLOCK TABLES;
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `orders`
 --
 
-DROP TABLE IF EXISTS `orders`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `orders` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` bigint unsigned NOT NULL,
-  `division_id` bigint unsigned NOT NULL,
-  `district_id` bigint unsigned NOT NULL,
-  `state_id` bigint unsigned NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `post_code` int DEFAULT NULL,
-  `notes` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `payment_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payment_method` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `coupon` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `coupon_percentage` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `coupon_discount` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `transaction_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `currency` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `amount` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `order_number` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `invoice_no` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `order_date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `order_month` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `order_year` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `confirmed_date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `processing_date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `picked_date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `shipped_date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `delivered_date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `cancel_date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `return_date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `return_order` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '0',
-  `return_reason` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `division_id` bigint(20) UNSIGNED NOT NULL,
+  `district_id` bigint(20) UNSIGNED NOT NULL,
+  `state_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `post_code` int(11) DEFAULT NULL,
+  `notes` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `payment_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payment_method` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `coupon` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `coupon_percentage` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `coupon_discount` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `transaction_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `currency` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `amount` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `order_number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `invoice_no` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `order_date` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `order_month` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `order_year` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `confirmed_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `processing_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `picked_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `shipped_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `delivered_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cancel_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `return_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `return_order` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '0',
+  `return_reason` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=90 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `orders`
 --
 
-LOCK TABLES `orders` WRITE;
-/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (76,25,6,63,34,'Erfaan Chowdhury','erfaan.chowdhury007@gmail.com','01876105634',NULL,'Chhagalnaiya,Febi','Cash on Delivery','Cash on Delivery','No Coupon','0','No Discount',NULL,'TK','3,300.00',NULL,'STA74680521','17 January 2023','January','2023',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'0',NULL,'processing','2023-01-17 20:16:38','2023-01-22 11:08:41'),(82,27,4,6,96,'kaushik','kaushik.stata@gmail.com','01833093683',1219,'dddd','Cash on Delivery','Cash on Delivery','STAWIN','10','170',NULL,'TK','1530',NULL,'STA61083824','25 January 2023','January','2023',NULL,NULL,NULL,NULL,NULL,NULL,'25 January 2023','2','colour','delivered','2023-01-25 12:29:46','2023-01-25 12:34:13'),(83,30,4,6,93,'Osman','osman.dhk@gmail.com','01706000000',NULL,'House#3/10,Flat#A-2,Bazlur rahman residence, Block-F, lalmatia, Dhaka','Cash on Delivery','Cash on Delivery','No Coupon','0','No Discount',NULL,'TK','7,500.00',NULL,'STA47055521','05 February 2023','February','2023',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'0',NULL,'processing','2023-02-05 10:28:09','2023-04-20 21:00:43'),(87,34,4,6,88,'Saddam hossain','shsitu7878@gmail.com','01732755997',1100,'8/1 armanitan street, armanitola','Cash on Delivery','Cash on Delivery','No Coupon','0','No Discount',NULL,'TK','5,850.00',NULL,'STA38305774','11 April 2023','April','2023',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'0',NULL,'processing','2023-04-11 19:45:59','2023-04-13 04:43:05'),(88,35,5,27,135,'SABBIR MUHAMMAD TANIM','smtanim77@gmail.com','01719447700',NULL,'Vally tower 2nd floor,shamsernagar road, Moulvibazar','Cash on Delivery','Cash on Delivery','No Coupon','0','No Discount',NULL,'TK','2,610.00',NULL,'STA80309591','26 April 2023','April','2023',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'0',NULL,'processing','2023-04-26 06:36:41','2023-04-26 07:26:29'),(89,38,4,6,86,'Khawaja Azaan Rahman','azaanrahman2008@gmail.com','01707960787',NULL,'63 Kakrail Ramna Dhaka','Cash on Delivery','Cash on Delivery','No Coupon','0','No Discount',NULL,'TK','5,199.00',NULL,'STA81632336','06 July 2023','July','2023',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'0',NULL,'confirm','2023-07-06 14:30:32','2023-07-18 13:47:19');
-/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `orders` (`id`, `user_id`, `division_id`, `district_id`, `state_id`, `name`, `email`, `phone`, `post_code`, `notes`, `payment_type`, `payment_method`, `coupon`, `coupon_percentage`, `coupon_discount`, `transaction_id`, `currency`, `amount`, `order_number`, `invoice_no`, `order_date`, `order_month`, `order_year`, `confirmed_date`, `processing_date`, `picked_date`, `shipped_date`, `delivered_date`, `cancel_date`, `return_date`, `return_order`, `return_reason`, `status`, `created_at`, `updated_at`) VALUES
+(76, 25, 6, 63, 34, 'Erfaan Chowdhury', 'erfaan.chowdhury007@gmail.com', '01876105634', NULL, 'Chhagalnaiya,Febi', 'Cash on Delivery', 'Cash on Delivery', 'No Coupon', '0', 'No Discount', NULL, 'TK', '3,300.00', NULL, 'STA74680521', '17 January 2023', 'January', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'processing', '2023-01-17 20:16:38', '2023-01-22 11:08:41'),
+(82, 27, 4, 6, 96, 'kaushik', 'kaushik.stata@gmail.com', '01833093683', 1219, 'dddd', 'Cash on Delivery', 'Cash on Delivery', 'STAWIN', '10', '170', NULL, 'TK', '1530', NULL, 'STA61083824', '25 January 2023', 'January', '2023', NULL, NULL, NULL, NULL, NULL, NULL, '25 January 2023', '2', 'colour', 'delivered', '2023-01-25 12:29:46', '2023-01-25 12:34:13'),
+(83, 30, 4, 6, 93, 'Osman', 'osman.dhk@gmail.com', '01706000000', NULL, 'House#3/10,Flat#A-2,Bazlur rahman residence, Block-F, lalmatia, Dhaka', 'Cash on Delivery', 'Cash on Delivery', 'No Coupon', '0', 'No Discount', NULL, 'TK', '7,500.00', NULL, 'STA47055521', '05 February 2023', 'February', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'processing', '2023-02-05 10:28:09', '2023-04-20 21:00:43'),
+(87, 34, 4, 6, 88, 'Saddam hossain', 'shsitu7878@gmail.com', '01732755997', 1100, '8/1 armanitan street, armanitola', 'Cash on Delivery', 'Cash on Delivery', 'No Coupon', '0', 'No Discount', NULL, 'TK', '5,850.00', NULL, 'STA38305774', '11 April 2023', 'April', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'processing', '2023-04-11 19:45:59', '2023-04-13 04:43:05'),
+(88, 35, 5, 27, 135, 'SABBIR MUHAMMAD TANIM', 'smtanim77@gmail.com', '01719447700', NULL, 'Vally tower 2nd floor,shamsernagar road, Moulvibazar', 'Cash on Delivery', 'Cash on Delivery', 'No Coupon', '0', 'No Discount', NULL, 'TK', '2,610.00', NULL, 'STA80309591', '26 April 2023', 'April', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'processing', '2023-04-26 06:36:41', '2023-04-26 07:26:29'),
+(89, 38, 4, 6, 86, 'Khawaja Azaan Rahman', 'azaanrahman2008@gmail.com', '01707960787', NULL, '63 Kakrail Ramna Dhaka', 'Cash on Delivery', 'Cash on Delivery', 'No Coupon', '0', 'No Discount', NULL, 'TK', '5,199.00', NULL, 'STA81632336', '06 July 2023', 'July', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'pending', '2023-07-06 14:30:32', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_items`
+--
+
+CREATE TABLE `order_items` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `order_id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` bigint(20) UNSIGNED NOT NULL,
+  `color` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `size` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `qty` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` double(8,2) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `order_items`
+--
+
+INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `color`, `size`, `qty`, `price`, `created_at`, `updated_at`) VALUES
+(83, 76, 64, 'RGB', 'Regular', '1', 3300.00, '2023-01-17 20:16:38', NULL),
+(93, 82, 70, 'Black', 'Regular', '1', 1700.00, '2023-01-25 12:29:46', NULL),
+(94, 83, 72, 'White', 'Regular', '1', 7500.00, '2023-02-05 10:28:09', NULL),
+(100, 87, 79, 'White', 'Regular', '1', 5850.00, '2023-04-11 19:45:59', NULL),
+(101, 88, 71, 'Black', 'Regular', '1', 2610.00, '2023-04-26 06:36:41', NULL),
+(102, 89, 60, 'White', 'Regular', '1', 5199.00, '2023-07-06 14:30:32', NULL);
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `password_resets`
 --
 
-DROP TABLE IF EXISTS `password_resets`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `password_resets` (
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  KEY `password_resets_email_index` (`email`)
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `password_resets`
 --
 
-LOCK TABLES `password_resets` WRITE;
-/*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
-INSERT INTO `password_resets` VALUES ('ifazalam69@gmail.com','$2y$10$GxB/BQd.W/56AE2F7YnaiuevEC5b/ixIhmOk9kj7/.VhTDswJXe8O','2022-09-24 10:18:13'),('rubelrana.rr346@gmail.com','$2y$10$nswtRk2CPovI.sm6E/8RX.RWuRlUDsbwTGJPHEmdhZ2IZQ73uMeOm','2023-01-30 21:56:11');
-/*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
+('ifazalam69@gmail.com', '$2y$10$GxB/BQd.W/56AE2F7YnaiuevEC5b/ixIhmOk9kj7/.VhTDswJXe8O', '2022-09-24 10:18:13'),
+('rubelrana.rr346@gmail.com', '$2y$10$nswtRk2CPovI.sm6E/8RX.RWuRlUDsbwTGJPHEmdhZ2IZQ73uMeOm', '2023-01-30 21:56:11');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `personal_access_tokens`
 --
 
-DROP TABLE IF EXISTS `personal_access_tokens`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `personal_access_tokens` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `tokenable_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tokenable_id` bigint unsigned NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
-  KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`)
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `personal_access_tokens`
---
-
-LOCK TABLES `personal_access_tokens` WRITE;
-/*!40000 ALTER TABLE `personal_access_tokens` DISABLE KEYS */;
-/*!40000 ALTER TABLE `personal_access_tokens` ENABLE KEYS */;
-UNLOCK TABLES;
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `products`
 --
 
-DROP TABLE IF EXISTS `products`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `products` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `brand_id` int DEFAULT NULL,
-  `category_id` int NOT NULL,
-  `subcategory_id` int NOT NULL,
-  `product_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `product_code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `product_qty` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `product_tags` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `product_size` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `product_color` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `selling_price` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `discount_price` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `discount` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `short_descp` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `long_descp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `product_thambnail` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `c_meta_title` varchar(258) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `c_meta_description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `video_link` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `new` int DEFAULT NULL,
-  `sale` int DEFAULT NULL,
-  `best_seller` int DEFAULT NULL,
-  `combo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status` int NOT NULL DEFAULT '0',
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `brand_id` int(11) DEFAULT NULL,
+  `category_id` int(11) NOT NULL,
+  `subcategory_id` int(11) NOT NULL,
+  `product_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_qty` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_tags` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_size` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `product_color` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `selling_price` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `discount_price` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `discount` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `short_descp` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `long_descp` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_thambnail` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `c_meta_title` varchar(258) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `c_meta_description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `video_link` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `new` int(11) DEFAULT NULL,
+  `sale` int(11) DEFAULT NULL,
+  `best_seller` int(11) DEFAULT NULL,
+  `combo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` int(11) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `products`
 --
 
-LOCK TABLES `products` WRITE;
-/*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (43,19,15,33,'STATA Smart 1 Gang Switch','ST-SGS1','39','Switch','Regular','Black,White','2199',NULL,'2200','STATA Smart App,Smart Switch,Touch Switch, Scheduling,Remotely Controllable','𝐓𝐫𝐚𝐧𝐬𝐟𝐨𝐫𝐦 𝐘𝐨𝐮𝐫 𝐇𝐨𝐦𝐞 𝐰𝐢𝐭𝐡 𝐭𝐡𝐞 𝟏 𝐆𝐚𝐧𝐠 𝐒𝐦𝐚𝐫𝐭 𝐒𝐰𝐢𝐭𝐜𝐡 (𝐖𝐢-𝐅𝐢): 𝐓𝐡𝐞 𝐄𝐩𝐢𝐭𝐨𝐦𝐞 𝐨𝐟 𝐂𝐨𝐧𝐯𝐞𝐧𝐢𝐞𝐧𝐜𝐞 𝐚𝐧𝐝 𝐄𝐟𝐟𝐢𝐜𝐢𝐞𝐧𝐜𝐲\r\nIn the age of smart technology, turning your home into a modern haven is easier than ever. Introducing our 1 Gang Smart Switch (Wi-Fi) enable, a game-changing device that brings ultimate control and convenience to your fingertips. Say goodbye to traditional switches and embrace the future of smart living.\r\n\r\n𝐊𝐞𝐲 𝐅𝐞𝐚𝐭𝐮𝐫𝐞𝐬:\r\n𝐒𝐞𝐚𝐦𝐥𝐞𝐬𝐬 𝐂𝐨𝐧𝐧𝐞𝐜𝐭𝐢𝐯𝐢𝐭𝐲: The 1 Gang Smart Switch seamlessly connects to your home\'s Wi-Fi network, allowing you to control your lights from anywhere using your smartphone or voice commands.\r\n\r\n𝐄𝐚𝐬𝐲 𝐈𝐧𝐬𝐭𝐚𝐥𝐥𝐚𝐭𝐢𝐨𝐧: With a simple and straightforward installation process, you can replace your existing switch with the smart switch without the need for extensive rewiring.\r\n\r\n𝐑𝐞𝐦𝐨𝐭𝐞 𝐀𝐜𝐜𝐞𝐬𝐬: Forgot to turn off the lights before leaving home? No worries! With the smart switch, you can remotely control your lights, ensuring energy efficiency and peace of mind.\r\n\r\n𝐕𝐨𝐢𝐜𝐞 𝐂𝐨𝐧𝐭𝐫𝐨𝐥: Compatible with popular voice assistants like Amazon Alexa and Google Assistant, the smart switch lets you control your lights with just your voice.\r\n\r\n𝐂𝐮𝐬𝐭𝐨𝐦𝐢𝐳𝐚𝐛𝐥𝐞 𝐒𝐜𝐡𝐞𝐝𝐮𝐥𝐢𝐧𝐠: Create personalized schedules for your lights to turn on and off at specific times, adding an extra layer of security and energy savings.\r\n\r\n𝐃𝐢𝐦𝐦𝐢𝐧𝐠 𝐅𝐮𝐧𝐜𝐭𝐢𝐨𝐧𝐚𝐥𝐢𝐭𝐲: Enjoy the flexibility of adjusting the brightness of your lights with the dimming feature, setting the perfect ambiance for any occasion.\r\n\r\n𝐄𝐧𝐞𝐫𝐠𝐲 𝐄𝐟𝐟𝐢𝐜𝐢𝐞𝐧𝐜𝐲: The smart switch promotes energy efficiency by allowing you to monitor and manage your lighting usage effectively.\r\n\r\n𝐒𝐭𝐲𝐥𝐢𝐬𝐡 𝐚𝐧𝐝 𝐃𝐮𝐫𝐚𝐛𝐥𝐞: Crafted with premium materials, the 1 Gang Smart Switch boasts a sleek design that complements any interior décor while ensuring long-lasting performance.\r\n\r\n𝐂𝐨𝐦𝐩𝐚𝐭𝐢𝐛𝐢𝐥𝐢𝐭𝐲: The smart switch works with most standard bulb types, making it a versatile addition to your home automation setup.\r\n\r\n𝐒𝐦𝐚𝐫𝐭 𝐇𝐨𝐦𝐞 𝐈𝐧𝐭𝐞𝐠𝐫𝐚𝐭𝐢𝐨𝐧: Integrate the 1 Gang Smart Switch into your existing smart home ecosystem, creating a connected and intelligent living space.\r\n\r\nWith the 1 Gang Smart Switch (Wi-Fi) enable, you can effortlessly control your lights, set the perfect ambiance, and save energy with just a few taps on your smartphone or simple voice commands. Experience the convenience and efficiency of a smart home by incorporating the smart switch into your daily life.\r\n\r\n\r\nUpgrade your home with the 1 Gang Smart Switch (Wi-Fi) enable and embrace the future of smart living. Experience the convenience of controlling your lights from anywhere and enjoy the benefits of energy efficiency and customization. Simplify your life with this versatile and user-friendly smart switch, now available at an affordable price in Bangladesh. Take the first step towards a smarter home and elevate your living experience with the 1 Gang Smart Switch. Experience the convenience, energy savings, and modernity it brings to your living space. Invest in the future of home automation today and transform your house into a truly intelligent home.\r\n\r\n\r\n•𝐏𝐚𝐧𝐞𝐥: Crystal glass panel, no fading. Elegant and stylish \r\nIntegrated panel design\r\n•𝐒𝐜𝐡𝐞𝐝𝐮𝐥𝐞𝐝: you can set timer for these smart devices. \r\n•𝐖𝐚𝐭𝐞𝐫𝐩𝐫𝐨𝐨𝐟: Yes\r\n•𝐀𝐧𝐭𝐢-𝐜𝐫𝐞𝐞𝐩𝐢𝐧𝐠: Yes\r\n•𝐒𝐰𝐢𝐭𝐜𝐡 𝐓𝐲𝐩𝐞: Touch\r\n•𝐕𝐨𝐥𝐭𝐚𝐠𝐞: 170V-240V \r\n•𝐋𝐨𝐚𝐝 𝐏𝐨𝐰𝐞𝐫: 5-300W/Gang \r\n•𝐂𝐞𝐫𝐭𝐢𝐟𝐢𝐜𝐚𝐭𝐢𝐨𝐧: CE, FCC, RoHS\r\n•𝐖𝐨𝐫𝐤𝐢𝐧𝐠 𝐓𝐞𝐦𝐩𝐞𝐫𝐚𝐭𝐮𝐫𝐞: -20-70 Degree\r\n\r\n𝐒𝐞𝐫𝐯𝐢𝐜𝐞 & 𝐖𝐚𝐫𝐫𝐚𝐧𝐭𝐲-\r\n1 Year Free Replacement & 5 Years Service Warranty','upload/products/thumbnail/1744663804387969.png','1 Gang Smart Switch(WI-Fi)- Stata IT Limited','Ultimate solution for seamless lighting control with our 1 gang smart switch(Wi-Fi) in Bangladesh. Effortlessly manage your lights using StataLife Mobile app.','https://www.youtube.com/embed/NARuqgxPhtc',NULL,NULL,NULL,NULL,1,'2023-07-27 06:30:33','2023-07-27 06:30:33'),(44,19,15,33,'STATA Smart 2 Gang Switch','ST-SGS2','48','Switch','Regular','Black,White','2500','2250','250','STATA Smart App,Touch Switch,Smart Switch,Scheduling,Remotely Controllable','Crystal glass panel, no fading, elegant and stylish \r\nIntegrated panel design, waterproof and anti-creeping, \r\nsafe to use Touch control ensures longer service life \r\nthan mechanical switch New imported IC processor for\r\n nice sensitivity and stable performance Humanized \r\ndesign.\r\nCan be scheduled, you can set timer for these smart devices. \r\nVoltage: 170V-240V Load Power: 5-300W/Gang \r\nCertification:CE, FCC, RoHS\r\nWorking Temperature: -20-70 Degree\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty','upload/products/thumbnail/1744663814022118.png','Buy 2 Gang Smart Switch (Wi-Fi) - Stata IT Limited','Discover the power of efficient lighting control with a Stata 2 Gang Smart Switch. Enjoy seamless management of multiple lights, scheduling, and remote control from anyplace at anytime.','https://www.youtube.com/embed/NARuqgxPhtc',NULL,NULL,1,NULL,1,'2023-07-17 05:00:17','2023-07-17 05:00:17'),(45,19,15,33,'STATA Smart 3 Gang Switch','ST-SGS3','71','Switch','Regular','Black,White','2899',NULL,'2900','STATA Smart App,Touch Switch,Smart Switch,Scheduling,Remotely Controllable','Crystal glass panel, no fading, elegant and stylish \r\nIntegrated panel design, waterproof and anti-creeping, \r\nsafe to use Touch control ensures longer service life \r\nthan mechanical switch New imported IC processor for\r\n nice sensitivity and stable performance Humanized \r\ndesign.\r\nCan be scheduled, you can set timer for these smart devices. \r\nVoltage: 170V-240V Load Power: 5-300W/Gang \r\nCertification:CE, FCC, RoHS\r\nWorking Temperature: -20-70 Degree\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty','upload/products/thumbnail/1744663819731736.png','3 Gang Smart Switch (Wi-Fi)- Stata IT Limited','Transform your home with a Stata 3 Gang Smart Switch(Wi-Fi)- the ultimate solution for seamless lighting control.Buy and Upgrade your home automation today','https://www.youtube.com/embed/NARuqgxPhtc',NULL,NULL,1,NULL,1,'2023-07-16 11:12:36','2023-07-16 11:12:36'),(46,19,15,33,'STATA Smart 4 Gang Switch','ST-SGS4','23','Switch','Regular','Black,White','3299',NULL,'3300','STATA Smart App,Smart Switch,Touch Switch,Remotely Controllable,Scheduling,Glass Panel,Shock Resistant','Crystal glass panel, no fading, elegant and stylish \r\nIntegrated panel design, waterproof and anti-creeping, \r\nsafe to use Touch control ensures longer service life \r\nthan mechanical switch New imported IC processor for\r\n nice sensitivity and stable performance Humanized \r\ndesign.\r\n\r\n•𝐒𝐜𝐡𝐞𝐝𝐮𝐥𝐞𝐝: you can set timer for these smart devices. \r\n••𝐕𝐨𝐥𝐭𝐚𝐠𝐞: 170V-240V \r\n•𝐋𝐨𝐚𝐝 𝐏𝐨𝐰𝐞𝐫: 5-300W/Gang \r\n•𝐂𝐞𝐫𝐭𝐢𝐟𝐢𝐜𝐚𝐭𝐢𝐨𝐧: CE, FCC, RoHS\r\n•𝐖𝐨𝐫𝐤𝐢𝐧𝐠 𝐓𝐞𝐦𝐩𝐞𝐫𝐚𝐭𝐮𝐫𝐞:-20-70 Degree\r\n\r\n𝐒𝐞𝐫𝐯𝐢𝐜𝐞 & 𝐖𝐚𝐫𝐫𝐚𝐧𝐭𝐲-\r\n1 Year Free Replacement\r\n5 Years Service Warranty','upload/products/thumbnail/1744663826808853.png','Buy 4 Gang Smart Switch (Wi-Fi)- Stata IT Limited','Control your homes lighting from anyplace at anytime around the world with Stata 4 gang Smart switch through our user-friendly StataLife App.','https://www.youtube.com/embed/NARuqgxPhtc',NULL,NULL,NULL,NULL,1,'2023-07-16 11:37:56','2023-07-16 11:37:56'),(47,19,16,34,'STATA X9 Plus','ST-SDLX9+','15','Locks','Regular','Black,Rose Gold','27999',NULL,'27999','STATA Smart App,Password,RFID Card,Generate Guest OTP,Fingerprint,App Unlock,Zinc and Aluminium Alloy','STATA Smart Door Locks are the security \r\nguards that you didn’t know you needed. \r\nStrong and Robust built with Aluminum and Zinc alloy, \r\nalways ready to protect your home. \r\nYou can unlock them in 6 different ways. \r\nSTATA Smart Door Lock Operate your home \r\nfrom any place around the world!! \r\n\r\nUnlock your door by \r\ni) Password \r\nii) RFID Card \r\niii) Fingerprint \r\niv) STATA Smart App \r\nv) Generate Guest OTP \r\nvi) Traditional Key.\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty','upload/products/thumbnail/1744656766342746.png','Buy Smart Door Lock - STATA X9 Plus','Buy our Highly Secured premium STATA X9 Plus Smart Door Lock. Keyless entry, 300 biometric fingerprint recognition & remote access control with StataLife App. Seamlessly integrates with smart home platforms. Elevate your security and convenience. Discover the STATA X9 Plus now!','https://www.youtube.com/embed/mbM9GVfAcpw',NULL,NULL,1,NULL,1,'2023-07-18 10:17:01','2023-07-18 10:17:01'),(49,19,16,34,'STATA X9','ST-SDLX9','25','Locks','Regular','Black,Silver,Rose Gold','24999','21250','3749','STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key','STATA Smart Door Locks are the security \r\nguards that you didn’t know you needed. \r\nStrong and Robust built with Aluminum and Zinc alloy, \r\nalways ready to protect your home. \r\nYou can unlock them in 6 different ways. \r\nSTATA Smart Door Lock Operate your home \r\nfrom any place around the world!! \r\n\r\nUnlock your door by \r\ni) Password \r\nii) RFID Card \r\niii) Fingerprint \r\niv) StataLife App \r\nv) Generate Guest OTP \r\nvi) Traditional Key.','upload/products/thumbnail/1762587329664777.png','Smart Door Lock price in Bangladesh- STATA X9','Enhance your home security with the STATA X9 Smart Door Lock. Keyless entry, biometric fingerprint recognition, and remote access control. Seamlessly integrates with smart home platforms. Elevate your security and convenience. Discover the STATA X9 now!','https://www.youtube.com/embed/KdUNTpbHE04',1,1,1,NULL,1,'2023-07-18 09:48:08','2023-07-18 09:48:08'),(50,19,17,36,'Robot Vacuum Cleaner','D960','0','Cleaning Robot','Regular','White','27999',NULL,'3000','STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key','Brand- Dibea\r\nModel-D960\r\n•Working Mode\r\nAuto, Spot, Edge, Daily Schedule\r\n•Self-Charging\r\nYes\r\n•Scheduled Reservation Function\r\nYes\r\n•Remote Control\r\nYes\r\n•Using Time\r\n120 – 150 minutes\r\n•Charging Time\r\nAbout 4 – 5 hours\r\n•Suction\r\n1200 Pa\r\n•Dust tank Capacity\r\n350ml\r\n•Water Tank\r\n350ml\r\n•Noise\r\nLess than 55dB\r\n•Application Area\r\n150-200㎡\r\n•Adapter Input\r\n100 – 240V 50 / 60Hz\r\n•Adapter Output\r\n26V 450mA\r\n•Voltage\r\n14.8V\r\n•Power\r\n30W\r\n•Lithium-ion battery capacity\r\n2600mAh\r\n•Lithium-ion battery output voltage\r\n26.5V\r\n•Power adapter\r\nEU plug & US plug\r\n•Package size (L x W x H)\r\n60.00 x 42.00 x 14.00 cm / 23.62 x 16.54 x 5.51 inches\r\n•Package weight\r\nAbout 12.90 pounds\r\n\r\n•Package Included :\r\n\r\n1 x Dibea D960 Smart Robot Vacuum Cleaner\r\n2 x Side Brush\r\n1 x Cleaning Brush\r\n1 x Mop Cloth\r\n1 x Changing Base\r\n1 x Remote Control\r\n1 x Power Adapter\r\n1 x English User Manual','upload/products/thumbnail/1744664067742040.png','Robot Vacuum Cleaner Price in Bangladesh - Stata IT Limited','Effortlessly clean your floors with a Robot Vacuum Cleaner. Smart mapping, automatic navigation, and powerful suction. Enjoy more free time and a cleaner home. Discover the convenience of a Robot Vacuum Cleaner today.','https://www.youtube.com/embed/skh7dKg2pmo',NULL,NULL,NULL,NULL,1,'2023-07-18 09:56:19','2023-07-18 09:56:19'),(51,19,15,33,'STATA Economy Package','Economy Package','2','Switch','Regular','Black,White,Gold','4700','3999','701','STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key','STATA Smart Home\r\nPackage Name : Economy Package\r\nOriginal Price : 4,700/-\r\nBundle Price : 3,999/-\r\n\r\nWhat’s in the package :\r\n1) Smart Wifi Touch switch (2 Gang) *1\r\n2) Smart Wifi Touch switch (1 Gang) *1\r\n\r\nNumber of device : 2\r\n\r\nFree Replacement For 365 Days\r\n5 Years Service Warranty\r\n24/7 Customer Support','upload/products/thumbnail/1744505678975452.png','STATA Economy Package- Smart Home Automation','Buy STATA Economy Package with combo set of 1 Gang & 2 Gang of Smart Wi-Fi Touch Switch. This offer comes with 1 year free replacement & 5 years service warranty.',NULL,NULL,NULL,NULL,NULL,1,'2023-07-18 10:41:03','2023-07-18 10:41:03'),(52,19,15,32,'STATA 3 Pin Smart Socket','ST-SS3','40','Socket','Regular','Black,White','2400','2160','240','STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key','𝐔𝐩𝐠𝐫𝐚𝐝𝐞 𝐘𝐨𝐮𝐫 𝐇𝐨𝐦𝐞 𝐰𝐢𝐭𝐡 𝐭𝐡𝐞 𝟑 𝐏𝐢𝐧 𝐒𝐦𝐚𝐫𝐭 𝐒𝐨𝐜𝐤𝐞𝐭: 𝐔𝐧𝐥𝐞𝐚𝐬𝐡 𝐭𝐡𝐞 𝐏𝐨𝐰𝐞𝐫 𝐨𝐟 𝐒𝐦𝐚𝐫𝐭 𝐓𝐞𝐜𝐡𝐧𝐨𝐥𝐨𝐠𝐲\r\nThe worlds become closer day by day with the help of technology. Smart Technology now has become a part of our daily life. The 3 Pin Smart Socket is a game-changing device that revolutionizes the way you interact with your electrical appliances. Seamlessly integrating into your smart home ecosystem, this smart socket offers unparalleled convenience and control.\r\n\r\n𝐊𝐞𝐲 𝐅𝐞𝐚𝐭𝐮𝐫𝐞𝐬:\r\n𝐒𝐦𝐚𝐫𝐭 𝐑𝐞𝐦𝐨𝐭𝐞 𝐂𝐨𝐧𝐭𝐫𝐨𝐥: With the 3 Pin Smart Socket, you can control your connected devices remotely using your smartphone. Whether you forgot to turn off the iron or want to switch on the air conditioner before you arrive home, this smart socket puts the power at your fingertips.\r\n\r\n𝐕𝐨𝐢𝐜𝐞-𝐀𝐜𝐭𝐢𝐯𝐚𝐭𝐞𝐝 𝐂𝐨𝐧𝐯𝐞𝐧𝐢𝐞𝐧𝐜𝐞: Compatible with popular voice assistants like Amazon Alexa and Google Assistant, the smart socket allows you to control your appliances with simple voice commands. No need to lift a finger – just speak, and the smart socket obeys.\r\n\r\n𝐓𝐢𝐦𝐞𝐫 𝐚𝐧𝐝 𝐒𝐜𝐡𝐞𝐝𝐮𝐥𝐞 𝐒𝐞𝐭𝐭𝐢𝐧𝐠𝐬: Set custom timers and schedules for your devices, making them turn on or off at specific times. By scheduling a custom time any one can save energy.\r\n\r\n𝐄𝐧𝐞𝐫𝐠𝐲 𝐌𝐨𝐧𝐢𝐭𝐨𝐫𝐢𝐧𝐠: Keep track of your electricity usage and identify power-hungry appliances with the energy monitoring feature. Gain insights into your consumption patterns to make informed decisions about energy efficiency.\r\n\r\n𝐒𝐚𝐟𝐞𝐭𝐲 𝐅𝐢𝐫𝐬𝐭: The 3 Pin Smart Socket is designed with safety in mind. It comes with surge protection and overload protection, safeguarding your devices from electrical fluctuations and potential damage.\r\n\r\n𝐂𝐨𝐦𝐩𝐚𝐜𝐭 𝐚𝐧𝐝 𝐄𝐚𝐬𝐲 𝐈𝐧𝐬𝐭𝐚𝐥𝐥𝐚𝐭𝐢𝐨𝐧: The smart socket\'s sleek and compact design fits seamlessly into any standard wall outlet. Installation process is quite easy so that it is not necessary to hire an expert.\r\n\r\n𝐖𝐢𝐝𝐞 𝐂𝐨𝐦𝐩𝐚𝐭𝐢𝐛𝐢𝐥𝐢𝐭𝐲: Compatible with a variety of electrical appliances, the smart socket offers versatility, allowing you to control multiple devices from a single device.\r\n\r\n𝐂𝐡𝐢𝐥𝐝 𝐋𝐨𝐜𝐤 𝐅𝐞𝐚𝐭𝐮𝐫𝐞: Worried about kids tampering with appliances? The smart socket\'s child lock feature provides peace of mind by restricting access to connected devices.\r\n\r\n\r\nElevate your home to new heights of convenience and efficiency with the 3 Pin Smart Socket. Embrace the power of smart technology and take control of your electrical appliances like never before. Experience the ease of remote control, voice-activated convenience, and energy monitoring. Ensure the safety of your devices and optimize energy usage with this smart addition to your home. Invest in the future of smart living and make your life more manageable and enjoyable. With the 3 Pin Smart Socket, you\'ll experience the true potential of home automation, transforming your living space into a smart haven.\r\nUnlock the Power of Smart Living with the 3 Pin Smart Socket – Get Yours Today!\r\n\r\n\r\n•𝐏𝐚𝐧𝐞𝐥: Crystal glass panel, no fading. Elegant and stylish Integrated panel design\r\n•𝐒𝐜𝐡𝐞𝐝𝐮𝐥𝐞𝐝: you can set timer for these smart devices.\r\n•𝐖𝐚𝐭𝐞𝐫𝐩𝐫𝐨𝐨𝐟: Yes\r\n•𝐀𝐧𝐭𝐢-𝐜𝐫𝐞𝐞𝐩𝐢𝐧𝐠: Yes\r\n𝐕𝐨𝐥𝐭𝐚𝐠𝐞: 170V-240V \r\n𝐋𝐨𝐚𝐝 𝐏𝐨𝐰𝐞𝐫: 5-300W/Gang \r\n𝐂𝐞𝐫𝐭𝐢𝐟𝐢𝐜𝐚𝐭𝐢𝐨𝐧: CE, FCC, RoHS\r\n𝐖𝐨𝐫𝐤𝐢𝐧𝐠 𝐓𝐞𝐦𝐩𝐞𝐫𝐚𝐭𝐮𝐫𝐞: -20-70 Degree\r\n\r\n𝐒𝐞𝐫𝐯𝐢𝐜𝐞 & 𝐖𝐚𝐫𝐫𝐚𝐧𝐭𝐲-\r\n1 Year Free Replacement & 5 Years Service Warranty','upload/products/thumbnail/1763033606633449.png','STATA 3 Pin Smart Socket price in Bangladesh','Control and monitor your appliances with the STATA 3 Pin Smart Socket. Schedule power on/off, track energy usage, and control with voice commands. Experience convenience and energy efficiency. Buy now!',NULL,1,NULL,1,NULL,1,'2023-07-27 07:56:17','2023-07-27 07:56:17'),(53,19,16,34,'STATA X9 Lite','ST-SDLX9Li','11','Locks','Regular','Black,Rose Gold','20999','17850','3149','STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key,Fingerprint','STATA Smart Door Locks are the security\r\nguards that you didn’t know you needed.\r\nStrong and Robust built with Aluminum and Zinc alloy,\r\nalways ready to protect your home.\r\nYou can unlock them in 6 different ways.\r\nSTATA Smart Door Lock Operate your home\r\nfrom any place around the world!!\r\nUnlock your door by\r\ni) Password\r\nii) RFID Card\r\niii) Fingerprint\r\niv) STATA Smart App\r\nv) Generate Guest OTP\r\nvi) Traditional Key.\r\n1 Year Free Replacement\r\n5 Years Service Warranty','upload/products/thumbnail/1744662278926768.png','Smart Door Lock price in Bangladesh- STATA X9 Lite','Enhance your home security with the STATA X9 Lite Smart Door Lock. Keyless entry, convenience, and peace of mind. Easy installation and sleek design. Experience the perfect blend of security and convenience. Discover the STATA X9 Lite now!','https://www.youtube.com/embed/KdUNTpbHE04',1,1,1,NULL,1,'2023-07-18 09:44:55','2023-07-18 09:44:55'),(55,19,16,34,'STATA Bolt','ST-BOLT-SDL','35','Locks','Regular','Black,Rose Gold,Silver','34999','29750','5249','STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key,Fringerprint','STATA Smart Door Locks are the security\r\nguards that you didn’t know you needed.\r\nStrong and Robust built with Aluminum and Zinc alloy,\r\nalways ready to protect your home.\r\nYou can unlock them in 6 different ways.\r\nSTATA Smart Door Lock Operate your home\r\nfrom any place around the world!!\r\n\r\nUnlock your door by\r\ni) Password\r\nii) RFID Card\r\niii) Fingerprint\r\niv) STATA Smart App\r\nv) Generate Guest OTP\r\nvi) Traditional Key.\r\n1 Year Free Replacement\r\n5 Years Service Warranty','upload/products/thumbnail/1744662401920780.png','Smart Door Lock Price in Bangladesh - STATA Bolt','Buy & Upgrade your home security with the STATA Bolt Smart Door Lock. Keyless entry, RIF Card, 300 Fingerprint with advanced security features, and seamless integration with smart home platforms. Experience convenience and peace of mind. Discover the STATA Bolt now!','https://www.youtube.com/embed/KdUNTpbHE04',NULL,1,1,NULL,1,'2023-07-18 10:04:44','2023-07-18 10:04:44'),(56,19,16,34,'STATA Smart Glass Door Lock','ST-SGL','6','Locks','Regular','Black,Rose Gold','24999',NULL,'25000','STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key','𝐒𝐓𝐀𝐓𝐀 𝐒𝐦𝐚𝐫𝐭 𝐆𝐥𝐚𝐬𝐬 𝐃𝐨𝐨𝐫 𝐋𝐨𝐜𝐤\r\n\r\nSTATA Smart Glass Door Locks are the security guards that you didn’t know you needed. Strong and Robust built with stylish design suitable for office, shop entrance, private cabins and conference halls. You can unlock our Smart glass door lock in 6 different ways. Such as Keyless entry, advanced security features, and seamless integration with your smart Office system or Shop. Conveniently lock and unlock your glass door using your smartphone from anyplace to anytime around the world.\r\nSTATA Smart Glass Door Lock can be your smart choice for top-notch security. \r\n\r\n𝐒𝐦𝐚𝐫𝐭 𝐆𝐥𝐚𝐬𝐬 𝐃𝐨𝐨𝐫 𝐋𝐨𝐜𝐤 𝐀𝐩𝐩𝐞𝐚𝐫𝐚𝐧𝐜𝐞- 𝐃𝐢𝐬𝐜𝐨𝐯𝐞𝐫 𝐭𝐡𝐞 𝐅𝐮𝐭𝐮𝐫𝐞 𝐨𝐟 𝐄𝐥𝐞𝐠𝐚𝐧𝐜𝐞 𝐚𝐧𝐝 𝐓𝐞𝐜𝐡𝐧𝐨𝐥𝐨𝐠𝐲\r\nExperience the perfect blend of elegance and innovation with our Smart Glass Door collection. These doors not only elevate the appearance of your space but also integrate cutting-edge smart technology for added convenience. Embrace the sleek and contemporary design, customizable options, and seamless integration of smart features that redefine the way you interact with your doors. Enjoy the benefits of natural light optimization, enhanced security, and privacy control with just a touch or a voice command. Whether it\'s for your home or business, our Smart Glass Doors offer a sophisticated and modern solution that complements any interior style. Step into the future with our Smart Glass Door Appearance and embrace the seamless fusion of beauty and technology.\r\n\r\n𝐄𝐱𝐩𝐞𝐫𝐢𝐞𝐧𝐜𝐞 𝐔𝐧𝐩𝐚𝐫𝐚𝐥𝐥𝐞𝐥𝐞𝐝 𝐒𝐞𝐜𝐮𝐫𝐢𝐭𝐲 𝐰𝐢𝐭𝐡 𝐨𝐮𝐫 𝐁𝐢𝐨𝐦𝐞𝐭𝐫𝐢𝐜 𝐃𝐨𝐨𝐫\r\nDiscover the future of smart glass door lock technology with our Biometric Door. Embrace a new level of security and convenience as you gain access using your unique fingerprint. No need for keys- our biometric system ensures only authorized individuals can enter. With advanced encryption and real-time recognition, your safety is our priority. Say goodbye to traditional lock hassles and welcome a seamless, high-tech solution that complements any home or office. Upgrade to our Smart Glass Door lock and enjoy the peace of mind that comes with cutting-edge security technology.\r\n\r\n𝐌𝐮𝐥𝐭𝐢𝐩𝐥𝐞 𝐖𝐚𝐲𝐬 𝐭𝐨 𝐔𝐧𝐥𝐨𝐜𝐤: 𝐄𝐱𝐩𝐞𝐫𝐢𝐞𝐧𝐜𝐞 𝐭𝐡𝐞 𝐕𝐞𝐫𝐬𝐚𝐭𝐢𝐥𝐢𝐭𝐲 𝐨𝐟 𝐎𝐮𝐫 𝐒𝐦𝐚𝐫𝐭 𝐆𝐥𝐚𝐬𝐬 𝐃𝐨𝐨𝐫 𝐋𝐨𝐜𝐤\r\nOur Smart Glass Door Lock offers an array of unlocking methods for your convenience. Embrace keyless entry with fingerprint recognition, RFID cards, PIN codes, and even smartphone app access. Choose the method that suits your lifestyle and enjoy seamless, secure access to your space. With advanced encryption and real-time recognition, your safety is guaranteed. Experience the versatility of our Smart Glass Door Lock and redefine the way you interact with your doors. Elevate your security with multiple unlocking options and enjoy a hassle-free entry experience.\r\n\r\n𝐕𝐨𝐢𝐜𝐞-𝐀𝐜𝐭𝐢𝐯𝐚𝐭𝐞𝐝 𝐂𝐨𝐧𝐯𝐞𝐧𝐢𝐞𝐧𝐜𝐞: 𝐂𝐨𝐧𝐭𝐫𝐨𝐥 𝐘𝐨𝐮𝐫 𝐒𝐦𝐚𝐫𝐭 𝐆𝐥𝐚𝐬𝐬 𝐃𝐨𝐨𝐫 𝐰𝐢𝐭𝐡 𝐄𝐚𝐬𝐞\r\nExperience the future of door technology with our Voice Navigation feature. Unlock and control your Smart Glass Door with simple voice commands. No need to search for your keys or remember PIN codes. Our advanced voice recognition technology ensures effortless access to your space. Embrace a hands-free and seamless entry experience. Compatible with popular voice assistants, such as Alexa and Google Assistant, our Smart Glass Door Lock brings ultimate convenience to your smart home. Upgrade now and enjoy the ease of voice-activated control for your door.\r\n\r\n𝐂𝐨𝐧𝐯𝐞𝐧𝐢𝐞𝐧𝐜𝐞 𝐚𝐭 𝐘𝐨𝐮𝐫 𝐅𝐢𝐧𝐠𝐞𝐫𝐭𝐢𝐩𝐬: 𝐔𝐧𝐥𝐨𝐜𝐤 𝐘𝐨𝐮𝐫 𝐒𝐦𝐚𝐫𝐭 𝐆𝐥𝐚𝐬𝐬 𝐃𝐨𝐨𝐫 𝐋𝐨𝐜𝐤 𝐰𝐢𝐭𝐡 𝐒𝐭𝐚𝐭𝐚𝐋𝐢𝐟𝐞 𝐀𝐩𝐩\r\nExperience the ultimate ease with our StataLife mobile app. Unlock your Smart Glass Door Lock effortlessly with a user-friendly interface. Just a tap on your smartphone is all it takes to access your space. Our app offers real-time connectivity, allowing you to grant access remotely to family or guests. Stay in control of your door security from anywhere. Seamlessly integrate with your smart home ecosystem and enjoy a seamless, convenient, and secure entry experience. \r\n\r\nSo buying our Smart glass door lock is only 24999/-. STATA IT LIMITED ensures you the best quality product with highest safety.\r\n\r\n\r\n\r\n𝐔𝐧𝐥𝐨𝐜𝐤 𝐲𝐨𝐮𝐫 𝐒𝐦𝐚𝐫𝐭 𝐆𝐥𝐚𝐬𝐬 𝐃𝐨𝐨𝐫 𝐋𝐨𝐜𝐤 𝐛𝐲 𝟔 𝐝𝐢𝐟𝐟𝐞𝐫𝐞𝐧𝐭 𝐰𝐚𝐲:\r\n• Password \r\n•RFID Card \r\n•Fingerprint \r\n•STATA Smart App \r\n•Generate Guest OTP \r\n•Traditional Key.\r\n\r\n𝐒𝐞𝐫𝐯𝐢𝐜𝐞 & 𝐖𝐚𝐫𝐫𝐚𝐧𝐭𝐲-\r\n1 Year Free Replacement & 5 Years Service Warranty.','upload/products/thumbnail/1744656434882629.png','STATA Smart Glass Door Lock Price in Bangladesh','Enhance your Office security with a Smart Glass Door Lock. Keyless entry, advanced security features, and seamless integration with your smart Office system. Conveniently lock and unlock your glass door using your smartphone. Experience peace of mind with a Smart Glass Door Lock.','https://www.youtube.com/embed/KdUNTpbHE04',NULL,NULL,NULL,NULL,1,'2023-07-20 11:14:30','2023-07-20 11:14:30'),(57,19,16,34,'STATA Bolt Pro','ST-DL-BP','6','Locks','Regular','Black,Rose Gold','42499',NULL,'42500','STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key,Fingerprint,HD Camera','𝐒𝐦𝐚𝐫𝐭 𝐕𝐢𝐝𝐞𝐨 𝐃𝐨𝐨𝐫 𝐋𝐨𝐜𝐤- 𝐒𝐓𝐀𝐓𝐀 𝐁𝐨𝐥𝐭 𝐏𝐫𝐨: 𝐘𝐨𝐮𝐫 𝐔𝐥𝐭𝐢𝐦𝐚𝐭𝐞 𝐇𝐨𝐦𝐞 𝐒𝐞𝐜𝐮𝐫𝐢𝐭𝐲 𝐒𝐨𝐥𝐮𝐭𝐢𝐨𝐧\r\n\r\nIntroducing the STATA Bolt Pro Smart Video Door Lock, a powerful and sophisticated home security system that brings peace of mind to your doorstep. This cutting-edge door lock combines advanced smart technology with high-quality video surveillance, ensuring your home\'s safety is never compromised. With its seamless integration, user-friendly interface, and robust features, the STATA Bolt Pro takes home security to a whole new level.\r\n\r\n𝐕𝐢𝐝𝐞𝐨 𝐌𝐨𝐧𝐢𝐭𝐨𝐫𝐢𝐧𝐠: Stay connected to your front door with real-time video monitoring. The built-in HD camera provides clear and crisp visuals, allowing you to see who\'s at your doorstep from anywhere, anytime, through your smartphone.\r\n\r\n𝐓𝐰𝐨-𝐖𝐚𝐲 𝐀𝐮𝐝𝐢𝐨: Communicate with visitors at your door through the two-way audio feature. Whether you\'re at home or away, you can have a conversation with delivery drivers, guests, or even deter potential intruders.\r\n\r\n𝐑𝐞𝐦𝐨𝐭𝐞 𝐀𝐜𝐜𝐞𝐬𝐬: Control and manage your door lock remotely with the StataLife mobile app. Lock or unlock your door, grant access to trusted individuals, and receive instant notifications of any door activity for complete peace of mind.\r\n\r\n𝐊𝐞𝐲𝐥𝐞𝐬𝐬 𝐄𝐧𝐭𝐫𝐲: Say goodbye to traditional keys and enjoy the convenience of keyless entry. The STATA Bolt Pro supports multiple access methods, including fingerprint recognition, PIN codes, RFID cards, and smartphone app access.\r\n\r\n𝐄𝐧𝐡𝐚𝐧𝐜𝐞𝐝 𝐒𝐞𝐜𝐮𝐫𝐢𝐭𝐲: With advanced encryption and multi-factor authentication, the STATA Bolt Pro ensures your home remains secure against unauthorized access. Enjoy the highest level of protection for you and your loved ones.\r\n\r\n𝐒𝐥𝐞𝐞𝐤 𝐚𝐧𝐝 𝐒𝐭𝐲𝐥𝐢𝐬𝐡 𝐃𝐞𝐬𝐢𝐠𝐧: The STATA Bolt Pro features a sleek and modern design that complements any home exterior. Enhance your home\'s curb appeal while adding a touch of sophistication to your entrance.\r\n\r\n𝐄𝐚𝐬𝐲 𝐈𝐧𝐬𝐭𝐚𝐥𝐥𝐚𝐭𝐢𝐨𝐧: The STATA Bolt Pro is designed for easy installation, making it accessible to homeowners and professionals alike. No complex wiring or drilling required – set it up effortlessly and start securing your home.\r\n\r\nUpgrade your home security with the STATA Bolt Pro Smart Video Door Lock and experience the ultimate combination of convenience, technology, and protection. Safeguard your loved ones and belongings with this advanced security solution, providing you with peace of mind whether you\'re at home or away. Embrace smart living and take control of your home security with the STATA Bolt Pro today.\r\n\r\n𝐒𝐩𝐞𝐜𝐞𝐟𝐢𝐜𝐚𝐭𝐢𝐨𝐧-\r\n•𝐏𝐫𝐨𝐝𝐮𝐜𝐭 𝐦𝐨𝐝𝐞𝐥: STATA Bolt Pro\r\n•𝐂𝐚𝐦𝐞𝐫𝐚: HD Camera with Night vision Mod\r\n•𝐏𝐫𝐨𝐭𝐨𝐜𝐨𝐥: Wi-Fi\r\n•𝐌𝐚𝐭𝐞𝐫𝐢𝐚𝐥: Aluminum and Zinc alloy\r\n•𝐏𝐫𝐨𝐝𝐮𝐜𝐭 𝐒𝐢𝐳𝐞: 370*75*24 mm\r\n•𝐏𝐨𝐰𝐞𝐫 𝐒𝐮𝐩𝐩𝐥𝐲 𝐓𝐲𝐩𝐞: Pencil Battery\r\n•𝐃𝐨𝐨𝐫 𝐓𝐡𝐢𝐜𝐤𝐧𝐞𝐬𝐬 𝐂𝐨𝐦𝐩𝐚𝐭𝐢𝐛𝐢𝐥𝐢𝐭𝐲: 45-120mm\r\n•𝐂𝐞𝐫𝐭𝐢𝐟𝐢𝐜𝐚𝐭𝐢𝐨𝐧: CE,FCC\r\n•𝐒𝐮𝐩𝐩𝐨𝐫𝐭𝐞𝐝 𝐃𝐞𝐯𝐢𝐜𝐞: Google Assistance & Amazon Alexa\r\n\r\n•𝟔 𝐰𝐚𝐲𝐬 𝐭𝐨 𝐮𝐧𝐥𝐨𝐜𝐤 𝐲𝐨𝐮𝐫 𝐬𝐦𝐚𝐫𝐭 𝐯𝐢𝐝𝐞𝐨 𝐝𝐨𝐨𝐫 𝐥𝐨𝐜𝐤:\r\ni) Password \r\nii) RFID Card \r\niii) Fingerprint \r\niv) STATA Smart App \r\nv) Generate Guest OTP \r\nvi) Traditional Key.\r\n\r\n𝐒𝐞𝐫𝐯𝐢𝐜𝐞 & 𝐖𝐚𝐫𝐫𝐚𝐧𝐭𝐲-\r\n1 Year Free Replacement & 5 Years Service Warranty\r\n\r\nYou can Buy this Smart Video Door Lock STATA Bolt Pro at 42499','upload/products/thumbnail/1744665613023449.png','Smart Video Door Lock Price in Bangladesh- STATA Bolt Pro','Enhance your home security with the Smart Video Door Lock Stata Bolt Pro. Keyless entry, video monitoring, and seamless integration with smart home platforms. Control and monitor your door remotely. Elevate your home security today.','https://www.youtube.com/embed/OEOaR_I0eLw',1,NULL,NULL,NULL,1,'2023-07-23 09:58:06','2023-07-23 09:58:06'),(58,19,16,34,'STATA Clutch','ST-CL-SDL','1','Locks,smart lock','Regular','Black,Rose Gold','17999',NULL,'18999','STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key,Fingerprint','STATA Smart Door Locks are the security \r\nguards that you didn’t know you needed. \r\nStrong and Robust built with ABS Plastic.\r\nalways ready to protect your home. \r\nYou can unlock them in 6 different ways. \r\nSTATA Smart Door Lock Operate your home \r\nfrom any place around the world!! \r\n\r\nUnlock your door by \r\ni) Password \r\nii) RFID Card \r\niii) Fingerprint \r\niv) STATA Smart App \r\nv) Generate Guest OTP \r\nvi) Traditional Key.\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty','upload/products/thumbnail/1744574859849203.png','Wifi Smart Door lock price in Bangladesh- STATA Clutch','Enhance your home security with the Wifi Smart Door Lock - Stata Clutch. Keyless entry, RFID Card, remote access control from StataLife App, and Guest OTP for your smart home system. Experience peace of mind with Stata Clutch.','https://www.youtube.com/embed/DgfFOLbwK_U',NULL,NULL,NULL,NULL,1,'2023-07-18 11:11:58','2023-07-18 11:11:58'),(60,19,18,37,'STATA HEX','ST-HEX','10','Switch,Locks,Sensor','Regular','Black,White,Gold','5199',NULL,'5200','STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key','𝐋𝐄𝐃 𝐇𝐞𝐱𝐚𝐠𝐨𝐧(𝐇𝐄𝐗) 𝐋𝐢𝐠𝐡𝐭𝐬 (𝐒𝐓𝐀𝐓𝐀 𝐇𝐄𝐗): 𝐈𝐥𝐥𝐮𝐦𝐢𝐧𝐚𝐭𝐞 𝐘𝐨𝐮𝐫 𝐒𝐩𝐚𝐜𝐞 𝐰𝐢𝐭𝐡 𝐒𝐭𝐲𝐥𝐞 𝐚𝐧𝐝 𝐄𝐟𝐟𝐢𝐜𝐢𝐞𝐧𝐜𝐲\r\nDo you want to decorate your home, office or studio with a modern touch of elegance? Our LED Hexagon(HEX) Lights offer the perfect blend of style and efficiency, creating a visually stunning effect that elevates any room\'s ambiance. With their hexagonal shape, these lights not only provide a unique and captivating look but also optimize the use of natural light, promoting energy efficiency.\r\n\r\nUnique Design: The hexagonal shape of our LED lights creates a visually appealing pattern that adds a contemporary and sophisticated touch to your space. Whether used as standalone pieces or in clusters, they become a statement piece in any room.\r\n\r\n𝐕𝐞𝐫𝐬𝐚𝐭𝐢𝐥𝐞 𝐋𝐢𝐠𝐡𝐭𝐢𝐧𝐠 𝐎𝐩𝐭𝐢𝐨𝐧𝐬: Our LED Hexagon(HEX) Lights come in various options, such as warm white, cool white, and color-changing RGB. Choose the lighting tone that complements your interior and sets the desired mood.\r\n\r\n𝐄𝐧𝐞𝐫𝐠𝐲-𝐄𝐟𝐟𝐢𝐜𝐢𝐞𝐧𝐭: With advanced LED technology, our lights are highly energy-efficient, consuming less power while producing bright and long-lasting illumination. Save electricity bills with high quality lighting.\r\n\r\n𝐒𝐦𝐚𝐫𝐭 𝐇𝐨𝐦𝐞 𝐈𝐧𝐭𝐞𝐠𝐫𝐚𝐭𝐢𝐨𝐧: For tech-savvy individuals, our LED Hexagon(HEX) Lights can be integrated with smart home systems, allowing you to control and adjust lighting remotely. Embrace the convenience of modern smart lighting.\r\n\r\n𝐄𝐚𝐬𝐲 𝐈𝐧𝐬𝐭𝐚𝐥𝐥𝐚𝐭𝐢𝐨𝐧: Designed for hassle-free installation, our LED Hexagon(HEX) Lights can be mounted on walls or ceilings with ease. Create your desired lighting arrangement effortlessly.\r\n\r\n𝐒𝐩𝐚𝐜𝐞 𝐎𝐩𝐭𝐢𝐦𝐢𝐳𝐚𝐭𝐢𝐨𝐧: The compact and space-saving design of our LED lights allows you to use them in any room, regardless of size. Illuminate even the smallest corners with style.\r\n\r\n𝐖𝐢𝐝𝐞 𝐑𝐚𝐧𝐠𝐞 𝐨𝐟 𝐀𝐩𝐩𝐥𝐢𝐜𝐚𝐭𝐢𝐨𝐧𝐬: From living rooms and bedrooms to offices and commercial spaces, our LED Hexagon(HEX) Lights find StataLife applications, adding a touch of elegance and modernity to any environment.\r\n\r\nTransform your space with the captivating glow of our LED Hexagon(HEX) Lights. Embrace a modern and energy-efficient lighting solution that complements your style and enhances the overall ambiance. Experience the future of lighting with our versatile and aesthetically pleasing LED Hexagon(HEX) Lights. Illuminate your space with style and efficiency today.\r\n\r\n𝐏𝐫𝐢𝐜𝐞: 5200/-\r\n\r\n𝐒𝐓𝐀𝐓𝐀 𝐇𝐄𝐗 𝐅𝐞𝐚𝐭𝐮𝐫𝐞𝐬:\r\n\r\n•𝐂𝐨𝐥𝐨𝐫: 16 Million Color Option\r\n\r\n•𝐒𝐲𝐧𝐜𝐡𝐫𝐨𝐧𝐢𝐳𝐚𝐭𝐢𝐨𝐧: Sync With Music\r\n\r\n•𝐒𝐜𝐡𝐞𝐝𝐮𝐥𝐞: Schedule Time\r\n\r\n•𝐒𝐜𝐞𝐧𝐞: Pre-Set Scene\r\n\r\n•𝐌𝐨𝐝𝐞: Dimmer Mode\r\n\r\n•𝐌𝐨𝐛𝐢𝐥𝐞 𝐀𝐩𝐩: Controlled using StataLife App from any place at any time around the world\r\n\r\n•𝐒𝐮𝐩𝐩𝐨𝐫𝐭𝐞𝐝 𝐃𝐞𝐯𝐢𝐜𝐞: Amazon Alexa & Google Home Compatible\r\n\r\n•𝐖𝐡𝐚𝐭\'𝐬 𝐈𝐧 𝐭𝐡𝐞 𝐛𝐨𝐱:\r\n⇨6x lights\r\n⇨6x PCB connector board\r\n⇨10x Corner connector\r\n⇨8x Double-sided tapes\r\n⇨1x STATA manual\r\n⇨1x Plastic stand\r\n⇨1x 1.5M USB cable\r\n\r\n𝐒𝐞𝐫𝐯𝐢𝐜𝐞 & 𝐖𝐚𝐫𝐫𝐚𝐧𝐭𝐲-\r\n1 Year Free Replacement\r\n\r\n𝐂𝐮𝐬𝐭𝐨𝐦𝐞𝐫 𝐂𝐚𝐫𝐞 𝐒𝐮𝐩𝐩𝐨𝐫𝐭-\r\n24/7 Customer Care\r\n\r\n𝐂𝐚𝐥𝐥 𝐍𝐨𝐰: 09678200509, 01720514565\r\n𝐅𝐨𝐫 𝐃𝐞𝐚𝐥𝐞𝐫𝐬𝐡𝐢𝐩: 01312735557','upload/products/thumbnail/1744575249290822.jpeg','LED Hexagon(HEX) lights Price in Bangladesh','Illuminate your space with the captivating glow of LED Hexagon (HEX) lights. Create a visually stunning effect with their unique hexagonal shape. Perfect for accent lighting and creating a statement piece. Enhance your space with LED Hexagon lights.',NULL,NULL,NULL,1,NULL,1,'2023-07-23 05:40:39','2023-07-23 05:40:39'),(61,19,15,33,'STATA Smart Fan Dimmer','ST-SFS','19','Switch','Regular','Black,White','2900','2610','290','App Control,Touch,Remotely controllable,Schedualing','𝐈𝐧𝐭𝐫𝐨𝐝𝐮𝐜𝐢𝐧𝐠 𝐒𝐦𝐚𝐫𝐭 𝐅𝐚𝐧 𝐃𝐢𝐦𝐦𝐞𝐫 𝐒𝐰𝐢𝐭𝐜𝐡𝐞𝐬 - 𝐄𝐥𝐞𝐯𝐚𝐭𝐞 𝐘𝐨𝐮𝐫 𝐂𝐨𝐦𝐟𝐨𝐫𝐭 𝐚𝐧𝐝 𝐂𝐨𝐧𝐭𝐫𝐨𝐥\r\nAre you tired of traditional on/off switches for your ceiling fans? Upgrade your fan control experience with Smart Fan Dimmer Switches. These innovative devices bring a new level of convenience and versatility to your home, allowing you to adjust fan speed and even dim the lights all in one place. At STATA IT LIMITED, we offer a wide range of Smart Fan Dimmer Switches at competitive prices in Bangladesh, making it easier than ever to enhance your living spaces.\r\n\r\n𝐊𝐞𝐲 𝐅𝐞𝐚𝐭𝐮𝐫𝐞𝐬:\r\n𝐅𝐚𝐧 𝐒𝐩𝐞𝐞𝐝 𝐂𝐨𝐧𝐭𝐫𝐨𝐥: With Smart Fan Dimmer Switches, you have complete control over your fan\'s speed. Say goodbye to manually adjusting pull chains or using multiple switches – now, everything is at your fingertips.\r\n\r\n𝐃𝐢𝐦𝐦𝐚𝐛𝐥𝐞 𝐋𝐢𝐠𝐡𝐭𝐢𝐧𝐠: Many of our Smart Fan Dimmer Switches come with dimmable lighting options, allowing you to set the perfect ambiance in any room. Create a cozy atmosphere or brighten up your space effortlessly.\r\n\r\n𝐖𝐢𝐫𝐞𝐥𝐞𝐬𝐬 𝐑𝐞𝐦𝐨𝐭𝐞 𝐀𝐜𝐜𝐞𝐬𝐬: Forgot to turn off the fan before leaving home? Not a problem! With wireless remote access, you can control your fan and lights from anywhere using your smartphone with our user-friendly StataLife App.\r\n\r\n𝐒𝐦𝐚𝐫𝐭 𝐇𝐨𝐦𝐞 𝐈𝐧𝐭𝐞𝐠𝐫𝐚𝐭𝐢𝐨𝐧: Our Smart Fan Dimmer Switches are designed to seamlessly integrate with popular smart home ecosystems like Amazon Alexa and Google Assistant. Enjoy hands-free voice control for ultimate convenience.\r\n\r\n𝐄𝐧𝐞𝐫𝐠𝐲 𝐄𝐟𝐟𝐢𝐜𝐢𝐞𝐧𝐜𝐲: Reduce energy consumption and utility bills with smart scheduling features. Set timers to automatically turn off fans and lights when not needed, promoting eco-friendly practices.\r\n\r\n𝐄𝐚𝐬𝐲 𝐈𝐧𝐬𝐭𝐚𝐥𝐥𝐚𝐭𝐢𝐨𝐧: Installing Smart Fan Dimmer Switches is a breeze with our user-friendly instructions. No need to hire a professional – transform your home in minutes.\r\n\r\n𝐑𝐞𝐥𝐢𝐚𝐛𝐥𝐞 𝐏𝐞𝐫𝐟𝐨𝐫𝐦𝐚𝐧𝐜𝐞: Our Smart Fan Dimmer Switches are built to last, offering reliable performance for years to come. Rest assured that your investment is backed by top-notch quality.\r\n\r\n𝐀𝐟𝐟𝐨𝐫𝐝𝐚𝐛𝐥𝐞 𝐏𝐫𝐢𝐜𝐞𝐬 𝐢𝐧 𝐁𝐚𝐧𝐠𝐥𝐚𝐝𝐞𝐬𝐡: We understand the importance of affordability. That\'s why we offer competitive prices for our Smart Fan Dimmer Switches, ensuring everyone can experience the benefits of smart living.\r\n\r\nTransform your living spaces with the latest smart technology. Upgrade to Smart Fan Dimmer Switches today and enjoy enhanced comfort, convenience, and energy efficiency. Discover the best prices in Bangladesh at stataglobal.com and embark on a journey towards a smarter home.\r\n\r\n\r\n𝐒𝐩𝐞𝐜𝐢𝐟𝐢𝐜𝐚𝐭𝐢𝐨𝐧-\r\n•𝐌𝐨𝐝𝐞𝐥: STATA Smart Fan Dimmer\r\n•𝐏𝐚𝐧𝐞𝐥: Crystal glass panel, no fading\r\n•𝐖𝐚𝐭𝐞𝐫𝐩𝐫𝐨𝐨𝐟: Yes\r\n•𝐀𝐧𝐭𝐢-𝐜𝐫𝐞𝐞𝐩𝐢𝐧𝐠: Yes\r\n•𝐒𝐜𝐡𝐞𝐝𝐮𝐥𝐞𝐝: You can set timer for this device\r\n•𝐕𝐨𝐥𝐭𝐚𝐠𝐞: 170V-240V \r\n•𝐋𝐨𝐚𝐝 𝐏𝐨𝐰𝐞𝐫: 5-300W/Gang \r\n•𝐂𝐞𝐫𝐭𝐢𝐟𝐢𝐜𝐚𝐭𝐢𝐨𝐧: CE, FCC, RoHS\r\n•𝐖𝐨𝐫𝐤𝐢𝐧𝐠 𝐓𝐞𝐦𝐩𝐞𝐫𝐚𝐭𝐮𝐫𝐞: -20-70 Degree\r\n\r\n𝐖𝐚𝐫𝐫𝐚𝐧𝐭𝐲 & 𝐒𝐞𝐫𝐯𝐢𝐜𝐞-\r\n1 Year Free Replacement & 5 Years Service Warranty','upload/products/thumbnail/1762587268111029.png','STATA Smart Fan Dimmer Switch (Wi-Fi Mobile App Control)','Enhance your fan control with the STATA Smart Fan Dimmer Switch. Adjust fan speed from a single switch with Voice control and smartphone app(StataLife)','https://www.youtube.com/embed/0HenG8pXARM',NULL,NULL,1,NULL,1,'2023-07-25 10:15:49','2023-07-25 10:15:49'),(63,19,15,33,'STATA Smart Boiler Switch','ST-SBS','56','Switch','Regular','Black,White','3000','2699','301','STATA Smart App,Touch control,Remotely control,Schedualing','𝐒𝐓𝐀𝐓𝐀 𝐒𝐦𝐚𝐫𝐭 𝐁𝐨𝐢𝐥𝐞𝐫 𝐒𝐰𝐢𝐭𝐜𝐡\r\nTake control of your Water heating with the STATA Smart Boiler Switch. This Wi-Fi enabled device allows you to conveniently manage and schedule your boiler remotely, ensuring comfort and energy efficiency. With its easy installation and compatibility with popular smart home platforms, you can easily integrate it into your existing smart home ecosystem. Experience the convenience of adjusting your boiler settings from anywhere and optimize your energy usage with the STATA Smart Boiler Switch.\r\n\r\n𝐒𝐩𝐞𝐜𝐢𝐟𝐢𝐜𝐚𝐭𝐢𝐨𝐧-\r\n•𝐈𝐭𝐞𝐦 𝐓𝐲𝐩𝐞: Wi-Fi Smart Switch\r\n\r\n•𝐌𝐚𝐭𝐞𝐫𝐢𝐚𝐥: Abs + Tempered Glass\r\n\r\n•𝐏𝐧𝐚𝐞𝐥: Crystal glass panel, no fading, elegant and stylish \r\nIntegrated panel design, waterproof and anti-creeping\r\n\r\n•𝐂𝐨𝐧𝐭𝐫𝐨𝐥 𝐒𝐲𝐬𝐭𝐞𝐦: Smooth Touch control ensures longer service life  than mechanical switch New imported IC processor for nice sensitivity and stable performance Humanized  design\r\n\r\n•𝐒𝐜𝐡𝐞𝐝𝐮𝐥𝐞𝐝: Remotely scheduled & you can set timer for these smart devices.\r\n\r\n•𝐑𝐚𝐭𝐞𝐝 𝐕𝐨𝐥𝐭𝐚𝐠𝐞: 170V-240V \r\n\r\n•𝐋𝐨𝐚𝐝 𝐏𝐨𝐰𝐞𝐫: 5-300W/Gang \r\n\r\n•𝐖𝐢𝐫𝐞𝐥𝐞𝐬𝐬 𝐓𝐲𝐩𝐞: Wireless 2.4Ghz\r\n\r\n•𝐖𝐢𝐫𝐞𝐥𝐞𝐬𝐬 𝐒𝐭𝐚𝐧𝐝𝐚𝐫𝐝: Ieee 802.11 B/G/N\r\n\r\n•𝐒𝐮𝐩𝐩𝐨𝐫𝐭𝐞𝐝 𝐃𝐞𝐯𝐢𝐜𝐞: Google Assistance and Amazon Alexa\r\n\r\n•𝐌𝐨𝐛𝐢𝐥𝐞 𝐀𝐩𝐩: StataLife\r\n\r\n•𝐂𝐞𝐫𝐭𝐢𝐟𝐢𝐜𝐚𝐭𝐢𝐨𝐧: CE, FCC, RoHS\r\n\r\n•𝐖𝐨𝐫𝐤𝐢𝐧𝐠 𝐓𝐞𝐦𝐩𝐞𝐫𝐚𝐭𝐮𝐫𝐞: -20-70 Degree\r\n\r\n•𝐏𝐚𝐜𝐤𝐚𝐠𝐞𝐬:   \r\n⇨1X Stata Smart Boiler Switch\r\n⇨1x User Manual\r\n⇨ 2x Screw\r\n\r\n𝐒𝐞𝐫𝐯𝐢𝐜𝐞 & 𝐖𝐚𝐫𝐫𝐚𝐧𝐭𝐲:\r\n1 Year Free Replacement & 5 Years Service Warranty','upload/products/thumbnail/1744663566507727.png','STATA Smart Boiler Switch price in Bangladesh- Stata It Limited','Manage and schedule your water heating with ease using the STATA Smart Boiler Switch. Wi-Fi enabled for remote control and compatibility with popular smart home platforms. Stay comfortable and energy-efficient. Buy now!','https://www.youtube.com/embed/hxFS2A6XlVQ',1,NULL,1,NULL,1,'2023-07-25 09:43:31','2023-07-25 09:43:31'),(64,19,18,37,'STATA Smart Strip Light','ST-RGB Strip','20','RGB Light','Regular','RGB','3300','2970','330','STATA Smart App,16 million color,Schedualing,Voice Controll','𝐒𝐓𝐀𝐓𝐀 𝐒𝐦𝐚𝐫𝐭 𝐑𝐆𝐁 𝐋𝐄𝐃 𝐒𝐭𝐫𝐢𝐩 𝐋𝐢𝐠𝐡𝐭\r\nTransform your living space with the STATA Smart RGB LED Strip Light 5M. This versatile lighting solution allows you to create stunning visual effects and set the perfect ambiance for any occasion. With its easy installation and smart control options, you can adjust colors, brightness, and even sync the lights with music or create custom lighting schedules. Elevate your home decor and lighting experience with the STATA Smart RGB LED Strip Light 5M.\r\n\r\n𝐒𝐩𝐞𝐜𝐢𝐟𝐢𝐜𝐚𝐭𝐢𝐨𝐧-\r\n•𝐋𝐞𝐧𝐠𝐭𝐡: 5M Strip light, \r\n\r\n•𝐋𝐢𝐠𝐡𝐭: LED\r\n\r\n•𝐂𝐨𝐥𝐨𝐫 𝐌𝐨𝐝𝐞: RGB\r\n\r\n•𝐒𝐮𝐩𝐩𝐨𝐫𝐭𝐞𝐝 𝐂𝐨𝐥𝐨𝐫: 16 Million Color Option\r\n\r\n•𝐒𝐲𝐧𝐜𝐡𝐫𝐨𝐧𝐢𝐳𝐚𝐭𝐢𝐨𝐧: Sync with Music \r\n\r\n•𝐒𝐜𝐡𝐞𝐝𝐮𝐥𝐢𝐧𝐠: Support Schedule Time, Pre-Set Scene\r\n\r\n•𝐃𝐢𝐦𝐦𝐞𝐫 𝐌𝐨𝐝𝐞: Enable \r\n\r\n•𝐌𝐨𝐛𝐢𝐥𝐞 𝐀𝐩𝐩: Controlled Using StataLife App From\r\nany Place At Any Time Around The World \r\n\r\n•𝐒𝐮𝐩𝐩𝐨𝐫𝐭𝐞𝐝 𝐃𝐞𝐯𝐢𝐜𝐞: Amazon Alexa & Google Home Compatible.\r\n\r\n𝐒𝐞𝐫𝐯𝐢𝐜𝐞 & 𝐖𝐚𝐫𝐫𝐚𝐧𝐭𝐲\r\n1 Year Free Replacement','upload/products/thumbnail/1744662957877541.png','STATA Smart RGB LED Strip Light 5M (Wi-Fi) Enable','Enhance your space with the STATA Smart RGB LED Strip Light 5M. Create stunning visual effects, adjust colors, and sync with music. Elevate your home decor and lighting experience. Buy now!','https://www.youtube.com/embed/NARuqgxPhtc',1,NULL,1,NULL,1,'2023-07-17 09:20:32','2023-07-17 09:20:32'),(65,19,14,31,'STATA Capsule','ST-CAP-IP','5','IP Camera','Regular','White','3300','2970','330','STATA Smart App,350 Degree,Two Way Communication,HD Camera,Motion Detection,SD Card Supported','𝐒𝐓𝐀𝐓𝐀 𝐂𝐚𝐩𝐬𝐮𝐥𝐞- 𝐒𝐦𝐚𝐫𝐭 𝟑𝟓𝟎 𝐝𝐞𝐠𝐫𝐞𝐞 𝐂𝐂𝐓𝐕 𝐜𝐚𝐦𝐞𝐫𝐚\r\nEnhance your security system with the STATA Capsule - Smart 360 degree CCTV camera. This innovative camera provides comprehensive coverage with its 360-degree panoramic view, ensuring no blind spots in your surveillance. With its advanced features like motion detection, night vision, and two-way audio, you can monitor your property in real-time and communicate remotely. Easy to install and compatible with popular smart home platforms, the STATA Capsule offers peace of mind and top-notch security for your home or business.\r\n\r\n𝐒𝐩𝐞𝐜𝐢𝐟𝐢𝐜𝐚𝐭𝐢𝐨𝐧-\r\n•𝐓𝐫𝐚𝐜𝐤𝐢𝐧𝐠 𝐦𝐨𝐝𝐞: Auto Smart Tracking \r\n\r\n•𝐌𝐨𝐛𝐢𝐥𝐞 𝐀𝐩𝐩: Supports StataLife App\r\n\r\n•𝐂𝐚𝐦𝐞𝐫𝐚 𝐑𝐞𝐬𝐨𝐥𝐮𝐭𝐢𝐨𝐧: 1080P HD & SMART PAN/TILT/ZOOM\r\n\r\n•𝐂𝐚𝐦𝐞𝐫𝐚 𝐌𝐨𝐝𝐞: Intelligent Mobile Tracking Recognition \r\n\r\n•𝐂𝐨𝐦𝐦𝐮𝐧𝐢𝐜𝐚𝐭𝐢𝐨𝐧 𝐖𝐚𝐲: TWO-WAY AUDIO \r\n\r\n•𝐖𝐢-𝐅𝐢 𝐂𝐨𝐧𝐧𝐞𝐜𝐭𝐢𝐨𝐧: Easy Set-up with 2.4G Wi-Fi\r\n\r\n•𝐂𝐚𝐦𝐞𝐫𝐚 𝐅𝐞𝐚𝐭𝐮𝐫𝐞: HD Day & Night Monitoring\r\n\r\n•𝐌𝐨𝐭𝐢𝐨𝐧 𝐃𝐞𝐭𝐞𝐜𝐭𝐢𝐨𝐧: Sensitive Motion Detection\r\n\r\n•𝐒𝐭𝐨𝐫𝐚𝐠𝐞: Supports both Cloud & Memory Card (upto128 GB)\r\n\r\n𝐒𝐞𝐫𝐯𝐢𝐜𝐞 & 𝐖𝐚𝐫𝐫𝐚𝐧𝐭𝐲\r\n1 Year Free Replacement','upload/products/thumbnail/1744663266359722.png','STATA Capsule- Smart 350 degree CCTV camera','Ensure comprehensive security with the STATA Capsule - Smart 360 degree CCTV camera. Easy installation and compatibility with smart home platforms. Elevate your security system today.','https://www.youtube.com/embed/V4aKKEMPo9c',1,1,1,NULL,1,'2023-07-17 08:24:23','2023-07-17 08:24:23'),(66,19,14,30,'STATA Smart Gas Sensor (With Valve)','(ST-WGS-VL)','0','Sensor','Regular','White','11999',NULL,'12000','STATA Smart App,Remotely controll,Voice Controll,Schedualing','STATA Smart Gas Sensor (With Valve) GET Instant Notification !! Mobile App : StataLife High reliability semiconductor sensor;Using powerful microprocessor control Mobile APP remote connection, support for connecting tuya APP;Connect to tuya APP for remote notification Real-time reporting of detected gas concentration;Voice alarm prompt Can remotely control manipulator(Valve switch) .\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty','upload/products/thumbnail/1744664752090148.png','STATA Smart Gas Sensor (With Valve)','Stay safe with the Smart Gas Sensor (With Valve). Detects gas leaks and shuts off supply automatically. Receive real-time alerts and monitor gas levels remotely. Protect your home and loved ones. Buy the Smart Gas Sensor now!','https://www.youtube.com/embed/thOWmnTzs04',NULL,NULL,NULL,NULL,1,'2023-07-18 10:59:27','2023-07-18 10:59:27'),(67,19,14,30,'STATA Smart Motion Sensor','(ST-SMS)','2','Sensor','Regular','White','2499',NULL,'2500','STATA Smart App,Motion Detection,Voice Controll,Scheduling,Automation','𝐒𝐓𝐀𝐓𝐀 𝐒𝐦𝐚𝐫𝐭 𝐌𝐨𝐭𝐢𝐨𝐧 𝐒𝐞𝐧𝐬𝐨𝐫 (𝐒-𝐒𝐌𝐒)\r\n\r\n𝐏𝐫𝐨𝐝𝐮𝐜𝐭 𝐃𝐞𝐬𝐜𝐫𝐢𝐩𝐭𝐢𝐨𝐧:\r\n\r\n1. Advanced Motion Sensor, PIR detect people or animals that are moving, 7m detection distance, whether day or night can be real-time monitoring.\r\n\r\n2. Battery Wi-Fi powered and have a mount bracket, easy to put on ceiling or tablet etc.\r\n\r\n3. Provides remote home monitoring. Set push notifications to your mobile devices or sound and vibration for early alert of motion detection in your home.\r\n\r\n4. PLUG & PLAY, No hub required\r\n\r\n𝐒𝐩𝐞𝐜𝐢𝐟𝐢𝐜𝐚𝐭𝐢𝐨𝐧:\r\n\r\n•𝐁𝐚𝐭𝐭𝐞𝐫𝐲: CR123*1（Package includes battery）\r\n•𝐒𝐭𝐚𝐧𝐝𝐛𝐲 𝐜𝐮𝐫𝐫𝐞𝐧𝐭: 20uA\r\n•𝐒𝐭𝐚𝐧𝐝𝐛𝐲 𝐭𝐢𝐦𝐞: 1years(25times/day),2years(10times/day)\r\n•𝐖𝐢𝐫𝐞𝐥𝐞𝐬𝐬 𝐭𝐲𝐩𝐞: 2.4GHz\r\n•𝐏𝐫𝐨𝐭𝐨𝐜𝐨𝐥: IEEE 802.11b/g/n\r\n•𝐖𝐢𝐫𝐞𝐥𝐞𝐬𝐬 𝐑𝐚𝐧𝐠𝐞: 45m\r\n•𝐎𝐩𝐞𝐫𝐚𝐭𝐢𝐧𝐠 𝐭𝐞𝐦𝐩𝐞𝐫𝐚𝐭𝐮𝐫𝐞: 0-40degree(32F-104F)\r\n•𝐎𝐩𝐞𝐫𝐚𝐭𝐢𝐨𝐧 𝐡𝐮𝐦𝐢𝐝𝐢𝐭𝐲: 20%-85%\r\n•𝐒𝐭𝐨𝐫𝐚𝐠𝐞 𝐓𝐞𝐦𝐩𝐞𝐫𝐚𝐭𝐮𝐫𝐞: 0-90%\r\n\r\n𝐒𝐞𝐫𝐯𝐢𝐜𝐞 & 𝐖𝐚𝐫𝐫𝐚𝐧𝐭𝐲-\r\n1 Year Free Replacement & 5 Years Warranty\r\n24/7 Customer Care','upload/products/thumbnail/1744663336823404.png','STATA Smart Motion Sensor Price in Bangladesh','Discover the convenience and security of STATA Smart Motion Sensor. Control your home effortlessly with this advanced technology. Buy this product at best price in Bangladesh. Enhance your smart home experience today!','https://www.youtube.com/embed/goAymIG2gJ',NULL,NULL,NULL,NULL,1,'2023-07-27 09:18:49','2023-07-27 09:18:49'),(68,19,15,32,'STATA Non-Smart 5 Pin Socket','ST-TS5N','400','Socket','Regular','Black,White','1799','1620','179','Type-C Port,USB Port,5-Pin','𝐒𝐓𝐀𝐓𝐀 𝐍𝐨𝐧-𝐒𝐦𝐚𝐫𝐭 𝟓 𝐏𝐢𝐧 𝐒𝐨𝐜𝐤𝐞𝐭: 𝐑𝐞𝐥𝐢𝐚𝐛𝐢𝐥𝐢𝐭𝐲 𝐚𝐧𝐝 𝐅𝐮𝐧𝐜𝐭𝐢𝐨𝐧𝐚𝐥𝐢𝐭𝐲 𝐚𝐭 𝐚𝐧 𝐔𝐧𝐛𝐞𝐚𝐭𝐚𝐛𝐥𝐞 𝐂𝐨𝐬𝐭\r\nIntroducing the STATA Non-Smart 5 Pin Socket, a testament to excellence in design, reliability, and functionality – all offered at an unbeatable price in Bangladesh. Crafted with precision and engineered for performance, this 5-pin socket is the perfect addition to your home or workplace. Experience seamless power distribution, superior build quality, and budget-friendly pricing with the STATA Non-Smart 5 Pin Socket.\r\n\r\n𝐄𝐟𝐟𝐢𝐜𝐢𝐞𝐧𝐭 𝐏𝐨𝐰𝐞𝐫 𝐃𝐢𝐬𝐭𝐫𝐢𝐛𝐮𝐭𝐢𝐨𝐧: The STATA Non-Smart 5 Pin Socket allows you to connect multiple devices simultaneously, efficiently distributing power to meet your various electrical needs.\r\n\r\n𝐒𝐭𝐮𝐫𝐝𝐲 𝐁𝐮𝐢𝐥𝐝 𝐐𝐮𝐚𝐥𝐢𝐭𝐲: Crafted with high-quality materials, this socket ensures durability and longevity, providing you with a reliable solution for years to come.\r\n\r\n𝐒𝐚𝐟𝐞 𝐚𝐧𝐝 𝐒𝐞𝐜𝐮𝐫𝐞: With a focus on safety, the STATA Non-Smart 5 Pin Socket features robust insulation and protective mechanisms, offering peace of mind while using your electrical appliances.\r\n\r\n𝐔𝐧𝐢𝐯𝐞𝐫𝐬𝐚𝐥 𝐂𝐨𝐦𝐩𝐚𝐭𝐢𝐛𝐢𝐥𝐢𝐭𝐲: Designed to accommodate a wide range of plugs, the 5-pin configuration makes it compatible with various electrical devices, making it a versatile choice for your home or office.\r\n\r\n𝐄𝐚𝐬𝐲 𝐈𝐧𝐬𝐭𝐚𝐥𝐥𝐚𝐭𝐢𝐨𝐧: The user-friendly design ensures hassle-free installation, making it accessible to both professionals and DIY enthusiasts.\r\n\r\n𝐀𝐟𝐟𝐨𝐫𝐝𝐚𝐛𝐥𝐞 𝐏𝐫𝐢𝐜𝐢𝐧𝐠: At STATA, we believe that quality should not come at a premium. Our Non-Smart 5 Pin Socket is competitively priced in Bangladesh, making it an affordable yet reliable choice for all.\r\n\r\n𝐓𝐫𝐮𝐬𝐭𝐞𝐝 𝐁𝐫𝐚𝐧𝐝: With a strong reputation for delivering top-notch electrical solutions, STATA is a trusted brand that stands behind its products, ensuring customer satisfaction with every purchase.\r\n\r\nUpgrade your power distribution with the STATA Non-Smart 5 Pin Socket, offering reliability, safety, and performance – all at an unmatched price in Bangladesh. Trust in the brand that prioritizes customer needs and delivers superior electrical solutions. Embrace the excellence of STATA and experience seamless power distribution at an affordable cost. Invest in the STATA Non-Smart 5 Pin Socket today and power up your space with confidence.\r\n\r\n𝐒𝐩𝐞𝐜𝐞𝐟𝐢𝐜𝐚𝐭𝐢𝐨𝐧-\r\n𝐌𝐨𝐝𝐞𝐥: STATA Non-Smart 5 pin Socket\r\n𝐁𝐨𝐝𝐲 𝐩𝐚𝐧𝐞𝐥: Crystal glass panel, no fading, elegant and stylish Integrated panel\r\n𝐖𝐚𝐭𝐞𝐫𝐩𝐫𝐨𝐨𝐟: Yes\r\n𝐀𝐧𝐭𝐢-𝐜𝐫𝐞𝐞𝐩𝐢𝐧𝐠: Yes\r\n𝐕𝐨𝐥𝐭𝐚𝐠𝐞: 170V-240V \r\n𝐋𝐨𝐚𝐝 𝐏𝐨𝐰𝐞𝐫: 5-300W/Gang \r\n𝐂𝐞𝐫𝐭𝐢𝐟𝐢𝐜𝐚𝐭𝐢𝐨𝐧: CE, FCC, RoHS\r\n𝐖𝐨𝐫𝐤𝐢𝐧𝐠 𝐓𝐞𝐦𝐩𝐞𝐫𝐚𝐭𝐮𝐫𝐞: -20-70 Degree\r\n\r\n𝐒𝐞𝐫𝐯𝐢𝐜𝐞 & 𝐖𝐚𝐫𝐫𝐚𝐧𝐭𝐲-\r\n1 Year Free Replacement & 5 Years Service Warranty','upload/products/thumbnail/1744663622782497.png','STATA Non-Smart 5 Pin Socket price in Bangladesh','Ensure reliable power connectivity with the STATA Non-Smart 5 Pin Socket. Durable design, easy installation, and long-lasting performance. Perfect for additional or replacement sockets. Buy now for your electrical needs.','https://www.youtube.com/embed/0HenG8pXARM',1,NULL,1,NULL,1,'2023-07-24 07:08:00','2023-07-24 07:08:00'),(69,19,15,32,'TV+Net Socket','ST-TVNS','63','Sockets','Regular','Black,White','1699',NULL,'1700','Type-C Port,USB Port,5-Pin,Glass Panel','𝐓𝐕+𝐍𝐞𝐭 𝐒𝐨𝐜𝐤𝐞𝐭: 𝐄𝐧𝐡𝐚𝐧𝐜𝐞 𝐘𝐨𝐮𝐫 𝐇𝐨𝐦𝐞 𝐄𝐧𝐭𝐞𝐫𝐭𝐚𝐢𝐧𝐦𝐞𝐧𝐭 𝐚𝐧𝐝 𝐂𝐨𝐧𝐧𝐞𝐜𝐭𝐢𝐯𝐢𝐭𝐲\r\nAre you looking to upgrade your home entertainment and internet connectivity? Look no further! Our TV+Net Sockets offer the perfect solution for a seamless and connected lifestyle. With competitive prices in Bangladesh, you can now bring innovation and convenience to your home without breaking the bank.\r\n\r\n𝐄𝐧𝐭𝐞𝐫𝐭𝐚𝐢𝐧𝐦𝐞𝐧𝐭 𝐂𝐨𝐧𝐯𝐞𝐧𝐢𝐞𝐧𝐜𝐞: With our TV+Net Sockets, you can easily connect your smart TV, gaming consoles, and other entertainment devices. Enjoy uninterrupted streaming, gaming, and browsing with high-speed internet connectivity.\r\n\r\n𝐒𝐦𝐚𝐫𝐭 𝐇𝐨𝐦𝐞 𝐈𝐧𝐭𝐞𝐠𝐫𝐚𝐭𝐢𝐨𝐧: Our TV+Net Sockets seamlessly integrate with popular smart home platforms, allowing you to control and manage your devices with a single app. Embrace the future of Smart Home Automation with our versatile sockets.\r\n\r\n𝐒𝐩𝐚𝐜𝐞 𝐎𝐩𝐭𝐢𝐦𝐢𝐳𝐚𝐭𝐢𝐨𝐧: Designed to be compact and space-saving, our TV+Net Sockets are perfect for modern living. Say goodbye to cluttered cords and outlets, and enjoy a tidy and organized space.\r\n\r\n𝐑𝐞𝐥𝐢𝐚𝐛𝐥𝐞 𝐏𝐞𝐫𝐟𝐨𝐫𝐦𝐚𝐧𝐜𝐞: We prioritize performance and durability, ensuring our TV+Net Sockets deliver a stable and secure connection at all times. Rest assured that your entertainment and connectivity needs are in safe hands.\r\n\r\n𝐄𝐚𝐬𝐲 𝐈𝐧𝐬𝐭𝐚𝐥𝐥𝐚𝐭𝐢𝐨𝐧: Our TV+Net Sockets are designed for easy installation, making it hassle-free to upgrade your home setup. With clear instructions and minimal effort, you can have a fully functional socket in no time.\r\n\r\n𝐀𝐟𝐟𝐨𝐫𝐝𝐚𝐛𝐥𝐞 𝐏𝐫𝐢𝐜𝐢𝐧𝐠: We believe that innovation should be accessible to everyone. Our competitive prices in Bangladesh allow you to experience the benefits of TV+Net Sockets without straining your budget.\r\n\r\n𝐄𝐱𝐩𝐞𝐫𝐭 𝐂𝐮𝐬𝐭𝐨𝐦𝐞𝐫 𝐒𝐮𝐩𝐩𝐨𝐫𝐭: We take pride in our exceptional customer service. Our expert support team is always ready to assist you with any inquiries or support you may need.\r\n\r\nUpgrade your home with our TV+Net Sockets and enjoy a whole new level of entertainment and connectivity. Embrace convenience, performance, and affordability - all in one smart package. Make the most of your home entertainment and internet experience with our reliable and feature-rich TV+Net Sockets.\r\n\r\n𝐒𝐩𝐞𝐜𝐞𝐟𝐢𝐜𝐚𝐭𝐢𝐨𝐧-\r\n𝐏𝐚𝐧𝐞𝐥: Crystal glass panel, no fading, elegant and stylish \r\n\r\n𝐖𝐚𝐭𝐞𝐫𝐩𝐫𝐨𝐨𝐟: Yes\r\n\r\n𝐀𝐧𝐭𝐢-𝐜𝐫𝐞𝐞𝐩𝐢𝐧𝐠: Yes\r\n\r\n𝐕𝐨𝐥𝐭𝐚𝐠𝐞: 170V-240V \r\n\r\n𝐋𝐨𝐚𝐝 𝐏𝐨𝐰𝐞𝐫: 5-300W/Gang \r\n\r\n𝐂𝐞𝐫𝐭𝐢𝐟𝐢𝐜𝐚𝐭𝐢𝐨𝐧: CE, FCC, RoHS\r\n\r\n𝐖𝐨𝐫𝐤𝐢𝐧𝐠 𝐓𝐞𝐦𝐩𝐞𝐫𝐚𝐭𝐮𝐫𝐞: -20-70 Degree\r\n\r\n𝐒𝐞𝐫𝐯𝐢𝐜𝐞 & 𝐖𝐚𝐫𝐫𝐚𝐧𝐭𝐲-\r\n1 Year Free Replacement & 5 Years Service Warranty','upload/products/thumbnail/1772107043054230.webp','TV+Net Socket Price in Bangladesh','Find the best prices for TV+Net Sockets in Bangladesh. Explore a wide range of options for seamless entertainment and internet connectivity at affordable rates. Upgrade your home experience. Discover competitive prices now!','https://www.youtube.com/embed/hxFS2A6XlVQ',NULL,NULL,NULL,NULL,1,'2023-07-22 08:09:38','2023-07-22 08:09:38'),(70,19,15,32,'Telephone Socket','ST-TTS','38','Sockets','Regular','Black,White','1699',NULL,'1700','Glass Panel','𝐓𝐞𝐥𝐞𝐩𝐡𝐨𝐧𝐞 𝐒𝐨𝐜𝐤𝐞𝐭: 𝐒𝐭𝐚𝐲 𝐂𝐨𝐧𝐧𝐞𝐜𝐭𝐞𝐝 𝐚𝐭 𝐀𝐟𝐟𝐨𝐫𝐝𝐚𝐛𝐥𝐞 𝐑𝐚𝐭𝐞𝐬\r\nIn this running world, staying connected is more essential than ever. Our Telephone Sockets offer a reliable and efficient solution for seamless communication at affordable rates. With competitive prices in Bangladesh, you can enhance your home or office connectivity without breaking the bank.\r\n\r\n𝐂𝐫𝐲𝐬𝐭𝐚𝐥 𝐂𝐥𝐞𝐚𝐫 𝐂𝐨𝐦𝐦𝐮𝐧𝐢𝐜𝐚𝐭𝐢𝐨𝐧: Our Telephone Sockets are designed to deliver crystal clear voice quality, ensuring every conversation is heard loud and clear. So, it is time to say goodbye to all the dropped calls and distorted audio. \r\n\r\n𝐄𝐚𝐬𝐲 𝐈𝐧𝐬𝐭𝐚𝐥𝐥𝐚𝐭𝐢𝐨𝐧: Installing our Telephone Sockets is a breeze. With straightforward instructions and user-friendly design, you can have a functional socket in no time. So you can save time & money without hiring an expert.\r\n\r\n𝐃𝐮𝐫𝐚𝐛𝐥𝐞 𝐚𝐧𝐝 𝐑𝐞𝐥𝐢𝐚𝐛𝐥𝐞: We prioritize quality and durability, ensuring our Telephone Sockets withstand daily use and maintain reliable performance over time. Trust in a socket that won\'t let you down.\r\n\r\n𝐒𝐩𝐚𝐜𝐞-𝐒𝐚𝐯𝐢𝐧𝐠 𝐃𝐞𝐬𝐢𝐠𝐧: Our compact and space-saving design allows you to optimize your space. Say hello to a clutter-free and organized environment.\r\n\r\n𝐂𝐨𝐦𝐩𝐚𝐭𝐢𝐛𝐥𝐞 𝐰𝐢𝐭𝐡 𝐒𝐭𝐚𝐧𝐝𝐚𝐫𝐝 𝐃𝐞𝐯𝐢𝐜𝐞𝐬: Our Telephone Sockets are compatible with standard telephones, ensuring a seamless transition from your existing setup.\r\n\r\n𝐂𝐨𝐦𝐩𝐞𝐭𝐢𝐭𝐢𝐯𝐞 𝐏𝐫𝐢𝐜𝐢𝐧𝐠: We believe that essential communication should be accessible to everyone. Our competitive prices in Bangladesh make it easier for you to stay connected without overstretching your budget.\r\n\r\n𝐄𝐱𝐩𝐞𝐫𝐭 𝐂𝐮𝐬𝐭𝐨𝐦𝐞𝐫 𝐒𝐮𝐩𝐩𝐨𝐫𝐭: We pride ourselves on exceptional customer service. Our expert team is always ready to assist you with any inquiries or support you may need.\r\n\r\nStay connected with our affordable Telephone Sockets and experience the difference a reliable communication setup can make. Whether it\'s for your home or office, our feature-rich and competitively priced Telephone Sockets ensure you never miss a beat in your conversations. Invest in quality, affordability, and connectivity today.\r\n\r\n𝐒𝐩𝐞𝐜𝐢𝐟𝐢𝐜𝐚𝐭𝐢𝐨𝐧-\r\n𝐏𝐚𝐧𝐞𝐥: Crystal glass panel, no fading, elegant and stylish\r\n\r\n𝐖𝐚𝐭𝐞𝐫𝐩𝐫𝐨𝐨𝐟: Yes\r\n\r\n𝐀𝐧𝐭𝐢-𝐜𝐫𝐞𝐞𝐩𝐢𝐧𝐠: Yes\r\n \r\n𝐕𝐨𝐥𝐭𝐚𝐠𝐞: 170V-240V \r\n\r\n𝐋𝐨𝐚𝐝 𝐏𝐨𝐰𝐞𝐫: 5-300W/Gang \r\n\r\n𝐂𝐞𝐫𝐭𝐢𝐟𝐢𝐜𝐚𝐭𝐢𝐨𝐧: CE, FCC, RoHS\r\n\r\n𝐖𝐨𝐫𝐤𝐢𝐧𝐠 𝐓𝐞𝐦𝐩𝐞𝐫𝐚𝐭𝐮𝐫𝐞: -20-70 Degree\r\n\r\n𝐒𝐞𝐫𝐯𝐢𝐜𝐞 & 𝐖𝐚𝐫𝐫𝐚𝐧𝐭𝐲-\r\n1 Year Free Replacement & 5 Years Service Warranty','upload/products/thumbnail/1744651073721506.png','Telephone Socket Price in Bangladesh','Find the best prices for Telephone Sockets in Bangladesh. Explore a wide range of options for reliable connectivity at affordable rates. Upgrade your home or office communication. Discover competitive prices now!','https://www.youtube.com/embed/NARuqgxPhtc',NULL,NULL,NULL,NULL,1,'2023-07-22 10:52:14','2023-07-22 10:52:14'),(71,19,17,38,'STATA UIR','ST-SUIR','40','AC Controller','Regular','Black','2900','2610','290','STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key','𝐒𝐓𝐀𝐓𝐀 𝐔𝐈𝐑 𝐏𝐫𝐢𝐜𝐞 𝐢𝐧 𝐁𝐚𝐧𝐠𝐥𝐚𝐝𝐞𝐬𝐡: 𝐄𝐥𝐞𝐯𝐚𝐭𝐞 𝐘𝐨𝐮𝐫 𝐇𝐨𝐦𝐞 𝐀𝐮𝐭𝐨𝐦𝐚𝐭𝐢𝐨𝐧 𝐚𝐭 𝐀𝐟𝐟𝐨𝐫𝐝𝐚𝐛𝐥𝐞 𝐂𝐨𝐬𝐭\r\nLooking to embrace the power of home automation without breaking the bank? Introducing the STATA UIR, an advanced and budget-friendly Universal Infrared Remote that revolutionizes the way you control your home devices. With its seamless integration, intuitive interface, and competitive price in Bangladesh, the STATA UIR offers an unmatched automation experience that fits your budget.\r\n\r\n𝐔𝐧𝐢𝐯𝐞𝐫𝐬𝐚𝐥 𝐂𝐨𝐦𝐩𝐚𝐭𝐢𝐛𝐢𝐥𝐢𝐭𝐲: The STATA UIR is designed to be universally compatible with a wide range of infrared-controlled devices. From TVs and air conditioners to DVD players and sound systems, you can control them all with one smart remote.\r\n\r\n𝐒𝐦𝐚𝐫𝐭 𝐇𝐨𝐦𝐞 𝐈𝐧𝐭𝐞𝐠𝐫𝐚𝐭𝐢𝐨𝐧: Seamlessly integrate the STATA UIR into your smart home ecosystem. Connect it with your voice assistants, smart hubs, or mobile apps for easy control and automation of your devices.\r\n\r\n𝐈𝐧𝐭𝐮𝐢𝐭𝐢𝐯𝐞 𝐔𝐬𝐞𝐫 𝐈𝐧𝐭𝐞𝐫𝐟𝐚𝐜𝐞: Say goodbye to cluttered remotes with complex buttons. The STATA UIR features an intuitive and user-friendly interface, making device control a breeze for all family members.\r\n\r\n𝐋𝐞𝐚𝐫𝐧 𝐚𝐧𝐝 𝐀𝐝𝐚𝐩𝐭: With its learning capabilities, the STATA UIR can easily learn and adapt to new devices in your home. Keep adding more devices to your smart setup without limitations.\r\n\r\n𝐎𝐧𝐞-𝐒𝐭𝐨𝐩 𝐒𝐨𝐥𝐮𝐭𝐢𝐨𝐧: Tired of juggling multiple remotes? The STATA UIR is your one-stop solution for all your infrared-controlled devices, simplifying your life and enhancing convenience.\r\n\r\n𝐄𝐧𝐞𝐫𝐠𝐲-𝐄𝐟𝐟𝐢𝐜𝐢𝐞𝐧𝐭: The STATA UIR is designed with energy efficiency in mind. Its low power consumption ensures prolonged battery life, saving you the hassle of frequent replacements.\r\n\r\n𝐀𝐟𝐟𝐨𝐫𝐝𝐚𝐛𝐥𝐞 𝐀𝐮𝐭𝐨𝐦𝐚𝐭𝐢𝐨𝐧: We believe that home automation should be accessible to everyone. Our competitive price in Bangladesh for the STATA UIR makes it easier for you to enjoy the benefits of smart living without breaking the bank.\r\n\r\nElevate your home automation experience with the STATA UIR, the smart and budget-friendly Universal Infrared Remote. Take control of all your infrared devices effortlessly, enjoy seamless integration with your smart home, and embrace the convenience of automation at an affordable cost. Upgrade your lifestyle today with the STATA UIR and experience the future of home automation within your budget.\r\n\r\n\r\nSupports StataLife Mobile App, Work With Alexa, Google Home, Support IFTTT smart home scene automation, Smart Air Conditioner Controller : You can say, “Alexa, turn on/off AC, turn up/down temperature, set temperature to (value)” etc. Set the comfort temperature by smartphone before you go home.\r\n\r\nInteresting DIY : Supports  infrared remote control, not RF. DIY controlled devices only support smartphones and not compatible with Alexa, google home.\r\n\r\nSmart IR blaster can replace most of the traditional remote controls in your home. \r\n\r\nSupports 80,000+ IR (IR only, not RF) controlled devices. Integrate almost all infrared remotes to your smartphone, Control your home’s devices from your smartphone anytime, anywhere, safe and efficient, Compatible with Android and IOS.\r\n\r\n𝐌𝐚𝐭𝐞𝐫𝐢𝐚𝐥: ABS\r\n𝐏𝐚𝐜𝐤𝐚𝐠𝐞 𝐂𝐨𝐧𝐭𝐞𝐧𝐭𝐬:\r\n⇨1 x WIFI remote controller, \r\n⇨1 x USB Cable, 1 x User Manual\r\n\r\n𝐒𝐞𝐫𝐯𝐢𝐜𝐞 & 𝐖𝐚𝐫𝐫𝐚𝐧𝐭𝐲-\r\n1 Year Free Replacement & 5 Years Service Warranty','upload/products/thumbnail/1744663222122822.png','UIR price in Bangladesh - Stata IT Limited','Find the best UIR prices in Bangladesh and upgrade your home with advanced technology. Explore a range of innovative products at competitive prices. Make your home smarter and more energy-efficient with UIR. Discover the best deals now!','https://www.youtube.com/embed/eB4PQg35CFA',1,NULL,1,NULL,1,'2023-07-24 06:18:02','2023-07-24 06:18:02'),(72,19,17,38,'STATA Smart Video DoorBell','ST-SVD','20','Switch,Locks,Sensor','Regular','Black,White,Gold','7500','6750','750','STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key','STATA Smart Doorbell (1080P)\r\n\r\nTwo Way Intercom\r\n\r\nWhat’s In The Box :\r\n\r\n— Chime\r\n\r\n— 1080P HD pixels collocated with 166 ° wide-\r\n\r\nangle STATA Doorbell\r\n\r\nFunctions :\r\n\r\n— Supports StataLife App\r\n\r\n— 2.4G Wi-Fi connection (NOT support 5G)\r\n\r\n— High-quality two-way talk with noise\r\n\r\ncancellation\r\n\r\n–Support PIR motion detection, when someone\r\n\r\nhovers at the door, immediately alert push\r\n\r\nnotifications to the mobile phone.\r\n\r\n–Day and night mode automatic switching,\r\n\r\nwhether day or night, the image is clearly\r\n\r\nvisible, for your safety and family security.\r\n\r\n1 Year Free Replacement','upload/products/thumbnail/1761959365318106.png','STATA Smart Video Doorbell with1080p HD Camera','Enhance your home security with the STATA Smart Video Doorbell. Real-time video monitoring with 1080p HD Camera, motion detection, night vision, and two-way audio. Keep your home safe and secure. Install the STATA Smart Video Doorbell today.','https://www.youtube.com/watch?v=Fx5gdVZ4a_8',1,NULL,1,NULL,1,'2023-07-18 05:29:12','2023-07-18 05:29:12'),(73,19,17,39,'Human Presence Sensor','ST-HPSB','50','Switch,Locks,Sensor,presense sensor','Regular','Black,White,Gold','8499',NULL,'12000','STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key','𝐇𝐮𝐦𝐚𝐧 𝐏𝐫𝐞𝐬𝐞𝐧𝐜𝐞 𝐒𝐞𝐧𝐬𝐨𝐫: 𝐒𝐦𝐚𝐫𝐭 𝐀𝐮𝐭𝐨𝐦𝐚𝐭𝐢𝐨𝐧 𝐟𝐨𝐫 𝐄𝐧𝐡𝐚𝐧𝐜𝐞𝐝 𝐄𝐟𝐟𝐢𝐜𝐢𝐞𝐧𝐜𝐲 𝐚𝐧𝐝 𝐒𝐚𝐟𝐞𝐭𝐲\r\nIntroducing our cutting-edge Human Presence Sensor, a game-changer in smart automation technology. This innovative sensor is designed to detect human presence and movement, revolutionizing the way we interact with our surroundings. With its advanced features and seamless integration, the Human Presence Sensor offers enhanced efficiency, convenience, and safety in various applications.\r\n\r\n𝐒𝐦𝐚𝐫𝐭 𝐇𝐨𝐦𝐞 𝐀𝐮𝐭𝐨𝐦𝐚𝐭𝐢𝐨𝐧: Embrace the power of smart automation with our Human Presence Sensor. It detects human presence in a room and triggers connected devices like lights, thermostats, and smart appliances, creating a truly automated and energy-efficient home environment.\r\n\r\n𝐄𝐧𝐞𝐫𝐠𝐲 𝐄𝐟𝐟𝐢𝐜𝐢𝐞𝐧𝐜𝐲: Our sensor eliminates the need for manual control, ensuring that lights and devices are only activated when necessary. Say goodbye to wasted energy and hello to significant cost savings on utility bills.\r\n\r\n𝐂𝐮𝐬𝐭𝐨𝐦𝐢𝐳𝐚𝐛𝐥𝐞 𝐒𝐞𝐧𝐬𝐢𝐭𝐢𝐯𝐢𝐭𝐲: With adjustable sensitivity settings, the Human Presence Sensor can be tailored to suit your specific needs. Customize the detection range and timing according to your preference, providing a personalized smart experience.\r\n\r\n𝐄𝐧𝐡𝐚𝐧𝐜𝐞𝐝 𝐒𝐚𝐟𝐞𝐭𝐲 𝐚𝐧𝐝 𝐒𝐞𝐜𝐮𝐫𝐢𝐭𝐲: The sensor\'s ability to detect human presence adds an extra layer of security to your home or office. Receive instant notifications if unexpected movement is detected, keeping you informed and in control.\r\n\r\n𝐍𝐨𝐧-𝐈𝐧𝐭𝐫𝐮𝐬𝐢𝐯𝐞 𝐃𝐞𝐬𝐢𝐠𝐧: Our Human Presence Sensor boasts a sleek and compact design that seamlessly blends into any environment. It is discreet and non-intrusive, ensuring that your interior aesthetics remain unaffected.\r\n\r\n𝐁𝐮𝐬𝐢𝐧𝐞𝐬𝐬 𝐀𝐩𝐩𝐥𝐢𝐜𝐚𝐭𝐢𝐨𝐧𝐬: Beyond homes, the Human Presence Sensor finds valuable applications in commercial spaces. Optimize energy usage in offices, retail stores, and public facilities, contributing to a greener and more sustainable future.\r\n\r\n𝐄𝐚𝐬𝐲 𝐈𝐧𝐬𝐭𝐚𝐥𝐥𝐚𝐭𝐢𝐨𝐧: Our Human Presence Sensor is designed for easy installation, making it accessible to everyone. No complicated setup or wiring required – simply place or mount the sensor, and it\'s ready to enhance your smart home or business.\r\n\r\nEmbrace the future of automation with our Human Presence Sensor. Experience the convenience, efficiency, and safety it brings to your smart home or business. Upgrade to smart living and take control of your environment like never before. Embrace the power of technology with our advanced Human Presence Sensor today.\r\n\r\n𝐅𝐞𝐚𝐭𝐮𝐫𝐞𝐬-\r\n𝐅𝐮𝐧𝐜𝐭𝐢𝐨𝐧: Real-time detection of whether someone exists, micro-motion detection, motion detection within certain range.\r\n\r\n𝐀𝐜𝐜𝐮𝐫𝐚𝐭𝐞 𝐝𝐞𝐭𝐞𝐜𝐭𝐢𝐨𝐧 𝐨𝐟 𝐝𝐲𝐧𝐚𝐦𝐢𝐜: \r\n➜Static human presence This product uses advanced millimeter wave radar technology to accurately detect whether there are people in the area， whether they are moving or stationary.\r\n\r\n➜Accurate recognition and wide range of perception\r\n\r\n➜Subtle human or animal movements Built in multiple people and precision sensors, the presence of people in the room can be accurately identified through MFA intelligent algorithm.\r\n\r\n➜Conical detection range, applicable to room area of 6-25 square meters, induction angle of 90 degrees. The diameter of human sensing range is about 3m (installation height is 3m, ground projection).\r\n\r\n𝐈𝐧𝐭𝐞𝐥𝐥𝐢𝐠𝐞𝐧𝐭 𝐥𝐢𝐧𝐤𝐚𝐠𝐞: \r\n➜It can create intelligent scenes together with Smart switches, lamps, curtains and other intelligent products to achieve energy saving, environmental protection, security alarm and other functions.\r\n\r\n➜With other intelligent devices, it can realize rich automation and scene control. Make intelligent hardware respond faster and control more smoothly. It can still be used even if the network is disconnected.\r\n\r\n𝐃𝐢𝐟𝐟𝐞𝐫𝐞𝐧𝐜𝐞 𝐟𝐫𝐨𝐦 𝐭𝐫𝐚𝐝𝐢𝐭𝐢𝐨𝐧𝐚𝐥 𝐡𝐮𝐦𝐚𝐧 𝐏𝐈𝐑 𝐢𝐧𝐟𝐫𝐚𝐫𝐞𝐝 𝐬𝐞𝐧𝐬𝐨𝐫:\r\n➜PIR infrared sensors can only detect human motion, but cannot detect when people are still, and the false alarm is serious.\r\n\r\n➜The human presence sensor adopts the principle of radar microwave, and has the functions of human presence, human stillness, human micro-motion and human motion detection.\r\n\r\n𝐒𝐩𝐞𝐜𝐢𝐟𝐢𝐜𝐚𝐭𝐢𝐨𝐧𝐬-\r\n𝐒𝐢𝐳𝐞: 100*100*35mm\r\n𝐃𝐞𝐭𝐞𝐜𝐭𝐢𝐨𝐧 𝐬𝐢𝐠𝐧𝐚𝐥: 24Ghz mmWave Doppler radar\r\n𝐃𝐞𝐭𝐞𝐜𝐭𝐢𝐨𝐧 𝐑𝐚𝐧𝐠𝐞: 3m\r\n𝐃𝐞𝐭𝐞𝐜𝐭𝐢𝐨𝐧 𝐀𝐧𝐠𝐥𝐞: 90°\r\n𝐂𝐨𝐦𝐦𝐮𝐧𝐢𝐜𝐚𝐭𝐢𝐨𝐧 𝐩𝐫𝐨𝐭𝐨𝐜𝐨𝐥: WIFI\r\n𝐃𝐞𝐯𝐢𝐜𝐞 𝐓𝐲𝐩𝐞: Router\r\n𝐂𝐨𝐥𝐨𝐫: Black\r\n𝐏𝐨𝐰𝐞𝐫 𝐢𝐧𝐩𝐮𝐭: 5V 1A\r\n𝐈𝐧𝐬𝐭𝐚𝐥𝐥𝐚𝐭𝐢𝐨𝐧 𝐦𝐞𝐭𝐡𝐨𝐝: flat / ceiling mounted','upload/products/thumbnail/1745288231101789.png','Human Presence Sensor Price in Bangladesh','Transform your home automation with a Human Presence Sensor. Detects human presence and triggers automated actions. Create a smarter and more energy-efficient home environment. Experience the convenience of a Human Presence Sensor. Discover now!',NULL,1,NULL,1,NULL,1,'2023-07-23 06:41:12','2023-07-23 06:41:12'),(77,19,16,35,'STATA TAP Pro','ST-DEF-BDL-TPP-BL','20','Locks','Regular','Black','15999','13999','2000','STATA Smart App,Password,Generate Guest OTP,Traditional Key','STATA TAP PRO\r\nSuitable for Bedroom\r\n \r\nWays to Unlock :\r\nFingerprint (100)\r\nPassword \r\nApp to Unlock \r\nTraditional Key\r\n\r\n1 Year Free Replacement\r\n5 years Service Warranty','upload/products/thumbnail/1761785191469480.jpg','Smart Door lock price in Bangladesh- STATA Tap Pro','Experience convenience and enhanced security with the STATA Tap Pro Smart Door Lock. Control and monitor your door lock remotely. Seamlessly integrates with popular smart home platforms. Make your home smarter and safer. Discover the STATA Tap Pro now!',NULL,1,1,1,NULL,1,'2023-07-18 09:21:02','2023-07-18 09:21:02'),(78,19,18,37,'STATA Smart Bulb 10W','ST-FLD-SLS-E2710W-RGB','100','Light,Bulb','E27','RGB','1650','1485','165','10W power,16M color,RGB color ,E27 Screw,StataLife App compatibale','𝐒𝐓𝐀𝐓𝐀 𝐒𝐦𝐚𝐫𝐭 𝐁𝐮𝐥𝐛 𝟏𝟎𝐖-\r\nIlluminate your space with the STATA Smart Bulb 10W. This high-quality and energy-efficient LED bulb offers a wide range of smart features that transform your lighting experience. With its easy installation and compatibility with popular smart home platforms, you can effortlessly control the brightness, 16M color, and scheduling of your lights using your smartphone or voice commands. Set the perfect ambiance for any occasion and save energy with the STATA Smart Bulb 10W, the smart choice for modern lighting solutions.\r\n\r\n•𝐏𝐨𝐰𝐞𝐫 𝐂𝐚𝐩𝐚𝐜𝐢𝐭𝐲: 10 W\r\n\r\n•𝐂𝐨𝐥𝐨𝐫: 16 Million Color to Choose\r\n\r\n•𝐂𝐨𝐥𝐨𝐫 𝐌𝐨𝐝𝐞: 10W RGB \r\n\r\n•𝐌𝐨𝐛𝐢𝐥𝐞 𝐀𝐩𝐩: StataLife (User friendly smooth mobile App connection)\r\n\r\n•𝐒𝐜𝐫𝐞𝐰 𝐓𝐲𝐩𝐞: E27 Screw-style','upload/products/thumbnail/1761959307883821.png','STATA Smart Bulb 10W price in Bangladesh','Upgrade your lighting with the STATA Smart Bulb 10W. It features E27 screw-style, Control brightness, 16M color, and scheduling using your smartphone or voice commands. Create the perfect ambiance and save energy. Buy now!',NULL,1,NULL,1,NULL,1,'2023-07-17 06:49:14','2023-07-17 06:49:14'),(79,19,17,36,'STATA UIR (Thermostat)','ST-NEO-SHA-IRT-WH','15','Sensor','Regular','White','6500','5850','650','STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key','𝐒𝐓𝐀𝐓𝐀 𝐔𝐈𝐑 (𝐓𝐡𝐞𝐫𝐦𝐨𝐬𝐭𝐚𝐭)\r\nUpgrade your home\'s heating and cooling system with the advanced UIR Thermostat. This cutting-edge device offers precise temperature control and energy efficiency, ensuring optimal comfort throughout your home. With its user-friendly interface and smart features, you can easily program schedules, adjust settings remotely, and even integrate it with voice assistants for hands-free control. Don\'t settle for outdated thermostats; invest in the UIR Thermostat for a modern and intelligent climate control solution.\r\n\r\n\r\n•𝐏𝐫𝐨𝐝𝐮𝐜𝐭 𝐧𝐚𝐦𝐞: Home Wi-Fi Smart AC Thermostat\r\n\r\n•𝐏𝐨𝐰𝐞𝐫 𝐬𝐮𝐩𝐩𝐥𝐲: DC (5V / 1A)\r\n\r\n•𝐌𝐨𝐛𝐢𝐥𝐞 𝐀𝐩𝐩 𝐂𝐨𝐧𝐧𝐞𝐜𝐭𝐢𝐨𝐧: StataLife App\r\n\r\n•𝐏𝐫𝐨𝐭𝐨𝐜𝐨𝐥: Wi-Fi + Bluetooth\r\n\r\n•𝐎𝐩𝐞𝐫𝐚𝐭𝐢𝐨𝐧 𝐓𝐞𝐦𝐩𝐞𝐫𝐚𝐭𝐮𝐫𝐞: 0~90%RH (no condensation)\r\n\r\n•𝐅𝐮𝐧𝐜𝐭𝐢𝐨𝐧: Real-time display of ambient temp, humidity and air conditioning status, local offline control\r\n\r\n•𝐃𝐞𝐭𝐞𝐜𝐭𝐢𝐨𝐧 𝐚𝐜𝐜𝐮𝐫𝐚𝐜𝐲: Temp 0.3°C; humidity 5%RH\r\n\r\n•𝐑𝐞𝐦𝐨𝐭𝐞 𝐜𝐨𝐧𝐭𝐫𝐨𝐥 𝐝𝐢𝐬𝐭𝐚𝐧𝐜𝐞: 7m\r\n\r\n•𝐖𝐢-𝐅𝐢 𝐝𝐢𝐬𝐭𝐚𝐧𝐜𝐞: 45m\r\n\r\n•𝐒𝐢𝐳𝐞: 88mm x 88mm x 16mm\r\n\r\n•𝐅𝐫𝐞𝐪/𝐂𝐨𝐦𝐦𝐮𝐧𝐢𝐜𝐚𝐭𝐢𝐨𝐧: BLE, others can be customized, such as 433、868、315、ZWAVE etc.','upload/products/thumbnail/1761960931171746.jpg','Buy Energy Efficiency UIR (Thermostat) - Stata IT Limited','Enhance your home\'s comfort and energy efficiency with the Stata UIR Thermostat. Upgrade your climate control today. So Buy the UIR Thermostat now!',NULL,1,NULL,1,NULL,1,'2023-07-17 05:49:49','2023-07-17 05:49:49'),(84,19,19,40,'Ramadan Package 2','STA-SHP-R2','20','Switch,Locks,Sensor','Regular','Black,White','29150','25650','3500','STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key','𝐓𝐫𝐚𝐧𝐬𝐟𝐨𝐫𝐦 𝐘𝐨𝐮𝐫 𝐇𝐨𝐦𝐞 𝐰𝐢𝐭𝐡 𝐭𝐡𝐞 𝐔𝐥𝐭𝐢𝐦𝐚𝐭𝐞 𝐒𝐦𝐚𝐫𝐭 𝐇𝐨𝐦𝐞 𝐀𝐮𝐭𝐨𝐦𝐚𝐭𝐢𝐨𝐧 𝐏𝐚𝐜𝐤𝐚𝐠𝐞\r\nAre you ready to experience the convenience and efficiency of a smart home? Look no further! We are here with our Smart Home Automation Package, designed to elevate your living spaces to a whole new level of comfort and control. This all-inclusive package includes a carefully curated selection of top-of-the-line STATA smart devices, ensuring every corner of your home is equipped with cutting-edge technology.\r\n\r\n𝐏𝐚𝐜𝐤𝐚𝐠𝐞 𝐈𝐧𝐜𝐥𝐮𝐝𝐞𝐬:\r\n⇨STATA Smart 2 Gang Switch \r\n⇨STATA Smart 4 Gang Switch \r\n⇨STATA Smart Fan Dimmer \r\n⇨5-Pin Multi Socket (Type-C Port) \r\n⇨STATA Smart Boiler Switch (20 A)  \r\n⇨STATA Smart Led Bulb (10w) \r\n⇨STATA Tap Pro (Bed Room Lock)\r\n\r\n𝐊𝐞𝐲 𝐅𝐞𝐚𝐭𝐮𝐫𝐞𝐬:\r\n𝐒𝐓𝐀𝐓𝐀 𝐒𝐦𝐚𝐫𝐭 𝟐 𝐆𝐚𝐧𝐠 𝐒𝐰𝐢𝐭𝐜𝐡: Take charge of your lighting with this intelligent switch. Control two separate lights or appliances with ease, right from your smartphone or voice-controlled virtual assistants.\r\n\r\n𝐒𝐓𝐀𝐓𝐀 𝐒𝐦𝐚𝐫𝐭 𝟒 𝐆𝐚𝐧𝐠 𝐒𝐰𝐢𝐭𝐜𝐡: Expand your control capabilities with four channels to manage multiple devices simultaneously. Simplify your life by automating various appliances throughout your home.\r\n\r\n𝐒𝐓𝐀𝐓𝐀 𝐒𝐦𝐚𝐫𝐭 𝐅𝐚𝐧 𝐃𝐢𝐦𝐦𝐞𝐫: Say goodbye to traditional fan controls. Adjust fan speed and dim the lights using the same switch, creating the perfect ambiance for any occasion.\r\n\r\n𝟓-𝐏𝐢𝐧 𝐌𝐮𝐥𝐭𝐢 𝐒𝐨𝐜𝐤𝐞𝐭 (𝐓𝐲𝐩𝐞-𝐂 𝐏𝐨𝐫𝐭): Charge multiple devices at once with this versatile socket featuring a convenient Type-C port. Upgrade your device with STATA Smart Products.\r\n\r\n𝐒𝐓𝐀𝐓𝐀 𝐒𝐦𝐚𝐫𝐭 𝐁𝐨𝐢𝐥𝐞𝐫 𝐒𝐰𝐢𝐭𝐜𝐡 (𝟐𝟎 𝐀): Optimize energy usage with this powerful smart switch for your boiler or heavy-duty appliances. Schedule heating cycles to ensure comfort while saving on electricity.\r\n\r\n𝐒𝐓𝐀𝐓𝐀 𝐒𝐦𝐚𝐫𝐭 𝐋𝐄𝐃 𝐁𝐮𝐥𝐛 (𝟏𝟎𝐖): Illuminate your space with the brilliance of smart LED technology. Control brightness and color from your smartphone, setting the mood for any occasion.\r\n\r\n𝐒𝐓𝐀𝐓𝐀 𝐓𝐚𝐩 𝐏𝐫𝐨 (𝐁𝐞𝐝𝐫𝐨𝐨𝐦 𝐋𝐨𝐜𝐤): Secure your personal sanctuary with this advanced smart door lock. Enjoy keyless access and monitor your door remotely for added peace of mind.\r\n\r\nEmbrace the future of smart living with our comprehensive Smart Home Automation Package. Seamlessly integrate these devices into your daily life, making tasks effortless and ensuring your home is always tailored to your needs. Enjoy full control, energy efficiency, and enhanced security, all at your fingertips.\r\n\r\nExperience the possibilities of a smart home today. Order our Smart Home Automation Package at an unbeatable value. Elevate your lifestyle and embrace the power of innovation with STATA IT LIMITED.\r\n\r\n𝐎𝐮𝐫 𝐀𝐥𝐥 𝐃𝐞𝐯𝐢𝐜𝐞 𝐂𝐨𝐦𝐩𝐚𝐭𝐢𝐛𝐥𝐞 𝐖𝐢𝐭𝐡:\r\n•Google Home \r\n•Amazon Alexa \r\n•StataLife App','upload/products/thumbnail/1762229899755576.png','Smart Home Automation Ramadan Package 2 - Stata IT Limited','Stata IT Limited Offer Smart home Automation Package. Now Buy Combo pack for your smart home.',NULL,1,NULL,1,'1',1,'2023-07-25 11:17:05','2023-07-25 11:17:05'),(85,19,19,40,'Ramadan Package 3','STA-SHP-R3','20','Switch,Locks,Sensor','Regular','Black,White','59650','50300','6850','STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key','𝐒𝐦𝐚𝐫𝐭 𝐇𝐨𝐦𝐞 𝐀𝐮𝐭𝐨𝐦𝐚𝐭𝐢𝐨𝐧 𝐏𝐚𝐜𝐤𝐚𝐠𝐞: 𝐄𝐥𝐞𝐯𝐚𝐭𝐞 𝐘𝐨𝐮𝐫 𝐋𝐢𝐯𝐢𝐧𝐠 𝐒𝐩𝐚𝐜𝐞 𝐰𝐢𝐭𝐡 𝐂𝐮𝐭𝐭𝐢𝐧𝐠-𝐄𝐝𝐠𝐞 𝐓𝐞𝐜𝐡𝐧𝐨𝐥𝐨𝐠𝐲\r\nIntroducing our comprehensive Smart Home Automation Package, a collection of top-of-the-line STATA smart devices carefully curated to transform your home into a fully automated and intelligent living space. Take control of your surroundings like never before, with effortless management of lighting, appliances, security, and more, all at your fingertips.\r\n\r\nThe Ultimate Smart Home Automation Package\r\nImagine having the ability to control your home with just a tap on your smartphone or a simple voice command. Our Smart Home Automation Package offers you precisely that and more. Let\'s delve into the key features of each device included in this comprehensive package.\r\n\r\n𝐏𝐚𝐜𝐤𝐚𝐠𝐞 𝐈𝐧𝐜𝐥𝐮𝐝𝐞𝐬:\r\n•STATA Smart 4 Gang Switch \r\n•STATA Smart Fan Dimmer \r\n•5-Pin Multi Socket (Type-C Port)\r\n•STATA Smart 3-Pin Socket \r\n•STATA Smart Boiler Switch (20 A)  \r\n•STATA Smart Led Bulb (10w) \r\n•STATA X9+\r\n•STATA UIR\r\n•STATA Capsule\r\n•Net+TV Socket\r\n•Telephone Socket\r\n•STATA Smart Video Doorbell\r\n\r\n𝐒𝐓𝐀𝐓𝐀 𝐒𝐦𝐚𝐫𝐭 𝟒 𝐆𝐚𝐧𝐠 𝐒𝐰𝐢𝐭𝐜𝐡:\r\nWith the STATA Smart 4 Gang Switch, you can control multiple appliances simultaneously. This smart switch eliminates the need for separate controls and streamlines your home\'s lighting and appliance management. Adjust the brightness of your lights or turn off appliances remotely with ease.\r\n\r\n𝐒𝐓𝐀𝐓𝐀 𝐒𝐦𝐚𝐫𝐭 𝐅𝐚𝐧 𝐃𝐢𝐦𝐦𝐞𝐫:\r\nEnjoy personalized comfort with the STATA Smart Fan Dimmer. This intelligent device lets you adjust fan speed and dim lighting according to your preferences. Create the perfect ambiance for any occasion, all from the convenience of your smartphone.\r\n\r\n𝟓-𝐏𝐢𝐧 𝐌𝐮𝐥𝐭𝐢 𝐒𝐨𝐜𝐤𝐞𝐭 (𝐓𝐲𝐩𝐞-𝐂 𝐏𝐨𝐫𝐭):\r\nKeep your devices charged and ready to go with the versatile 5-Pin Multi Socket featuring a convenient Type-C port. Say goodbye to cluttered charging stations and embrace modern power management.\r\n\r\n𝐒𝐓𝐀𝐓𝐀 𝐒𝐦𝐚𝐫𝐭 𝟑-𝐏𝐢𝐧 𝐒𝐨𝐜𝐤𝐞𝐭:\r\nThe STATA Smart 3-Pin Socket serves as the backbone of your smart home setup. Connect and control various appliances effortlessly, transforming them into intelligent devices with remote control capabilities.\r\n\r\n𝐒𝐓𝐀𝐓𝐀 𝐒𝐦𝐚𝐫𝐭 𝐁𝐨𝐢𝐥𝐞𝐫 𝐒𝐰𝐢𝐭𝐜𝐡 (𝟐𝟎 𝐀):\r\nOptimize energy usage with the STATA Smart Boiler Switch. You can schedule your heating cycles so that it will reduce your electric bills. Smartly manage heavy-duty appliances for enhanced efficiency.\r\n\r\n𝐒𝐓𝐀𝐓𝐀 𝐒𝐦𝐚𝐫𝐭 𝐋𝐄𝐃 𝐁𝐮𝐥𝐛 (𝟏𝟎𝐰):\r\nIlluminate your space with brilliance using the STATA Smart LED Bulb. Control brightness and color from your smartphone, setting the mood for any occasion. Enjoy the energy-saving benefits of LED technology.\r\n\r\n𝐒𝐓𝐀𝐓𝐀 𝐗𝟗+:\r\nOur most popular Smart Door Lock, model- STATA X9+. You can unlock this smart door lock with six different ways.\r\n\r\n𝐒𝐓𝐀𝐓𝐀 𝐔𝐈𝐑:\r\nTransform your infrared devices with the STATA UIR. Remote control all your compatible appliances, including TVs, air conditioners, and more, right from your smartphone.\r\n\r\n𝐒𝐓𝐀𝐓𝐀 𝐂𝐚𝐩𝐬𝐮𝐥𝐞:\r\nEnsure comprehensive security with the STATA Capsule, a 360-degree smart CCTV camera that keeps a watchful eye on your property. Stay connected to your home\'s security with real-time monitoring.\r\n\r\n𝐍𝐞𝐭+𝐓𝐕 𝐒𝐨𝐜𝐤𝐞𝐭:\r\nStreamline your digital lifestyle with the Net+TV Socket, offering seamless connectivity for your smart devices and entertainment systems.\r\n\r\n𝐓𝐞𝐥𝐞𝐩𝐡𝐨𝐧𝐞 𝐒𝐨𝐜𝐤𝐞𝐭:\r\nModernize your telephony with the Telephone Socket, incorporating smart communication solutions for enhanced convenience.\r\n\r\n𝐒𝐓𝐀𝐓𝐀 𝐒𝐦𝐚𝐫𝐭 𝐕𝐢𝐝𝐞𝐨 𝐃𝐨𝐨𝐫𝐛𝐞𝐥𝐥:\r\nEnhance your home security with the STATA Smart Video Doorbell. Get real-time alerts, two-way audio communication, and live video feed to monitor your doorstep.\r\n\r\n\r\nWith our Smart Home Automation Package, you have the power to create a truly intelligent and connected living space. Experience the convenience of smart living, improve energy efficiency, and enhance security with this comprehensive package of STATA smart devices.','upload/products/thumbnail/1762230964504535.png','Smart Home Automation Ramadan Package 3- Stata IT Limited','Stata IT Limited Offer Smart home Automation Package at affordable price. Now Buy Combo pack for your smart home.',NULL,1,NULL,1,'1',1,'2023-07-26 10:37:16','2023-07-26 10:37:16'),(86,19,19,40,'Ramadan Package 1','ST-SHP-R1','20','Switch,Locks,Sensor','Regular','Black,White,Gold','16750','14750','2000','STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key','Smart Home Package \r\nPackage Name : Ramadan Package 1\r\nAvailable Switch Color : Jet Black & Glacier White\r\n\r\nPackage Includes :\r\nSTATA Smart 1 Gang Switch\r\nSTATA Smart 3 Gang Switch\r\nSTATA Smart Fan Dimmer\r\n5-Pin Multi Socket (Type-C Port)\r\nSTATA Smart Boiler Switch (20 A) \r\nSTATA 3-Pin Smart Socket \r\nSTATA Smart Led Bulb (10w)\r\n\r\nCompatible With :\r\nGoogle Home \r\nAmazon Alexa \r\nStataLife App\r\n\r\nFeatures : \r\nControl more than 1000+ STATA Smart Devices from any place at any time around the world using the mobile app StataLife. All our products are compatible with Google Home & Amazon Alexa.','upload/products/thumbnail/1762231583887128.png','Ramadan Package 1 - Stata IT Limited','Stata IT Limited Ramadan Offer Smart home Automation Package. Now Buy Combo pack for your smart home.',NULL,1,NULL,1,'1',1,'2023-07-18 10:31:57','2023-07-18 10:31:57'),(87,19,21,42,'Touch DND Switch (3 Gang Set)','ST-ORB-TDND3','100','Switch','Regular','Black','7000',NULL,NULL,'Do Not Disturb,Calling Bell,Make Up My Room','𝐓𝐨𝐮𝐜𝐡 𝐃𝐍𝐃 𝐒𝐰𝐢𝐭𝐜𝐡 (𝟑 𝐆𝐚𝐧𝐠 𝐒𝐞𝐭)\r\nAre you tired of constant interruptions during important meetings or while relaxing at home? Say goodbye to disturbances with our revolutionary Touch DND Switch (3 Gang Set). At STATA Global, we bring you cutting-edge smart home solutions to enhance your lifestyle and provide ultimate convenience.\r\n\r\n𝐀 𝐓𝐨𝐮𝐜𝐡 𝐨𝐟 𝐏𝐞𝐚𝐜𝐞 𝐚𝐧𝐝 𝐏𝐫𝐢𝐯𝐚𝐜𝐲:\r\nThe Touch DND Switch (3 Gang Set) is a game-changer when it comes to managing your time and space. \"DND\" stands for \"Do Not Disturb,\" and this smart switch lives up to its name. With just a gentle touch, you can activate the \"Do Not Disturb\" mode, instantly signaling to others that you need privacy and quiet.\r\n\r\n𝐒𝐞𝐚𝐦𝐥𝐞𝐬𝐬 𝐈𝐧𝐭𝐞𝐠𝐫𝐚𝐭𝐢𝐨𝐧:\r\nDesigned to seamlessly integrate into your existing home automation system, the Touch DND Switch (3 Gang Set) effortlessly syncs with other smart devices. Connect it to your smart lighting system, security cameras, or even your home assistant for a truly unified smart home experience.\r\n\r\nCustomizable for Your Needs With three separate gangs, this smart switch allows you to customize its functionality according to your needs. Each gang can be programmed independently to control different appliances or smart devices. From turning off the doorbell to dimming the lights, the possibilities are endless.\r\n\r\n\r\n𝐔𝐬𝐞𝐫-𝐅𝐫𝐢𝐞𝐧𝐝𝐥𝐲 𝐚𝐧𝐝 𝐈𝐧𝐭𝐮𝐢𝐭𝐢𝐯𝐞:\r\nThe Touch DND Switch (3 Gang Set) is designed with simplicity in mind. Its intuitive touch interface makes it easy for anyone to use, from tech-savvy individuals to those new to smart home technology. Say goodbye to complex manuals and enjoy a stress-free user experience.\r\n\r\n𝐄𝐧𝐞𝐫𝐠𝐲-𝐄𝐟𝐟𝐢𝐜𝐢𝐞𝐧𝐭 𝐚𝐧𝐝 𝐄𝐜𝐨-𝐅𝐫𝐢𝐞𝐧𝐝𝐥𝐲:\r\nWe care about the environment, and our smart switch reflects that. The Touch DND Switch (3 Gang Set) is designed to be energy-efficient, reducing unnecessary power consumption. Contribute to a greener world while enjoying the benefits of modern technology.\r\n\r\n𝐒𝐚𝐟𝐞𝐭𝐲 𝐚𝐧𝐝 𝐃𝐮𝐫𝐚𝐛𝐢𝐥𝐢𝐭𝐲:\r\nAt STATA IT LIMITED, safety is our top priority. The Touch DND Switch (3 Gang Set) is built with high-quality materials and undergoes rigorous testing to ensure durability and reliability. Rest assured that your investment is protected for the long term.\r\n\r\n𝐒𝐭𝐚𝐲 𝐂𝐨𝐧𝐧𝐞𝐜𝐭𝐞𝐝 𝐀𝐧𝐲𝐰𝐡𝐞𝐫𝐞:\r\nOur smart switch goes beyond just touch controls. With remote access capabilities, you can control the switch from anywhere using your smartphone. Whether you\'re at home or on the go, you have complete control over your privacy settings.\r\n\r\n𝐄𝐥𝐞𝐯𝐚𝐭𝐞 𝐘𝐨𝐮𝐫 𝐋𝐢𝐟𝐞𝐬𝐭𝐲𝐥𝐞 𝐰𝐢𝐭𝐡 𝐒𝐓𝐀𝐓𝐀:\r\nJoin the growing community of smart homeowners who have upgraded their living spaces with the Touch DND Switch (3 Gang Set). Embrace a new level of privacy and convenience with this smart home essential.\r\n\r\nDiscover more smart solutions for your home at our website, stataglobal.com, and experience the future of smart living.','upload/products/thumbnail/1771559963506180.webp','Touch DND Switch (3 Gang Set)- Stata Smart Hotel Solution','Buy the Touch DND Switch 3 Gang Set and elevate your hotel with convenience and style. Effortlessly control lights in multiple rooms with a simple touch',NULL,1,NULL,1,NULL,1,'2023-07-25 09:37:48','2023-07-25 09:37:48'),(88,19,21,42,'Hotel Switch Card (Mifare/General)','ST-SD-SHS-HCSMG','50','Switch','Regular','Black','3000',NULL,NULL,'General Type,Mifare Type,Tempered Glass Panel','This hotel room energy saver key card power switch is designed specifically for energy saving and safety of hotels and guesthouses.\r\n\r\nAfter installation of key card power switch, as soon as guests check-in insert card into the power-saving switch at the side of interior door, the power is available for the electrical equipment in the room (lighting, air conditioner, television, etc.) can be used.\r\n\r\nWhen guests leave the room, the guests take out the door card (guests must pull the card out, because they have to use it to open the door after return), key card power switch shall be off automatically after delay about 15 seconds to ensure energy saving and safety.','upload/products/thumbnail/1768479514135634.png','Buy Hotel Switch Card (Mifare/General) - Smart hotel solution',NULL,NULL,1,NULL,1,NULL,1,'2023-07-12 11:23:25','2023-07-12 11:23:25'),(89,19,21,42,'Shaver Socket','ST-SD-SHS-SVS','50','Switch','Regular','Black','2500',NULL,NULL,'STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key','Stata Shaver Socket','upload/products/thumbnail/1768482446341395.webp','Buy top-notch Stata Shaver Socket- Smart hotel solution',NULL,NULL,1,NULL,NULL,NULL,1,'2023-07-12 11:17:46','2023-07-12 11:17:46'),(90,19,21,42,'Tel + Net Socket','ST-MV-TEL+NETS','50','Switch','Regular','Black','1700',NULL,NULL,'Double Data Socket,Tel+Net Socket','𝐓𝐞𝐥𝐞𝐩𝐡𝐨𝐧𝐞 + 𝐍𝐞𝐭 𝐒𝐨𝐜𝐤𝐞𝐭 𝐏𝐫𝐢𝐜𝐞 𝐢𝐧 𝐁𝐚𝐧𝐠𝐥𝐚𝐝𝐞𝐬𝐡: 𝐔𝐧𝐥𝐞𝐚𝐬𝐡 𝐒𝐞𝐚𝐦𝐥𝐞𝐬𝐬 𝐂𝐨𝐦𝐦𝐮𝐧𝐢𝐜𝐚𝐭𝐢𝐨𝐧 𝐚𝐧𝐝 𝐂𝐨𝐧𝐧𝐞𝐜𝐭𝐢𝐯𝐢𝐭𝐲\r\nDiscover the perfect blend of communication and connectivity with our Telephone + Net Sockets, offering an all-in-one solution for your home or office. Seamlessly integrate your landline telephone and high-speed internet with this smart and versatile socket, designed to enhance your communication experience while optimizing your space. With competitive prices in Bangladesh, staying connected has never been this affordable and convenient.\r\n\r\n𝐃𝐮𝐚𝐥 𝐅𝐮𝐧𝐜𝐭𝐢𝐨𝐧𝐚𝐥𝐢𝐭𝐲: Our Telephone + Net Socket combines the functionality of a standard telephone socket and an internet port, streamlining your communication setup and eliminating the need for multiple outlets.\r\n\r\n𝐇𝐢𝐠𝐡-𝐒𝐩𝐞𝐞𝐝 𝐂𝐨𝐧𝐧𝐞𝐜𝐭𝐢𝐯𝐢𝐭𝐲: Experience uninterrupted internet browsing, streaming, and downloading with the high-speed internet port of our socket. Enjoy a seamless online experience for both work and leisure.\r\n\r\n𝐒𝐩𝐚𝐜𝐞-𝐒𝐚𝐯𝐢𝐧𝐠 𝐃𝐞𝐬𝐢𝐠𝐧: The compact and space-saving design of our Telephone + Net Socket ensures efficient use of wall space. No more cluttered outlets – just a neat and organized setup.\r\n\r\n𝐄𝐚𝐬𝐲 𝐈𝐧𝐬𝐭𝐚𝐥𝐥𝐚𝐭𝐢𝐨𝐧: Installing our socket is a breeze, thanks to its user-friendly design. With clear instructions, you can have your Telephone + Net Socket up and running in no time.\r\n\r\n𝐕𝐞𝐫𝐬𝐚𝐭𝐢𝐥𝐞 𝐀𝐩𝐩𝐥𝐢𝐜𝐚𝐭𝐢𝐨𝐧𝐬: Suitable for both residential and commercial spaces, our socket serves a wide range of applications. Enhance your home or office connectivity with this versatile and feature-rich solution.\r\n\r\n𝐃𝐮𝐫𝐚𝐛𝐥𝐞 𝐚𝐧𝐝 𝐑𝐞𝐥𝐢𝐚𝐛𝐥𝐞: Our Telephone + Net Socket is built to last, with high-quality materials and components ensuring its durability and reliability over time.\r\n\r\n𝐁𝐮𝐝𝐠𝐞𝐭-𝐅𝐫𝐢𝐞𝐧𝐝𝐥𝐲: We believe in making essential communication and connectivity accessible to all. Our competitive prices in Bangladesh ensure you get the best value for your investment.\r\n\r\nUpgrade your communication and internet setup with our feature-packed Telephone + Net Socket. Embrace a seamless and connected lifestyle, streamlining your space while enjoying uninterrupted communication and internet access. With its affordability and versatility, our socket is the ideal choice for modern homes and businesses. Take the next step in enhancing your connectivity experience with our Telephone + Net Socket today.\r\n\r\n𝐒𝐩𝐞𝐜𝐢𝐟𝐢𝐜𝐚𝐭𝐢𝐨𝐧-\r\n𝐁𝐨𝐝𝐲 𝐒𝐡𝐚𝐩𝐞: Square\r\n𝐁𝐨𝐝𝐲 𝐒𝐢𝐳𝐞: 86mm*86mm\r\n𝐎𝐩𝐞𝐫𝐚𝐭𝐢𝐧𝐠 𝐓𝐞𝐦𝐩𝐞𝐫𝐚𝐭𝐮𝐫𝐞: -30℃-70℃\r\n𝐑𝐚𝐭𝐞𝐝 𝐕𝐨𝐥𝐭𝐚𝐠𝐞: AC 110~250V','upload/products/thumbnail/1768482415752255.webp','Tel + Net Socket price in Bangladesh - Stata IT Limited','Enhance your communication capabilities with the Tel + Net Socket. Reliable and efficient telephone and network connectivity. Easy installation and compatibility with various systems. Stay connected with the Tel + Net Socket.',NULL,1,NULL,NULL,NULL,1,'2023-07-23 11:43:12','2023-07-23 11:43:12'),(91,19,24,43,'1G Touch Switch (Non-Smart)','MB-XZX-TSS-T1G-GW','200','Switch','Regular','Black,White','899',NULL,NULL,'Crystal Tempered Glass Panel,Elegant Touch Switch,Seamless Touch Panel,Splash Proof,Scratch Proof','STATA MIB Series \r\nNon Wifi Touch Switch \r\nCrystal Glass Panel \r\n\r\n1 Year Free Replacement \r\n5 Years Service Warranty','upload/products/thumbnail/1771553332299520.webp','1 Gang Non-Smart Touch Switch- Stata MIB Series','Buy Stata MIB Series 1 Gang Non-Smart touch switch with Seamless Touch Panel along with Splash & Scratch Proof.1 Year Free Replacement.',NULL,1,1,1,NULL,1,'2023-07-16 05:19:08','2023-07-16 05:21:53'),(92,19,24,43,'2G Touch Switch (Non-Smart)','MB-XZX-TSS-T2G-GW','200','Switch','Regular','Black,White','999',NULL,NULL,'Crystal Glass Panel,Seamless Touch Panel,Splash Proof,Scratch Proof','STATA MIB Series\r\nNon Wifi Touch Switch\r\nCrystal Glass Panel\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty','upload/products/thumbnail/1771555356016333.webp','2 Gang Non-Smart Touch Switch- Stata MIB Series','Next generation Stata MIB series 2 Gang Non-Smart touch switch with Seamless Touch Panel along with Splash & Scratch Proof.1 Year Free Replacement',NULL,1,1,NULL,NULL,1,'2023-07-13 10:54:59','2023-07-16 05:54:03'),(93,19,24,43,'3G Touch Switch (Non-Smart)','MB-XZX-TSS-T3G-GW','200','Switch','Regular','Black,White','1150',NULL,NULL,'Crystal Tempered Glass Panel,Seamless Touch Panel,Splash Proof, Scratch Proof','STATA MIB Series\r\nNon Wifi Touch Switch\r\nCrystal Glass Panel\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty','upload/products/thumbnail/1771555772305454.webp','3 Gang Touch Switch- Stata MIB Series','Buy our 3 Gang Non-Smart touch switch with Crystal Tempered Glass Panel. Get Seamless Touch Panel along with Splash & Scratch Proof.1 Year Free Replacement',NULL,1,1,1,NULL,1,'2023-07-13 10:12:15','2023-07-16 06:00:40'),(94,19,24,43,'4G Touch Switch (Non-WiFi)','MB-XZX-TSS-T4G-GW','200','Switch','Regular','Black,White','1350',NULL,NULL,'Seamless Touch Panel,Splash Proof,Scratch Proof,Crystal Tempered Glass Panel','STATA MIB Series\r\nNon Wifi Touch Switch\r\nCrystal Glass Panel\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty','upload/products/thumbnail/1771556083786659.webp','4 Gang Non-Smart Touch Switch- Stata MIB Series','Modernize your home with our 4 Gang Non-Smart Stata MIB series touch switch with Seamless Touch Panel along with Splash & Scratch Proof.1 Year Free Replacement',NULL,1,1,1,NULL,1,'2023-07-13 10:39:13','2023-07-16 06:05:37');
-/*!40000 ALTER TABLE `products` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `products` (`id`, `brand_id`, `category_id`, `subcategory_id`, `product_name`, `product_code`, `product_qty`, `product_tags`, `product_size`, `product_color`, `selling_price`, `discount_price`, `discount`, `short_descp`, `long_descp`, `product_thambnail`, `c_meta_title`, `c_meta_description`, `video_link`, `new`, `sale`, `best_seller`, `combo`, `status`, `created_at`, `updated_at`) VALUES
+(43, 19, 15, 33, 'STATA Smart 1 Gang Switch', 'ST-SGS1', '39', 'Switch', 'Regular', 'Black,White', '2199', NULL, '2200', 'STATA Smart App,Smart Switch,Touch Switch, Scheduling,Remotely Controllable', 'Crystal glass panel, no fading, elegant and stylish \r\nIntegrated panel design, waterproof and anti-creeping, \r\nsafe to use Touch control ensures longer service life \r\nthan mechanical switch New imported IC processor for\r\n nice sensitivity and stable performance Humanized \r\ndesign.\r\nCan be scheduled, you can set timer for these smart devices. \r\nVoltage: 170V-240V Load Power: 5-300W/Gang \r\nCertification:CE, FCC, RoHS\r\nWorking Temperature: -20-70 Degree\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty', 'upload/products/thumbnail/1744663804387969.png', NULL, NULL, 'https://www.youtube.com/embed/NARuqgxPhtc', NULL, NULL, NULL, NULL, 1, '2023-04-16 06:25:22', '2023-04-16 06:25:22'),
+(44, 19, 15, 33, 'STATA Smart 2 Gang Switch', 'ST-SGS2', '48', 'Switch', 'Regular', 'Black,White', '2500', '2250', '250', 'STATA Smart App,Touch Switch,Smart Switch,Scheduling,Remotely Controllable', 'Crystal glass panel, no fading, elegant and stylish \r\nIntegrated panel design, waterproof and anti-creeping, \r\nsafe to use Touch control ensures longer service life \r\nthan mechanical switch New imported IC processor for\r\n nice sensitivity and stable performance Humanized \r\ndesign.\r\nCan be scheduled, you can set timer for these smart devices. \r\nVoltage: 170V-240V Load Power: 5-300W/Gang \r\nCertification:CE, FCC, RoHS\r\nWorking Temperature: -20-70 Degree\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty', 'upload/products/thumbnail/1744663814022118.png', NULL, NULL, 'https://www.youtube.com/embed/NARuqgxPhtc', NULL, NULL, 1, NULL, 1, '2023-04-16 06:24:51', '2023-04-16 06:24:51'),
+(45, 19, 15, 33, 'STATA Smart 3 Gang Switch', 'ST-SGS3', '71', 'Switch', 'Regular', 'Black,White', '2899', NULL, '2900', 'STATA Smart App,Touch Switch,Smart Switch,Scheduling,Remotely Controllable', 'Crystal glass panel, no fading, elegant and stylish \r\nIntegrated panel design, waterproof and anti-creeping, \r\nsafe to use Touch control ensures longer service life \r\nthan mechanical switch New imported IC processor for\r\n nice sensitivity and stable performance Humanized \r\ndesign.\r\nCan be scheduled, you can set timer for these smart devices. \r\nVoltage: 170V-240V Load Power: 5-300W/Gang \r\nCertification:CE, FCC, RoHS\r\nWorking Temperature: -20-70 Degree\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty', 'upload/products/thumbnail/1744663819731736.png', NULL, NULL, 'https://www.youtube.com/embed/NARuqgxPhtc', NULL, NULL, 1, NULL, 1, '2023-04-16 06:25:16', '2023-04-16 06:25:16'),
+(46, 19, 15, 33, 'STATA Smart 4 Gang Switch', 'ST-SGS4', '23', 'Switch', 'Regular', 'Black,White', '3299', NULL, '3300', 'STATA Smart App,Smart Switch,Touch Switch,Remotely Controllable,Scheduling,Glass Panel,Shock Resistant', 'Crystal glass panel, no fading, elegant and stylish \r\nIntegrated panel design, waterproof and anti-creeping, \r\nsafe to use Touch control ensures longer service life \r\nthan mechanical switch New imported IC processor for\r\n nice sensitivity and stable performance Humanized \r\ndesign.\r\nCan be scheduled, you can set timer for these smart devices. \r\nVoltage: 170V-240V Load Power: 5-300W/Gang \r\nCertification:CE, FCC, RoHS\r\nWorking Temperature: -20-70 Degree\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty', 'upload/products/thumbnail/1744663826808853.png', NULL, NULL, 'https://www.youtube.com/embed/NARuqgxPhtc', NULL, NULL, NULL, NULL, 1, '2023-04-16 06:24:58', '2023-04-16 06:24:58'),
+(47, 19, 16, 34, 'STATA X9 Plus', 'ST-SDLX9+', '15', 'Locks', 'Regular', 'Black,Rose Gold', '27999', NULL, '27999', 'STATA Smart App,Password,RFID Card,Generate Guest OTP,Fingerprint,App Unlock,Zinc and Aluminium Alloy', 'STATA Smart Door Locks are the security \r\nguards that you didn’t know you needed. \r\nStrong and Robust built with Aluminum and Zinc alloy, \r\nalways ready to protect your home. \r\nYou can unlock them in 6 different ways. \r\nSTATA Smart Door Lock Operate your home \r\nfrom any place around the world!! \r\n\r\nUnlock your door by \r\ni) Password \r\nii) RFID Card \r\niii) Fingerprint \r\niv) STATA Smart App \r\nv) Generate Guest OTP \r\nvi) Traditional Key.\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty', 'upload/products/thumbnail/1744656766342746.png', NULL, NULL, 'https://www.youtube.com/embed/mbM9GVfAcpw', NULL, NULL, 1, NULL, 1, '2023-02-27 05:10:01', '2023-02-27 05:10:01'),
+(49, 19, 16, 34, 'STATA X9', 'ST-SDLX9', '25', 'Locks', 'Regular', 'Black,Silver,Rose Gold', '24999', '21250', '3749', 'STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key', 'STATA Smart Door Locks are the security \r\nguards that you didn’t know you needed. \r\nStrong and Robust built with Aluminum and Zinc alloy, \r\nalways ready to protect your home. \r\nYou can unlock them in 6 different ways. \r\nSTATA Smart Door Lock Operate your home \r\nfrom any place around the world!! \r\n\r\nUnlock your door by \r\ni) Password \r\nii) RFID Card \r\niii) Fingerprint \r\niv) StataLife App \r\nv) Generate Guest OTP \r\nvi) Traditional Key.', 'upload/products/thumbnail/1762587329664777.png', NULL, NULL, 'https://www.youtube.com/embed/KdUNTpbHE04', 1, 1, 1, NULL, 1, '2023-03-30 07:06:27', '2023-04-08 06:11:06'),
+(50, 19, 17, 36, 'Robot Vacuum Cleaner', 'D960', '0', 'Cleaning Robot', 'Regular', 'White', '27999', NULL, '3000', 'STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key', 'Brand- Dibea\r\nModel-D960\r\n•Working Mode\r\nAuto, Spot, Edge, Daily Schedule\r\n•Self-Charging\r\nYes\r\n•Scheduled Reservation Function\r\nYes\r\n•Remote Control\r\nYes\r\n•Using Time\r\n120 – 150 minutes\r\n•Charging Time\r\nAbout 4 – 5 hours\r\n•Suction\r\n1200 Pa\r\n•Dust tank Capacity\r\n350ml\r\n•Water Tank\r\n350ml\r\n•Noise\r\nLess than 55dB\r\n•Application Area\r\n150-200㎡\r\n•Adapter Input\r\n100 – 240V 50 / 60Hz\r\n•Adapter Output\r\n26V 450mA\r\n•Voltage\r\n14.8V\r\n•Power\r\n30W\r\n•Lithium-ion battery capacity\r\n2600mAh\r\n•Lithium-ion battery output voltage\r\n26.5V\r\n•Power adapter\r\nEU plug & US plug\r\n•Package size (L x W x H)\r\n60.00 x 42.00 x 14.00 cm / 23.62 x 16.54 x 5.51 inches\r\n•Package weight\r\nAbout 12.90 pounds\r\n\r\n•Package Included :\r\n\r\n1 x Dibea D960 Smart Robot Vacuum Cleaner\r\n2 x Side Brush\r\n1 x Cleaning Brush\r\n1 x Mop Cloth\r\n1 x Changing Base\r\n1 x Remote Control\r\n1 x Power Adapter\r\n1 x English User Manual', 'upload/products/thumbnail/1744664067742040.png', NULL, NULL, 'https://www.youtube.com/embed/skh7dKg2pmo', NULL, NULL, NULL, NULL, 1, '2023-03-30 07:56:15', '2023-03-30 07:56:15'),
+(51, 19, 15, 33, 'STATA Economy Package', 'Economy Package', '2', 'Switch', 'Regular', 'Black,White,Gold', '4700', '3999', '701', 'STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key', 'STATA Smart Home\r\nPackage Name : Economy Package\r\nOriginal Price : 4,700/-\r\nBundle Price : 3,999/-\r\n\r\nWhat’s in the package :\r\n1) Smart Wifi Touch switch (2 Gang) *1\r\n2) Smart Wifi Touch switch (1 Gang) *1\r\n\r\nNumber of device : 2\r\n\r\nFree Replacement For 365 Days\r\n5 Years Service Warranty\r\n24/7 Customer Support', 'upload/products/thumbnail/1744505678975452.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2023-04-02 19:20:47', '2023-04-02 19:20:47'),
+(52, 19, 15, 32, 'STATA 3 Pin Smart Socket', 'ST-SS3', '40', 'Socket', 'Regular', 'Black,White', '2400', '2160', '240', 'STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key', 'Crystal glass panel, no fading, elegant and stylish \r\nIntegrated panel design, waterproof and anti-creeping, \r\nsafe to use Touch control ensures longer service life \r\nthan mechanical switch New imported IC processor for\r\n nice sensitivity and stable performance Humanized \r\ndesign.\r\nCan be scheduled, you can set timer for these smart devices. \r\nVoltage: 170V-240V Load Power: 5-300W/Gang \r\nCertification:CE, FCC, RoHS\r\nWorking Temperature: -20-70 Degree\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty', 'upload/products/thumbnail/1763033606633449.png', NULL, NULL, NULL, 1, NULL, 1, NULL, 1, '2023-04-01 07:40:39', '2023-04-13 04:24:29'),
+(53, 19, 16, 34, 'STATA X9 Lite', 'ST-SDLX9Li', '11', 'Locks', 'Regular', 'Black,Rose Gold', '20999', '17850', '3149', 'STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key,Fingerprint', 'STATA Smart Door Locks are the security\r\nguards that you didn’t know you needed.\r\nStrong and Robust built with Aluminum and Zinc alloy,\r\nalways ready to protect your home.\r\nYou can unlock them in 6 different ways.\r\nSTATA Smart Door Lock Operate your home\r\nfrom any place around the world!!\r\nUnlock your door by\r\ni) Password\r\nii) RFID Card\r\niii) Fingerprint\r\niv) STATA Smart App\r\nv) Generate Guest OTP\r\nvi) Traditional Key.\r\n1 Year Free Replacement\r\n5 Years Service Warranty', 'upload/products/thumbnail/1744662278926768.png', NULL, NULL, 'https://www.youtube.com/embed/KdUNTpbHE04', 1, 1, 1, NULL, 1, '2023-03-30 06:56:34', '2023-03-30 06:56:34'),
+(55, 19, 16, 34, 'STATA Bolt', 'ST-BOLT-SDL', '35', 'Locks', 'Regular', 'Black,Rose Gold,Silver', '34999', '29750', '5249', 'STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key,Fringerprint', 'STATA Smart Door Locks are the security\r\nguards that you didn’t know you needed.\r\nStrong and Robust built with Aluminum and Zinc alloy,\r\nalways ready to protect your home.\r\nYou can unlock them in 6 different ways.\r\nSTATA Smart Door Lock Operate your home\r\nfrom any place around the world!!\r\n\r\nUnlock your door by\r\ni) Password\r\nii) RFID Card\r\niii) Fingerprint\r\niv) STATA Smart App\r\nv) Generate Guest OTP\r\nvi) Traditional Key.\r\n1 Year Free Replacement\r\n5 Years Service Warranty', 'upload/products/thumbnail/1744662401920780.png', NULL, NULL, 'https://www.youtube.com/embed/KdUNTpbHE04', NULL, 1, 1, NULL, 1, '2023-03-30 06:55:27', '2023-03-30 06:55:27'),
+(56, 19, 16, 34, 'STATA Glass Door Lock', 'ST-SGL', '6', 'Locks', 'Regular', 'Black,Rose Gold', '24999', NULL, '25000', 'STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key', 'STATA Smart Glass Door Locks are the security \r\nguards that you didn’t know you needed. \r\nStrong and Robust built with stylish design suitable for office\r\nor shop entrance, private cabins and conferance halls. \r\nYou can unlock them in 6 different ways. \r\nSTATA Smart Glass Door Lock Operate your  \r\nfrom any place around the world!! \r\n\r\nUnlock your door by \r\ni) Password \r\nii) RFID Card \r\niii) Fingerprint \r\niv) STATA Smart App \r\nv) Generate Guest OTP \r\nvi) Traditional Key.\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty', 'upload/products/thumbnail/1744656434882629.png', NULL, NULL, 'https://www.youtube.com/embed/KdUNTpbHE04', NULL, NULL, NULL, NULL, 1, '2023-02-16 05:44:41', '2023-02-16 05:44:41'),
+(57, 19, 16, 34, 'STATA Bolt Pro', 'ST-DL-BP', '6', 'Locks', 'Regular', 'Black,Rose Gold', '42499', NULL, '42500', 'STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key,Fingerprint', 'STATA Smart Door Locks are the security \r\nguards that you didn’t know you needed. \r\nStrong and Robust built with Aluminium and Zinc alloy, \r\nalways ready to protect your home. \r\nYou can unlock them in 6 different ways. \r\nSTATA Smart Door Lock Operate your home \r\nfrom any place around the world!! \r\nDOOR LOCK with CAMERA and DISPLAY!!!!\r\nSTATA BOLT PRO has a built-in camera that will monitor the outside and can be recorded \r\nin the SD Card. \r\n\r\nUnlock your door by: \r\ni) Password \r\nii) RFID Card \r\niii) Fingerprint \r\niv) STATA Smart App \r\nv) Generate Guest OTP \r\nvi) Traditional Key.\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty', 'upload/products/thumbnail/1744665613023449.png', NULL, NULL, 'https://www.youtube.com/embed/OEOaR_I0eLw', 1, NULL, NULL, NULL, 1, '2023-02-27 05:09:09', '2023-02-27 05:09:09'),
+(58, 19, 16, 34, 'STATA Clutch', 'ST-CL-SDL', '1', 'Locks,smart lock', 'Regular', 'Black,Rose Gold', '17999', NULL, '18999', 'STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key,Fingerprint', 'STATA Smart Door Locks are the security \r\nguards that you didn’t know you needed. \r\nStrong and Robust built with ABS Plastic.\r\nalways ready to protect your home. \r\nYou can unlock them in 6 different ways. \r\nSTATA Smart Door Lock Operate your home \r\nfrom any place around the world!! \r\n\r\nUnlock your door by \r\ni) Password \r\nii) RFID Card \r\niii) Fingerprint \r\niv) STATA Smart App \r\nv) Generate Guest OTP \r\nvi) Traditional Key.\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty', 'upload/products/thumbnail/1744574859849203.png', NULL, NULL, 'https://www.youtube.com/embed/DgfFOLbwK_U', NULL, NULL, NULL, NULL, 1, '2023-02-27 05:05:38', '2023-02-27 05:05:38'),
+(60, 19, 18, 37, 'STATA HEX', 'ST-HEX', '10', 'Switch,Locks,Sensor', 'Regular', 'Black,White,Gold', '5199', NULL, '5200', 'STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key', 'STATA HEX\r\n\r\nPrice : 5200/-\r\n\r\nSTATA HEX Features :\r\n\r\n- 16 Million Color Option\r\n\r\n- Sync With Music\r\n\r\n- Schedule Time\r\n\r\n- Pre-Set Scene\r\n\r\n- Dimmer Mode\r\n\r\n- Controlled Using -StataLife App From any Place At Any Time Around The World\r\n\r\n- Amazon Alexa & Google Home Compatible\r\n\r\nWhat\'s In the box:\r\n\r\n6 × lights\r\n\r\n6 × PCB connector board\r\n\r\n10 × Corner connector\r\n\r\n8 × Double-sided tapes\r\n\r\n1 × STATA manual\r\n\r\n1 × Plastic stand\r\n\r\n1 × 1.5M USB cable\r\n\r\n1 Year Free Replacement\r\n\r\n24/7 Customer Care\r\n\r\nCall Now : 09678200509, 01720514565\r\n\r\nFor Dealership : 01312735557', 'upload/products/thumbnail/1744575249290822.jpeg', NULL, NULL, NULL, NULL, NULL, 1, NULL, 1, '2023-02-16 05:48:48', '2023-02-16 05:48:48'),
+(61, 19, 15, 33, 'STATA Smart Fan Dimmer', 'ST-SFS', '19', 'Switch', 'Regular', 'Black,White', '2900', '2610', '290', 'App Control,Touch,Remotely controllable,Schedualing', 'Crystal glass panel, no fading, elegant and stylish \r\nIntegrated panel design, waterproof and anti-creeping, \r\nsafe to use Touch control ensures longer service life \r\nthan mechanical switch New imported IC processor for\r\n nice sensitivity and stable performance Humanized \r\ndesign.\r\nCan be scheduled, you can set timer for these smart devices. \r\nVoltage: 170V-240V Load Power: 5-300W/Gang \r\nCertification:CE, FCC, RoHS\r\nWorking Temperature: -20-70 Degree\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty', 'upload/products/thumbnail/1762587268111029.png', NULL, NULL, 'https://www.youtube.com/embed/0HenG8pXARM', NULL, NULL, 1, NULL, 1, '2023-04-01 07:41:33', '2023-04-08 06:10:08'),
+(63, 19, 15, 33, 'STATA Smart Boiler Switch', 'ST-SBS', '56', 'Switch', 'Regular', 'Black,White', '3000', '2699', '301', 'STATA Smart App,Touch control,Remotely control,Schedualing', 'Crystal glass panel, no fading, elegant and stylish \r\nIntegrated panel design, waterproof and anti-creeping, \r\nsafe to use Touch control ensures longer service life \r\nthan mechanical switch New imported IC processor for\r\n nice sensitivity and stable performance Humanized \r\ndesign.\r\nCan be scheduled, you can set timer for these smart devices. \r\nVoltage: 170V-240V Load Power: 5-300W/Gang \r\nCertification:CE, FCC, RoHS\r\nWorking Temperature: -20-70 Degree\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty', 'upload/products/thumbnail/1744663566507727.png', NULL, NULL, 'https://www.youtube.com/embed/hxFS2A6XlVQ', 1, NULL, 1, NULL, 1, '2023-04-01 07:42:00', '2023-04-01 07:42:00'),
+(64, 19, 18, 37, 'STATA Smart Strip Light', 'ST-RGB Strip', '20', 'RGB Light', 'Regular', 'RGB', '3300', '2970', '330', 'STATA Smart App,16 million color,Schedualing,Voice Controll', '5M Strip light, 16 Million Color Option,\r\nSync With Music, Schedule Time, Pre-Set Scene,\r\nDimmer Mode, Controlled Using StataLife App From\r\nany Place At Any Time Around The World,\r\nAmazon Alexa & Google Home Compatible.\r\n\r\n1 Year Free Replacement', 'upload/products/thumbnail/1744662957877541.png', NULL, NULL, 'https://www.youtube.com/embed/NARuqgxPhtc', 1, NULL, 1, NULL, 1, '2023-04-01 07:43:47', '2023-04-01 07:43:47'),
+(65, 19, 14, 31, 'STATA Capsule', 'ST-CAP-IP', '5', 'IP Camera', 'Regular', 'White', '3300', '2970', '330', 'STATA Smart App,350 Degree,Two Way Communication,HD Camera,Motion Detection,SD Card Supported', 'Auto Smart Tracking, Supports StataLife App,\r\n1080P HD & SMART PAN/TILT/ZOOM,\r\nIntelligent Mobile Tracking Recognition,\r\nTWO-WAY AUDIO, Easy Set-up with 2.4G WiFi,\r\nHD Day & Night Monitoring,\r\nSensitive Motion Detection ,\r\nSupports both Cloud & Memory Card (upto128 GB)\r\n\r\n1 Year Free Replacement', 'upload/products/thumbnail/1744663266359722.png', NULL, NULL, 'https://www.youtube.com/embed/V4aKKEMPo9c', 1, 1, 1, NULL, 1, '2023-04-01 07:44:01', '2023-04-01 07:44:01'),
+(66, 19, 14, 30, 'STATA Smart Gas Sensor (With Valve)', '(ST-WGS-VL)', '0', 'Sensor', 'Regular', 'White', '11999', NULL, '12000', 'STATA Smart App,Remotely controll,Voice Controll,Schedualing', 'STATA Smart Gas Sensor (With Valve) GET Instant Notification !! Mobile App : StataLife High reliability semiconductor sensor;Using powerful microprocessor control Mobile APP remote connection, support for connecting tuya APP;Connect to tuya APP for remote notification Real-time reporting of detected gas concentration;Voice alarm prompt Can remotely control manipulator(Valve switch) .\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty', 'upload/products/thumbnail/1744664752090148.png', NULL, NULL, 'https://www.youtube.com/embed/thOWmnTzs04', NULL, NULL, NULL, NULL, 1, '2023-02-27 05:06:56', '2023-02-27 05:06:56'),
+(67, 19, 14, 30, 'STATA Smart Motion Sensor', '(ST-SMS)', '2', 'Sensor', 'Regular', 'White', '2499', NULL, '2500', 'STATA Smart App,Motion Detection,Voice Controll,Scheduling,Automation', 'STATA Smart Motion Sensor (S-SMS)\r\n\r\nProduct Description:\r\n\r\n1.Advanced Motion Sensor,PIR detect people or animals that are moving,7m detection distance,whether day or night can be real-time monitoring.\r\n\r\n2.Battery Wi-Fi powered,and have a mount bracket,easy to put on ceiling or tablet etc\r\n\r\n3.Provides remote home monitoring. Set push notifications to your mobile devices or sound and vibration for early alert of motion detection in your home.\r\n\r\n4.PLUG & PLAY, No hub required\r\n\r\nSpecification:\r\n\r\nBattery:CR123*1（Package includes battery）\r\n\r\nStandby current:20uA\r\n\r\nStandby time:1years(25times/day),2years(10times/day)\r\n\r\nWireless type:2.4GHz\r\n\r\nProtocol:IEEE 802.11b/g/n\r\n\r\nWireless Range:45m\r\n\r\nOperating temperature:0-40degree(32F-104F)\r\n\r\nOperation humidity:20%-85%\r\n\r\nStorage Temperature:0-90%\r\n\r\n1 Year Free Replacement\r\n5 Years Warranty\r\n24/7 Customer Care', 'upload/products/thumbnail/1744663336823404.png', NULL, NULL, 'https://www.youtube.com/embed/goAymIG2gJ', NULL, NULL, NULL, NULL, 1, '2023-07-12 00:23:49', '2023-07-12 00:23:49'),
+(68, 19, 15, 32, 'STATA Non-Smart 5 Pin Socket', 'ST-TS5N', '400', 'Socket', 'Regular', 'Black,White', '1799', '1620', '179', 'Type-C Port,USB Port,5-Pin', 'Crystal glass panel, no fading, elegant and stylish \r\nIntegrated panel design, waterproof and anti-creeping, \r\nsafe to use Touch control ensures longer service life \r\nthan mechanical switch New imported IC processor for\r\n nice sensitivity and stable performance Humanized design.\r\n\r\nVoltage: 170V-240V Load Power: 5-300W/Gang \r\nCertification:CE, FCC, RoHS\r\nWorking Temperature: -20-70 Degree\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty', 'upload/products/thumbnail/1744663622782497.png', NULL, NULL, 'https://www.youtube.com/embed/0HenG8pXARM', 1, NULL, 1, NULL, 1, '2023-04-01 07:40:18', '2023-04-01 07:40:18'),
+(69, 19, 15, 32, 'TV+Net Socket', 'ST-TVNS', '63', 'Sockets', 'Regular', 'Black,White', '1699', NULL, '1700', 'Type-C Port,USB Port,5-Pin,Glass Panel', 'Crystal glass panel, no fading, elegant and stylish \r\nIntegrated panel design, waterproof and anti-creeping, \r\nsafe to use Touch control ensures longer service life \r\nthan mechanical switch New imported IC processor for\r\n nice sensitivity and stable performance Humanized \r\ndesign.\r\n \r\nVoltage: 170V-240V Load Power: 5-300W/Gang \r\nCertification:CE, FCC, RoHS\r\nWorking Temperature: -20-70 Degree\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty', 'upload/products/thumbnail/1744664537859611.png', NULL, NULL, 'https://www.youtube.com/embed/hxFS2A6XlVQ', NULL, NULL, NULL, NULL, 1, '2023-02-16 05:47:13', '2023-02-16 05:47:13'),
+(70, 19, 15, 32, 'Telephone Socket', 'ST-TTS', '38', 'Sockets', 'Regular', 'Black,White', '1699', NULL, '1700', 'Glass Panel', 'Crystal glass panel, no fading, elegant and stylish \r\nIntegrated panel design, waterproof and anti-creeping, \r\nsafe to use Touch control ensures longer service life \r\nthan mechanical switch New imported IC processor for\r\n nice sensitivity and stable performance Humanized \r\ndesign.\r\n \r\nVoltage: 170V-240V Load Power: 5-300W/Gang \r\nCertification:CE, FCC, RoHS\r\nWorking Temperature: -20-70 Degree\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty', 'upload/products/thumbnail/1744651073721506.png', NULL, NULL, 'https://www.youtube.com/embed/NARuqgxPhtc', NULL, NULL, NULL, NULL, 1, '2023-02-16 05:47:24', '2023-02-16 05:47:24'),
+(71, 19, 17, 38, 'STATA UIR', 'ST-SUIR', '40', 'AC Controller', 'Regular', 'Black', '2900', '2610', '290', 'STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key', 'Supports StataLife, Work With Alexa, Google Home, Support IFTTT smart home scene automation, Smart Air Conditioner Controller :\r\nYou can say,\r\n“Alexa, turn on/off AC, \r\nturn up/down temperature, set temperature to (value)” etc.\r\nSet the comfort temperature by smartphone before you \r\ngo home, Interesting DIY : Supports  infrared remote control,\r\nnot RF. DIY controlled devices only support smartphones\r\nand not compatible with Alexa, google home.\r\nSmart IR blaster can replace most of the traditional \r\nremote controls in your home. Supports 80,000+ IR \r\n(IR only, not RF) controlled devices. Integrate almost all \r\ninfrared remotes to your smartphone, Control your home’s \r\ndevices from your smartphone anytime, anywhere, safe and \r\nefficient, Compatible with Android and IOS.\r\n\r\nMaterial: ABS\r\nPackage Contents: 1 x WIFI remote controller, \r\n1 x USB Cable, 1 x User Manual\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty', 'upload/products/thumbnail/1744663222122822.png', NULL, NULL, 'https://www.youtube.com/embed/eB4PQg35CFA', 1, NULL, 1, NULL, 1, '2023-04-01 07:39:57', '2023-04-01 07:39:57'),
+(72, 19, 17, 38, 'Smart Video Door Bell', 'ST-SVD', '20', 'Switch,Locks,Sensor', 'Regular', 'Black,White,Gold', '7500', '6750', '750', 'STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key', 'STATA Smart Doorbell (1080P)\r\n\r\nTwo Way Intercom\r\n\r\nWhat’s In The Box :\r\n\r\n— Chime\r\n\r\n— 1080P HD pixels collocated with 166 ° wide-\r\n\r\nangle STATA Doorbell\r\n\r\nFunctions :\r\n\r\n— Supports StataLife App\r\n\r\n— 2.4G Wi-Fi connection (NOT support 5G)\r\n\r\n— High-quality two-way talk with noise\r\n\r\ncancellation\r\n\r\n–Support PIR motion detection, when someone\r\n\r\nhovers at the door, immediately alert push\r\n\r\nnotifications to the mobile phone.\r\n\r\n–Day and night mode automatic switching,\r\n\r\nwhether day or night, the image is clearly\r\n\r\nvisible, for your safety and family security.\r\n\r\n1 Year Free Replacement', 'upload/products/thumbnail/1761959365318106.png', NULL, NULL, 'https://www.youtube.com/watch?v=Fx5gdVZ4a_8', 1, NULL, 1, NULL, 1, '2023-04-01 07:40:58', '2023-04-01 07:49:53'),
+(73, 19, 17, 39, 'Human Presence Sensor', 'ST-HPSB', '50', 'Switch,Locks,Sensor,presense sensor', 'Regular', 'Black,White,Gold', '8499', NULL, '12000', 'STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key', 'Description:\r\n\r\nSize: 100*100*35mm\r\n\r\nDetection signal: 24Ghz mmwave Doppler radar\r\n\r\nCommunication protocol: WIFI\r\n\r\nColor: Black\r\n\r\nPower input: 5V 1A\r\n\r\nInstallation method: flat / ceiling mounted\r\n\r\nSpecifications:\r\n\r\n【Function introduction】 \r\nReal-time detection of whether someone exists, micro-motion detection, motion detection within certain range\r\n\r\n【Accurate detection of dynamic】\r\n\r\n-Static human presence This product uses advanced millimeter wave radar technology to accurately detect whether there are people in the area， whether they are moving or stationary\r\n\r\n-Accurate recognition and wide range of perception\r\n\r\n-Subtle human or animal movements Built in multiple people and precision sensors, the presence of people in the room can be accurately identified through MFA intelligent algorithm.\r\n\r\n-Conical detection range, applicable to room area of 6-25 square meters, induction angle of 90 degrees. The diameter of human sensing range is about 3m (installation height is 3m, ground projection)\r\n\r\n【Intelligent linkage】\r\n\r\n-It can create intelligent scenes together with Smart switches, lamps, curtains and other intelligent products to achieve energy saving, environmental protection, security alarm and other functions.\r\n\r\n-With other intelligent devices, it can realize rich automation and scene control. Make intelligent hardware respond faster and control more smoothly. It can still be used even if the network is disconnected.\r\n\r\n【Difference from traditional human PIR infrared sensor】\r\n\r\n-PIR infrared sensors can only detect human motion, but cannot detect when people are still, and the false alarm is serious.\r\n\r\n-The human presence sensor adopts the principle of radar microwave, and has the functions of human presence, human stillness, human micro-motion and human motion detection.', 'upload/products/thumbnail/1745288231101789.png', NULL, NULL, NULL, 1, NULL, 1, NULL, 1, '2023-02-27 05:04:26', '2023-02-27 05:04:26'),
+(77, 19, 16, 35, 'STATA TAP Pro', 'ST-DEF-BDL-TPP-BL', '20', 'Locks', 'Regular', 'Black', '15999', '13999', '2000', 'STATA Smart App,Password,Generate Guest OTP,Traditional Key', 'STATA TAP PRO\r\nSuitable for Bedroom\r\n \r\nWays to Unlock :\r\nFingerprint (100)\r\nPassword \r\nApp to Unlock \r\nTraditional Key\r\n\r\n1 Year Free Replacement\r\n5 years Service Warranty', 'upload/products/thumbnail/1761785191469480.jpg', NULL, NULL, NULL, 1, 1, 1, NULL, 1, '2023-03-30 09:41:28', NULL),
+(78, 19, 18, 37, 'STATA Smart Bulb 10W', 'ST-FLD-SLS-E2710W-RGB', '100', 'Light,Bulb', 'E27', 'RGB', '1650', '1485', '165', 'STATA Smart App', 'STATA SMART BULB \r\n16 Million Color to Choose\r\n\r\n10 W\r\nRGB\r\nStataLife App Compatible\r\nE27 Screw Type', 'upload/products/thumbnail/1761959307883821.png', NULL, NULL, NULL, 1, NULL, 1, NULL, 1, '2023-04-01 07:48:58', NULL),
+(79, 19, 17, 36, 'STATA UIR (Thermostat)', 'ST-NEO-SHA-IRT-WH', '15', 'Sensor', 'Regular', 'White', '6500', '5850', '650', 'STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key', 'STATA UIR (Thermostat)\r\n\r\nProduct name\r\nHome WiFi smart ac thermostat\r\nPower supply\r\nDC (5V / 1A)\r\nSolution\r\nStataLife App\r\nProtocol\r\nWiFi+Ble\r\nOperation Temperature\r\n0~90%RH (no condensation)\r\nFunction\r\nReal-time display of ambient temp,humidity and air conditioning status, local offline control\r\nDetection accuracy\r\nTemp 0.3°C; humidity 5%RH\r\nRemote control distance\r\n7m\r\nWifi distance\r\n45m\r\nSize\r\n88mm x 88mm x 16mm\r\nFreq/Communication\r\nBLE,others can be customized,such as 433、868、315、ZWAVE etc.', 'upload/products/thumbnail/1761960931171746.jpg', NULL, NULL, NULL, 1, NULL, 1, NULL, 1, '2023-04-01 08:14:46', NULL),
+(84, 19, 19, 40, 'Ramadan Package 2', 'STA-SHP-R2', '20', 'Switch,Locks,Sensor', 'Regular', 'Black,White', '29150', '25650', '3500', 'STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key', 'Smart Home Package Package Name : \r\nRamadan Package 2 \r\nAvailable Switch Color : Jet Black & Glacier White \r\n\r\nPackage Includes : \r\nSTATA Smart 2 Gang Switch \r\nSTATA Smart 4 Gang Switch \r\nSTATA Smart Fan Dimmer \r\n5-Pin Multi Socket (Type-C Port) \r\nSTATA Smart Boiler Switch (20 A)  \r\nSTATA Smart Led Bulb (10w) \r\nSTATA Tap Pro (Bed Room Lock)\r\n\r\nCompatible With : \r\nGoogle Home \r\nAmazon Alexa \r\nStataLife App \r\n\r\nFeatures :\r\nControl more than 1000+ STATA Smart Devices from any place at any time around the world using the mobile app StataLife. All our products are compatible with Google Home & Amazon Alexa.', 'upload/products/thumbnail/1762229899755576.png', NULL, NULL, NULL, 1, NULL, 1, '1', 1, '2023-04-04 07:29:55', NULL),
+(85, 19, 19, 40, 'Ramadan Package 3', 'STA-SHP-R3', '20', 'Switch,Locks,Sensor', 'Regular', 'Black,White', '57150', '50300', '6850', 'STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key', 'Smart Home Package Package Name : \r\nRamadan Package 3\r\nAvailable Switch Color : Jet Black & Glacier White \r\n\r\nPackage Includes :  \r\nSTATA Smart 4 Gang Switch \r\nSTATA Smart Fan Dimmer \r\n5-Pin Multi Socket (Type-C Port)\r\nSTATA Smart 3-Pin Socket \r\nSTATA Smart Boiler Switch (20 A)  \r\nSTATA Smart Led Bulb (10w) \r\nSTATA X9+\r\nSTATA UIR\r\nSTATA Capsule\r\nNet+TV Socket\r\nTelephone Socket\r\nSTATA Smart Video Doorbell\r\nCompatible With : \r\nGoogle Home \r\nAmazon Alexa \r\nStataLife App \r\n\r\nFeatures :\r\nControl more than 1000+ STATA Smart Devices from any place at any time around the world using the mobile app StataLife. All our products are compatible with Google Home & Amazon Alexa.', 'upload/products/thumbnail/1762230964504535.png', NULL, NULL, NULL, 1, NULL, 1, '1', 1, '2023-04-04 07:46:50', NULL),
+(86, 19, 19, 40, 'Ramadan Package 1', 'ST-SHP-R1', '20', 'Switch,Locks,Sensor', 'Regular', 'Black,White,Gold', '16750', '14750', '2000', 'STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key', 'Smart Home Package \r\nPackage Name : Ramadan Package 1\r\nAvailable Switch Color : Jet Black & Glacier White\r\n\r\nPackage Includes :\r\nSTATA Smart 1 Gang Switch\r\nSTATA Smart 3 Gang Switch\r\nSTATA Smart Fan Dimmer\r\n5-Pin Multi Socket (Type-C Port)\r\nSTATA Smart Boiler Switch (20 A) \r\nSTATA 3-Pin Smart Socket \r\nSTATA Smart Led Bulb (10w)\r\n\r\nCompatible With :\r\nGoogle Home \r\nAmazon Alexa \r\nStataLife App\r\n\r\nFeatures : \r\nControl more than 1000+ STATA Smart Devices from any place at any time around the world using the mobile app StataLife. All our products are compatible with Google Home & Amazon Alexa.', 'upload/products/thumbnail/1762231583887128.png', NULL, NULL, NULL, 1, NULL, 1, '1', 1, '2023-04-04 07:56:41', NULL),
+(87, 19, 21, 42, 'Touch DND Switch (3 Gang Set)', 'ST-ORB-TDND3', '100', 'Switch', 'Regular', 'Black', '7000', NULL, NULL, 'Do Not Disturb,Calling Bell,Make Up My Room', 'STATA Smart Hotel Solution\r\nTouch DND Switch (3 Gang Set)\r\nindoor & Outdoor Unit Included', 'upload/products/thumbnail/1767157867701267.png', NULL, NULL, NULL, 1, NULL, 1, NULL, 1, '2023-05-28 16:57:51', NULL),
+(88, 19, 21, 42, 'Hotel Switch Card (Mifare/General)', 'ST-SD-SHS-HCSMG', '50', 'Switch', 'Regular', 'Black', '3000', NULL, NULL, 'General Type,Mifare Type,Tempered Glass Panel', 'This hotel room energy saver key card power switch is designed specifically for energy saving and safety of hotels and guesthouses.\r\n\r\nAfter installation of key card power switch, as soon as guests check-in insert card into the power-saving switch at the side of interior door, the power is available for the electrical equipment in the room (lighting, air conditioner, television, etc.) can be used.\r\n\r\nWhen guests leave the room, the guests take out the door card (guests must pull the card out, because they have to use it to open the door after return), key card power switch shall be off automatically after delay about 15 seconds to ensure energy saving and safety.', 'upload/products/thumbnail/1768479514135634.png', NULL, NULL, NULL, 1, NULL, 1, NULL, 1, '2023-06-12 07:04:51', NULL),
+(89, 19, 21, 42, 'Shaver Socket', 'ST-SD-SHS-SVS', '50', 'Switch', 'Regular', 'Black', '2500', NULL, NULL, 'STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key', 'dhsbdjsabds', 'upload/products/thumbnail/1768482446341395.webp', NULL, NULL, NULL, 1, NULL, NULL, NULL, 1, '2023-06-12 07:21:36', '2023-06-12 07:51:28'),
+(90, 19, 21, 42, 'Tel + Net Socket', 'ST-MV-TEL+NETS', '50', 'Switch', 'Regular', 'Black', '1700', NULL, NULL, 'Double Data Socket,Tel+Net Socket', 'STATA Double Data Socket / TEL+Net Socket', 'upload/products/thumbnail/1768482415752255.webp', NULL, NULL, NULL, 1, NULL, NULL, NULL, 1, '2023-06-12 07:45:39', '2023-06-12 07:50:59');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `reviews`
 --
 
-DROP TABLE IF EXISTS `reviews`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `reviews` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `product_id` bigint unsigned NOT NULL,
-  `user_id` bigint unsigned NOT NULL,
-  `comment` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `summary` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `comment` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `summary` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `reviews_product_id_foreign` (`product_id`),
-  KEY `reviews_user_id_foreign` (`user_id`),
-  CONSTRAINT `reviews_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `reviews_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `reviews`
---
-
-LOCK TABLES `reviews` WRITE;
-/*!40000 ALTER TABLE `reviews` DISABLE KEYS */;
-/*!40000 ALTER TABLE `reviews` ENABLE KEYS */;
-UNLOCK TABLES;
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `seos`
 --
 
-DROP TABLE IF EXISTS `seos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `seos` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `meta_title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `meta_author` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `meta_keyword` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `meta_description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `google_analytics` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `meta_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_author` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_keyword` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `google_analytics` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `seos`
 --
 
-LOCK TABLES `seos` WRITE;
-/*!40000 ALTER TABLE `seos` DISABLE KEYS */;
-INSERT INTO `seos` VALUES (1,'STATA IT LIMITED | Smart Home Automation in Bangladesh','STATA','Smart Home Solution | Bangladesh','Transform your home with smart home automation in Bangladesh. Control your home\'s lighting, temperature, and security through the STATA Life App.','google_analytics',NULL,'2023-07-18 06:10:29');
-/*!40000 ALTER TABLE `seos` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `seos` (`id`, `meta_title`, `meta_author`, `meta_keyword`, `meta_description`, `google_analytics`, `created_at`, `updated_at`) VALUES
+(1, 'STATA IT Limited', 'STATA', 'Smart Home Solution | Bangladesh', 'Transform your home with smart home automation in Bangladesh. Control your home\'s lighting, temperature, and security through the STATA Life App.', 'google_analytics', NULL, '2023-05-22 05:16:59');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `sessions`
 --
 
-DROP TABLE IF EXISTS `sessions`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `sessions` (
-  `id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `user_id` bigint unsigned DEFAULT NULL,
-  `ip_address` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `user_agent` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `payload` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `last_activity` int NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `sessions_user_id_index` (`user_id`),
-  KEY `sessions_last_activity_index` (`last_activity`)
+  `id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `ip_address` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_agent` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `payload` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_activity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `sessions`
 --
 
-LOCK TABLES `sessions` WRITE;
-/*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
-INSERT INTO `sessions` VALUES ('06tJ6MTS5Ll64NshwMZVERVqrVy36jyJYHIAON0Y',NULL,'185.191.171.15','Mozilla/5.0 (compatible; SemrushBot/7~bl; +http://www.semrush.com/bot.html)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiNktZemt4enc2NGV6T0Y2SDR1bERXam9mSHFYZGV1b2hRem52N0daWSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy85NCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1690693911),('2s2W6oSjapsWkvQ9d37bZTq20KwIC0L8uPDqdbeb',NULL,'114.119.137.174','Mozilla/5.0 (Linux; Android 7.0;) AppleWebKit/537.36 (KHTML, like Gecko) Mobile Safari/537.36 (compatible; PetalBot;+https://webmaster.petalsearch.com/site/petalbot)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiUGVOTFpiVnJLY1NNTFdRcFdUVVk4cEwyZHMyM1JTQThuNlVFR0F0dCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDE6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL2N1c3RvbWl6ZS9wcm9kdWN0Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1690692581),('3AOdn4maHsmmmn7aSYTpCRm3VN2eGHuZL1O5Fuh9',NULL,'66.249.66.134','Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.5735.179 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiVU5SeFNUSmVzTWxvNURxVFFqRDd3WXMzdEVUYUQ5YmxoNzBYd2RKSyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy80OSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1690690182),('50C8bR2ph88bIzQVGOBfizSoo0mVHJUlpmxqrsdE',NULL,'51.222.253.18','Mozilla/5.0 (compatible; AhrefsBot/7.0; +http://ahrefs.com/robot/)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiOExKQkpybUt3WFdBQ0RpZjZ1VzduZ2F3UlQycTJ6UjdtQkxqSVFyVyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjM6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1690695623),('660xZbt4aUqpw5ETUTRfYajFmb2vFTCZ2vRmA9Kj',NULL,'103.7.251.142','Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/115.0','YTozOntzOjY6Il90b2tlbiI7czo0MDoiVk5mMTh4WEt2ZmJOa2RQSms0dzdiUm9FSmhtSEJ0cDRhTHpONUUzNSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDM6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL2NhdGVnb3J5L3Byb2R1Y3QvMjEiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1690693824),('6HGBHF774c3f6U3in1KE4nQeGOynvLRSbY1hjgkK',NULL,'66.249.66.87','Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.5735.179 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiVmVCUklaTTh0cXBxNHBPY1pqaFBmZ2VaQnd3b3B6azhsNlV3STZrSiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3N1YmNhdGVnb3J5L3Byb2R1Y3QvMzAiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1690687472),('8kMaFnhWB9EIHHVzhcfPeEyjKcyoUmLo3AkiTrX5',NULL,'35.203.210.182','Expanse, a Palo Alto Networks company, searches across the global IPv4 space multiple times per day to identify customers&#39; presences on the Internet. If you would like to be excluded from our scans, please send IP addresses/domains to: scaninfo@paloaltonetworks.com','YTozOntzOjY6Il90b2tlbiI7czo0MDoiNkpLS0Y4ZEdwWUdlcW9NOU1zNFdmVWJWVjZJRmhJVzZYYkpodTNPeSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjI6Imh0dHBzOi8vMTQzLjE5OC4yMjEuNDQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1690688902),('8qAfV52oPoCKjZ2qFQlPRGlJnm4MHptNgrgD1fSN',NULL,'167.172.232.211','Mozilla/5.0 (X11; Linux x86_64; rv:15.0) Gecko/20120724 Debian Iceweasel/15.02','YTozOntzOjY6Il90b2tlbiI7czo0MDoiZURvODVxMVIzSHZCTkdkSHlPeXJQeFp4OThObUl1Mmp1ZjE1MVExSCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjI6Imh0dHBzOi8vMTQzLjE5OC4yMjEuNDQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1690693738),('b9wuQvFqs2DLbELd6mPWQGBIH0gmyA2nJ0RjYhQv',NULL,'64.62.197.184','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15','YTozOntzOjY6Il90b2tlbiI7czo0MDoiU3hrc2J3Qll0MzJ2VEVwRm9MUnhVMHdKNEw0YUlZNFVMMmRjZms0ViI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjI6Imh0dHBzOi8vMTQzLjE5OC4yMjEuNDQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1690692044),('Dr1PlAhyga5hOSQiGrlnuiDFOu36PsUcqxug7leZ',NULL,'66.249.66.39','Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.5735.179 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiVUhVM1hpdEY5MTI4MnZSR2oxUVZNblloelVoWVBGeWNCN3FkT28wVSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDE6Imh0dHBzOi8vMTQzLjE5OC4yMjEuNDQvcHJvZHVjdC9kZXRhaWxzLzY3Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1690688344),('dvCqRSNNYZpyVthg7LubzPTjCnekIhWbDYeuZ27m',NULL,'66.249.82.170','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4590.2 Safari/537.36 Chrome-Lighthouse','YTozOntzOjY6Il90b2tlbiI7czo0MDoicUpPMUpGaDZYa2ZBVVBKZEF0ZEM2cG5NOFNnV2ZnajFWcUV6dkhZNCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjM6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1690695321),('EUa5ylMdJtGwhfhxlUjTavvyxrWiLfxSvS0ETjZD',NULL,'119.148.12.174','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiSDdBeW9waEh6a1U2VVd5ZE1mTmdKRzhleWFUSVpSaURJVnBGbnd5diI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy83MSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1690689702),('gYYzl8rEXvEscYgKHm36U3dT2giUmvDCmknsxL3b',NULL,'45.156.128.7','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiRTZkMHdIRzB2cTRpckh5TlpkMDlLMURIcU5Yd2h6YUlyTlNkSDVkaiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjI6Imh0dHBzOi8vMTQzLjE5OC4yMjEuNDQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1690690274),('HAlAIgwcpBCvw5lJw9Mc76AkgkmXAH9j1Wf30aMa',NULL,'114.119.154.211','Mozilla/5.0 (Linux; Android 7.0;) AppleWebKit/537.36 (KHTML, like Gecko) Mobile Safari/537.36 (compatible; PetalBot;+https://webmaster.petalsearch.com/site/petalbot)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiSDJ4eE5ibDRJaVpaSEtLZHlpcXZMZ2RKZkdUNHJyY2F4QlRWZkVmSCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTU6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvdGFnL1N3aXRjaCxMb2NrcyxTZW5zb3IiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1690694256),('IB7dSGqqDje0woZB0BF66cdXDlmW4WEcVuODp26S',NULL,'45.156.129.12','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoibnVOcG1kZG1Fb2doOHQ0UzAxZTVWVmFBeFVKSUNBYjlneGVTQVl0bSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjI6Imh0dHBzOi8vMTQzLjE5OC4yMjEuNDQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1690691955),('IM15mZ49a61umyv4X64Mf2Svi2TD4hnD5is0Sknv',NULL,'185.180.143.11','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoib2cxQnM2S0pkQlN0dUhhNGgxVWdNZG1FTllWZTM3ZDc4ODBjT09EeCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjI6Imh0dHBzOi8vMTQzLjE5OC4yMjEuNDQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1690690187),('kY4cvxI85GPhfJiYDqKKAtNehRKBroof0MM59Wcl',NULL,'66.249.66.132','Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.5735.179 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)','YToyOntzOjY6Il90b2tlbiI7czo0MDoiZU5Hd2taNDc4OHBwZFlrMzVlaWhOWVgyOFNkYzRsdGkxeVJkOWdSdSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1690691386),('lbYqITSVyl2WtUchInms25fto1mFMK4hyBYh4DIk',NULL,'66.249.82.171','Mozilla/5.0 (Linux; Android 7.0; Moto G (4)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4590.2 Mobile Safari/537.36 Chrome-Lighthouse','YTozOntzOjY6Il90b2tlbiI7czo0MDoiVXZwWGhxeVRDeDlkN3dZb2xzb2hlcEl3TmhpUTVRR3QzanZpc0VqQiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjM6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1690695300),('ME1AhECXZW9bhCBtjBeEPrziHddKgvxQRSrh9GTk',NULL,'114.119.128.35','Mozilla/5.0 (Linux; Android 7.0;) AppleWebKit/537.36 (KHTML, like Gecko) Mobile Safari/537.36 (compatible; PetalBot;+https://webmaster.petalsearch.com/site/petalbot)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiTmlES2t2MmR3WW1tR2RoMDQxclUwWWdvdGYzSTVDVEFFNDJuV3pCdCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDE6Imh0dHBzOi8vMTQzLjE5OC4yMjEuNDQvcHJvZHVjdC9kZXRhaWxzLzYwIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1690689340),('MIUcF4Qu1pd0lAHfZtNW9TgCKy9oObKcn6G2oCdo',NULL,'51.75.6.220','Mozilla/5.0 (Linux; Android 10; M2006C3LI Build/QP1A.190711.020; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/87.0.4280.101 Mobile Safari/537.36 [FB_IAB/FB4A;FBAV/424.0.0.21.75;]','YTozOntzOjY6Il90b2tlbiI7czo0MDoiUUpOMHhrc0thVVA2SThkUUFKcXEyd0FBRlhqNDVId1FLbmtlcHNidSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6OTc6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS8/ZmJjbGlkPUl3QVIwczlsTkI4T0lGdXRtWlhQRVZTdGlFaG1QTUVXcGdxTFp1eHRyV2ZyVWR1T1ktRThUSzkxc3dKQUkiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1690694570),('pHB7XuSgEiUpScRXccSdYAEvoUKzmtISllvolXSq',NULL,'66.249.82.172','Mozilla/5.0 (Linux; Android 7.0; Moto G (4)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4590.2 Mobile Safari/537.36 Chrome-Lighthouse','YTozOntzOjY6Il90b2tlbiI7czo0MDoiZE1yWDRXQm9ZMjhQVE1pSTE0aG9EaEpmYkhzWThrR1Vwcmd4a1B1SSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjM6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1690695321),('q3vJwGiOw2xLBqFmRvgL9WEb2RHDNzjxjYGS2qkZ',NULL,'174.138.61.44','Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:61.0) Gecko/20100101 Firefox/72.0','YTozOntzOjY6Il90b2tlbiI7czo0MDoiSnh6aGRIeEtQajJIYmJwZVNaVEhFSmtvM0ZsOEJJYkJqRll1d3J5TSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjI6Imh0dHBzOi8vMTQzLjE5OC4yMjEuNDQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1690692021),('QpaKGYjDBDyl114gfggUUVcn20hCfoMxMJHVO5xy',NULL,'167.172.232.211','Mozilla/5.0 (Linux; Android 10; ONE A2003) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.61 Mobile Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiaFZMcjdUbjc0OVB3TlZSeG9LWDR4WW9laWx1c2E2c0hKTkNuYnFNeCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjI6Imh0dHBzOi8vMTQzLjE5OC4yMjEuNDQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1690695420),('r8RhJ5SeOzikUd5yFUTsas3OpWUxpY44u58KjZvA',NULL,'103.38.16.124','Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Mobile Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoibmZjT2VHVUVyWU1zWjlBQThxMmdvdHNVV3RrYWlFeHhUOVdnVkZWOCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6OTc6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS8/ZmJjbGlkPUl3QVIwcHFxaTFndUJQWDFWcVRiTlJsSUtUMk5IOUhzQUZvM0UzQWxhSi1TdUFOcXhDNE5VSjBsU2ZvYWciO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1690689067),('RF1hNErxTiCR95f4B1hzBJgvLAmqD7GCay4bQqBb',NULL,'103.38.16.124','Mozilla/5.0 (Linux; Android 13; SM-A146B Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/114.0.5735.196 Mobile Safari/537.36 [FB_IAB/FB4A;FBAV/425.0.0.22.49;]','YTozOntzOjY6Il90b2tlbiI7czo0MDoiUTZGSzRWYkxIQTN5ekdzWHRCempPRUo0Rk93OTV5SkNjQ1VJU0FxYyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6OTc6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS8/ZmJjbGlkPUl3QVIwcHFxaTFndUJQWDFWcVRiTlJsSUtUMk5IOUhzQUZvM0UzQWxhSi1TdUFOcXhDNE5VSjBsU2ZvYWciO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1690689064),('rhmPAVxQNn759USBogC8CGJ8iI8qj6VN7uzMeWHp',NULL,'103.29.105.243','Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/111.0','YTozOntzOjY6Il90b2tlbiI7czo0MDoibDZuNWVqYjI0VVBUTGlTN1JJZTQ2RnlqYTAxc3hXT2xJWVR1YVVmaCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDM6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL2NhdGVnb3J5L3Byb2R1Y3QvMTkiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1690691711),('sLJ6Gwr6RcgEStjz8v3GZ5m8ypKlx6y0zB92MUQo',NULL,'37.111.218.42','Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/115.0.5790.130 Mobile/15E148 Safari/604.1','YTozOntzOjY6Il90b2tlbiI7czo0MDoiMmt5eW9lQjAxVjJkN3puNjFxQ3RkOWZzdlVmMXhKNUJ3dWNrUkQyYiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy82NSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1690694184),('tbHfBJvEeooFgt12FqLlmbhgNu9s4i5GgdB1vtXQ',NULL,'114.119.140.214','Mozilla/5.0 (Linux; Android 7.0;) AppleWebKit/537.36 (KHTML, like Gecko) Mobile Safari/537.36 (compatible; PetalBot;+https://webmaster.petalsearch.com/site/petalbot)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiRVJTRW90ZWhlWENmdjdUOUlmaWxicDVGQ0JYWEVzcklZNHVjc3kxdiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDE6Imh0dHBzOi8vMTQzLjE5OC4yMjEuNDQvcHJvZHVjdC90YWcvU29ja2V0Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1690689242),('u2MslRNgui0KUgXniqjKydmgewrPztfDDVyagPPG',NULL,'103.230.63.86','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36','YTo1OntzOjY6Il90b2tlbiI7czo0MDoidGFaaVQ4YUNrU2wxeDBIbmNIeVpZQ3R4cmVsOGpmMnBqeTFoRk10aSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzk6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZWRpdC84OCI7fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTc7czoxOToicGFzc3dvcmRfaGFzaF9hZG1pbiI7czo2MDoiJDJ5JDEwJGJXUGNaT2pPb2JWL0hPMmo2aHUyS092VWwySnBHNlJoNUJBMFpwb1Z2bWdJemR3YldCT1pDIjt9',1690695570),('uHbDoHPvTEZo7ox1xTuzRFllXEbqavAW5YoHBfbT',NULL,'114.119.154.203','Mozilla/5.0 (Linux; Android 7.0;) AppleWebKit/537.36 (KHTML, like Gecko) Mobile Safari/537.36 (compatible; PetalBot;+https://webmaster.petalsearch.com/site/petalbot)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiNXZ6VjdqYlQyN3ZQNDl4a2lWVWRxVGJGMXV0YUtNcWJ0NGU0ZE1SaCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3N1YmNhdGVnb3J5L3Byb2R1Y3QvMzIiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1690694200),('V7Ms85iHe54TrhF2zOFLoMgj99sQ61XgAw4YnZKe',NULL,'34.220.134.251','Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiUE1GZGY3TzZBWXh1YUc0emFmdUFqT3ZQRU5saHBlcUJQRXdZUlhZQyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzI6Imh0dHBzOi8vMTQzLjE5OC4yMjEuNDQvaW5kZXgucGhwIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1690691309),('VmjhT24cYYilCIRXbzQveJEaWYU7z9n0mSSqdn75',NULL,'66.249.66.131','Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.5735.179 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiNE51blNKN1ZxRmNXbllsSEFXS1QwZ1NHYmJXNHU5b1FTNHg3REtGRSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3N1YmNhdGVnb3J5L3Byb2R1Y3QvNDAiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1690688674),('WLk2ARA5ZxAKophqyBeN8Ie3WMOYR80kIStx0zU1',NULL,'66.249.82.171','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4590.2 Safari/537.36 Chrome-Lighthouse','YTozOntzOjY6Il90b2tlbiI7czo0MDoiY0pVdGFaa3gxSWJVTU5uNmVnNG9kR1NPeXpPWlRLWWM2U3dETFVoWSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjM6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1690695300),('wMqLhKjBysahP1cWCEVJZZh8cxcyuXQmOmBBjKIi',NULL,'43.250.82.102','Mozilla/5.0 (Linux; Android 11; RMX3201) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiR0pqUjBRbXlIa3ZCbkppSWJDWVBVTjhjc0lQeWFRcE43UUlQa1hqRCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6OTc6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS8/ZmJjbGlkPVp6clY0SUJMTTlKTVJ2aDVkaUhQcmNTVUxVOG9mMWNyWWxNMGI3T2pYdy1LWnJmQ1FlMUFrajNFS1h4YU4iO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1690689088),('yFNhR2XrEsdgrtCfSFF0jUV7fRIdUATifyge1LqY',NULL,'103.230.63.86','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiTnBwU21Nemg4VXMycVlpdkJCYldia2VSRm5LTWVzclhFMzIxcGFaWCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjM6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1690694923);
-/*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
+('5vFUKLTzgqpWmTEszq7oiYKpvuQm0SO4RcTFbpQg', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiYnZoM1NZbmdKRGJ5NmVKYjIzdHFGOWRoa0pyNVl6Y3RQU1U2UUN5TiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jYXRlZ29yeS9wcm9kdWN0LzE4Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTk6InBhc3N3b3JkX2hhc2hfYWRtaW4iO3M6NjA6IiQyeSQxMCRaQ29xQ1NOQ2lSYnFSTTNPbVJwYTRPNnNNWms4YmFvS1gybE9ncWwzZno2RHhLcEQxWVUxNiI7fQ==', 1690701812);
 
---
--- Table structure for table `ship_districts`
---
-
-DROP TABLE IF EXISTS `ship_districts`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `ship_districts` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `division_id` bigint unsigned NOT NULL,
-  `district_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `ship_districts`
---
-
-LOCK TABLES `ship_districts` WRITE;
-/*!40000 ALTER TABLE `ship_districts` DISABLE KEYS */;
-INSERT INTO `ship_districts` VALUES (6,4,'Dhaka','2022-09-13 06:15:44',NULL),(7,4,'Gazipur','2022-09-13 06:15:50',NULL),(8,4,'Tangail','2022-09-13 06:16:01',NULL),(9,4,'Kishoreganj','2022-09-13 06:16:41',NULL),(10,4,'Manikganj','2022-09-13 06:16:48',NULL),(11,4,'Munshiganj','2022-09-13 06:16:55',NULL),(12,4,'Narayanganj','2022-09-13 06:17:05',NULL),(13,4,'Narsingdi','2022-09-13 06:17:11',NULL),(14,4,'Faridpur','2022-09-13 06:17:21',NULL),(15,4,'Gopalganj','2022-09-13 06:17:31',NULL),(16,4,'Madaripur','2022-09-13 06:17:39',NULL),(17,4,'Rajbari','2022-09-13 06:17:46',NULL),(18,4,'Shariatpur','2022-09-13 06:17:56',NULL),(19,7,'Barguna','2022-09-13 06:18:26',NULL),(20,7,'Barisal','2022-09-13 06:18:32',NULL),(21,7,'Bhola','2022-09-13 06:18:38',NULL),(22,7,'Jhalokati','2022-09-13 06:18:44',NULL),(23,7,'Patuakhali','2022-09-13 06:18:50',NULL),(24,7,'Pirojpur','2022-09-13 06:18:56',NULL),(25,5,'Sylhet','2022-09-13 06:19:24',NULL),(26,5,'Sunamganj','2022-09-13 06:19:31',NULL),(27,5,'Moulvibazar','2022-09-13 06:19:38',NULL),(28,5,'Habiganj','2022-09-13 06:20:39',NULL),(29,10,'Thakurgaon','2022-09-13 06:20:48',NULL),(30,10,'Rangpur','2022-09-13 06:20:54',NULL),(31,10,'Panchagarh','2022-09-13 06:21:03',NULL),(32,10,'Nilphamari','2022-09-13 06:21:17',NULL),(33,10,'Lalmonirhat','2022-09-13 06:21:26',NULL),(34,10,'Kurigram','2022-09-13 06:21:51',NULL),(35,10,'Gaibandha','2022-09-13 06:21:57',NULL),(36,10,'Dinajpur','2022-09-13 06:22:03',NULL),(37,8,'Sirajganj','2022-09-13 06:22:19',NULL),(38,8,'Rajshahi','2022-09-13 06:22:26',NULL),(39,8,'Pabna','2022-09-13 06:22:36',NULL),(40,8,'Chapai Nawabganj','2022-09-13 06:22:45',NULL),(41,8,'Natore','2022-09-13 06:22:52',NULL),(42,8,'Naogaon','2022-09-13 06:22:57',NULL),(43,8,'Joypurhat','2022-09-13 06:23:05',NULL),(44,8,'Bogra','2022-09-13 06:23:11',NULL),(45,11,'Sherpur','2022-09-13 06:23:34',NULL),(46,11,'Netrokona','2022-09-13 06:23:39',NULL),(47,11,'Mymensingh','2022-09-13 06:23:45',NULL),(48,11,'Jamalpur','2022-09-13 06:23:50',NULL),(49,9,'Satkhira','2022-09-13 06:25:10',NULL),(50,9,'Narail','2022-09-13 06:25:15',NULL),(51,9,'Meherpur','2022-09-13 06:25:28',NULL),(52,9,'Magura','2022-09-13 06:25:34',NULL),(53,9,'Kushtia','2022-09-13 06:25:42',NULL),(54,9,'Khulna','2022-09-13 06:25:49',NULL),(55,9,'Jhenaidah','2022-09-13 06:25:57',NULL),(56,9,'Jessore','2022-09-13 06:26:02',NULL),(57,9,'Chuadanga','2022-09-13 06:26:10',NULL),(58,9,'Bagerhat','2022-09-13 06:26:19',NULL),(59,6,'Rangamati','2022-09-13 06:27:08',NULL),(60,6,'Noakhali','2022-09-13 06:27:18',NULL),(61,6,'Lakshmipur','2022-09-13 06:27:25',NULL),(62,6,'Khagrachhari','2022-09-13 06:27:31',NULL),(63,6,'Feni','2022-09-13 06:27:36',NULL),(64,6,'Cox\'s Bazar','2022-09-13 06:27:42',NULL),(65,6,'Comilla','2022-09-13 06:27:49',NULL),(66,6,'Chittagong','2022-09-13 06:27:54',NULL),(67,6,'Chandpur','2022-09-13 06:28:11',NULL),(68,6,'Brahmanbaria','2022-09-13 06:28:19',NULL),(69,6,'Bandarban','2022-09-13 06:28:24',NULL),(70,4,'--','2022-09-22 06:06:19',NULL),(71,7,'--','2022-09-22 06:07:03',NULL),(72,6,'--','2022-09-22 06:07:08',NULL),(73,9,'--','2022-09-22 06:07:12',NULL),(74,11,'--','2022-09-22 06:07:17',NULL),(75,8,'--','2022-09-22 06:07:21',NULL),(76,10,'--','2022-09-22 06:07:25',NULL),(77,5,'--','2022-09-22 06:07:30',NULL);
-/*!40000 ALTER TABLE `ship_districts` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `ship_divisions`
---
-
-DROP TABLE IF EXISTS `ship_divisions`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `ship_divisions` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `division_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `ship_divisions`
---
-
-LOCK TABLES `ship_divisions` WRITE;
-/*!40000 ALTER TABLE `ship_divisions` DISABLE KEYS */;
-INSERT INTO `ship_divisions` VALUES (4,'Dhaka','2022-09-13 05:13:37',NULL),(5,'Sylhet','2022-09-13 05:13:41',NULL),(6,'Chittagong','2022-09-13 05:13:45',NULL),(7,'Barisal','2022-09-13 05:13:49',NULL),(8,'Rajshahi','2022-09-13 05:13:53',NULL),(9,'Khulna','2022-09-13 05:13:56',NULL),(10,'Rangpur','2022-09-13 05:14:31',NULL),(11,'Mymensingh','2022-09-13 05:15:00',NULL);
-/*!40000 ALTER TABLE `ship_divisions` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `ship_states`
---
-
-DROP TABLE IF EXISTS `ship_states`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `ship_states` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `division_id` bigint unsigned NOT NULL,
-  `district_id` bigint unsigned NOT NULL,
-  `state_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=164 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `ship_states`
---
-
-LOCK TABLES `ship_states` WRITE;
-/*!40000 ALTER TABLE `ship_states` DISABLE KEYS */;
-INSERT INTO `ship_states` VALUES (26,4,7,'Gazipur','2022-09-18 07:20:31',NULL),(27,4,12,'Narayanganj','2022-09-18 07:20:49',NULL),(28,4,8,'Tangail','2022-09-18 07:21:02',NULL),(30,4,13,'Narsingdi','2022-09-18 07:21:48',NULL),(31,4,14,'Faridpur','2022-09-18 07:21:56',NULL),(32,4,11,'Munshiganj','2022-09-18 07:22:39',NULL),(33,6,64,'Cox\'s Bazar','2022-09-18 07:24:13',NULL),(34,6,63,'Feni','2022-09-18 07:24:20',NULL),(35,6,59,'Rangamati','2022-09-18 07:24:40',NULL),(36,6,69,'Bandarban','2022-09-18 07:24:54',NULL),(37,6,62,'Khagrachhari','2022-09-18 07:25:10',NULL),(38,7,23,'Patuakhali','2022-09-18 07:25:28',NULL),(39,7,21,'Bhola','2022-09-18 07:25:41',NULL),(40,6,66,'Karnafuli','2022-09-22 04:21:43',NULL),(41,6,66,'Kotwali','2022-09-22 04:21:53',NULL),(42,6,66,'Khulshi','2022-09-22 04:22:02',NULL),(43,6,66,'Chandgaon','2022-09-22 04:22:11',NULL),(44,6,66,'Double Mooring','2022-09-22 04:23:32',NULL),(45,6,66,'Panchlaish','2022-09-22 04:23:41',NULL),(46,6,66,'Pahartali','2022-09-22 04:23:50',NULL),(47,6,66,'Bandar','2022-09-22 04:24:04',NULL),(48,6,66,'Bakalia','2022-09-22 04:24:13',NULL),(49,6,66,'Bayejid Bustami','2022-09-22 04:24:24',NULL),(50,6,66,'Halishahar','2022-09-22 04:24:32',NULL),(51,6,66,'Anowara','2022-09-22 04:24:50',NULL),(52,6,66,'Chandanaish','2022-09-22 04:24:58',NULL),(53,6,66,'Patiya','2022-09-22 04:25:54',NULL),(54,6,66,'Fatikchhari','2022-09-22 04:26:03',NULL),(55,6,66,'Banshkhali','2022-09-22 04:26:43',NULL),(56,6,66,'Boalkhali','2022-09-22 04:26:50',NULL),(57,6,66,'Mirsharai','2022-09-22 04:27:20',NULL),(58,6,66,'Raozan','2022-09-22 04:29:20',NULL),(59,6,66,'Rangunia','2022-09-22 04:29:34',NULL),(60,6,66,'Lohagara','2022-09-22 04:29:44',NULL),(61,6,66,'Sandwip','2022-09-22 04:29:52',NULL),(62,6,66,'Satkania','2022-09-22 04:29:59',NULL),(63,6,66,'Sitakunda','2022-09-22 04:30:30',NULL),(64,6,66,'Hathazari','2022-09-22 04:30:48',NULL),(65,4,6,'Adabor','2022-09-22 04:38:06',NULL),(66,4,6,'Uttar Khan','2022-09-22 04:38:17',NULL),(67,4,6,'Uttara','2022-09-22 04:38:24',NULL),(68,4,6,'Kadamtali','2022-09-22 04:38:31',NULL),(69,4,6,'Kalabagan','2022-09-22 04:38:58',NULL),(70,4,6,'Kafrul','2022-09-22 04:39:07',NULL),(71,4,6,'Kamrangirchar','2022-09-22 04:39:22',NULL),(72,4,6,'Cantonment','2022-09-22 04:40:02',NULL),(73,4,6,'Kotwali','2022-09-22 04:40:11',NULL),(74,4,6,'Khilkhet','2022-09-22 04:40:18',NULL),(75,4,6,'Khilgaon','2022-09-22 04:40:25',NULL),(76,4,6,'Gulshan','2022-09-22 04:40:32',NULL),(77,4,6,'Gendaria','2022-09-22 04:40:39',NULL),(78,4,6,'Chawkbazar Model','2022-09-22 04:40:47',NULL),(79,4,6,'Demra','2022-09-22 04:40:55',NULL),(80,4,6,'Turag','2022-09-22 04:41:01',NULL),(81,4,6,'Tejgaon','2022-09-22 04:41:08',NULL),(82,4,6,'Dakshinkhan','2022-09-22 04:41:15',NULL),(83,4,6,'Darus Salam','2022-09-22 04:41:38','2022-09-22 04:41:38'),(84,4,6,'Dhanmondi','2022-09-22 04:41:47',NULL),(85,4,6,'New Market','2022-09-22 04:41:54',NULL),(86,4,6,'Paltan','2022-09-22 04:42:01',NULL),(87,4,6,'Pallabi','2022-09-22 04:42:17',NULL),(88,4,6,'Bangshal','2022-09-22 04:44:22',NULL),(89,4,6,'Badda','2022-09-22 04:44:30',NULL),(90,4,6,'Bimanbandar','2022-09-22 04:44:37',NULL),(91,4,6,'Motijheel','2022-09-22 04:44:43',NULL),(92,4,6,'Mirpur Model','2022-09-22 04:44:54',NULL),(93,4,6,'Mohammadpur','2022-09-22 04:45:02',NULL),(94,4,6,'Jatrabari','2022-09-22 04:45:10',NULL),(95,4,6,'Ramna','2022-09-22 04:45:17',NULL),(96,4,6,'Rampura','2022-09-22 04:45:23',NULL),(97,4,6,'Lalbagh','2022-09-22 04:45:31',NULL),(98,4,6,'Shah Ali','2022-09-22 04:45:39',NULL),(99,4,6,'Shahbagh','2022-09-22 04:45:45',NULL),(100,4,6,'Sher-e-Bangla Nagar','2022-09-22 04:45:51',NULL),(101,4,6,'Shyampur','2022-09-22 04:46:15',NULL),(102,4,6,'Sabujbagh','2022-09-22 04:46:22',NULL),(103,4,6,'Sutrapur','2022-09-22 04:46:46',NULL),(104,4,6,'Hazaribagh','2022-09-22 04:46:52',NULL),(105,4,6,'Keraniganj','2022-09-22 04:46:59',NULL),(106,4,6,'Nawabganj','2022-09-22 04:47:05',NULL),(107,4,6,'Dohar','2022-09-22 04:47:13',NULL),(108,4,6,'Dhamrai','2022-09-22 04:47:19',NULL),(109,4,6,'Savar','2022-09-22 04:47:31',NULL),(110,4,9,'Kishoreganj','2022-09-22 04:51:22',NULL),(111,4,10,'Manikganj','2022-09-22 04:51:34',NULL),(112,4,15,'Gopalganj','2022-09-22 04:52:32',NULL),(113,4,6,'Wari','2022-09-22 04:52:59',NULL),(114,4,16,'Madaripur','2022-09-22 04:53:10',NULL),(116,4,17,'Rajbari','2022-09-22 04:55:10',NULL),(117,4,18,'Shariatpur','2022-09-22 04:55:22',NULL),(118,11,47,'Mymensingh','2022-09-22 05:07:37',NULL),(119,11,48,'Jamalpur','2022-09-22 05:07:51',NULL),(120,11,46,'Netrokona','2022-09-22 05:08:02',NULL),(121,11,45,'Sherpur','2022-09-22 05:08:12',NULL),(122,5,25,'Balaganj','2022-09-22 05:35:30',NULL),(123,5,25,'Beanibazar','2022-09-22 05:35:39',NULL),(124,5,25,'Bishwanath','2022-09-22 05:35:47',NULL),(125,5,25,'Companiganj','2022-09-22 05:35:54',NULL),(126,5,25,'Dakshin Surma','2022-09-22 05:36:01',NULL),(127,5,25,'Fenchuganj','2022-09-22 05:36:13',NULL),(128,5,25,'Golapganj','2022-09-22 05:37:00',NULL),(129,5,25,'Gowainghat','2022-09-22 05:37:07',NULL),(130,5,25,'Jaintiapur','2022-09-22 05:37:15',NULL),(131,5,25,'Kanaighat','2022-09-22 05:37:23',NULL),(132,5,25,'Osmani Nagar','2022-09-22 05:37:30',NULL),(133,5,25,'Sylhet Sadar','2022-09-22 05:37:36',NULL),(134,5,25,'Zakiganj','2022-09-22 05:37:43',NULL),(135,5,27,'Moulvibazar','2022-09-22 05:37:54',NULL),(136,5,28,'Habiganj','2022-09-22 05:38:22',NULL),(137,5,26,'Sunamganj','2022-09-22 05:38:32',NULL),(138,8,41,'Natore','2022-09-22 05:41:01',NULL),(139,8,37,'Sirajganj','2022-09-22 05:41:15',NULL),(140,8,39,'Pabna','2022-09-22 05:41:27',NULL),(141,8,44,'Bogura','2022-09-22 05:41:56',NULL),(142,8,40,'Chapainawabganj','2022-09-22 05:42:09',NULL),(143,8,42,'Naogaon','2022-09-22 05:42:19',NULL),(144,8,43,'Joypurhat','2022-09-22 05:42:32',NULL),(145,8,38,'Rajshahi','2022-09-22 05:43:19',NULL),(146,10,30,'Rangpur','2022-09-22 05:47:08',NULL),(147,10,32,'Nilphamari','2022-09-22 05:47:34',NULL),(148,10,33,'Lalmonirhat','2022-09-22 05:47:44',NULL),(149,10,36,'Dinajpur','2022-09-22 05:47:53',NULL),(150,10,31,'Panchagarh','2022-09-22 05:48:06',NULL),(151,10,29,'Thakurgaon','2022-09-22 05:48:44',NULL),(152,10,35,'Gaibandha','2022-09-22 05:48:55',NULL),(153,10,34,'Kurigram','2022-09-22 05:49:31',NULL),(154,6,68,'Brahmanbaria','2022-09-22 05:52:41',NULL),(155,6,65,'Comilla','2022-09-22 05:52:51',NULL),(156,6,67,'Chandpur','2022-09-22 05:53:01',NULL),(157,6,61,'Lakshmipur','2022-09-22 05:53:12',NULL),(158,6,60,'Noakhali','2022-09-22 05:53:31',NULL),(159,7,19,'Barguna','2022-09-22 05:54:53',NULL),(160,7,22,'Jhalokati','2022-09-22 05:55:05',NULL),(161,7,24,'Pirojpur','2022-09-22 05:55:33',NULL),(162,7,20,'Barisal','2022-09-22 05:55:43',NULL),(163,4,6,'Banasree','2022-12-20 05:41:31',NULL);
-/*!40000 ALTER TABLE `ship_states` ENABLE KEYS */;
-UNLOCK TABLES;
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `shippings`
 --
 
-DROP TABLE IF EXISTS `shippings`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `shippings` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `order_id` bigint unsigned NOT NULL,
-  `division_id` bigint unsigned NOT NULL,
-  `district_id` bigint unsigned NOT NULL,
-  `state_id` bigint unsigned NOT NULL,
-  `shipping_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `shipping_email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `shipping_phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `post_code` int NOT NULL,
-  `notes` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `order_id` bigint(20) UNSIGNED NOT NULL,
+  `division_id` bigint(20) UNSIGNED NOT NULL,
+  `district_id` bigint(20) UNSIGNED NOT NULL,
+  `state_id` bigint(20) UNSIGNED NOT NULL,
+  `shipping_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `shipping_email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `shipping_phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `post_code` int(11) NOT NULL,
+  `notes` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `shippings`
+-- Table structure for table `ship_districts`
 --
 
-LOCK TABLES `shippings` WRITE;
-/*!40000 ALTER TABLE `shippings` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shippings` ENABLE KEYS */;
-UNLOCK TABLES;
+CREATE TABLE `ship_districts` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `division_id` bigint(20) UNSIGNED NOT NULL,
+  `district_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `ship_districts`
+--
+
+INSERT INTO `ship_districts` (`id`, `division_id`, `district_name`, `created_at`, `updated_at`) VALUES
+(6, 4, 'Dhaka', '2022-09-13 06:15:44', NULL),
+(7, 4, 'Gazipur', '2022-09-13 06:15:50', NULL),
+(8, 4, 'Tangail', '2022-09-13 06:16:01', NULL),
+(9, 4, 'Kishoreganj', '2022-09-13 06:16:41', NULL),
+(10, 4, 'Manikganj', '2022-09-13 06:16:48', NULL),
+(11, 4, 'Munshiganj', '2022-09-13 06:16:55', NULL),
+(12, 4, 'Narayanganj', '2022-09-13 06:17:05', NULL),
+(13, 4, 'Narsingdi', '2022-09-13 06:17:11', NULL),
+(14, 4, 'Faridpur', '2022-09-13 06:17:21', NULL),
+(15, 4, 'Gopalganj', '2022-09-13 06:17:31', NULL),
+(16, 4, 'Madaripur', '2022-09-13 06:17:39', NULL),
+(17, 4, 'Rajbari', '2022-09-13 06:17:46', NULL),
+(18, 4, 'Shariatpur', '2022-09-13 06:17:56', NULL),
+(19, 7, 'Barguna', '2022-09-13 06:18:26', NULL),
+(20, 7, 'Barisal', '2022-09-13 06:18:32', NULL),
+(21, 7, 'Bhola', '2022-09-13 06:18:38', NULL),
+(22, 7, 'Jhalokati', '2022-09-13 06:18:44', NULL),
+(23, 7, 'Patuakhali', '2022-09-13 06:18:50', NULL),
+(24, 7, 'Pirojpur', '2022-09-13 06:18:56', NULL),
+(25, 5, 'Sylhet', '2022-09-13 06:19:24', NULL),
+(26, 5, 'Sunamganj', '2022-09-13 06:19:31', NULL),
+(27, 5, 'Moulvibazar', '2022-09-13 06:19:38', NULL),
+(28, 5, 'Habiganj', '2022-09-13 06:20:39', NULL),
+(29, 10, 'Thakurgaon', '2022-09-13 06:20:48', NULL),
+(30, 10, 'Rangpur', '2022-09-13 06:20:54', NULL),
+(31, 10, 'Panchagarh', '2022-09-13 06:21:03', NULL),
+(32, 10, 'Nilphamari', '2022-09-13 06:21:17', NULL),
+(33, 10, 'Lalmonirhat', '2022-09-13 06:21:26', NULL),
+(34, 10, 'Kurigram', '2022-09-13 06:21:51', NULL),
+(35, 10, 'Gaibandha', '2022-09-13 06:21:57', NULL),
+(36, 10, 'Dinajpur', '2022-09-13 06:22:03', NULL),
+(37, 8, 'Sirajganj', '2022-09-13 06:22:19', NULL),
+(38, 8, 'Rajshahi', '2022-09-13 06:22:26', NULL),
+(39, 8, 'Pabna', '2022-09-13 06:22:36', NULL),
+(40, 8, 'Chapai Nawabganj', '2022-09-13 06:22:45', NULL),
+(41, 8, 'Natore', '2022-09-13 06:22:52', NULL),
+(42, 8, 'Naogaon', '2022-09-13 06:22:57', NULL),
+(43, 8, 'Joypurhat', '2022-09-13 06:23:05', NULL),
+(44, 8, 'Bogra', '2022-09-13 06:23:11', NULL),
+(45, 11, 'Sherpur', '2022-09-13 06:23:34', NULL),
+(46, 11, 'Netrokona', '2022-09-13 06:23:39', NULL),
+(47, 11, 'Mymensingh', '2022-09-13 06:23:45', NULL),
+(48, 11, 'Jamalpur', '2022-09-13 06:23:50', NULL),
+(49, 9, 'Satkhira', '2022-09-13 06:25:10', NULL),
+(50, 9, 'Narail', '2022-09-13 06:25:15', NULL),
+(51, 9, 'Meherpur', '2022-09-13 06:25:28', NULL),
+(52, 9, 'Magura', '2022-09-13 06:25:34', NULL),
+(53, 9, 'Kushtia', '2022-09-13 06:25:42', NULL),
+(54, 9, 'Khulna', '2022-09-13 06:25:49', NULL),
+(55, 9, 'Jhenaidah', '2022-09-13 06:25:57', NULL),
+(56, 9, 'Jessore', '2022-09-13 06:26:02', NULL),
+(57, 9, 'Chuadanga', '2022-09-13 06:26:10', NULL),
+(58, 9, 'Bagerhat', '2022-09-13 06:26:19', NULL),
+(59, 6, 'Rangamati', '2022-09-13 06:27:08', NULL),
+(60, 6, 'Noakhali', '2022-09-13 06:27:18', NULL),
+(61, 6, 'Lakshmipur', '2022-09-13 06:27:25', NULL),
+(62, 6, 'Khagrachhari', '2022-09-13 06:27:31', NULL),
+(63, 6, 'Feni', '2022-09-13 06:27:36', NULL),
+(64, 6, 'Cox\'s Bazar', '2022-09-13 06:27:42', NULL),
+(65, 6, 'Comilla', '2022-09-13 06:27:49', NULL),
+(66, 6, 'Chittagong', '2022-09-13 06:27:54', NULL),
+(67, 6, 'Chandpur', '2022-09-13 06:28:11', NULL),
+(68, 6, 'Brahmanbaria', '2022-09-13 06:28:19', NULL),
+(69, 6, 'Bandarban', '2022-09-13 06:28:24', NULL),
+(70, 4, '--', '2022-09-22 06:06:19', NULL),
+(71, 7, '--', '2022-09-22 06:07:03', NULL),
+(72, 6, '--', '2022-09-22 06:07:08', NULL),
+(73, 9, '--', '2022-09-22 06:07:12', NULL),
+(74, 11, '--', '2022-09-22 06:07:17', NULL),
+(75, 8, '--', '2022-09-22 06:07:21', NULL),
+(76, 10, '--', '2022-09-22 06:07:25', NULL),
+(77, 5, '--', '2022-09-22 06:07:30', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ship_divisions`
+--
+
+CREATE TABLE `ship_divisions` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `division_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `ship_divisions`
+--
+
+INSERT INTO `ship_divisions` (`id`, `division_name`, `created_at`, `updated_at`) VALUES
+(4, 'Dhaka', '2022-09-13 05:13:37', NULL),
+(5, 'Sylhet', '2022-09-13 05:13:41', NULL),
+(6, 'Chittagong', '2022-09-13 05:13:45', NULL),
+(7, 'Barisal', '2022-09-13 05:13:49', NULL),
+(8, 'Rajshahi', '2022-09-13 05:13:53', NULL),
+(9, 'Khulna', '2022-09-13 05:13:56', NULL),
+(10, 'Rangpur', '2022-09-13 05:14:31', NULL),
+(11, 'Mymensingh', '2022-09-13 05:15:00', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ship_states`
+--
+
+CREATE TABLE `ship_states` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `division_id` bigint(20) UNSIGNED NOT NULL,
+  `district_id` bigint(20) UNSIGNED NOT NULL,
+  `state_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `ship_states`
+--
+
+INSERT INTO `ship_states` (`id`, `division_id`, `district_id`, `state_name`, `created_at`, `updated_at`) VALUES
+(26, 4, 7, 'Gazipur', '2022-09-18 07:20:31', NULL),
+(27, 4, 12, 'Narayanganj', '2022-09-18 07:20:49', NULL),
+(28, 4, 8, 'Tangail', '2022-09-18 07:21:02', NULL),
+(30, 4, 13, 'Narsingdi', '2022-09-18 07:21:48', NULL),
+(31, 4, 14, 'Faridpur', '2022-09-18 07:21:56', NULL),
+(32, 4, 11, 'Munshiganj', '2022-09-18 07:22:39', NULL),
+(33, 6, 64, 'Cox\'s Bazar', '2022-09-18 07:24:13', NULL),
+(34, 6, 63, 'Feni', '2022-09-18 07:24:20', NULL),
+(35, 6, 59, 'Rangamati', '2022-09-18 07:24:40', NULL),
+(36, 6, 69, 'Bandarban', '2022-09-18 07:24:54', NULL),
+(37, 6, 62, 'Khagrachhari', '2022-09-18 07:25:10', NULL),
+(38, 7, 23, 'Patuakhali', '2022-09-18 07:25:28', NULL),
+(39, 7, 21, 'Bhola', '2022-09-18 07:25:41', NULL),
+(40, 6, 66, 'Karnafuli', '2022-09-22 04:21:43', NULL),
+(41, 6, 66, 'Kotwali', '2022-09-22 04:21:53', NULL),
+(42, 6, 66, 'Khulshi', '2022-09-22 04:22:02', NULL),
+(43, 6, 66, 'Chandgaon', '2022-09-22 04:22:11', NULL),
+(44, 6, 66, 'Double Mooring', '2022-09-22 04:23:32', NULL),
+(45, 6, 66, 'Panchlaish', '2022-09-22 04:23:41', NULL),
+(46, 6, 66, 'Pahartali', '2022-09-22 04:23:50', NULL),
+(47, 6, 66, 'Bandar', '2022-09-22 04:24:04', NULL),
+(48, 6, 66, 'Bakalia', '2022-09-22 04:24:13', NULL),
+(49, 6, 66, 'Bayejid Bustami', '2022-09-22 04:24:24', NULL),
+(50, 6, 66, 'Halishahar', '2022-09-22 04:24:32', NULL),
+(51, 6, 66, 'Anowara', '2022-09-22 04:24:50', NULL),
+(52, 6, 66, 'Chandanaish', '2022-09-22 04:24:58', NULL),
+(53, 6, 66, 'Patiya', '2022-09-22 04:25:54', NULL),
+(54, 6, 66, 'Fatikchhari', '2022-09-22 04:26:03', NULL),
+(55, 6, 66, 'Banshkhali', '2022-09-22 04:26:43', NULL),
+(56, 6, 66, 'Boalkhali', '2022-09-22 04:26:50', NULL),
+(57, 6, 66, 'Mirsharai', '2022-09-22 04:27:20', NULL),
+(58, 6, 66, 'Raozan', '2022-09-22 04:29:20', NULL),
+(59, 6, 66, 'Rangunia', '2022-09-22 04:29:34', NULL),
+(60, 6, 66, 'Lohagara', '2022-09-22 04:29:44', NULL),
+(61, 6, 66, 'Sandwip', '2022-09-22 04:29:52', NULL),
+(62, 6, 66, 'Satkania', '2022-09-22 04:29:59', NULL),
+(63, 6, 66, 'Sitakunda', '2022-09-22 04:30:30', NULL),
+(64, 6, 66, 'Hathazari', '2022-09-22 04:30:48', NULL),
+(65, 4, 6, 'Adabor', '2022-09-22 04:38:06', NULL),
+(66, 4, 6, 'Uttar Khan', '2022-09-22 04:38:17', NULL),
+(67, 4, 6, 'Uttara', '2022-09-22 04:38:24', NULL),
+(68, 4, 6, 'Kadamtali', '2022-09-22 04:38:31', NULL),
+(69, 4, 6, 'Kalabagan', '2022-09-22 04:38:58', NULL),
+(70, 4, 6, 'Kafrul', '2022-09-22 04:39:07', NULL),
+(71, 4, 6, 'Kamrangirchar', '2022-09-22 04:39:22', NULL),
+(72, 4, 6, 'Cantonment', '2022-09-22 04:40:02', NULL),
+(73, 4, 6, 'Kotwali', '2022-09-22 04:40:11', NULL),
+(74, 4, 6, 'Khilkhet', '2022-09-22 04:40:18', NULL),
+(75, 4, 6, 'Khilgaon', '2022-09-22 04:40:25', NULL),
+(76, 4, 6, 'Gulshan', '2022-09-22 04:40:32', NULL),
+(77, 4, 6, 'Gendaria', '2022-09-22 04:40:39', NULL),
+(78, 4, 6, 'Chawkbazar Model', '2022-09-22 04:40:47', NULL),
+(79, 4, 6, 'Demra', '2022-09-22 04:40:55', NULL),
+(80, 4, 6, 'Turag', '2022-09-22 04:41:01', NULL),
+(81, 4, 6, 'Tejgaon', '2022-09-22 04:41:08', NULL),
+(82, 4, 6, 'Dakshinkhan', '2022-09-22 04:41:15', NULL),
+(83, 4, 6, 'Darus Salam', '2022-09-22 04:41:38', '2022-09-22 04:41:38'),
+(84, 4, 6, 'Dhanmondi', '2022-09-22 04:41:47', NULL),
+(85, 4, 6, 'New Market', '2022-09-22 04:41:54', NULL),
+(86, 4, 6, 'Paltan', '2022-09-22 04:42:01', NULL),
+(87, 4, 6, 'Pallabi', '2022-09-22 04:42:17', NULL),
+(88, 4, 6, 'Bangshal', '2022-09-22 04:44:22', NULL),
+(89, 4, 6, 'Badda', '2022-09-22 04:44:30', NULL),
+(90, 4, 6, 'Bimanbandar', '2022-09-22 04:44:37', NULL),
+(91, 4, 6, 'Motijheel', '2022-09-22 04:44:43', NULL),
+(92, 4, 6, 'Mirpur Model', '2022-09-22 04:44:54', NULL),
+(93, 4, 6, 'Mohammadpur', '2022-09-22 04:45:02', NULL),
+(94, 4, 6, 'Jatrabari', '2022-09-22 04:45:10', NULL),
+(95, 4, 6, 'Ramna', '2022-09-22 04:45:17', NULL),
+(96, 4, 6, 'Rampura', '2022-09-22 04:45:23', NULL),
+(97, 4, 6, 'Lalbagh', '2022-09-22 04:45:31', NULL),
+(98, 4, 6, 'Shah Ali', '2022-09-22 04:45:39', NULL),
+(99, 4, 6, 'Shahbagh', '2022-09-22 04:45:45', NULL),
+(100, 4, 6, 'Sher-e-Bangla Nagar', '2022-09-22 04:45:51', NULL),
+(101, 4, 6, 'Shyampur', '2022-09-22 04:46:15', NULL),
+(102, 4, 6, 'Sabujbagh', '2022-09-22 04:46:22', NULL),
+(103, 4, 6, 'Sutrapur', '2022-09-22 04:46:46', NULL),
+(104, 4, 6, 'Hazaribagh', '2022-09-22 04:46:52', NULL),
+(105, 4, 6, 'Keraniganj', '2022-09-22 04:46:59', NULL),
+(106, 4, 6, 'Nawabganj', '2022-09-22 04:47:05', NULL),
+(107, 4, 6, 'Dohar', '2022-09-22 04:47:13', NULL),
+(108, 4, 6, 'Dhamrai', '2022-09-22 04:47:19', NULL),
+(109, 4, 6, 'Savar', '2022-09-22 04:47:31', NULL),
+(110, 4, 9, 'Kishoreganj', '2022-09-22 04:51:22', NULL),
+(111, 4, 10, 'Manikganj', '2022-09-22 04:51:34', NULL),
+(112, 4, 15, 'Gopalganj', '2022-09-22 04:52:32', NULL),
+(113, 4, 6, 'Wari', '2022-09-22 04:52:59', NULL),
+(114, 4, 16, 'Madaripur', '2022-09-22 04:53:10', NULL),
+(116, 4, 17, 'Rajbari', '2022-09-22 04:55:10', NULL),
+(117, 4, 18, 'Shariatpur', '2022-09-22 04:55:22', NULL),
+(118, 11, 47, 'Mymensingh', '2022-09-22 05:07:37', NULL),
+(119, 11, 48, 'Jamalpur', '2022-09-22 05:07:51', NULL),
+(120, 11, 46, 'Netrokona', '2022-09-22 05:08:02', NULL),
+(121, 11, 45, 'Sherpur', '2022-09-22 05:08:12', NULL),
+(122, 5, 25, 'Balaganj', '2022-09-22 05:35:30', NULL),
+(123, 5, 25, 'Beanibazar', '2022-09-22 05:35:39', NULL),
+(124, 5, 25, 'Bishwanath', '2022-09-22 05:35:47', NULL),
+(125, 5, 25, 'Companiganj', '2022-09-22 05:35:54', NULL),
+(126, 5, 25, 'Dakshin Surma', '2022-09-22 05:36:01', NULL),
+(127, 5, 25, 'Fenchuganj', '2022-09-22 05:36:13', NULL),
+(128, 5, 25, 'Golapganj', '2022-09-22 05:37:00', NULL),
+(129, 5, 25, 'Gowainghat', '2022-09-22 05:37:07', NULL),
+(130, 5, 25, 'Jaintiapur', '2022-09-22 05:37:15', NULL),
+(131, 5, 25, 'Kanaighat', '2022-09-22 05:37:23', NULL),
+(132, 5, 25, 'Osmani Nagar', '2022-09-22 05:37:30', NULL),
+(133, 5, 25, 'Sylhet Sadar', '2022-09-22 05:37:36', NULL),
+(134, 5, 25, 'Zakiganj', '2022-09-22 05:37:43', NULL),
+(135, 5, 27, 'Moulvibazar', '2022-09-22 05:37:54', NULL),
+(136, 5, 28, 'Habiganj', '2022-09-22 05:38:22', NULL),
+(137, 5, 26, 'Sunamganj', '2022-09-22 05:38:32', NULL),
+(138, 8, 41, 'Natore', '2022-09-22 05:41:01', NULL),
+(139, 8, 37, 'Sirajganj', '2022-09-22 05:41:15', NULL),
+(140, 8, 39, 'Pabna', '2022-09-22 05:41:27', NULL),
+(141, 8, 44, 'Bogura', '2022-09-22 05:41:56', NULL),
+(142, 8, 40, 'Chapainawabganj', '2022-09-22 05:42:09', NULL),
+(143, 8, 42, 'Naogaon', '2022-09-22 05:42:19', NULL),
+(144, 8, 43, 'Joypurhat', '2022-09-22 05:42:32', NULL),
+(145, 8, 38, 'Rajshahi', '2022-09-22 05:43:19', NULL),
+(146, 10, 30, 'Rangpur', '2022-09-22 05:47:08', NULL),
+(147, 10, 32, 'Nilphamari', '2022-09-22 05:47:34', NULL),
+(148, 10, 33, 'Lalmonirhat', '2022-09-22 05:47:44', NULL),
+(149, 10, 36, 'Dinajpur', '2022-09-22 05:47:53', NULL),
+(150, 10, 31, 'Panchagarh', '2022-09-22 05:48:06', NULL),
+(151, 10, 29, 'Thakurgaon', '2022-09-22 05:48:44', NULL),
+(152, 10, 35, 'Gaibandha', '2022-09-22 05:48:55', NULL),
+(153, 10, 34, 'Kurigram', '2022-09-22 05:49:31', NULL),
+(154, 6, 68, 'Brahmanbaria', '2022-09-22 05:52:41', NULL),
+(155, 6, 65, 'Comilla', '2022-09-22 05:52:51', NULL),
+(156, 6, 67, 'Chandpur', '2022-09-22 05:53:01', NULL),
+(157, 6, 61, 'Lakshmipur', '2022-09-22 05:53:12', NULL),
+(158, 6, 60, 'Noakhali', '2022-09-22 05:53:31', NULL),
+(159, 7, 19, 'Barguna', '2022-09-22 05:54:53', NULL),
+(160, 7, 22, 'Jhalokati', '2022-09-22 05:55:05', NULL),
+(161, 7, 24, 'Pirojpur', '2022-09-22 05:55:33', NULL),
+(162, 7, 20, 'Barisal', '2022-09-22 05:55:43', NULL),
+(163, 4, 6, 'Banasree', '2022-12-20 05:41:31', NULL);
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `site_settings`
 --
 
-DROP TABLE IF EXISTS `site_settings`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `site_settings` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `logo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `phone_one` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `phone_two` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `company_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `company_address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `facebook` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `twitter` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `linkedin` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `youtube` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `logo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone_one` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone_two` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company_address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `facebook` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `twitter` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `linkedin` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `youtube` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `site_settings`
 --
 
-LOCK TABLES `site_settings` WRITE;
-/*!40000 ALTER TABLE `site_settings` DISABLE KEYS */;
-INSERT INTO `site_settings` VALUES (1,'upload/logo/1745610575464051.png','+8801720514565','+8801312735557','statabangladesh@gmail.com','STATA','West Wind Point, Cha-89/4-5, Progati Sharani, North Badda, Bir Uttam Rafiqul Islam Avenue, Dhaka-1212','https://www.facebook.com/statabd/',NULL,NULL,'https://www.youtube.com/channel/UCcRIGAJHbYjvGsC_RNd6aiA',NULL,'2022-10-02 20:52:55');
-/*!40000 ALTER TABLE `site_settings` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `site_settings` (`id`, `logo`, `phone_one`, `phone_two`, `email`, `company_name`, `company_address`, `facebook`, `twitter`, `linkedin`, `youtube`, `created_at`, `updated_at`) VALUES
+(1, 'upload/logo/1745610575464051.png', '+8801720514565', '+8801312735557', 'statabangladesh@gmail.com', 'STATA', 'West Wind Point, Cha-89/4-5, Progati Sharani, North Badda, Bir Uttam Rafiqul Islam Avenue, Dhaka-1212', 'https://www.facebook.com/statabd/', NULL, NULL, 'https://www.youtube.com/channel/UCcRIGAJHbYjvGsC_RNd6aiA', NULL, '2022-10-02 20:52:55');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `sliders`
 --
 
-DROP TABLE IF EXISTS `sliders`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `sliders` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `slider_img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `subTitle` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `startingPrice` int DEFAULT NULL,
-  `slideStyle` int NOT NULL DEFAULT '1',
-  `status` int NOT NULL DEFAULT '1',
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `slider_img` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `subTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `startingPrice` int(11) DEFAULT NULL,
+  `slideStyle` int(11) NOT NULL DEFAULT 1,
+  `status` int(11) NOT NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `sliders`
 --
 
-LOCK TABLES `sliders` WRITE;
-/*!40000 ALTER TABLE `sliders` DISABLE KEYS */;
-INSERT INTO `sliders` VALUES (29,'upload/slider/1744568839075469.png','s1',NULL,NULL,1,1,NULL,'2022-11-16 05:47:58'),(30,'upload/slider/1744569135730987.png','s5',NULL,NULL,1,0,NULL,'2022-11-16 05:49:17'),(34,'upload/slider/1744915254819237.png','s3',NULL,NULL,1,1,NULL,'2022-11-16 05:48:24'),(35,'upload/slider/1744915263150196.png','s',NULL,NULL,1,1,NULL,'2022-11-16 05:47:53'),(38,'upload/slider/1745610668186817.png','f6',NULL,NULL,1,1,NULL,'2022-11-16 05:47:55');
-/*!40000 ALTER TABLE `sliders` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `sliders` (`id`, `slider_img`, `title`, `subTitle`, `startingPrice`, `slideStyle`, `status`, `created_at`, `updated_at`) VALUES
+(29, 'upload/slider/1744568839075469.png', 's1', NULL, NULL, 1, 1, NULL, '2022-11-16 05:47:58'),
+(30, 'upload/slider/1744569135730987.png', 's5', NULL, NULL, 1, 0, NULL, '2022-11-16 05:49:17'),
+(34, 'upload/slider/1744915254819237.png', 's3', NULL, NULL, 1, 1, NULL, '2022-11-16 05:48:24'),
+(35, 'upload/slider/1744915263150196.png', 's', NULL, NULL, 1, 1, NULL, '2022-11-16 05:47:53'),
+(38, 'upload/slider/1745610668186817.png', 'f6', NULL, NULL, 1, 1, NULL, '2022-11-16 05:47:55');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `sub_categories`
 --
 
-DROP TABLE IF EXISTS `sub_categories`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `sub_categories` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `category_id` int NOT NULL,
-  `subcategory_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `subcategory_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `sub_categories`
 --
 
-LOCK TABLES `sub_categories` WRITE;
-/*!40000 ALTER TABLE `sub_categories` DISABLE KEYS */;
-INSERT INTO `sub_categories` VALUES (30,14,'Smart Sensor','2022-09-10 07:18:39',NULL),(31,14,'Smart Camera','2022-09-12 09:13:56',NULL),(32,15,'Smart Socket','2022-09-12 09:15:23',NULL),(33,15,'Smart Switches','2022-09-15 06:33:00',NULL),(34,16,'Main Door Locks','2022-09-18 11:10:14',NULL),(35,16,'Bed Room Door Locks','2022-09-18 11:10:32',NULL),(36,17,'Cleaning Robot','2022-09-20 05:04:58',NULL),(37,18,'Smart Lighting','2022-09-21 10:32:02',NULL),(38,17,'Smart Device','2022-09-22 09:51:31',NULL),(39,17,'Smart Device & Gadgets','2023-01-13 02:23:52',NULL),(40,19,'Ramadan Package','2023-04-02 18:45:32',NULL),(42,21,'Hotel Switch & Socket','2023-05-28 16:54:26',NULL),(43,24,'Crystal Glass Panel','2023-07-12 17:56:38',NULL);
-/*!40000 ALTER TABLE `sub_categories` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `sub_categories` (`id`, `category_id`, `subcategory_name`, `created_at`, `updated_at`) VALUES
+(30, 14, 'Smart Sensor', '2022-09-10 07:18:39', NULL),
+(31, 14, 'Smart Camera', '2022-09-12 09:13:56', NULL),
+(32, 15, 'Smart Socket', '2022-09-12 09:15:23', NULL),
+(33, 15, 'Smart Switches', '2022-09-15 06:33:00', NULL),
+(34, 16, 'Main Door Locks', '2022-09-18 11:10:14', NULL),
+(35, 16, 'Bed Room Door Locks', '2022-09-18 11:10:32', NULL),
+(36, 17, 'Cleaning Robot', '2022-09-20 05:04:58', NULL),
+(37, 18, 'Smart Lighting', '2022-09-21 10:32:02', NULL),
+(38, 17, 'Smart Device', '2022-09-22 09:51:31', NULL),
+(39, 17, 'Smart Device & Gadgets', '2023-01-13 02:23:52', NULL),
+(40, 19, 'Ramadan Package', '2023-04-02 18:45:32', NULL),
+(42, 21, 'Hotel Switch & Socket', '2023-05-28 16:54:26', NULL);
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `users` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `last_seen` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `two_factor_secret` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `two_factor_recovery_codes` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_seen` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `two_factor_secret` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `two_factor_recovery_codes` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `two_factor_confirmed_at` timestamp NULL DEFAULT NULL,
-  `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `current_team_id` bigint unsigned DEFAULT NULL,
-  `profile_photo_path` varchar(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `current_team_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `profile_photo_path` varchar(2048) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (11,'Ifaz Alam','ifazalam69@gmail.com','+8801677341032',NULL,'$2y$10$gqZhMKaebKpH.PS9AaPQVeAE5AKA8P3gd1IIK3f4Hk3wRN7uN5WSG','2023-01-25 06:35:58',NULL,NULL,NULL,NULL,NULL,'202210220502STATA ECOM.png','2022-09-04 03:56:12','2023-01-25 12:35:58'),(13,'Kakon Chakraborty','debobrata.statabd@gmail.com','01731512180',NULL,'$2y$10$iYLpxYBQLagn80V2GQFZpuFHLdA/wys/s.nnW5pvm6UTYPuQOjd1G','2022-09-12 10:09:51',NULL,NULL,NULL,NULL,NULL,NULL,'2022-09-12 10:09:51','2022-09-12 10:09:51'),(14,'Yeasin Arafat Fahim','yeasin.stata@gmail.com','01322896400',NULL,'$2y$10$dQCyAE2oirsoRZGn/upCU.SLJ8QrQBlk9Kt2akrVkRLw0bG.ykohm','2022-09-18 06:05:10',NULL,NULL,NULL,NULL,NULL,NULL,'2022-09-18 05:55:02','2022-09-18 06:05:10'),(16,'Dewan Sakib Zawad','dewan.sakib98@yahoo.com','01711374372',NULL,'$2y$10$iBk4AZi.tYtT52RRBSca9O.c.bMSaaaGliNzSNmeBn/R778UbBs6K','2022-09-24 06:42:48',NULL,NULL,NULL,NULL,NULL,NULL,'2022-09-24 04:44:05','2022-09-24 06:42:48'),(17,'Akhtaruzzaman Sajib','sozibhasan121@gmail.com','01725343188',NULL,'$2y$10$YNu1mN/DtxLf7.XS4ikeqO/.Ag958Qs4VHKmo2Ckf55YDmvY6t6L.','2022-09-26 05:45:28',NULL,NULL,NULL,NULL,NULL,NULL,'2022-09-26 05:34:38','2022-09-26 05:45:28'),(20,'Samsul Islam','rupalihardwareandpaint@gmail.com','01710072737',NULL,'$2y$10$sppwEOhkod3nuHW3mGec.eQFNo5QGC/CNjxcaNkJwYe0PaPrWMfvq','2022-10-09 20:08:17',NULL,NULL,NULL,NULL,NULL,NULL,'2022-10-09 19:46:35','2022-10-09 20:08:17'),(22,'Shahajada Kabir','shahajada.kabir@gmail.com','01703424020',NULL,'$2y$10$L54rCJ1OwBw.rl5L/1djSu5wmBDRrOg6wDBzqoQtF1Tup2mMDF4gO','2022-11-19 14:41:05',NULL,NULL,NULL,NULL,NULL,NULL,'2022-11-19 13:01:16','2022-11-19 14:41:05'),(23,'ST Chowdhury','shahriar.statabd@gmail.com','01322896402',NULL,'$2y$10$3zODpKU0jEyHoC2rN/jaSORhHKx4Aao.dEQVMXUuqpaW6P1IuLaXa','2023-01-14 04:42:35',NULL,NULL,NULL,NULL,NULL,NULL,'2022-12-20 05:38:42','2023-01-14 10:42:35'),(24,'Syed Tasdiq','syedtasdiq97@gmail.com','01742205557',NULL,'$2y$10$7dzgO0g8GwLj4HD9e8EdgOjKzTYRG0LkRuFhqG7CurmEQZY6c5xy6','2023-01-12 20:35:35',NULL,NULL,NULL,NULL,NULL,NULL,'2023-01-05 06:38:27','2023-01-13 02:35:35'),(25,'Erfaan Chowdhury','erfaan.chowdhury007@gmail.com','01876105634',NULL,'$2y$10$pJ.dInq//.6H0qEbQYlyYeXLnvIvcXtI4oETaUkjMPZctmf/kcffG','2023-01-17 20:16:38',NULL,NULL,NULL,NULL,NULL,NULL,'2023-01-17 20:15:44','2023-01-17 20:16:38'),(26,'abda samio','abda.samio@gmail.com','01727653091',NULL,'$2y$10$5GSFbvcyYbneXS0KGfbw4.JJ2g/EQkaj4IRcHhNa4SiCaY2qW6wXe','2023-01-24 11:33:59',NULL,NULL,NULL,NULL,NULL,NULL,'2023-01-24 15:11:04','2023-01-24 17:33:59'),(27,'kaushik','kaushik.stata@gmail.com','01833093683',NULL,'$2y$10$FB5GbmQ/ejG1CL5HE1fevOHSSgOQ09eKoZC8PFCEaD08k6XCNis26','2023-03-25 05:09:27',NULL,NULL,NULL,NULL,NULL,NULL,'2023-01-25 12:11:40','2023-03-25 05:09:27'),(28,'Md. Anisur Rahman Rubel','rubelrana.rr346@gmail.com','01750892666',NULL,'$2y$10$Dt6gpsWDyJgJ.K86p2b9net0TCC9iUk1fN/pakPJkZX5fuUrldP6y','2023-01-30 07:00:57',NULL,NULL,NULL,NULL,NULL,NULL,'2023-01-30 12:38:00','2023-01-30 13:00:57'),(29,'Alrafid Rupak','alrafidrupak@gmail.com','01849620008',NULL,'$2y$10$MLXQfKGxhZhfbpCmvO3OP.UCJ3hy4BzTXQaXmCzaI7eGUri/8kuJ2','2023-02-02 07:48:25',NULL,NULL,NULL,NULL,NULL,NULL,'2023-02-02 13:29:46','2023-02-02 13:48:25'),(30,'Osman','osman.dhk@gmail.com','01706000000',NULL,'$2y$10$4oJ.S3zZK5K7vc6VAtD.We068g5BXGqpdoax0V8IkD9/43ZyMPHeO','2023-02-05 04:28:30',NULL,NULL,NULL,NULL,NULL,NULL,'2023-02-05 10:27:08','2023-02-05 10:28:30'),(31,'bdcs','bdcs1212@gmail.com','01748916421',NULL,'$2y$10$d4/M2kXjm/ffJLg6Nru/ZOCIbvBTo40Dn4pEH/.Z3zs.RB/U.T6sa','2023-02-14 05:27:39',NULL,NULL,NULL,NULL,NULL,NULL,'2023-02-14 05:27:37','2023-02-14 05:27:39'),(32,'Arabi','a.a.arabi66291@gmail.com','01710332020',NULL,'$2y$10$h.FNnajPvcukmy0J4v1H9.BrXD957ysdBfKCxhPI0gHDKP/ESNPjO','2023-03-18 21:11:15',NULL,NULL,NULL,NULL,NULL,NULL,'2023-03-16 09:35:09','2023-03-18 21:11:15'),(33,'kawshik','fahmidh26@gmail.com','01964870827',NULL,'$2y$10$nkDj4M7bc34R0Fguj32r1OVPkpcKPH.KdVKxf9Dnq7gXZJQKEERV2','2023-05-18 06:00:13',NULL,NULL,NULL,NULL,NULL,NULL,'2023-03-25 07:33:00','2023-05-18 06:00:13'),(34,'Saddam hossain','shsitu7878@gmail.com','01732755997',NULL,'$2y$10$./GWw4RWvb/reC71qGlzmerVmVr.R1xDSA8RwZs3QhwJ060FR8yxi','2023-04-11 20:00:54',NULL,NULL,NULL,NULL,NULL,NULL,'2023-04-11 19:44:46','2023-04-11 20:00:54'),(35,'SABBIR MUHAMMAD TANIM','smtanim77@gmail.com','01719447700',NULL,'$2y$10$2ZwSnuoIyeo4YBtOnXoos.nu.zYsGctaXZqdg1CFSQ9aEaw.tvP8.','2023-04-26 06:36:41',NULL,NULL,NULL,NULL,NULL,NULL,'2023-04-26 06:34:43','2023-04-26 06:36:41'),(36,'Mustafa Rabbi','mustafa_rabbi@live.com','+8801730438180',NULL,'$2y$10$p2KlB2FHfECwpduPLmVxfezeqZZMXN9sK5dpC7cC8IO63sLFjH7OW','2023-05-02 18:43:14',NULL,NULL,NULL,NULL,NULL,NULL,'2023-05-02 18:42:52','2023-05-02 18:43:14'),(37,'Ariful Haque','haq.ariful@gmail.com','+880 1619-815253',NULL,'$2y$10$Y2R1RUCa7ZXxcdETo2gNzuOSfa4q652SRZpybO.HvL/KiTYo3Ns9K','2023-06-30 09:38:19',NULL,NULL,NULL,NULL,NULL,NULL,'2023-06-30 09:36:28','2023-06-30 09:38:19'),(38,'Khawaja Azaan Rahman','azaanrahman2008@gmail.com','01707960787',NULL,'$2y$10$YnioGg6/M16DETcEjd1kje/p9r/cuGQ38DmCEu8wsPLLXv.QhDPKe','2023-07-07 08:39:25',NULL,NULL,NULL,NULL,NULL,NULL,'2023-07-06 14:29:34','2023-07-07 08:39:25'),(39,'Tousif Ahmad noor','tatousif444@gmail.com','01567813490',NULL,'$2y$10$hwQS8/Anvjjt1xiRt.aDxO69FkbfCxMY9yybAYxjAQNtPTZsbl4nO','2023-07-17 16:34:59',NULL,NULL,NULL,NULL,NULL,NULL,'2023-07-17 16:18:03','2023-07-17 16:34:59');
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `users` (`id`, `name`, `email`, `phone`, `email_verified_at`, `password`, `last_seen`, `two_factor_secret`, `two_factor_recovery_codes`, `two_factor_confirmed_at`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
+(11, 'Ifaz Alam', 'ifazalam69@gmail.com', '+8801677341032', NULL, '$2y$10$gqZhMKaebKpH.PS9AaPQVeAE5AKA8P3gd1IIK3f4Hk3wRN7uN5WSG', '2023-01-25 06:35:58', NULL, NULL, NULL, NULL, NULL, '202210220502STATA ECOM.png', '2022-09-04 03:56:12', '2023-01-25 12:35:58'),
+(13, 'Kakon Chakraborty', 'debobrata.statabd@gmail.com', '01731512180', NULL, '$2y$10$iYLpxYBQLagn80V2GQFZpuFHLdA/wys/s.nnW5pvm6UTYPuQOjd1G', '2022-09-12 10:09:51', NULL, NULL, NULL, NULL, NULL, NULL, '2022-09-12 10:09:51', '2022-09-12 10:09:51'),
+(14, 'Yeasin Arafat Fahim', 'yeasin.stata@gmail.com', '01322896400', NULL, '$2y$10$dQCyAE2oirsoRZGn/upCU.SLJ8QrQBlk9Kt2akrVkRLw0bG.ykohm', '2022-09-18 06:05:10', NULL, NULL, NULL, NULL, NULL, NULL, '2022-09-18 05:55:02', '2022-09-18 06:05:10'),
+(16, 'Dewan Sakib Zawad', 'dewan.sakib98@yahoo.com', '01711374372', NULL, '$2y$10$iBk4AZi.tYtT52RRBSca9O.c.bMSaaaGliNzSNmeBn/R778UbBs6K', '2022-09-24 06:42:48', NULL, NULL, NULL, NULL, NULL, NULL, '2022-09-24 04:44:05', '2022-09-24 06:42:48'),
+(17, 'Akhtaruzzaman Sajib', 'sozibhasan121@gmail.com', '01725343188', NULL, '$2y$10$YNu1mN/DtxLf7.XS4ikeqO/.Ag958Qs4VHKmo2Ckf55YDmvY6t6L.', '2022-09-26 05:45:28', NULL, NULL, NULL, NULL, NULL, NULL, '2022-09-26 05:34:38', '2022-09-26 05:45:28'),
+(20, 'Samsul Islam', 'rupalihardwareandpaint@gmail.com', '01710072737', NULL, '$2y$10$sppwEOhkod3nuHW3mGec.eQFNo5QGC/CNjxcaNkJwYe0PaPrWMfvq', '2022-10-09 20:08:17', NULL, NULL, NULL, NULL, NULL, NULL, '2022-10-09 19:46:35', '2022-10-09 20:08:17'),
+(22, 'Shahajada Kabir', 'shahajada.kabir@gmail.com', '01703424020', NULL, '$2y$10$L54rCJ1OwBw.rl5L/1djSu5wmBDRrOg6wDBzqoQtF1Tup2mMDF4gO', '2022-11-19 14:41:05', NULL, NULL, NULL, NULL, NULL, NULL, '2022-11-19 13:01:16', '2022-11-19 14:41:05'),
+(23, 'ST Chowdhury', 'shahriar.statabd@gmail.com', '01322896402', NULL, '$2y$10$3zODpKU0jEyHoC2rN/jaSORhHKx4Aao.dEQVMXUuqpaW6P1IuLaXa', '2023-01-14 04:42:35', NULL, NULL, NULL, NULL, NULL, NULL, '2022-12-20 05:38:42', '2023-01-14 10:42:35'),
+(24, 'Syed Tasdiq', 'syedtasdiq97@gmail.com', '01742205557', NULL, '$2y$10$7dzgO0g8GwLj4HD9e8EdgOjKzTYRG0LkRuFhqG7CurmEQZY6c5xy6', '2023-01-12 20:35:35', NULL, NULL, NULL, NULL, NULL, NULL, '2023-01-05 06:38:27', '2023-01-13 02:35:35'),
+(25, 'Erfaan Chowdhury', 'erfaan.chowdhury007@gmail.com', '01876105634', NULL, '$2y$10$pJ.dInq//.6H0qEbQYlyYeXLnvIvcXtI4oETaUkjMPZctmf/kcffG', '2023-01-17 20:16:38', NULL, NULL, NULL, NULL, NULL, NULL, '2023-01-17 20:15:44', '2023-01-17 20:16:38'),
+(26, 'abda samio', 'abda.samio@gmail.com', '01727653091', NULL, '$2y$10$5GSFbvcyYbneXS0KGfbw4.JJ2g/EQkaj4IRcHhNa4SiCaY2qW6wXe', '2023-01-24 11:33:59', NULL, NULL, NULL, NULL, NULL, NULL, '2023-01-24 15:11:04', '2023-01-24 17:33:59'),
+(27, 'kaushik', 'kaushik.stata@gmail.com', '01833093683', NULL, '$2y$10$FB5GbmQ/ejG1CL5HE1fevOHSSgOQ09eKoZC8PFCEaD08k6XCNis26', '2023-03-25 05:09:27', NULL, NULL, NULL, NULL, NULL, NULL, '2023-01-25 12:11:40', '2023-03-25 05:09:27'),
+(28, 'Md. Anisur Rahman Rubel', 'rubelrana.rr346@gmail.com', '01750892666', NULL, '$2y$10$Dt6gpsWDyJgJ.K86p2b9net0TCC9iUk1fN/pakPJkZX5fuUrldP6y', '2023-01-30 07:00:57', NULL, NULL, NULL, NULL, NULL, NULL, '2023-01-30 12:38:00', '2023-01-30 13:00:57'),
+(29, 'Alrafid Rupak', 'alrafidrupak@gmail.com', '01849620008', NULL, '$2y$10$MLXQfKGxhZhfbpCmvO3OP.UCJ3hy4BzTXQaXmCzaI7eGUri/8kuJ2', '2023-02-02 07:48:25', NULL, NULL, NULL, NULL, NULL, NULL, '2023-02-02 13:29:46', '2023-02-02 13:48:25'),
+(30, 'Osman', 'osman.dhk@gmail.com', '01706000000', NULL, '$2y$10$4oJ.S3zZK5K7vc6VAtD.We068g5BXGqpdoax0V8IkD9/43ZyMPHeO', '2023-02-05 04:28:30', NULL, NULL, NULL, NULL, NULL, NULL, '2023-02-05 10:27:08', '2023-02-05 10:28:30'),
+(31, 'bdcs', 'bdcs1212@gmail.com', '01748916421', NULL, '$2y$10$d4/M2kXjm/ffJLg6Nru/ZOCIbvBTo40Dn4pEH/.Z3zs.RB/U.T6sa', '2023-02-14 05:27:39', NULL, NULL, NULL, NULL, NULL, NULL, '2023-02-14 05:27:37', '2023-02-14 05:27:39'),
+(32, 'Arabi', 'a.a.arabi66291@gmail.com', '01710332020', NULL, '$2y$10$h.FNnajPvcukmy0J4v1H9.BrXD957ysdBfKCxhPI0gHDKP/ESNPjO', '2023-03-18 21:11:15', NULL, NULL, NULL, NULL, NULL, NULL, '2023-03-16 09:35:09', '2023-03-18 21:11:15'),
+(33, 'kawshik', 'fahmidh26@gmail.com', '01964870827', NULL, '$2y$10$nkDj4M7bc34R0Fguj32r1OVPkpcKPH.KdVKxf9Dnq7gXZJQKEERV2', '2023-05-18 06:00:13', NULL, NULL, NULL, NULL, NULL, NULL, '2023-03-25 07:33:00', '2023-05-18 06:00:13'),
+(34, 'Saddam hossain', 'shsitu7878@gmail.com', '01732755997', NULL, '$2y$10$./GWw4RWvb/reC71qGlzmerVmVr.R1xDSA8RwZs3QhwJ060FR8yxi', '2023-04-11 20:00:54', NULL, NULL, NULL, NULL, NULL, NULL, '2023-04-11 19:44:46', '2023-04-11 20:00:54'),
+(35, 'SABBIR MUHAMMAD TANIM', 'smtanim77@gmail.com', '01719447700', NULL, '$2y$10$2ZwSnuoIyeo4YBtOnXoos.nu.zYsGctaXZqdg1CFSQ9aEaw.tvP8.', '2023-04-26 06:36:41', NULL, NULL, NULL, NULL, NULL, NULL, '2023-04-26 06:34:43', '2023-04-26 06:36:41'),
+(36, 'Mustafa Rabbi', 'mustafa_rabbi@live.com', '+8801730438180', NULL, '$2y$10$p2KlB2FHfECwpduPLmVxfezeqZZMXN9sK5dpC7cC8IO63sLFjH7OW', '2023-05-02 18:43:14', NULL, NULL, NULL, NULL, NULL, NULL, '2023-05-02 18:42:52', '2023-05-02 18:43:14'),
+(37, 'Ariful Haque', 'haq.ariful@gmail.com', '+880 1619-815253', NULL, '$2y$10$Y2R1RUCa7ZXxcdETo2gNzuOSfa4q652SRZpybO.HvL/KiTYo3Ns9K', '2023-06-30 09:38:19', NULL, NULL, NULL, NULL, NULL, NULL, '2023-06-30 09:36:28', '2023-06-30 09:38:19'),
+(38, 'Khawaja Azaan Rahman', 'azaanrahman2008@gmail.com', '01707960787', NULL, '$2y$10$YnioGg6/M16DETcEjd1kje/p9r/cuGQ38DmCEu8wsPLLXv.QhDPKe', '2023-07-07 08:39:25', NULL, NULL, NULL, NULL, NULL, NULL, '2023-07-06 14:29:34', '2023-07-07 08:39:25');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `wishlists`
 --
 
-DROP TABLE IF EXISTS `wishlists`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `wishlists` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` bigint unsigned NOT NULL,
-  `product_id` bigint unsigned NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `wishlists`
 --
 
-LOCK TABLES `wishlists` WRITE;
-/*!40000 ALTER TABLE `wishlists` DISABLE KEYS */;
-INSERT INTO `wishlists` VALUES (8,3,8,'2022-06-19 22:51:18',NULL),(9,3,7,'2022-06-19 22:51:21',NULL),(10,3,9,'2022-06-23 03:37:34',NULL),(11,7,10,'2022-07-23 03:46:58',NULL),(12,7,12,'2022-07-31 01:13:07',NULL),(13,7,6,'2022-07-31 01:37:53',NULL),(14,10,14,'2022-08-19 23:35:19',NULL),(15,11,37,'2022-09-12 07:47:17',NULL),(16,15,71,'2022-09-22 12:22:01',NULL),(17,20,65,'2022-10-09 19:56:07',NULL),(18,11,57,'2023-01-24 15:52:53',NULL),(19,11,71,'2023-01-24 15:52:56',NULL),(20,11,64,'2023-01-24 15:59:06',NULL),(21,11,69,'2023-01-24 15:59:08',NULL),(22,26,55,'2023-01-24 16:28:52',NULL),(23,33,86,'2023-05-18 06:00:00',NULL),(24,39,60,'2023-07-17 16:19:47',NULL),(25,39,52,'2023-07-17 16:24:11',NULL),(26,39,64,'2023-07-17 16:25:32',NULL),(27,39,65,'2023-07-17 16:25:50',NULL),(28,39,78,'2023-07-17 16:26:32',NULL);
-/*!40000 ALTER TABLE `wishlists` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+INSERT INTO `wishlists` (`id`, `user_id`, `product_id`, `created_at`, `updated_at`) VALUES
+(8, 3, 8, '2022-06-19 22:51:18', NULL),
+(9, 3, 7, '2022-06-19 22:51:21', NULL),
+(10, 3, 9, '2022-06-23 03:37:34', NULL),
+(11, 7, 10, '2022-07-23 03:46:58', NULL),
+(12, 7, 12, '2022-07-31 01:13:07', NULL),
+(13, 7, 6, '2022-07-31 01:37:53', NULL),
+(14, 10, 14, '2022-08-19 23:35:19', NULL),
+(15, 11, 37, '2022-09-12 07:47:17', NULL),
+(16, 15, 71, '2022-09-22 12:22:01', NULL),
+(17, 20, 65, '2022-10-09 19:56:07', NULL),
+(18, 11, 57, '2023-01-24 15:52:53', NULL),
+(19, 11, 71, '2023-01-24 15:52:56', NULL),
+(20, 11, 64, '2023-01-24 15:59:06', NULL),
+(21, 11, 69, '2023-01-24 15:59:08', NULL),
+(22, 26, 55, '2023-01-24 16:28:52', NULL),
+(23, 33, 86, '2023-05-18 06:00:00', NULL);
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admins`
+--
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `admins_email_unique` (`email`);
+
+--
+-- Indexes for table `brands`
+--
+ALTER TABLE `brands`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `carts`
+--
+ALTER TABLE `carts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `contents`
+--
+ALTER TABLE `contents`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `content_images`
+--
+ALTER TABLE `content_images`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `coupons`
+--
+ALTER TABLE `coupons`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `c_contents`
+--
+ALTER TABLE `c_contents`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `c_content_images`
+--
+ALTER TABLE `c_content_images`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `locations`
+--
+ALTER TABLE `locations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `multi_imgs`
+--
+ALTER TABLE `multi_imgs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `news_letters`
+--
+ALTER TABLE `news_letters`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `order_items_order_id_foreign` (`order_id`);
+
+--
+-- Indexes for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indexes for table `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
+  ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `reviews`
+--
+ALTER TABLE `reviews`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `reviews_product_id_foreign` (`product_id`),
+  ADD KEY `reviews_user_id_foreign` (`user_id`);
+
+--
+-- Indexes for table `seos`
+--
+ALTER TABLE `seos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sessions`
+--
+ALTER TABLE `sessions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `sessions_user_id_index` (`user_id`),
+  ADD KEY `sessions_last_activity_index` (`last_activity`);
+
+--
+-- Indexes for table `shippings`
+--
+ALTER TABLE `shippings`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ship_districts`
+--
+ALTER TABLE `ship_districts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ship_divisions`
+--
+ALTER TABLE `ship_divisions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ship_states`
+--
+ALTER TABLE `ship_states`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `site_settings`
+--
+ALTER TABLE `site_settings`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sliders`
+--
+ALTER TABLE `sliders`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sub_categories`
+--
+ALTER TABLE `sub_categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
+-- Indexes for table `wishlists`
+--
+ALTER TABLE `wishlists`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admins`
+--
+ALTER TABLE `admins`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `brands`
+--
+ALTER TABLE `brands`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT for table `carts`
+--
+ALTER TABLE `carts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT for table `contents`
+--
+ALTER TABLE `contents`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `content_images`
+--
+ALTER TABLE `content_images`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `coupons`
+--
+ALTER TABLE `coupons`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `c_contents`
+--
+ALTER TABLE `c_contents`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `c_content_images`
+--
+ALTER TABLE `c_content_images`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `locations`
+--
+ALTER TABLE `locations`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
+--
+-- AUTO_INCREMENT for table `multi_imgs`
+--
+ALTER TABLE `multi_imgs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=223;
+
+--
+-- AUTO_INCREMENT for table `news_letters`
+--
+ALTER TABLE `news_letters`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+
+--
+-- AUTO_INCREMENT for table `order_items`
+--
+ALTER TABLE `order_items`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+
+--
+-- AUTO_INCREMENT for table `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+
+--
+-- AUTO_INCREMENT for table `reviews`
+--
+ALTER TABLE `reviews`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `seos`
+--
+ALTER TABLE `seos`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `shippings`
+--
+ALTER TABLE `shippings`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `ship_districts`
+--
+ALTER TABLE `ship_districts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+
+--
+-- AUTO_INCREMENT for table `ship_divisions`
+--
+ALTER TABLE `ship_divisions`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `ship_states`
+--
+ALTER TABLE `ship_states`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=164;
+
+--
+-- AUTO_INCREMENT for table `site_settings`
+--
+ALTER TABLE `site_settings`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `sliders`
+--
+ALTER TABLE `sliders`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+
+--
+-- AUTO_INCREMENT for table `sub_categories`
+--
+ALTER TABLE `sub_categories`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+
+--
+-- AUTO_INCREMENT for table `wishlists`
+--
+ALTER TABLE `wishlists`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD CONSTRAINT `order_items_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `reviews`
+--
+ALTER TABLE `reviews`
+  ADD CONSTRAINT `reviews_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `reviews_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2023-07-30  5:42:56
