@@ -480,6 +480,12 @@ Route::prefix('product')->group(function(){
         Route::get('/manage', [ContentController::class, 'ManageContent'])->name('manage.content');
 
         Route::get('/delete/{id}', [ContentController::class, 'DeleteContent'])->name('delete.content');
+
+        Route::get('/category/view', [ContentController::class, 'AddCContent'])->name('add.category.content');
+
+        Route::post('category/store', [ContentController::class, 'CContentStore'])->name('category.content.store');
+
+        Route::get('category/manage', [ContentController::class, 'ManageCContent'])->name('manage.category.content');
     });
 
 

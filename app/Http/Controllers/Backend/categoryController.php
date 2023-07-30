@@ -58,7 +58,6 @@ class categoryController extends Controller
 		'category_name' => $request->category_name,
 		'c_meta_title' => $request->c_meta_title,
 		'c_meta_description' => $request->c_meta_description,
-
     	]);
 
 	    $notification = array(

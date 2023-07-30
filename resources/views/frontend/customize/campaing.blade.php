@@ -98,7 +98,7 @@
               <button onclick="setBackground()" class="action-btn common-btn">
                 <i class="fas fa-paint-brush"></i> Set Background
               </button>
-              <button onclick="downloadImage()" class="action-btn-1 common-btn">
+              <button onclick="downloadImage()" class="action-btn-1 common-btn" id="justC">
                 <i class="fas fa-download"></i> Download
               </button>
             </div>
@@ -177,6 +177,26 @@
     link.click();
   });
 }
+</script>
+
+<script>
+  // Initialize the counter to 0
+  let clickCount = 0;
+
+  // Function to update the button text with the click count
+  function updateClickCount() {
+    const button = document.getElementById('justC');
+    button.textContent = `Click Me (${clickCount})`;
+  }
+
+  // Function to handle button click
+  function handleClick() {
+    clickCount++;
+    updateClickCount();
+  }
+
+  // Attach the handleClick function to the button click event
+  document.getElementById('myBtn').addEventListener('click', handleClick);
 </script>
 
 @endsection

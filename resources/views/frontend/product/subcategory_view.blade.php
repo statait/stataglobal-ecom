@@ -306,13 +306,27 @@
         </div>
         <!-- /.search-result-container --> 
   {{-- CONTENTS --}}
-		  		  {{-- COMBO PRODUCTS --}}
-            {{-- <section class="section wow fadeInUp new-arriavls">
-              <h3 class="section-title">CONTENTS</h3>
-  
-              @include('frontend.common.contents')
+		  		  {{-- CONTENTS PRODUCTS --}}
+            <section class="section wow fadeInUp new-arriavls">
+              <h3 class="section-title">CATEGORY CONTENTS</h3>
               
-              </section> --}}
+              @foreach($categoryContents as $item)
+<div>
+   <h1>{{ $item->heading }} </h1>
+   <p class="co">{{ $item->details1 }}</p>
+   <h2>{{ $item->details2 }}</h2>
+</div>
+@php
+   $multiImgs = App\Models\CContentImage::where('c_content_id',$item->id)->get();
+@endphp
+
+@foreach ($multiImgs as $image)
+  <img src="{{ asset($image->photo) }}" style="width: 60px; height: 50px;">  
+@endforeach
+
+@endforeach     
+              
+              </section>
         {{-- CONTENTS END --}}
       </div>
       <!-- /.col --> 
