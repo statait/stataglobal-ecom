@@ -7,50 +7,76 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
 
 <style>
-  .upload-btn,
-.action-btn {
-  background-color: #f5f5f5;
-  color: #333;
-  padding: 10px 20px;
-  font-size: 16px;
-  border: none;
+
+#image3 {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  /* BUTTONS */
+/* Style for the upload button */
+.upload-btn {
   cursor: pointer;
-  border-radius: 4px;
-  outline: none;
-  transition: box-shadow 0.3s;
-  position: relative;
-  z-index: 1;
+  padding: 10px 20px;
+  background-color: #fcfcfc;
+  border: 1px solid #137C00;
+  color: #000000;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 
-.upload-btn:before,
-.action-btn:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, #fff, #e0e0e0);
-  opacity: 0;
-  transition: opacity 0.3s;
-  z-index: -1;
+.upload-btn:hover {
+  background-color: #000000;
+  color: #fff;
 }
 
-.upload-btn:hover:before,
-.action-btn:hover:before {
-  opacity: 1;
+/* Style for the action buttons */
+.action-btn {
+  cursor: pointer;
+  padding: 10px 20px;
+  background-color: #000000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+ 
 }
 
-.upload-btn i,
-.action-btn i {
-  margin-right: 8px;
-  transition: transform 0.3s;
-}
-
-.upload-btn:hover,
 .action-btn:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  color: #000000;
 }
+.action-btn-1 {
+  cursor: pointer;
+  padding: 10px 20px;
+  background-color: #137C00;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+
+/* Common style for all buttons */
+.common-btn {
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  line-height: 1.5;
+  width: 100%; /* Adjust the width as per your preference */
+}
+
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+
+  /* BUTTONS END */
 
 /* Image */
 
@@ -63,16 +89,20 @@
         <div class="sidebar-module-container">
           <div class="sidebar-filter"> 
             {{-- START --}}
-            <input type="file" id="imageUpload" style="display: none;">
-  <label for="imageUpload" class="upload-btn">
-    <i class="fas fa-upload"></i> Choose File
-  </label>
-  <button onclick="setBackground()" class="action-btn">
-    <i class="fas fa-paint-brush"></i> Set Background
-  </button>
-  <button onclick="downloadImage()" class="action-btn">
-    <i class="fas fa-download"></i> Download
-  </button>
+
+            <div class="button-container">
+              <input type="file" id="imageUpload" style="display: none;">
+              <label for="imageUpload" class="upload-btn common-btn">
+                <i class="fas fa-upload"></i> Choose File
+              </label>
+              <button onclick="setBackground()" class="action-btn common-btn">
+                <i class="fas fa-paint-brush"></i> Set Background
+              </button>
+              <button onclick="downloadImage()" class="action-btn-1 common-btn" id="justC">
+                <i class="fas fa-download"></i> Download
+              </button>
+            </div>
+            
             {{-- END --}}
             
           </div>
@@ -95,8 +125,8 @@
 
       </div>
 
-      <div class='col-md-4'> 
-        <img src="{{ asset('frontend/assets/images/banners/info.png') }}" height="100%" width="87%" alt="">
+      <div class='col-md-4 sidebar'> 
+        <img src="{{ asset('frontend/assets/images/banners/info.png') }}" height="100%" width="100%" alt="">
       </div>
     </div>
  </div>
@@ -147,6 +177,26 @@
     link.click();
   });
 }
+</script>
+
+<script>
+  // Initialize the counter to 0
+  let clickCount = 0;
+
+  // Function to update the button text with the click count
+  function updateClickCount() {
+    const button = document.getElementById('justC');
+    button.textContent = `Click Me (${clickCount})`;
+  }
+
+  // Function to handle button click
+  function handleClick() {
+    clickCount++;
+    updateClickCount();
+  }
+
+  // Attach the handleClick function to the button click event
+  document.getElementById('myBtn').addEventListener('click', handleClick);
 </script>
 
 @endsection

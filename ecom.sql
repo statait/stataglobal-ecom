@@ -1,935 +1,1609 @@
--- MySQL dump 10.13  Distrib 8.0.33, for Linux (x86_64)
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost    Database: ecom
--- ------------------------------------------------------
--- Server version	8.0.33-0ubuntu0.22.10.2
+-- Host: 127.0.0.1
+-- Generation Time: Jul 30, 2023 at 09:28 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8mb4 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `ecom`
+--
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `admins`
 --
 
-DROP TABLE IF EXISTS `admins`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `admins` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `brand` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `category` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `product` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `slider` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `coupons` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `shipping` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `setting` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `returnorder` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `review` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `orders` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `locations` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `stock` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `reports` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `alluser` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `adminuserrole` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `quotation` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `type` int DEFAULT NULL,
-  `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `current_team_id` bigint unsigned DEFAULT NULL,
-  `profile_photo_path` varchar(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `brand` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `category` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `product` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slider` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `coupons` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `shipping` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `setting` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `returnorder` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `review` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `orders` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `locations` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `stock` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `reports` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `alluser` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `adminuserrole` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `quotation` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `type` int(11) DEFAULT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `current_team_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `profile_photo_path` varchar(2048) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `admins_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `admins`
 --
 
-LOCK TABLES `admins` WRITE;
-/*!40000 ALTER TABLE `admins` DISABLE KEYS */;
-INSERT INTO `admins` VALUES (1,'Admin','admin@gmail.com','2022-06-05 03:57:32','$2y$10$ZCoqCSNCiRbqRM3OmRpa4O6sMZk8baoKX2lOgql3fz6DxKpD1YU16','01964870827','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1',1,'CdZ4ujVVzcc3RJyHPwrJNFRo8EpZjyOtUhhXvaMoEwNm1OpTzoclYPCffY09',NULL,'202209251620LOGOMOCKUP.jpg','2022-06-05 03:57:32','2023-03-25 05:09:11'),(9,'Yeasin Arafat','yeasin.stata@gmail.com',NULL,'$2y$10$gw.WFqGWWmXKMnG06wvu9.awK5FwhRHXyOupRGN6uodgxNfny2yrS','01908497296',NULL,'1','1','1','1','1','1','1','1','1','1','1','1','1',NULL,NULL,2,NULL,NULL,'upload/admin_images/1743754440115459.png','2022-09-26 07:07:56','2022-09-26 07:07:56'),(10,'Rahul','rahul@stata.com',NULL,'$2y$10$LEyf85toH2zVihpoP30L.OdFAyaehh/SGyer.Ok1dUuKNdm20.jBi','01720514565',NULL,'1','1','1','1','1','1','1','1','1','1','1','1','1',NULL,NULL,2,NULL,NULL,'upload/admin_images/1743757510562601.png','2022-09-26 07:08:36','2022-09-26 07:08:36'),(13,'Syed Tasdiq','tasdiqsyed96@gmail.com',NULL,'$2y$10$/nlXa7LGsBFyCmXJ5jfXGOy3oe5RMD7LtFzP3IN0Ab/hWXOKt2KyS','017422005557','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1',2,NULL,NULL,'upload/admin_images/1744663765164243.png','2022-09-26 07:08:21','2022-09-26 07:08:21'),(14,'MD Omar','omar@gmail.com',NULL,'$2y$10$tIOG4M8CZJr29g.ofPURWOZJsxsa34gnrUDkQWh1CsJuqcW1FnzVS','01322896409',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1',NULL,NULL,NULL,NULL,NULL,2,NULL,NULL,'upload/admin_images/1745015270567925.png','2022-09-26 07:10:45',NULL),(15,'Elhum','elhum.stata@gmail.com',NULL,'$2y$10$K/twoibNf8IoaQxvP3UG3eXfw6ycT3PsmoVmyijV/avGhgqepPY4.','01908931973',NULL,NULL,'1','1','1',NULL,NULL,NULL,NULL,'1',NULL,'1',NULL,NULL,NULL,NULL,2,NULL,NULL,'upload/admin_images/1749630131590847.png','2022-11-16 05:41:59',NULL),(16,'Shahriar Tasnim','shahriar@statait.com',NULL,'$2y$10$Zmkv9zxfQZMS6JXjbBBtXe8xkY8TyHmp74rckIOMDL0SVkjNfEUpW','+8801677341032','1','1','1','1','1','1','1','1','1','1','1','1','1','1',NULL,'1',2,NULL,NULL,'upload/admin_images/1755809909600289.png','2023-02-12 04:44:40','2023-02-12 04:44:40');
-/*!40000 ALTER TABLE `admins` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `admins` (`id`, `name`, `email`, `email_verified_at`, `password`, `phone`, `brand`, `category`, `product`, `slider`, `coupons`, `shipping`, `setting`, `returnorder`, `review`, `orders`, `locations`, `stock`, `reports`, `alluser`, `adminuserrole`, `quotation`, `type`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', 'admin@gmail.com', '2022-06-05 03:57:32', '$2y$10$ZCoqCSNCiRbqRM3OmRpa4O6sMZk8baoKX2lOgql3fz6DxKpD1YU16', '01964870827', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 1, 'CdZ4ujVVzcc3RJyHPwrJNFRo8EpZjyOtUhhXvaMoEwNm1OpTzoclYPCffY09', NULL, '202209251620LOGOMOCKUP.jpg', '2022-06-05 03:57:32', '2023-03-25 05:09:11'),
+(9, 'Yeasin Arafat', 'yeasin.stata@gmail.com', NULL, '$2y$10$gw.WFqGWWmXKMnG06wvu9.awK5FwhRHXyOupRGN6uodgxNfny2yrS', '01908497296', NULL, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', NULL, NULL, 2, NULL, NULL, 'upload/admin_images/1743754440115459.png', '2022-09-26 07:07:56', '2022-09-26 07:07:56'),
+(10, 'Rahul', 'rahul@stata.com', NULL, '$2y$10$LEyf85toH2zVihpoP30L.OdFAyaehh/SGyer.Ok1dUuKNdm20.jBi', '01720514565', NULL, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', NULL, NULL, 2, NULL, NULL, 'upload/admin_images/1743757510562601.png', '2022-09-26 07:08:36', '2022-09-26 07:08:36'),
+(13, 'Syed Tasdiq', 'tasdiqsyed96@gmail.com', NULL, '$2y$10$/nlXa7LGsBFyCmXJ5jfXGOy3oe5RMD7LtFzP3IN0Ab/hWXOKt2KyS', '017422005557', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 2, NULL, NULL, 'upload/admin_images/1744663765164243.png', '2022-09-26 07:08:21', '2022-09-26 07:08:21'),
+(14, 'MD Omar', 'omar@gmail.com', NULL, '$2y$10$tIOG4M8CZJr29g.ofPURWOZJsxsa34gnrUDkQWh1CsJuqcW1FnzVS', '01322896409', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, 'upload/admin_images/1745015270567925.png', '2022-09-26 07:10:45', NULL),
+(15, 'Elhum', 'elhum.stata@gmail.com', NULL, '$2y$10$K/twoibNf8IoaQxvP3UG3eXfw6ycT3PsmoVmyijV/avGhgqepPY4.', '01908931973', NULL, NULL, '1', '1', '1', NULL, NULL, NULL, NULL, '1', NULL, '1', NULL, NULL, NULL, NULL, 2, NULL, NULL, 'upload/admin_images/1749630131590847.png', '2022-11-16 05:41:59', NULL),
+(16, 'Shahriar Tasnim', 'shahriar@statait.com', NULL, '$2y$10$Zmkv9zxfQZMS6JXjbBBtXe8xkY8TyHmp74rckIOMDL0SVkjNfEUpW', '+8801677341032', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', NULL, '1', 2, NULL, NULL, 'upload/admin_images/1755809909600289.png', '2023-02-12 04:44:40', '2023-02-12 04:44:40');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `brands`
 --
 
-DROP TABLE IF EXISTS `brands`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `brands` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `brand_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `brand_image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `brand_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `brand_image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `brands`
 --
 
-LOCK TABLES `brands` WRITE;
-/*!40000 ALTER TABLE `brands` DISABLE KEYS */;
-INSERT INTO `brands` VALUES (19,'STATA','upload/brand/1745610538135217.png','2022-09-11 04:47:15','2022-10-02 20:52:18');
-/*!40000 ALTER TABLE `brands` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `brands` (`id`, `brand_name`, `brand_image`, `created_at`, `updated_at`) VALUES
+(19, 'STATA', 'upload/brand/1745610538135217.png', '2022-09-11 04:47:15', '2022-10-02 20:52:18');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `carts`
 --
 
-DROP TABLE IF EXISTS `carts`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `carts` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `prod_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `prod_qty` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `prod_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `prod_qty` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `carts`
---
-
-LOCK TABLES `carts` WRITE;
-/*!40000 ALTER TABLE `carts` DISABLE KEYS */;
-/*!40000 ALTER TABLE `carts` ENABLE KEYS */;
-UNLOCK TABLES;
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `categories`
 --
 
-DROP TABLE IF EXISTS `categories`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `categories` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `category_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `category_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `c_meta_title` varchar(258) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `c_meta_description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `categories`
 --
 
-LOCK TABLES `categories` WRITE;
-/*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` VALUES (14,'Security','2022-09-10 07:18:07',NULL),(15,'Switches and Sockets','2022-09-12 09:14:58','2022-09-12 09:15:03'),(16,'Smart Door Locks','2022-09-18 11:09:59',NULL),(17,'Smart Home Appliances','2022-09-20 05:04:14','2022-09-20 05:04:33'),(18,'Smart Lighting','2022-09-21 09:58:03',NULL),(19,'Smart Home Package','2023-04-02 18:45:04',NULL),(21,'Smart Hotel Solution','2023-05-28 16:34:33',NULL);
-/*!40000 ALTER TABLE `categories` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `categories` (`id`, `category_name`, `c_meta_title`, `c_meta_description`, `created_at`, `updated_at`) VALUES
+(14, 'Security', NULL, NULL, '2022-09-10 07:18:07', '2023-07-11 23:55:47'),
+(15, 'Switches and Sockets', NULL, NULL, '2022-09-12 09:14:58', '2022-09-12 09:15:03'),
+(16, 'Smart Door Locks', NULL, NULL, '2022-09-18 11:09:59', NULL),
+(17, 'Smart Home Appliances', NULL, NULL, '2022-09-20 05:04:14', '2022-09-20 05:04:33'),
+(18, 'Smart Lighting', NULL, NULL, '2022-09-21 09:58:03', NULL),
+(19, 'Smart Home Package', NULL, NULL, '2023-04-02 18:45:04', NULL),
+(21, 'Smart Hotel Solution', NULL, NULL, '2023-05-28 16:34:33', NULL);
 
---
--- Table structure for table `content_images`
---
-
-DROP TABLE IF EXISTS `content_images`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `content_images` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `content_id` int NOT NULL,
-  `photo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `content_images`
---
-
-LOCK TABLES `content_images` WRITE;
-/*!40000 ALTER TABLE `content_images` DISABLE KEYS */;
-/*!40000 ALTER TABLE `content_images` ENABLE KEYS */;
-UNLOCK TABLES;
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `contents`
 --
 
-DROP TABLE IF EXISTS `contents`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `contents` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `heading` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `details1` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `details2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `heading` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `details1` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `details2` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `contents`
+-- Table structure for table `content_images`
 --
 
-LOCK TABLES `contents` WRITE;
-/*!40000 ALTER TABLE `contents` DISABLE KEYS */;
-/*!40000 ALTER TABLE `contents` ENABLE KEYS */;
-UNLOCK TABLES;
+CREATE TABLE `content_images` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `content_id` int(11) NOT NULL,
+  `photo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `coupons`
 --
 
-DROP TABLE IF EXISTS `coupons`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `coupons` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `coupon_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `coupon_discount` int NOT NULL,
-  `coupon_validity` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` int NOT NULL DEFAULT '1',
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `coupon_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `coupon_discount` int(11) NOT NULL,
+  `coupon_validity` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `coupons`
+-- Table structure for table `c_contents`
 --
 
-LOCK TABLES `coupons` WRITE;
-/*!40000 ALTER TABLE `coupons` DISABLE KEYS */;
-/*!40000 ALTER TABLE `coupons` ENABLE KEYS */;
-UNLOCK TABLES;
+CREATE TABLE `c_contents` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `heading` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `details1` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `details2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `c_content_images`
+--
+
+CREATE TABLE `c_content_images` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `c_content_id` int(11) NOT NULL,
+  `photo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `failed_jobs`
 --
 
-DROP TABLE IF EXISTS `failed_jobs`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `failed_jobs` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `uuid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `failed_jobs`
---
-
-LOCK TABLES `failed_jobs` WRITE;
-/*!40000 ALTER TABLE `failed_jobs` DISABLE KEYS */;
-/*!40000 ALTER TABLE `failed_jobs` ENABLE KEYS */;
-UNLOCK TABLES;
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `locations`
 --
 
-DROP TABLE IF EXISTS `locations`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `locations` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `store_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `store_image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `map` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `store_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `store_image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `map` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `locations`
---
-
-LOCK TABLES `locations` WRITE;
-/*!40000 ALTER TABLE `locations` DISABLE KEYS */;
-/*!40000 ALTER TABLE `locations` ENABLE KEYS */;
-UNLOCK TABLES;
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `migrations`
 --
 
-DROP TABLE IF EXISTS `migrations`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `migrations` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
 --
 
-LOCK TABLES `migrations` WRITE;
-/*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_resets_table',1),(3,'2014_10_12_200000_add_two_factor_columns_to_users_table',1),(4,'2019_08_19_000000_create_failed_jobs_table',1),(5,'2019_12_14_000001_create_personal_access_tokens_table',1),(6,'2022_06_05_035221_create_sessions_table',1),(7,'2022_06_05_093510_create_admins_table',2),(8,'2022_06_08_050819_create_brands_table',3),(9,'2022_06_11_072712_create_sliders_table',4),(10,'2022_06_11_080003_create_sliders_table',5),(11,'2022_06_12_044009_create_categories_table',6),(12,'2022_06_12_044635_create_sub_categories_table',6),(13,'2022_06_12_101831_create_products_table',7),(14,'2022_06_12_102120_create_multi_imgs_table',7),(15,'2022_06_15_111136_create_carts_table',8),(16,'2022_06_18_051335_create_wishlists_table',9),(17,'2022_06_19_061429_create_coupons_table',10),(18,'2022_06_20_055345_create_ship_divisions_table',11),(19,'2022_06_20_082833_create_ship_districts_table',12),(20,'2022_06_21_050936_create_ship_states_table',13),(21,'2022_06_22_153813_create_shippings_table',14),(22,'2022_06_25_052407_create_oders_table',14),(23,'2022_06_25_075304_create_orders_table',15),(24,'2022_06_25_075738_create_order_items_table',15),(25,'2022_06_30_065319_create_site_settings_table',16),(26,'2022_06_30_110044_create_seos_table',17),(27,'2022_07_02_062717_create_reviews_table',18),(29,'2022_08_01_044732_create_locations_table',19),(30,'2023_01_22_112102_create_news_letters_table',20),(31,'2023_06_26_060628_create_contents_table',20),(32,'2023_06_26_064646_create_content_images_table',21);
-/*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_resets_table', 1),
+(3, '2014_10_12_200000_add_two_factor_columns_to_users_table', 1),
+(4, '2019_08_19_000000_create_failed_jobs_table', 1),
+(5, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(6, '2022_06_05_035221_create_sessions_table', 1),
+(7, '2022_06_05_093510_create_admins_table', 2),
+(8, '2022_06_08_050819_create_brands_table', 3),
+(9, '2022_06_11_072712_create_sliders_table', 4),
+(10, '2022_06_11_080003_create_sliders_table', 5),
+(11, '2022_06_12_044009_create_categories_table', 6),
+(12, '2022_06_12_044635_create_sub_categories_table', 6),
+(13, '2022_06_12_101831_create_products_table', 7),
+(14, '2022_06_12_102120_create_multi_imgs_table', 7),
+(15, '2022_06_15_111136_create_carts_table', 8),
+(16, '2022_06_18_051335_create_wishlists_table', 9),
+(17, '2022_06_19_061429_create_coupons_table', 10),
+(18, '2022_06_20_055345_create_ship_divisions_table', 11),
+(19, '2022_06_20_082833_create_ship_districts_table', 12),
+(20, '2022_06_21_050936_create_ship_states_table', 13),
+(21, '2022_06_22_153813_create_shippings_table', 14),
+(22, '2022_06_25_052407_create_oders_table', 14),
+(23, '2022_06_25_075304_create_orders_table', 15),
+(24, '2022_06_25_075738_create_order_items_table', 15),
+(25, '2022_06_30_065319_create_site_settings_table', 16),
+(26, '2022_06_30_110044_create_seos_table', 17),
+(27, '2022_07_02_062717_create_reviews_table', 18),
+(29, '2022_08_01_044732_create_locations_table', 19),
+(30, '2023_01_22_112102_create_news_letters_table', 20),
+(31, '2023_06_26_060628_create_contents_table', 20),
+(32, '2023_06_26_064646_create_content_images_table', 21),
+(33, '2023_07_30_055130_create_c_contents_table', 22),
+(34, '2023_07_30_055545_create_c_content_images_table', 23);
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `multi_imgs`
 --
 
-DROP TABLE IF EXISTS `multi_imgs`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `multi_imgs` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `product_id` int NOT NULL,
-  `photo_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `photo_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=223 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `multi_imgs`
 --
 
-LOCK TABLES `multi_imgs` WRITE;
-/*!40000 ALTER TABLE `multi_imgs` DISABLE KEYS */;
-INSERT INTO `multi_imgs` VALUES (1,1,'upload/products/multi-image/1735512591630339.jpg','2022-06-13 03:49:44',NULL),(2,1,'upload/products/multi-image/1735512591886649.jpg','2022-06-13 03:49:44',NULL),(3,1,'upload/products/multi-image/1735512592221241.jpg','2022-06-13 03:49:45',NULL),(4,2,'upload/products/multi-image/1735513072310916.jpg','2022-06-13 03:57:23',NULL),(5,2,'upload/products/multi-image/1735513072611697.jpg','2022-06-13 03:57:23',NULL),(6,2,'upload/products/multi-image/1735513072855222.jpg','2022-06-13 03:57:23',NULL),(7,3,'upload/products/multi-image/1735513599401796.jpg','2022-06-13 04:05:45',NULL),(8,3,'upload/products/multi-image/1735513599686734.jpg','2022-06-13 04:05:46',NULL),(11,5,'upload/products/multi-image/1735581720124153.jpg','2022-06-13 22:08:30',NULL),(12,5,'upload/products/multi-image/1735581720432680.jpg','2022-06-13 22:08:31',NULL),(13,5,'upload/products/multi-image/1735581720737548.jpg','2022-06-13 22:08:31',NULL),(14,5,'upload/products/multi-image/1735581721024869.jpg','2022-06-13 22:08:31',NULL),(15,6,'upload/products/multi-image/1735582540510473.jpg','2022-06-13 22:21:33',NULL),(16,6,'upload/products/multi-image/1735582540824561.jpg','2022-06-13 22:21:33',NULL),(17,6,'upload/products/multi-image/1735582541268855.jpg','2022-06-13 22:21:33',NULL),(18,7,'upload/products/multi-image/1735600022370111.png','2022-06-14 02:59:27',NULL),(19,7,'upload/products/multi-image/1735600024918135.png','2022-06-14 02:59:29',NULL),(20,7,'upload/products/multi-image/1735600027316408.png','2022-06-14 02:59:30',NULL),(21,8,'upload/products/multi-image/1735601079138720.png','2022-06-14 03:16:15',NULL),(22,8,'upload/products/multi-image/1735601081674839.png','2022-06-14 03:16:17',NULL),(23,8,'upload/products/multi-image/1735601084029124.png','2022-06-14 03:16:17',NULL),(24,9,'upload/products/multi-image/1735606312768959.jpg','2022-06-14 04:39:24',NULL),(25,9,'upload/products/multi-image/1735606313072461.jpg','2022-06-14 04:39:24',NULL),(26,9,'upload/products/multi-image/1735606313315540.jpg','2022-06-14 04:39:24',NULL),(27,9,'upload/products/multi-image/1735606313592829.jpg','2022-06-14 04:39:24',NULL),(28,10,'upload/products/multi-image/1738595912035419.jfif','2022-07-17 04:37:49',NULL),(30,11,'upload/products/multi-image/1739487564477420.jpg','2022-07-27 00:50:14',NULL),(31,11,'upload/products/multi-image/1739487564917185.jpg','2022-07-27 00:50:14',NULL),(32,11,'upload/products/multi-image/1739487565246422.png','2022-07-27 00:50:15',NULL),(33,12,'upload/products/multi-image/1739487957485719.jpg','2022-07-27 00:56:29',NULL),(34,12,'upload/products/multi-image/1739487957864802.jpg','2022-07-27 00:56:29',NULL),(35,13,'upload/products/multi-image/1740521266670096.PNG','2022-08-07 10:40:29',NULL),(36,13,'upload/products/multi-image/1740521267056518.PNG','2022-08-07 10:40:29',NULL),(37,13,'upload/products/multi-image/1740521267356526.PNG','2022-08-07 10:40:30',NULL),(38,13,'upload/products/multi-image/1740521267670678.PNG','2022-08-07 10:40:30',NULL),(39,14,'upload/products/multi-image/1740569090190132.jpg','2022-08-07 23:20:37',NULL),(40,14,'upload/products/multi-image/1740569090440327.jpg','2022-08-07 23:20:37',NULL),(41,14,'upload/products/multi-image/1740569090739141.jpg','2022-08-07 23:20:38',NULL),(42,15,'upload/products/multi-image/1741659940676835.PNG','2022-08-20 00:19:13',NULL),(43,15,'upload/products/multi-image/1741659940920304.PNG','2022-08-20 00:19:13',NULL),(44,15,'upload/products/multi-image/1741659941163835.PNG','2022-08-20 00:19:14',NULL),(45,15,'upload/products/multi-image/1741659941444909.PNG','2022-08-20 00:19:14',NULL),(46,15,'upload/products/multi-image/1741659941699541.PNG','2022-08-20 00:19:14',NULL),(47,16,'upload/products/multi-image/1742232122383863.png','2022-08-26 07:53:48',NULL),(48,16,'upload/products/multi-image/1742232122598752.png','2022-08-26 07:53:48',NULL),(49,16,'upload/products/multi-image/1742232122922178.png','2022-08-26 07:53:49',NULL),(105,43,'upload/products/multi-image/1744380437996643.png','2022-09-18 05:53:34','2022-09-19 07:00:21'),(106,43,'upload/products/multi-image/1744380448885628.png','2022-09-18 05:53:34','2022-09-19 07:00:32'),(107,44,'upload/products/multi-image/1744380695911358.png','2022-09-18 10:59:24','2022-09-19 07:04:27'),(108,44,'upload/products/multi-image/1744380695970087.png','2022-09-18 10:59:25','2022-09-19 07:04:27'),(109,45,'upload/products/multi-image/1744380830854053.png','2022-09-18 11:02:40','2022-09-19 07:06:36'),(110,45,'upload/products/multi-image/1744380830931200.png','2022-09-18 11:02:40','2022-09-19 07:06:36'),(111,46,'upload/products/multi-image/1744305449106935.jpg','2022-09-18 11:08:27',NULL),(112,46,'upload/products/multi-image/1744305449888488.png','2022-09-18 11:08:27',NULL),(113,46,'upload/products/multi-image/1744462701644491.png','2022-09-18 11:08:28','2022-09-20 04:47:54'),(114,47,'upload/products/multi-image/1744306060589701.jpg','2022-09-18 11:18:10',NULL),(115,47,'upload/products/multi-image/1744306061400007.jpg','2022-09-18 11:18:11',NULL),(119,49,'upload/products/multi-image/1762587350025275.png','2022-09-20 05:00:33','2023-04-08 06:11:26'),(120,50,'upload/products/multi-image/1744464518596312.png','2022-09-20 05:16:47',NULL),(121,50,'upload/products/multi-image/1744464518671262.png','2022-09-20 05:16:47',NULL),(122,51,'upload/products/multi-image/1744505679133755.png','2022-09-20 16:11:01',NULL),(123,52,'upload/products/multi-image/1763033624913285.png','2022-09-21 07:02:00','2023-04-13 04:24:47'),(124,52,'upload/products/multi-image/1744561735258673.png','2022-09-21 07:02:00',NULL),(125,53,'upload/products/multi-image/1744656377162738.png','2022-09-21 09:25:47','2022-09-22 08:06:17'),(128,55,'upload/products/multi-image/1744571582492356.png','2022-09-21 09:38:31',NULL),(130,56,'upload/products/multi-image/1744656453522976.png','2022-09-21 09:51:42','2022-09-22 08:07:30'),(132,57,'upload/products/multi-image/1744665585813222.jpeg','2022-09-21 09:57:34','2022-09-22 10:32:40'),(134,58,'upload/products/multi-image/1744574859975556.png','2022-09-21 10:30:37',NULL),(135,58,'upload/products/multi-image/1744574860050949.png','2022-09-21 10:30:37',NULL),(137,60,'upload/products/multi-image/1744575249365209.jpg','2022-09-21 10:36:48',NULL),(138,61,'upload/products/multi-image/1754847764095300.png','2022-09-21 10:45:56','2023-01-13 01:54:02'),(143,63,'upload/products/multi-image/1744602194369180.png','2022-09-21 17:45:05',NULL),(144,64,'upload/products/multi-image/1744663002294635.png','2022-09-21 18:01:58','2022-09-22 09:51:36'),(146,65,'upload/products/multi-image/1744663295235650.png','2022-09-21 18:12:15','2022-09-22 09:56:15'),(147,66,'upload/products/multi-image/1744664859691170.png','2022-09-21 18:33:36','2022-09-22 10:21:07'),(149,67,'upload/products/multi-image/1744663403221303.png','2022-09-21 18:40:54','2022-09-22 09:57:58'),(151,68,'upload/products/multi-image/1744649384252408.png','2022-09-22 06:15:09',NULL),(152,68,'upload/products/multi-image/1744649384375739.png','2022-09-22 06:15:09',NULL),(153,69,'upload/products/multi-image/1744649876891707.png','2022-09-22 06:22:58',NULL),(154,69,'upload/products/multi-image/1744649876975083.png','2022-09-22 06:22:58',NULL),(155,70,'upload/products/multi-image/1744651073829353.png','2022-09-22 06:42:00',NULL),(156,70,'upload/products/multi-image/1744651073924732.png','2022-09-22 06:42:00',NULL),(157,71,'upload/products/multi-image/1744663222200938.png','2022-09-22 09:55:06',NULL),(158,72,'upload/products/multi-image/1745287970746030.png','2022-09-29 07:25:12',NULL),(159,73,'upload/products/multi-image/1745288231254192.png','2022-09-29 07:29:21',NULL),(162,75,'upload/products/multi-image/1754848160282478.png','2023-01-13 02:00:20',NULL),(163,76,'upload/products/multi-image/1754850231465031.jpeg','2023-01-13 02:33:15',NULL),(164,76,'upload/products/multi-image/1754850231609573.jpeg','2023-01-13 02:33:15',NULL),(165,76,'upload/products/multi-image/1754850231701875.jpeg','2023-01-13 02:33:15',NULL),(166,76,'upload/products/multi-image/1754850231798302.jpeg','2023-01-13 02:33:15',NULL),(167,77,'upload/products/multi-image/1761785191504239.jpg','2023-03-30 09:41:28',NULL),(168,77,'upload/products/multi-image/1761785191545129.jpg','2023-03-30 09:41:28',NULL),(169,77,'upload/products/multi-image/1761785191576153.jpg','2023-03-30 09:41:28',NULL),(170,78,'upload/products/multi-image/1761959307967061.png','2023-04-01 07:48:58',NULL),(171,79,'upload/products/multi-image/1761960931221440.jpg','2023-04-01 08:14:46',NULL),(172,79,'upload/products/multi-image/1761960931268999.jpg','2023-04-01 08:14:46',NULL),(173,79,'upload/products/multi-image/1761960931317331.jpg','2023-04-01 08:14:46',NULL),(174,79,'upload/products/multi-image/1761960931363487.jpg','2023-04-01 08:14:46',NULL),(175,79,'upload/products/multi-image/1761960931410352.jpg','2023-04-01 08:14:46',NULL),(191,84,'upload/products/multi-image/1762229899854569.png','2023-04-04 07:29:55',NULL),(192,84,'upload/products/multi-image/1762229900087764.jpg','2023-04-04 07:29:55',NULL),(193,84,'upload/products/multi-image/1762229900116597.png','2023-04-04 07:29:55',NULL),(194,84,'upload/products/multi-image/1762229900177599.png','2023-04-04 07:29:55',NULL),(195,84,'upload/products/multi-image/1762229900252948.png','2023-04-04 07:29:55',NULL),(196,84,'upload/products/multi-image/1762229900407599.png','2023-04-04 07:29:55',NULL),(197,84,'upload/products/multi-image/1762229900568627.png','2023-04-04 07:29:55',NULL),(198,85,'upload/products/multi-image/1762230964611981.png','2023-04-04 07:46:50',NULL),(199,85,'upload/products/multi-image/1762230964664239.png','2023-04-04 07:46:50',NULL),(200,85,'upload/products/multi-image/1762230964893559.png','2023-04-04 07:46:50',NULL),(201,85,'upload/products/multi-image/1762230964954130.png','2023-04-04 07:46:50',NULL),(202,85,'upload/products/multi-image/1762230965025379.png','2023-04-04 07:46:51',NULL),(203,85,'upload/products/multi-image/1762230965147212.png','2023-04-04 07:46:51',NULL),(204,85,'upload/products/multi-image/1762230965304099.png','2023-04-04 07:46:51',NULL),(205,85,'upload/products/multi-image/1762230965800223.png','2023-04-04 07:46:51',NULL),(206,85,'upload/products/multi-image/1762230965849030.png','2023-04-04 07:46:51',NULL),(207,85,'upload/products/multi-image/1762230965935623.png','2023-04-04 07:46:51',NULL),(208,85,'upload/products/multi-image/1762230966012866.png','2023-04-04 07:46:51',NULL),(209,85,'upload/products/multi-image/1762230966091003.png','2023-04-04 07:46:52',NULL),(210,86,'upload/products/multi-image/1762231584032962.png','2023-04-04 07:56:41',NULL),(211,86,'upload/products/multi-image/1762231584095986.png','2023-04-04 07:56:41',NULL),(212,86,'upload/products/multi-image/1762231584169762.png','2023-04-04 07:56:41',NULL),(213,86,'upload/products/multi-image/1762231584230301.png','2023-04-04 07:56:41',NULL),(214,86,'upload/products/multi-image/1762231584390140.png','2023-04-04 07:56:41',NULL),(215,86,'upload/products/multi-image/1762231584546151.png','2023-04-04 07:56:41',NULL),(216,86,'upload/products/multi-image/1762231584632279.png','2023-04-04 07:56:41',NULL),(217,44,'upload/products/multi-image/1862230965304099.png','2022-09-18 10:59:24','2022-09-19 07:04:27'),(218,43,'upload/products/multi-image/1962230965304099.png','2022-09-18 05:53:34','2022-09-19 07:00:21'),(219,87,'upload/products/multi-image/1767157867835956.jpeg','2023-05-28 16:57:51',NULL),(220,88,'upload/products/multi-image/1768479514295674.png','2023-06-12 07:04:52',NULL),(221,89,'upload/products/multi-image/1768482435026234.webp','2023-06-12 07:21:36','2023-06-12 07:51:17'),(222,90,'upload/products/multi-image/1768482406439403.webp','2023-06-12 07:45:39','2023-06-12 07:50:50');
-/*!40000 ALTER TABLE `multi_imgs` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `multi_imgs` (`id`, `product_id`, `photo_name`, `created_at`, `updated_at`) VALUES
+(1, 1, 'upload/products/multi-image/1735512591630339.jpg', '2022-06-13 03:49:44', NULL),
+(2, 1, 'upload/products/multi-image/1735512591886649.jpg', '2022-06-13 03:49:44', NULL),
+(3, 1, 'upload/products/multi-image/1735512592221241.jpg', '2022-06-13 03:49:45', NULL),
+(4, 2, 'upload/products/multi-image/1735513072310916.jpg', '2022-06-13 03:57:23', NULL),
+(5, 2, 'upload/products/multi-image/1735513072611697.jpg', '2022-06-13 03:57:23', NULL),
+(6, 2, 'upload/products/multi-image/1735513072855222.jpg', '2022-06-13 03:57:23', NULL),
+(7, 3, 'upload/products/multi-image/1735513599401796.jpg', '2022-06-13 04:05:45', NULL),
+(8, 3, 'upload/products/multi-image/1735513599686734.jpg', '2022-06-13 04:05:46', NULL),
+(11, 5, 'upload/products/multi-image/1735581720124153.jpg', '2022-06-13 22:08:30', NULL),
+(12, 5, 'upload/products/multi-image/1735581720432680.jpg', '2022-06-13 22:08:31', NULL),
+(13, 5, 'upload/products/multi-image/1735581720737548.jpg', '2022-06-13 22:08:31', NULL),
+(14, 5, 'upload/products/multi-image/1735581721024869.jpg', '2022-06-13 22:08:31', NULL),
+(15, 6, 'upload/products/multi-image/1735582540510473.jpg', '2022-06-13 22:21:33', NULL),
+(16, 6, 'upload/products/multi-image/1735582540824561.jpg', '2022-06-13 22:21:33', NULL),
+(17, 6, 'upload/products/multi-image/1735582541268855.jpg', '2022-06-13 22:21:33', NULL),
+(18, 7, 'upload/products/multi-image/1735600022370111.png', '2022-06-14 02:59:27', NULL),
+(19, 7, 'upload/products/multi-image/1735600024918135.png', '2022-06-14 02:59:29', NULL),
+(20, 7, 'upload/products/multi-image/1735600027316408.png', '2022-06-14 02:59:30', NULL),
+(21, 8, 'upload/products/multi-image/1735601079138720.png', '2022-06-14 03:16:15', NULL),
+(22, 8, 'upload/products/multi-image/1735601081674839.png', '2022-06-14 03:16:17', NULL),
+(23, 8, 'upload/products/multi-image/1735601084029124.png', '2022-06-14 03:16:17', NULL),
+(24, 9, 'upload/products/multi-image/1735606312768959.jpg', '2022-06-14 04:39:24', NULL),
+(25, 9, 'upload/products/multi-image/1735606313072461.jpg', '2022-06-14 04:39:24', NULL),
+(26, 9, 'upload/products/multi-image/1735606313315540.jpg', '2022-06-14 04:39:24', NULL),
+(27, 9, 'upload/products/multi-image/1735606313592829.jpg', '2022-06-14 04:39:24', NULL),
+(28, 10, 'upload/products/multi-image/1738595912035419.jfif', '2022-07-17 04:37:49', NULL),
+(30, 11, 'upload/products/multi-image/1739487564477420.jpg', '2022-07-27 00:50:14', NULL),
+(31, 11, 'upload/products/multi-image/1739487564917185.jpg', '2022-07-27 00:50:14', NULL),
+(32, 11, 'upload/products/multi-image/1739487565246422.png', '2022-07-27 00:50:15', NULL),
+(33, 12, 'upload/products/multi-image/1739487957485719.jpg', '2022-07-27 00:56:29', NULL),
+(34, 12, 'upload/products/multi-image/1739487957864802.jpg', '2022-07-27 00:56:29', NULL),
+(35, 13, 'upload/products/multi-image/1740521266670096.PNG', '2022-08-07 10:40:29', NULL),
+(36, 13, 'upload/products/multi-image/1740521267056518.PNG', '2022-08-07 10:40:29', NULL),
+(37, 13, 'upload/products/multi-image/1740521267356526.PNG', '2022-08-07 10:40:30', NULL),
+(38, 13, 'upload/products/multi-image/1740521267670678.PNG', '2022-08-07 10:40:30', NULL),
+(39, 14, 'upload/products/multi-image/1740569090190132.jpg', '2022-08-07 23:20:37', NULL),
+(40, 14, 'upload/products/multi-image/1740569090440327.jpg', '2022-08-07 23:20:37', NULL),
+(41, 14, 'upload/products/multi-image/1740569090739141.jpg', '2022-08-07 23:20:38', NULL),
+(42, 15, 'upload/products/multi-image/1741659940676835.PNG', '2022-08-20 00:19:13', NULL),
+(43, 15, 'upload/products/multi-image/1741659940920304.PNG', '2022-08-20 00:19:13', NULL),
+(44, 15, 'upload/products/multi-image/1741659941163835.PNG', '2022-08-20 00:19:14', NULL),
+(45, 15, 'upload/products/multi-image/1741659941444909.PNG', '2022-08-20 00:19:14', NULL),
+(46, 15, 'upload/products/multi-image/1741659941699541.PNG', '2022-08-20 00:19:14', NULL),
+(47, 16, 'upload/products/multi-image/1742232122383863.png', '2022-08-26 07:53:48', NULL),
+(48, 16, 'upload/products/multi-image/1742232122598752.png', '2022-08-26 07:53:48', NULL),
+(49, 16, 'upload/products/multi-image/1742232122922178.png', '2022-08-26 07:53:49', NULL),
+(105, 43, 'upload/products/multi-image/1744380437996643.png', '2022-09-18 05:53:34', '2022-09-19 07:00:21'),
+(106, 43, 'upload/products/multi-image/1744380448885628.png', '2022-09-18 05:53:34', '2022-09-19 07:00:32'),
+(107, 44, 'upload/products/multi-image/1744380695911358.png', '2022-09-18 10:59:24', '2022-09-19 07:04:27'),
+(108, 44, 'upload/products/multi-image/1744380695970087.png', '2022-09-18 10:59:25', '2022-09-19 07:04:27'),
+(109, 45, 'upload/products/multi-image/1744380830854053.png', '2022-09-18 11:02:40', '2022-09-19 07:06:36'),
+(110, 45, 'upload/products/multi-image/1744380830931200.png', '2022-09-18 11:02:40', '2022-09-19 07:06:36'),
+(111, 46, 'upload/products/multi-image/1744305449106935.jpg', '2022-09-18 11:08:27', NULL),
+(112, 46, 'upload/products/multi-image/1744305449888488.png', '2022-09-18 11:08:27', NULL),
+(113, 46, 'upload/products/multi-image/1744462701644491.png', '2022-09-18 11:08:28', '2022-09-20 04:47:54'),
+(114, 47, 'upload/products/multi-image/1744306060589701.jpg', '2022-09-18 11:18:10', NULL),
+(115, 47, 'upload/products/multi-image/1744306061400007.jpg', '2022-09-18 11:18:11', NULL),
+(119, 49, 'upload/products/multi-image/1762587350025275.png', '2022-09-20 05:00:33', '2023-04-08 06:11:26'),
+(120, 50, 'upload/products/multi-image/1744464518596312.png', '2022-09-20 05:16:47', NULL),
+(121, 50, 'upload/products/multi-image/1744464518671262.png', '2022-09-20 05:16:47', NULL),
+(122, 51, 'upload/products/multi-image/1744505679133755.png', '2022-09-20 16:11:01', NULL),
+(123, 52, 'upload/products/multi-image/1763033624913285.png', '2022-09-21 07:02:00', '2023-04-13 04:24:47'),
+(124, 52, 'upload/products/multi-image/1744561735258673.png', '2022-09-21 07:02:00', NULL),
+(125, 53, 'upload/products/multi-image/1744656377162738.png', '2022-09-21 09:25:47', '2022-09-22 08:06:17'),
+(128, 55, 'upload/products/multi-image/1744571582492356.png', '2022-09-21 09:38:31', NULL),
+(130, 56, 'upload/products/multi-image/1744656453522976.png', '2022-09-21 09:51:42', '2022-09-22 08:07:30'),
+(132, 57, 'upload/products/multi-image/1744665585813222.jpeg', '2022-09-21 09:57:34', '2022-09-22 10:32:40'),
+(134, 58, 'upload/products/multi-image/1744574859975556.png', '2022-09-21 10:30:37', NULL),
+(135, 58, 'upload/products/multi-image/1744574860050949.png', '2022-09-21 10:30:37', NULL),
+(137, 60, 'upload/products/multi-image/1744575249365209.jpg', '2022-09-21 10:36:48', NULL),
+(138, 61, 'upload/products/multi-image/1754847764095300.png', '2022-09-21 10:45:56', '2023-01-13 01:54:02'),
+(143, 63, 'upload/products/multi-image/1744602194369180.png', '2022-09-21 17:45:05', NULL),
+(144, 64, 'upload/products/multi-image/1744663002294635.png', '2022-09-21 18:01:58', '2022-09-22 09:51:36'),
+(146, 65, 'upload/products/multi-image/1744663295235650.png', '2022-09-21 18:12:15', '2022-09-22 09:56:15'),
+(147, 66, 'upload/products/multi-image/1744664859691170.png', '2022-09-21 18:33:36', '2022-09-22 10:21:07'),
+(149, 67, 'upload/products/multi-image/1744663403221303.png', '2022-09-21 18:40:54', '2022-09-22 09:57:58'),
+(151, 68, 'upload/products/multi-image/1744649384252408.png', '2022-09-22 06:15:09', NULL),
+(152, 68, 'upload/products/multi-image/1744649384375739.png', '2022-09-22 06:15:09', NULL),
+(153, 69, 'upload/products/multi-image/1744649876891707.png', '2022-09-22 06:22:58', NULL),
+(154, 69, 'upload/products/multi-image/1744649876975083.png', '2022-09-22 06:22:58', NULL),
+(155, 70, 'upload/products/multi-image/1744651073829353.png', '2022-09-22 06:42:00', NULL),
+(156, 70, 'upload/products/multi-image/1744651073924732.png', '2022-09-22 06:42:00', NULL),
+(157, 71, 'upload/products/multi-image/1744663222200938.png', '2022-09-22 09:55:06', NULL),
+(158, 72, 'upload/products/multi-image/1745287970746030.png', '2022-09-29 07:25:12', NULL),
+(159, 73, 'upload/products/multi-image/1745288231254192.png', '2022-09-29 07:29:21', NULL),
+(162, 75, 'upload/products/multi-image/1754848160282478.png', '2023-01-13 02:00:20', NULL),
+(163, 76, 'upload/products/multi-image/1754850231465031.jpeg', '2023-01-13 02:33:15', NULL),
+(164, 76, 'upload/products/multi-image/1754850231609573.jpeg', '2023-01-13 02:33:15', NULL),
+(165, 76, 'upload/products/multi-image/1754850231701875.jpeg', '2023-01-13 02:33:15', NULL),
+(166, 76, 'upload/products/multi-image/1754850231798302.jpeg', '2023-01-13 02:33:15', NULL),
+(167, 77, 'upload/products/multi-image/1761785191504239.jpg', '2023-03-30 09:41:28', NULL),
+(168, 77, 'upload/products/multi-image/1761785191545129.jpg', '2023-03-30 09:41:28', NULL),
+(169, 77, 'upload/products/multi-image/1761785191576153.jpg', '2023-03-30 09:41:28', NULL),
+(170, 78, 'upload/products/multi-image/1761959307967061.png', '2023-04-01 07:48:58', NULL),
+(171, 79, 'upload/products/multi-image/1761960931221440.jpg', '2023-04-01 08:14:46', NULL),
+(172, 79, 'upload/products/multi-image/1761960931268999.jpg', '2023-04-01 08:14:46', NULL),
+(173, 79, 'upload/products/multi-image/1761960931317331.jpg', '2023-04-01 08:14:46', NULL),
+(174, 79, 'upload/products/multi-image/1761960931363487.jpg', '2023-04-01 08:14:46', NULL),
+(175, 79, 'upload/products/multi-image/1761960931410352.jpg', '2023-04-01 08:14:46', NULL),
+(191, 84, 'upload/products/multi-image/1762229899854569.png', '2023-04-04 07:29:55', NULL),
+(192, 84, 'upload/products/multi-image/1762229900087764.jpg', '2023-04-04 07:29:55', NULL),
+(193, 84, 'upload/products/multi-image/1762229900116597.png', '2023-04-04 07:29:55', NULL),
+(194, 84, 'upload/products/multi-image/1762229900177599.png', '2023-04-04 07:29:55', NULL),
+(195, 84, 'upload/products/multi-image/1762229900252948.png', '2023-04-04 07:29:55', NULL),
+(196, 84, 'upload/products/multi-image/1762229900407599.png', '2023-04-04 07:29:55', NULL),
+(197, 84, 'upload/products/multi-image/1762229900568627.png', '2023-04-04 07:29:55', NULL),
+(198, 85, 'upload/products/multi-image/1762230964611981.png', '2023-04-04 07:46:50', NULL),
+(199, 85, 'upload/products/multi-image/1762230964664239.png', '2023-04-04 07:46:50', NULL),
+(200, 85, 'upload/products/multi-image/1762230964893559.png', '2023-04-04 07:46:50', NULL),
+(201, 85, 'upload/products/multi-image/1762230964954130.png', '2023-04-04 07:46:50', NULL),
+(202, 85, 'upload/products/multi-image/1762230965025379.png', '2023-04-04 07:46:51', NULL),
+(203, 85, 'upload/products/multi-image/1762230965147212.png', '2023-04-04 07:46:51', NULL),
+(204, 85, 'upload/products/multi-image/1762230965304099.png', '2023-04-04 07:46:51', NULL),
+(205, 85, 'upload/products/multi-image/1762230965800223.png', '2023-04-04 07:46:51', NULL),
+(206, 85, 'upload/products/multi-image/1762230965849030.png', '2023-04-04 07:46:51', NULL),
+(207, 85, 'upload/products/multi-image/1762230965935623.png', '2023-04-04 07:46:51', NULL),
+(208, 85, 'upload/products/multi-image/1762230966012866.png', '2023-04-04 07:46:51', NULL),
+(209, 85, 'upload/products/multi-image/1762230966091003.png', '2023-04-04 07:46:52', NULL),
+(210, 86, 'upload/products/multi-image/1762231584032962.png', '2023-04-04 07:56:41', NULL),
+(211, 86, 'upload/products/multi-image/1762231584095986.png', '2023-04-04 07:56:41', NULL),
+(212, 86, 'upload/products/multi-image/1762231584169762.png', '2023-04-04 07:56:41', NULL),
+(213, 86, 'upload/products/multi-image/1762231584230301.png', '2023-04-04 07:56:41', NULL),
+(214, 86, 'upload/products/multi-image/1762231584390140.png', '2023-04-04 07:56:41', NULL),
+(215, 86, 'upload/products/multi-image/1762231584546151.png', '2023-04-04 07:56:41', NULL),
+(216, 86, 'upload/products/multi-image/1762231584632279.png', '2023-04-04 07:56:41', NULL),
+(217, 44, 'upload/products/multi-image/1862230965304099.png', '2022-09-18 10:59:24', '2022-09-19 07:04:27'),
+(218, 43, 'upload/products/multi-image/1962230965304099.png', '2022-09-18 05:53:34', '2022-09-19 07:00:21'),
+(219, 87, 'upload/products/multi-image/1767157867835956.jpeg', '2023-05-28 16:57:51', NULL),
+(220, 88, 'upload/products/multi-image/1768479514295674.png', '2023-06-12 07:04:52', NULL),
+(221, 89, 'upload/products/multi-image/1768482435026234.webp', '2023-06-12 07:21:36', '2023-06-12 07:51:17'),
+(222, 90, 'upload/products/multi-image/1768482406439403.webp', '2023-06-12 07:45:39', '2023-06-12 07:50:50');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `news_letters`
 --
 
-DROP TABLE IF EXISTS `news_letters`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `news_letters` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `f_name` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `l_name` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `f_name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `l_name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `news_letters`
 --
 
-LOCK TABLES `news_letters` WRITE;
-/*!40000 ALTER TABLE `news_letters` DISABLE KEYS */;
-INSERT INTO `news_letters` VALUES (1,'CIdGLarB','gLTjXRsg','Mfma_generic_0977eb18_stataglobal.com@data-backup-store.com','2023-07-07 02:39:26',NULL);
-/*!40000 ALTER TABLE `news_letters` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `news_letters` (`id`, `f_name`, `l_name`, `email`, `created_at`, `updated_at`) VALUES
+(1, 'CIdGLarB', 'gLTjXRsg', 'Mfma_generic_0977eb18_stataglobal.com@data-backup-store.com', '2023-07-07 02:39:26', NULL);
 
---
--- Table structure for table `order_items`
---
-
-DROP TABLE IF EXISTS `order_items`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `order_items` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `order_id` bigint unsigned NOT NULL,
-  `product_id` bigint unsigned NOT NULL,
-  `color` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `size` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `qty` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `price` double(8,2) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `order_items_order_id_foreign` (`order_id`),
-  CONSTRAINT `order_items_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `order_items`
---
-
-LOCK TABLES `order_items` WRITE;
-/*!40000 ALTER TABLE `order_items` DISABLE KEYS */;
-INSERT INTO `order_items` VALUES (83,76,64,'RGB','Regular','1',3300.00,'2023-01-17 20:16:38',NULL),(93,82,70,'Black','Regular','1',1700.00,'2023-01-25 12:29:46',NULL),(94,83,72,'White','Regular','1',7500.00,'2023-02-05 10:28:09',NULL),(100,87,79,'White','Regular','1',5850.00,'2023-04-11 19:45:59',NULL),(101,88,71,'Black','Regular','1',2610.00,'2023-04-26 06:36:41',NULL),(102,89,60,'White','Regular','1',5199.00,'2023-07-06 14:30:32',NULL);
-/*!40000 ALTER TABLE `order_items` ENABLE KEYS */;
-UNLOCK TABLES;
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `orders`
 --
 
-DROP TABLE IF EXISTS `orders`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `orders` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` bigint unsigned NOT NULL,
-  `division_id` bigint unsigned NOT NULL,
-  `district_id` bigint unsigned NOT NULL,
-  `state_id` bigint unsigned NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `post_code` int DEFAULT NULL,
-  `notes` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `payment_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payment_method` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `coupon` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `coupon_percentage` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `coupon_discount` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `transaction_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `currency` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `amount` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `order_number` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `invoice_no` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `order_date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `order_month` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `order_year` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `confirmed_date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `processing_date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `picked_date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `shipped_date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `delivered_date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `cancel_date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `return_date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `return_order` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '0',
-  `return_reason` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `division_id` bigint(20) UNSIGNED NOT NULL,
+  `district_id` bigint(20) UNSIGNED NOT NULL,
+  `state_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `post_code` int(11) DEFAULT NULL,
+  `notes` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `payment_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payment_method` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `coupon` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `coupon_percentage` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `coupon_discount` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `transaction_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `currency` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `amount` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `order_number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `invoice_no` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `order_date` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `order_month` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `order_year` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `confirmed_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `processing_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `picked_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `shipped_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `delivered_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cancel_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `return_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `return_order` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '0',
+  `return_reason` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=90 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `orders`
 --
 
-LOCK TABLES `orders` WRITE;
-/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (76,25,6,63,34,'Erfaan Chowdhury','erfaan.chowdhury007@gmail.com','01876105634',NULL,'Chhagalnaiya,Febi','Cash on Delivery','Cash on Delivery','No Coupon','0','No Discount',NULL,'TK','3,300.00',NULL,'STA74680521','17 January 2023','January','2023',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'0',NULL,'processing','2023-01-17 20:16:38','2023-01-22 11:08:41'),(82,27,4,6,96,'kaushik','kaushik.stata@gmail.com','01833093683',1219,'dddd','Cash on Delivery','Cash on Delivery','STAWIN','10','170',NULL,'TK','1530',NULL,'STA61083824','25 January 2023','January','2023',NULL,NULL,NULL,NULL,NULL,NULL,'25 January 2023','2','colour','delivered','2023-01-25 12:29:46','2023-01-25 12:34:13'),(83,30,4,6,93,'Osman','osman.dhk@gmail.com','01706000000',NULL,'House#3/10,Flat#A-2,Bazlur rahman residence, Block-F, lalmatia, Dhaka','Cash on Delivery','Cash on Delivery','No Coupon','0','No Discount',NULL,'TK','7,500.00',NULL,'STA47055521','05 February 2023','February','2023',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'0',NULL,'processing','2023-02-05 10:28:09','2023-04-20 21:00:43'),(87,34,4,6,88,'Saddam hossain','shsitu7878@gmail.com','01732755997',1100,'8/1 armanitan street, armanitola','Cash on Delivery','Cash on Delivery','No Coupon','0','No Discount',NULL,'TK','5,850.00',NULL,'STA38305774','11 April 2023','April','2023',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'0',NULL,'processing','2023-04-11 19:45:59','2023-04-13 04:43:05'),(88,35,5,27,135,'SABBIR MUHAMMAD TANIM','smtanim77@gmail.com','01719447700',NULL,'Vally tower 2nd floor,shamsernagar road, Moulvibazar','Cash on Delivery','Cash on Delivery','No Coupon','0','No Discount',NULL,'TK','2,610.00',NULL,'STA80309591','26 April 2023','April','2023',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'0',NULL,'processing','2023-04-26 06:36:41','2023-04-26 07:26:29'),(89,38,4,6,86,'Khawaja Azaan Rahman','azaanrahman2008@gmail.com','01707960787',NULL,'63 Kakrail Ramna Dhaka','Cash on Delivery','Cash on Delivery','No Coupon','0','No Discount',NULL,'TK','5,199.00',NULL,'STA81632336','06 July 2023','July','2023',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'0',NULL,'pending','2023-07-06 14:30:32',NULL);
-/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `orders` (`id`, `user_id`, `division_id`, `district_id`, `state_id`, `name`, `email`, `phone`, `post_code`, `notes`, `payment_type`, `payment_method`, `coupon`, `coupon_percentage`, `coupon_discount`, `transaction_id`, `currency`, `amount`, `order_number`, `invoice_no`, `order_date`, `order_month`, `order_year`, `confirmed_date`, `processing_date`, `picked_date`, `shipped_date`, `delivered_date`, `cancel_date`, `return_date`, `return_order`, `return_reason`, `status`, `created_at`, `updated_at`) VALUES
+(76, 25, 6, 63, 34, 'Erfaan Chowdhury', 'erfaan.chowdhury007@gmail.com', '01876105634', NULL, 'Chhagalnaiya,Febi', 'Cash on Delivery', 'Cash on Delivery', 'No Coupon', '0', 'No Discount', NULL, 'TK', '3,300.00', NULL, 'STA74680521', '17 January 2023', 'January', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'processing', '2023-01-17 20:16:38', '2023-01-22 11:08:41'),
+(82, 27, 4, 6, 96, 'kaushik', 'kaushik.stata@gmail.com', '01833093683', 1219, 'dddd', 'Cash on Delivery', 'Cash on Delivery', 'STAWIN', '10', '170', NULL, 'TK', '1530', NULL, 'STA61083824', '25 January 2023', 'January', '2023', NULL, NULL, NULL, NULL, NULL, NULL, '25 January 2023', '2', 'colour', 'delivered', '2023-01-25 12:29:46', '2023-01-25 12:34:13'),
+(83, 30, 4, 6, 93, 'Osman', 'osman.dhk@gmail.com', '01706000000', NULL, 'House#3/10,Flat#A-2,Bazlur rahman residence, Block-F, lalmatia, Dhaka', 'Cash on Delivery', 'Cash on Delivery', 'No Coupon', '0', 'No Discount', NULL, 'TK', '7,500.00', NULL, 'STA47055521', '05 February 2023', 'February', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'processing', '2023-02-05 10:28:09', '2023-04-20 21:00:43'),
+(87, 34, 4, 6, 88, 'Saddam hossain', 'shsitu7878@gmail.com', '01732755997', 1100, '8/1 armanitan street, armanitola', 'Cash on Delivery', 'Cash on Delivery', 'No Coupon', '0', 'No Discount', NULL, 'TK', '5,850.00', NULL, 'STA38305774', '11 April 2023', 'April', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'processing', '2023-04-11 19:45:59', '2023-04-13 04:43:05'),
+(88, 35, 5, 27, 135, 'SABBIR MUHAMMAD TANIM', 'smtanim77@gmail.com', '01719447700', NULL, 'Vally tower 2nd floor,shamsernagar road, Moulvibazar', 'Cash on Delivery', 'Cash on Delivery', 'No Coupon', '0', 'No Discount', NULL, 'TK', '2,610.00', NULL, 'STA80309591', '26 April 2023', 'April', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'processing', '2023-04-26 06:36:41', '2023-04-26 07:26:29'),
+(89, 38, 4, 6, 86, 'Khawaja Azaan Rahman', 'azaanrahman2008@gmail.com', '01707960787', NULL, '63 Kakrail Ramna Dhaka', 'Cash on Delivery', 'Cash on Delivery', 'No Coupon', '0', 'No Discount', NULL, 'TK', '5,199.00', NULL, 'STA81632336', '06 July 2023', 'July', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'pending', '2023-07-06 14:30:32', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_items`
+--
+
+CREATE TABLE `order_items` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `order_id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` bigint(20) UNSIGNED NOT NULL,
+  `color` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `size` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `qty` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` double(8,2) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `order_items`
+--
+
+INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `color`, `size`, `qty`, `price`, `created_at`, `updated_at`) VALUES
+(83, 76, 64, 'RGB', 'Regular', '1', 3300.00, '2023-01-17 20:16:38', NULL),
+(93, 82, 70, 'Black', 'Regular', '1', 1700.00, '2023-01-25 12:29:46', NULL),
+(94, 83, 72, 'White', 'Regular', '1', 7500.00, '2023-02-05 10:28:09', NULL),
+(100, 87, 79, 'White', 'Regular', '1', 5850.00, '2023-04-11 19:45:59', NULL),
+(101, 88, 71, 'Black', 'Regular', '1', 2610.00, '2023-04-26 06:36:41', NULL),
+(102, 89, 60, 'White', 'Regular', '1', 5199.00, '2023-07-06 14:30:32', NULL);
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `password_resets`
 --
 
-DROP TABLE IF EXISTS `password_resets`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `password_resets` (
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  KEY `password_resets_email_index` (`email`)
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `password_resets`
 --
 
-LOCK TABLES `password_resets` WRITE;
-/*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
-INSERT INTO `password_resets` VALUES ('ifazalam69@gmail.com','$2y$10$GxB/BQd.W/56AE2F7YnaiuevEC5b/ixIhmOk9kj7/.VhTDswJXe8O','2022-09-24 10:18:13'),('rubelrana.rr346@gmail.com','$2y$10$nswtRk2CPovI.sm6E/8RX.RWuRlUDsbwTGJPHEmdhZ2IZQ73uMeOm','2023-01-30 21:56:11');
-/*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
+('ifazalam69@gmail.com', '$2y$10$GxB/BQd.W/56AE2F7YnaiuevEC5b/ixIhmOk9kj7/.VhTDswJXe8O', '2022-09-24 10:18:13'),
+('rubelrana.rr346@gmail.com', '$2y$10$nswtRk2CPovI.sm6E/8RX.RWuRlUDsbwTGJPHEmdhZ2IZQ73uMeOm', '2023-01-30 21:56:11');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `personal_access_tokens`
 --
 
-DROP TABLE IF EXISTS `personal_access_tokens`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `personal_access_tokens` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `tokenable_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tokenable_id` bigint unsigned NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
-  KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`)
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `personal_access_tokens`
---
-
-LOCK TABLES `personal_access_tokens` WRITE;
-/*!40000 ALTER TABLE `personal_access_tokens` DISABLE KEYS */;
-/*!40000 ALTER TABLE `personal_access_tokens` ENABLE KEYS */;
-UNLOCK TABLES;
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `products`
 --
 
-DROP TABLE IF EXISTS `products`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `products` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `brand_id` int DEFAULT NULL,
-  `category_id` int NOT NULL,
-  `subcategory_id` int NOT NULL,
-  `product_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `product_code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `product_qty` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `product_tags` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `product_size` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `product_color` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `selling_price` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `discount_price` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `discount` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `short_descp` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `long_descp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `product_thambnail` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `video_link` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `new` int DEFAULT NULL,
-  `sale` int DEFAULT NULL,
-  `best_seller` int DEFAULT NULL,
-  `combo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status` int NOT NULL DEFAULT '0',
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `brand_id` int(11) DEFAULT NULL,
+  `category_id` int(11) NOT NULL,
+  `subcategory_id` int(11) NOT NULL,
+  `product_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_qty` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_tags` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_size` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `product_color` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `selling_price` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `discount_price` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `discount` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `short_descp` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `long_descp` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_thambnail` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `c_meta_title` varchar(258) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `c_meta_description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `video_link` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `new` int(11) DEFAULT NULL,
+  `sale` int(11) DEFAULT NULL,
+  `best_seller` int(11) DEFAULT NULL,
+  `combo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` int(11) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `products`
 --
 
-LOCK TABLES `products` WRITE;
-/*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (43,19,15,33,'STATA Smart 1 Gang Switch','ST-SGS1','39','Switch','Regular','Black,White','2199',NULL,'2200','STATA Smart App,Smart Switch,Touch Switch, Scheduling,Remotely Controllable','Crystal glass panel, no fading, elegant and stylish \r\nIntegrated panel design, waterproof and anti-creeping, \r\nsafe to use Touch control ensures longer service life \r\nthan mechanical switch New imported IC processor for\r\n nice sensitivity and stable performance Humanized \r\ndesign.\r\nCan be scheduled, you can set timer for these smart devices. \r\nVoltage: 170V-240V Load Power: 5-300W/Gang \r\nCertification:CE, FCC, RoHS\r\nWorking Temperature: -20-70 Degree\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty','upload/products/thumbnail/1744663804387969.png','https://www.youtube.com/embed/NARuqgxPhtc',NULL,NULL,NULL,NULL,1,'2023-04-16 06:25:22','2023-04-16 06:25:22'),(44,19,15,33,'STATA Smart 2 Gang Switch','ST-SGS2','48','Switch','Regular','Black,White','2500','2250','250','STATA Smart App,Touch Switch,Smart Switch,Scheduling,Remotely Controllable','Crystal glass panel, no fading, elegant and stylish \r\nIntegrated panel design, waterproof and anti-creeping, \r\nsafe to use Touch control ensures longer service life \r\nthan mechanical switch New imported IC processor for\r\n nice sensitivity and stable performance Humanized \r\ndesign.\r\nCan be scheduled, you can set timer for these smart devices. \r\nVoltage: 170V-240V Load Power: 5-300W/Gang \r\nCertification:CE, FCC, RoHS\r\nWorking Temperature: -20-70 Degree\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty','upload/products/thumbnail/1744663814022118.png','https://www.youtube.com/embed/NARuqgxPhtc',NULL,NULL,1,NULL,1,'2023-04-16 06:24:51','2023-04-16 06:24:51'),(45,19,15,33,'STATA Smart 3 Gang Switch','ST-SGS3','71','Switch','Regular','Black,White','2899',NULL,'2900','STATA Smart App,Touch Switch,Smart Switch,Scheduling,Remotely Controllable','Crystal glass panel, no fading, elegant and stylish \r\nIntegrated panel design, waterproof and anti-creeping, \r\nsafe to use Touch control ensures longer service life \r\nthan mechanical switch New imported IC processor for\r\n nice sensitivity and stable performance Humanized \r\ndesign.\r\nCan be scheduled, you can set timer for these smart devices. \r\nVoltage: 170V-240V Load Power: 5-300W/Gang \r\nCertification:CE, FCC, RoHS\r\nWorking Temperature: -20-70 Degree\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty','upload/products/thumbnail/1744663819731736.png','https://www.youtube.com/embed/NARuqgxPhtc',NULL,NULL,1,NULL,1,'2023-04-16 06:25:16','2023-04-16 06:25:16'),(46,19,15,33,'STATA Smart 4 Gang Switch','ST-SGS4','23','Switch','Regular','Black,White','3299',NULL,'3300','STATA Smart App,Smart Switch,Touch Switch,Remotely Controllable,Scheduling,Glass Panel,Shock Resistant','Crystal glass panel, no fading, elegant and stylish \r\nIntegrated panel design, waterproof and anti-creeping, \r\nsafe to use Touch control ensures longer service life \r\nthan mechanical switch New imported IC processor for\r\n nice sensitivity and stable performance Humanized \r\ndesign.\r\nCan be scheduled, you can set timer for these smart devices. \r\nVoltage: 170V-240V Load Power: 5-300W/Gang \r\nCertification:CE, FCC, RoHS\r\nWorking Temperature: -20-70 Degree\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty','upload/products/thumbnail/1744663826808853.png','https://www.youtube.com/embed/NARuqgxPhtc',NULL,NULL,NULL,NULL,1,'2023-04-16 06:24:58','2023-04-16 06:24:58'),(47,19,16,34,'STATA X9 Plus','ST-SDLX9+','15','Locks','Regular','Black,Rose Gold','27999',NULL,'27999','STATA Smart App,Password,RFID Card,Generate Guest OTP,Fingerprint,App Unlock,Zinc and Aluminium Alloy','STATA Smart Door Locks are the security \r\nguards that you didn’t know you needed. \r\nStrong and Robust built with Aluminum and Zinc alloy, \r\nalways ready to protect your home. \r\nYou can unlock them in 6 different ways. \r\nSTATA Smart Door Lock Operate your home \r\nfrom any place around the world!! \r\n\r\nUnlock your door by \r\ni) Password \r\nii) RFID Card \r\niii) Fingerprint \r\niv) STATA Smart App \r\nv) Generate Guest OTP \r\nvi) Traditional Key.\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty','upload/products/thumbnail/1744656766342746.png','https://www.youtube.com/embed/mbM9GVfAcpw',NULL,NULL,1,NULL,1,'2023-02-27 05:10:01','2023-02-27 05:10:01'),(49,19,16,34,'STATA X9','ST-SDLX9','25','Locks','Regular','Black,Silver,Rose Gold','24999','21250','3749','STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key','STATA Smart Door Locks are the security \r\nguards that you didn’t know you needed. \r\nStrong and Robust built with Aluminum and Zinc alloy, \r\nalways ready to protect your home. \r\nYou can unlock them in 6 different ways. \r\nSTATA Smart Door Lock Operate your home \r\nfrom any place around the world!! \r\n\r\nUnlock your door by \r\ni) Password \r\nii) RFID Card \r\niii) Fingerprint \r\niv) StataLife App \r\nv) Generate Guest OTP \r\nvi) Traditional Key.','upload/products/thumbnail/1762587329664777.png','https://www.youtube.com/embed/KdUNTpbHE04',1,1,1,NULL,1,'2023-03-30 07:06:27','2023-04-08 06:11:06'),(50,19,17,36,'Robot Vacuum Cleaner','D960','0','Cleaning Robot','Regular','White','27999',NULL,'3000','STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key','Brand- Dibea\r\nModel-D960\r\n•Working Mode\r\nAuto, Spot, Edge, Daily Schedule\r\n•Self-Charging\r\nYes\r\n•Scheduled Reservation Function\r\nYes\r\n•Remote Control\r\nYes\r\n•Using Time\r\n120 – 150 minutes\r\n•Charging Time\r\nAbout 4 – 5 hours\r\n•Suction\r\n1200 Pa\r\n•Dust tank Capacity\r\n350ml\r\n•Water Tank\r\n350ml\r\n•Noise\r\nLess than 55dB\r\n•Application Area\r\n150-200㎡\r\n•Adapter Input\r\n100 – 240V 50 / 60Hz\r\n•Adapter Output\r\n26V 450mA\r\n•Voltage\r\n14.8V\r\n•Power\r\n30W\r\n•Lithium-ion battery capacity\r\n2600mAh\r\n•Lithium-ion battery output voltage\r\n26.5V\r\n•Power adapter\r\nEU plug & US plug\r\n•Package size (L x W x H)\r\n60.00 x 42.00 x 14.00 cm / 23.62 x 16.54 x 5.51 inches\r\n•Package weight\r\nAbout 12.90 pounds\r\n\r\n•Package Included :\r\n\r\n1 x Dibea D960 Smart Robot Vacuum Cleaner\r\n2 x Side Brush\r\n1 x Cleaning Brush\r\n1 x Mop Cloth\r\n1 x Changing Base\r\n1 x Remote Control\r\n1 x Power Adapter\r\n1 x English User Manual','upload/products/thumbnail/1744664067742040.png','https://www.youtube.com/embed/skh7dKg2pmo',NULL,NULL,NULL,NULL,1,'2023-03-30 07:56:15','2023-03-30 07:56:15'),(51,19,15,33,'STATA Economy Package','Economy Package','2','Switch','Regular','Black,White,Gold','4700','3999','701','STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key','STATA Smart Home\r\nPackage Name : Economy Package\r\nOriginal Price : 4,700/-\r\nBundle Price : 3,999/-\r\n\r\nWhat’s in the package :\r\n1) Smart Wifi Touch switch (2 Gang) *1\r\n2) Smart Wifi Touch switch (1 Gang) *1\r\n\r\nNumber of device : 2\r\n\r\nFree Replacement For 365 Days\r\n5 Years Service Warranty\r\n24/7 Customer Support','upload/products/thumbnail/1744505678975452.png',NULL,NULL,NULL,NULL,NULL,1,'2023-04-02 19:20:47','2023-04-02 19:20:47'),(52,19,15,32,'STATA 3 Pin Smart Socket','ST-SS3','40','Socket','Regular','Black,White','2400','2160','240','STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key','Crystal glass panel, no fading, elegant and stylish \r\nIntegrated panel design, waterproof and anti-creeping, \r\nsafe to use Touch control ensures longer service life \r\nthan mechanical switch New imported IC processor for\r\n nice sensitivity and stable performance Humanized \r\ndesign.\r\nCan be scheduled, you can set timer for these smart devices. \r\nVoltage: 170V-240V Load Power: 5-300W/Gang \r\nCertification:CE, FCC, RoHS\r\nWorking Temperature: -20-70 Degree\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty','upload/products/thumbnail/1763033606633449.png',NULL,1,NULL,1,NULL,1,'2023-04-01 07:40:39','2023-04-13 04:24:29'),(53,19,16,34,'STATA X9 Lite','ST-SDLX9Li','11','Locks','Regular','Black,Rose Gold','20999','17850','3149','STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key,Fingerprint','STATA Smart Door Locks are the security\r\nguards that you didn’t know you needed.\r\nStrong and Robust built with Aluminum and Zinc alloy,\r\nalways ready to protect your home.\r\nYou can unlock them in 6 different ways.\r\nSTATA Smart Door Lock Operate your home\r\nfrom any place around the world!!\r\nUnlock your door by\r\ni) Password\r\nii) RFID Card\r\niii) Fingerprint\r\niv) STATA Smart App\r\nv) Generate Guest OTP\r\nvi) Traditional Key.\r\n1 Year Free Replacement\r\n5 Years Service Warranty','upload/products/thumbnail/1744662278926768.png','https://www.youtube.com/embed/KdUNTpbHE04',1,1,1,NULL,1,'2023-03-30 06:56:34','2023-03-30 06:56:34'),(55,19,16,34,'STATA Bolt','ST-BOLT-SDL','35','Locks','Regular','Black,Rose Gold,Silver','34999','29750','5249','STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key,Fringerprint','STATA Smart Door Locks are the security\r\nguards that you didn’t know you needed.\r\nStrong and Robust built with Aluminum and Zinc alloy,\r\nalways ready to protect your home.\r\nYou can unlock them in 6 different ways.\r\nSTATA Smart Door Lock Operate your home\r\nfrom any place around the world!!\r\n\r\nUnlock your door by\r\ni) Password\r\nii) RFID Card\r\niii) Fingerprint\r\niv) STATA Smart App\r\nv) Generate Guest OTP\r\nvi) Traditional Key.\r\n1 Year Free Replacement\r\n5 Years Service Warranty','upload/products/thumbnail/1744662401920780.png','https://www.youtube.com/embed/KdUNTpbHE04',NULL,1,1,NULL,1,'2023-03-30 06:55:27','2023-03-30 06:55:27'),(56,19,16,34,'STATA Glass Door Lock','ST-SGL','6','Locks','Regular','Black,Rose Gold','24999',NULL,'25000','STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key','STATA Smart Glass Door Locks are the security \r\nguards that you didn’t know you needed. \r\nStrong and Robust built with stylish design suitable for office\r\nor shop entrance, private cabins and conferance halls. \r\nYou can unlock them in 6 different ways. \r\nSTATA Smart Glass Door Lock Operate your  \r\nfrom any place around the world!! \r\n\r\nUnlock your door by \r\ni) Password \r\nii) RFID Card \r\niii) Fingerprint \r\niv) STATA Smart App \r\nv) Generate Guest OTP \r\nvi) Traditional Key.\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty','upload/products/thumbnail/1744656434882629.png','https://www.youtube.com/embed/KdUNTpbHE04',NULL,NULL,NULL,NULL,1,'2023-02-16 05:44:41','2023-02-16 05:44:41'),(57,19,16,34,'STATA Bolt Pro','ST-DL-BP','6','Locks','Regular','Black,Rose Gold','42499',NULL,'42500','STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key,Fingerprint','STATA Smart Door Locks are the security \r\nguards that you didn’t know you needed. \r\nStrong and Robust built with Aluminium and Zinc alloy, \r\nalways ready to protect your home. \r\nYou can unlock them in 6 different ways. \r\nSTATA Smart Door Lock Operate your home \r\nfrom any place around the world!! \r\nDOOR LOCK with CAMERA and DISPLAY!!!!\r\nSTATA BOLT PRO has a built-in camera that will monitor the outside and can be recorded \r\nin the SD Card. \r\n\r\nUnlock your door by: \r\ni) Password \r\nii) RFID Card \r\niii) Fingerprint \r\niv) STATA Smart App \r\nv) Generate Guest OTP \r\nvi) Traditional Key.\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty','upload/products/thumbnail/1744665613023449.png','https://www.youtube.com/embed/OEOaR_I0eLw',1,NULL,NULL,NULL,1,'2023-02-27 05:09:09','2023-02-27 05:09:09'),(58,19,16,34,'STATA Clutch','ST-CL-SDL','1','Locks,smart lock','Regular','Black,Rose Gold','17999',NULL,'18999','STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key,Fingerprint','STATA Smart Door Locks are the security \r\nguards that you didn’t know you needed. \r\nStrong and Robust built with ABS Plastic.\r\nalways ready to protect your home. \r\nYou can unlock them in 6 different ways. \r\nSTATA Smart Door Lock Operate your home \r\nfrom any place around the world!! \r\n\r\nUnlock your door by \r\ni) Password \r\nii) RFID Card \r\niii) Fingerprint \r\niv) STATA Smart App \r\nv) Generate Guest OTP \r\nvi) Traditional Key.\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty','upload/products/thumbnail/1744574859849203.png','https://www.youtube.com/embed/DgfFOLbwK_U',NULL,NULL,NULL,NULL,1,'2023-02-27 05:05:38','2023-02-27 05:05:38'),(60,19,18,37,'STATA HEX','ST-HEX','10','Switch,Locks,Sensor','Regular','Black,White,Gold','5199',NULL,'5200','STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key','STATA HEX\r\n\r\nPrice : 5200/-\r\n\r\nSTATA HEX Features :\r\n\r\n- 16 Million Color Option\r\n\r\n- Sync With Music\r\n\r\n- Schedule Time\r\n\r\n- Pre-Set Scene\r\n\r\n- Dimmer Mode\r\n\r\n- Controlled Using -StataLife App From any Place At Any Time Around The World\r\n\r\n- Amazon Alexa & Google Home Compatible\r\n\r\nWhat\'s In the box:\r\n\r\n6 × lights\r\n\r\n6 × PCB connector board\r\n\r\n10 × Corner connector\r\n\r\n8 × Double-sided tapes\r\n\r\n1 × STATA manual\r\n\r\n1 × Plastic stand\r\n\r\n1 × 1.5M USB cable\r\n\r\n1 Year Free Replacement\r\n\r\n24/7 Customer Care\r\n\r\nCall Now : 09678200509, 01720514565\r\n\r\nFor Dealership : 01312735557','upload/products/thumbnail/1744575249290822.jpeg',NULL,NULL,NULL,1,NULL,1,'2023-02-16 05:48:48','2023-02-16 05:48:48'),(61,19,15,33,'STATA Smart Fan Dimmer','ST-SFS','19','Switch','Regular','Black,White','2900','2610','290','App Control,Touch,Remotely controllable,Schedualing','Crystal glass panel, no fading, elegant and stylish \r\nIntegrated panel design, waterproof and anti-creeping, \r\nsafe to use Touch control ensures longer service life \r\nthan mechanical switch New imported IC processor for\r\n nice sensitivity and stable performance Humanized \r\ndesign.\r\nCan be scheduled, you can set timer for these smart devices. \r\nVoltage: 170V-240V Load Power: 5-300W/Gang \r\nCertification:CE, FCC, RoHS\r\nWorking Temperature: -20-70 Degree\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty','upload/products/thumbnail/1762587268111029.png','https://www.youtube.com/embed/0HenG8pXARM',NULL,NULL,1,NULL,1,'2023-04-01 07:41:33','2023-04-08 06:10:08'),(63,19,15,33,'STATA Smart Boiler Switch','ST-SBS','56','Switch','Regular','Black,White','3000','2699','301','STATA Smart App,Touch control,Remotely control,Schedualing','Crystal glass panel, no fading, elegant and stylish \r\nIntegrated panel design, waterproof and anti-creeping, \r\nsafe to use Touch control ensures longer service life \r\nthan mechanical switch New imported IC processor for\r\n nice sensitivity and stable performance Humanized \r\ndesign.\r\nCan be scheduled, you can set timer for these smart devices. \r\nVoltage: 170V-240V Load Power: 5-300W/Gang \r\nCertification:CE, FCC, RoHS\r\nWorking Temperature: -20-70 Degree\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty','upload/products/thumbnail/1744663566507727.png','https://www.youtube.com/embed/hxFS2A6XlVQ',1,NULL,1,NULL,1,'2023-04-01 07:42:00','2023-04-01 07:42:00'),(64,19,18,37,'STATA Smart Strip Light','ST-RGB Strip','20','RGB Light','Regular','RGB','3300','2970','330','STATA Smart App,16 million color,Schedualing,Voice Controll','5M Strip light, 16 Million Color Option,\r\nSync With Music, Schedule Time, Pre-Set Scene,\r\nDimmer Mode, Controlled Using StataLife App From\r\nany Place At Any Time Around The World,\r\nAmazon Alexa & Google Home Compatible.\r\n\r\n1 Year Free Replacement','upload/products/thumbnail/1744662957877541.png','https://www.youtube.com/embed/NARuqgxPhtc',1,NULL,1,NULL,1,'2023-04-01 07:43:47','2023-04-01 07:43:47'),(65,19,14,31,'STATA Capsule','ST-CAP-IP','5','IP Camera','Regular','White','3300','2970','330','STATA Smart App,350 Degree,Two Way Communication,HD Camera,Motion Detection,SD Card Supported','Auto Smart Tracking, Supports StataLife App,\r\n1080P HD & SMART PAN/TILT/ZOOM,\r\nIntelligent Mobile Tracking Recognition,\r\nTWO-WAY AUDIO, Easy Set-up with 2.4G WiFi,\r\nHD Day & Night Monitoring,\r\nSensitive Motion Detection ,\r\nSupports both Cloud & Memory Card (upto128 GB)\r\n\r\n1 Year Free Replacement','upload/products/thumbnail/1744663266359722.png','https://www.youtube.com/embed/V4aKKEMPo9c',1,1,1,NULL,1,'2023-04-01 07:44:01','2023-04-01 07:44:01'),(66,19,14,30,'STATA Smart Gas Sensor (With Valve)','(ST-WGS-VL)','0','Sensor','Regular','White','11999',NULL,'12000','STATA Smart App,Remotely controll,Voice Controll,Schedualing','STATA Smart Gas Sensor (With Valve) GET Instant Notification !! Mobile App : StataLife High reliability semiconductor sensor;Using powerful microprocessor control Mobile APP remote connection, support for connecting tuya APP;Connect to tuya APP for remote notification Real-time reporting of detected gas concentration;Voice alarm prompt Can remotely control manipulator(Valve switch) .\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty','upload/products/thumbnail/1744664752090148.png','https://www.youtube.com/embed/thOWmnTzs04',NULL,NULL,NULL,NULL,1,'2023-02-27 05:06:56','2023-02-27 05:06:56'),(67,19,14,30,'STATA Smart Motion Sensor','(ST-SMS)','2','Sensor','Regular','White','2499',NULL,'2500','STATA Smart App,Motion Detection,Voice Controll,Scheduling,Automation','STATA Smart Motion Sensor (S-SMS)\r\n\r\nProduct Description:\r\n\r\n1.Advanced Motion Sensor,PIR detect people or animals that are moving,7m detection distance,whether day or night can be real-time monitoring.\r\n\r\n2.Battery Wi-Fi powered,and have a mount bracket,easy to put on ceiling or tablet etc\r\n\r\n3.Provides remote home monitoring. Set push notifications to your mobile devices or sound and vibration for early alert of motion detection in your home.\r\n\r\n4.PLUG & PLAY, No hub required\r\n\r\nSpecification:\r\n\r\nBattery:CR123*1（Package includes battery）\r\n\r\nStandby current:20uA\r\n\r\nStandby time:1years(25times/day),2years(10times/day)\r\n\r\nWireless type:2.4GHz\r\n\r\nProtocol:IEEE 802.11b/g/n\r\n\r\nWireless Range:45m\r\n\r\nOperating temperature:0-40degree(32F-104F)\r\n\r\nOperation humidity:20%-85%\r\n\r\nStorage Temperature:0-90%\r\n\r\n1 Year Free Replacement\r\n5 Years Warranty\r\n24/7 Customer Care','upload/products/thumbnail/1744663336823404.png','https://www.youtube.com/embed/goAymIG2gJ0',NULL,NULL,NULL,NULL,1,'2023-02-16 05:49:37','2023-02-16 05:49:37'),(68,19,15,32,'STATA Non-Smart 5 Pin Socket','ST-TS5N','400','Socket','Regular','Black,White','1799','1620','179','Type-C Port,USB Port,5-Pin','Crystal glass panel, no fading, elegant and stylish \r\nIntegrated panel design, waterproof and anti-creeping, \r\nsafe to use Touch control ensures longer service life \r\nthan mechanical switch New imported IC processor for\r\n nice sensitivity and stable performance Humanized design.\r\n\r\nVoltage: 170V-240V Load Power: 5-300W/Gang \r\nCertification:CE, FCC, RoHS\r\nWorking Temperature: -20-70 Degree\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty','upload/products/thumbnail/1744663622782497.png','https://www.youtube.com/embed/0HenG8pXARM',1,NULL,1,NULL,1,'2023-04-01 07:40:18','2023-04-01 07:40:18'),(69,19,15,32,'TV+Net Socket','ST-TVNS','63','Sockets','Regular','Black,White','1699',NULL,'1700','Type-C Port,USB Port,5-Pin,Glass Panel','Crystal glass panel, no fading, elegant and stylish \r\nIntegrated panel design, waterproof and anti-creeping, \r\nsafe to use Touch control ensures longer service life \r\nthan mechanical switch New imported IC processor for\r\n nice sensitivity and stable performance Humanized \r\ndesign.\r\n \r\nVoltage: 170V-240V Load Power: 5-300W/Gang \r\nCertification:CE, FCC, RoHS\r\nWorking Temperature: -20-70 Degree\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty','upload/products/thumbnail/1744664537859611.png','https://www.youtube.com/embed/hxFS2A6XlVQ',NULL,NULL,NULL,NULL,1,'2023-02-16 05:47:13','2023-02-16 05:47:13'),(70,19,15,32,'Telephone Socket','ST-TTS','38','Sockets','Regular','Black,White','1699',NULL,'1700','Glass Panel','Crystal glass panel, no fading, elegant and stylish \r\nIntegrated panel design, waterproof and anti-creeping, \r\nsafe to use Touch control ensures longer service life \r\nthan mechanical switch New imported IC processor for\r\n nice sensitivity and stable performance Humanized \r\ndesign.\r\n \r\nVoltage: 170V-240V Load Power: 5-300W/Gang \r\nCertification:CE, FCC, RoHS\r\nWorking Temperature: -20-70 Degree\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty','upload/products/thumbnail/1744651073721506.png','https://www.youtube.com/embed/NARuqgxPhtc',NULL,NULL,NULL,NULL,1,'2023-02-16 05:47:24','2023-02-16 05:47:24'),(71,19,17,38,'STATA UIR','ST-SUIR','40','AC Controller','Regular','Black','2900','2610','290','STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key','Supports StataLife, Work With Alexa, Google Home, Support IFTTT smart home scene automation, Smart Air Conditioner Controller :\r\nYou can say,\r\n“Alexa, turn on/off AC, \r\nturn up/down temperature, set temperature to (value)” etc.\r\nSet the comfort temperature by smartphone before you \r\ngo home, Interesting DIY : Supports  infrared remote control,\r\nnot RF. DIY controlled devices only support smartphones\r\nand not compatible with Alexa, google home.\r\nSmart IR blaster can replace most of the traditional \r\nremote controls in your home. Supports 80,000+ IR \r\n(IR only, not RF) controlled devices. Integrate almost all \r\ninfrared remotes to your smartphone, Control your home’s \r\ndevices from your smartphone anytime, anywhere, safe and \r\nefficient, Compatible with Android and IOS.\r\n\r\nMaterial: ABS\r\nPackage Contents: 1 x WIFI remote controller, \r\n1 x USB Cable, 1 x User Manual\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty','upload/products/thumbnail/1744663222122822.png','https://www.youtube.com/embed/eB4PQg35CFA',1,NULL,1,NULL,1,'2023-04-01 07:39:57','2023-04-01 07:39:57'),(72,19,17,38,'Smart Video Door Bell','ST-SVD','20','Switch,Locks,Sensor','Regular','Black,White,Gold','7500','6750','750','STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key','STATA Smart Doorbell (1080P)\r\n\r\nTwo Way Intercom\r\n\r\nWhat’s In The Box :\r\n\r\n— Chime\r\n\r\n— 1080P HD pixels collocated with 166 ° wide-\r\n\r\nangle STATA Doorbell\r\n\r\nFunctions :\r\n\r\n— Supports StataLife App\r\n\r\n— 2.4G Wi-Fi connection (NOT support 5G)\r\n\r\n— High-quality two-way talk with noise\r\n\r\ncancellation\r\n\r\n–Support PIR motion detection, when someone\r\n\r\nhovers at the door, immediately alert push\r\n\r\nnotifications to the mobile phone.\r\n\r\n–Day and night mode automatic switching,\r\n\r\nwhether day or night, the image is clearly\r\n\r\nvisible, for your safety and family security.\r\n\r\n1 Year Free Replacement','upload/products/thumbnail/1761959365318106.png','https://www.youtube.com/watch?v=Fx5gdVZ4a_8',1,NULL,1,NULL,1,'2023-04-01 07:40:58','2023-04-01 07:49:53'),(73,19,17,39,'Human Presence Sensor','ST-HPSB','50','Switch,Locks,Sensor,presense sensor','Regular','Black,White,Gold','8499',NULL,'12000','STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key','Description:\r\n\r\nSize: 100*100*35mm\r\n\r\nDetection signal: 24Ghz mmwave Doppler radar\r\n\r\nCommunication protocol: WIFI\r\n\r\nColor: Black\r\n\r\nPower input: 5V 1A\r\n\r\nInstallation method: flat / ceiling mounted\r\n\r\nSpecifications:\r\n\r\n【Function introduction】 \r\nReal-time detection of whether someone exists, micro-motion detection, motion detection within certain range\r\n\r\n【Accurate detection of dynamic】\r\n\r\n-Static human presence This product uses advanced millimeter wave radar technology to accurately detect whether there are people in the area， whether they are moving or stationary\r\n\r\n-Accurate recognition and wide range of perception\r\n\r\n-Subtle human or animal movements Built in multiple people and precision sensors, the presence of people in the room can be accurately identified through MFA intelligent algorithm.\r\n\r\n-Conical detection range, applicable to room area of 6-25 square meters, induction angle of 90 degrees. The diameter of human sensing range is about 3m (installation height is 3m, ground projection)\r\n\r\n【Intelligent linkage】\r\n\r\n-It can create intelligent scenes together with Smart switches, lamps, curtains and other intelligent products to achieve energy saving, environmental protection, security alarm and other functions.\r\n\r\n-With other intelligent devices, it can realize rich automation and scene control. Make intelligent hardware respond faster and control more smoothly. It can still be used even if the network is disconnected.\r\n\r\n【Difference from traditional human PIR infrared sensor】\r\n\r\n-PIR infrared sensors can only detect human motion, but cannot detect when people are still, and the false alarm is serious.\r\n\r\n-The human presence sensor adopts the principle of radar microwave, and has the functions of human presence, human stillness, human micro-motion and human motion detection.','upload/products/thumbnail/1745288231101789.png',NULL,1,NULL,1,NULL,1,'2023-02-27 05:04:26','2023-02-27 05:04:26'),(77,19,16,35,'STATA TAP Pro','ST-DEF-BDL-TPP-BL','20','Locks','Regular','Black','15999','13999','2000','STATA Smart App,Password,Generate Guest OTP,Traditional Key','STATA TAP PRO\r\nSuitable for Bedroom\r\n \r\nWays to Unlock :\r\nFingerprint (100)\r\nPassword \r\nApp to Unlock \r\nTraditional Key\r\n\r\n1 Year Free Replacement\r\n5 years Service Warranty','upload/products/thumbnail/1761785191469480.jpg',NULL,1,1,1,NULL,1,'2023-03-30 09:41:28',NULL),(78,19,18,37,'STATA Smart Bulb 10W','ST-FLD-SLS-E2710W-RGB','100','Light,Bulb','E27','RGB','1650','1485','165','STATA Smart App','STATA SMART BULB \r\n16 Million Color to Choose\r\n\r\n10 W\r\nRGB\r\nStataLife App Compatible\r\nE27 Screw Type','upload/products/thumbnail/1761959307883821.png',NULL,1,NULL,1,NULL,1,'2023-04-01 07:48:58',NULL),(79,19,17,36,'STATA UIR (Thermostat)','ST-NEO-SHA-IRT-WH','15','Sensor','Regular','White','6500','5850','650','STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key','STATA UIR (Thermostat)\r\n\r\nProduct name\r\nHome WiFi smart ac thermostat\r\nPower supply\r\nDC (5V / 1A)\r\nSolution\r\nStataLife App\r\nProtocol\r\nWiFi+Ble\r\nOperation Temperature\r\n0~90%RH (no condensation)\r\nFunction\r\nReal-time display of ambient temp,humidity and air conditioning status, local offline control\r\nDetection accuracy\r\nTemp 0.3°C; humidity 5%RH\r\nRemote control distance\r\n7m\r\nWifi distance\r\n45m\r\nSize\r\n88mm x 88mm x 16mm\r\nFreq/Communication\r\nBLE,others can be customized,such as 433、868、315、ZWAVE etc.','upload/products/thumbnail/1761960931171746.jpg',NULL,1,NULL,1,NULL,1,'2023-04-01 08:14:46',NULL),(84,19,19,40,'Ramadan Package 2','STA-SHP-R2','20','Switch,Locks,Sensor','Regular','Black,White','29150','25650','3500','STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key','Smart Home Package Package Name : \r\nRamadan Package 2 \r\nAvailable Switch Color : Jet Black & Glacier White \r\n\r\nPackage Includes : \r\nSTATA Smart 2 Gang Switch \r\nSTATA Smart 4 Gang Switch \r\nSTATA Smart Fan Dimmer \r\n5-Pin Multi Socket (Type-C Port) \r\nSTATA Smart Boiler Switch (20 A)  \r\nSTATA Smart Led Bulb (10w) \r\nSTATA Tap Pro (Bed Room Lock)\r\n\r\nCompatible With : \r\nGoogle Home \r\nAmazon Alexa \r\nStataLife App \r\n\r\nFeatures :\r\nControl more than 1000+ STATA Smart Devices from any place at any time around the world using the mobile app StataLife. All our products are compatible with Google Home & Amazon Alexa.','upload/products/thumbnail/1762229899755576.png',NULL,1,NULL,1,'1',1,'2023-04-04 07:29:55',NULL),(85,19,19,40,'Ramadan Package 3','STA-SHP-R3','20','Switch,Locks,Sensor','Regular','Black,White','57150','50300','6850','STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key','Smart Home Package Package Name : \r\nRamadan Package 3\r\nAvailable Switch Color : Jet Black & Glacier White \r\n\r\nPackage Includes :  \r\nSTATA Smart 4 Gang Switch \r\nSTATA Smart Fan Dimmer \r\n5-Pin Multi Socket (Type-C Port)\r\nSTATA Smart 3-Pin Socket \r\nSTATA Smart Boiler Switch (20 A)  \r\nSTATA Smart Led Bulb (10w) \r\nSTATA X9+\r\nSTATA UIR\r\nSTATA Capsule\r\nNet+TV Socket\r\nTelephone Socket\r\nSTATA Smart Video Doorbell\r\nCompatible With : \r\nGoogle Home \r\nAmazon Alexa \r\nStataLife App \r\n\r\nFeatures :\r\nControl more than 1000+ STATA Smart Devices from any place at any time around the world using the mobile app StataLife. All our products are compatible with Google Home & Amazon Alexa.','upload/products/thumbnail/1762230964504535.png',NULL,1,NULL,1,'1',1,'2023-04-04 07:46:50',NULL),(86,19,19,40,'Ramadan Package 1','ST-SHP-R1','20','Switch,Locks,Sensor','Regular','Black,White,Gold','16750','14750','2000','STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key','Smart Home Package \r\nPackage Name : Ramadan Package 1\r\nAvailable Switch Color : Jet Black & Glacier White\r\n\r\nPackage Includes :\r\nSTATA Smart 1 Gang Switch\r\nSTATA Smart 3 Gang Switch\r\nSTATA Smart Fan Dimmer\r\n5-Pin Multi Socket (Type-C Port)\r\nSTATA Smart Boiler Switch (20 A) \r\nSTATA 3-Pin Smart Socket \r\nSTATA Smart Led Bulb (10w)\r\n\r\nCompatible With :\r\nGoogle Home \r\nAmazon Alexa \r\nStataLife App\r\n\r\nFeatures : \r\nControl more than 1000+ STATA Smart Devices from any place at any time around the world using the mobile app StataLife. All our products are compatible with Google Home & Amazon Alexa.','upload/products/thumbnail/1762231583887128.png',NULL,1,NULL,1,'1',1,'2023-04-04 07:56:41',NULL),(87,19,21,42,'Touch DND Switch (3 Gang Set)','ST-ORB-TDND3','100','Switch','Regular','Black','7000',NULL,NULL,'Do Not Disturb,Calling Bell,Make Up My Room','STATA Smart Hotel Solution\r\nTouch DND Switch (3 Gang Set)\r\nindoor & Outdoor Unit Included','upload/products/thumbnail/1767157867701267.png',NULL,1,NULL,1,NULL,1,'2023-05-28 16:57:51',NULL),(88,19,21,42,'Hotel Switch Card (Mifare/General)','ST-SD-SHS-HCSMG','50','Switch','Regular','Black','3000',NULL,NULL,'General Type,Mifare Type,Tempered Glass Panel','This hotel room energy saver key card power switch is designed specifically for energy saving and safety of hotels and guesthouses.\r\n\r\nAfter installation of key card power switch, as soon as guests check-in insert card into the power-saving switch at the side of interior door, the power is available for the electrical equipment in the room (lighting, air conditioner, television, etc.) can be used.\r\n\r\nWhen guests leave the room, the guests take out the door card (guests must pull the card out, because they have to use it to open the door after return), key card power switch shall be off automatically after delay about 15 seconds to ensure energy saving and safety.','upload/products/thumbnail/1768479514135634.png',NULL,1,NULL,1,NULL,1,'2023-06-12 07:04:51',NULL),(89,19,21,42,'Shaver Socket','ST-SD-SHS-SVS','50','Switch','Regular','Black','2500',NULL,NULL,'STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key','dhsbdjsabds','upload/products/thumbnail/1768482446341395.webp',NULL,1,NULL,NULL,NULL,1,'2023-06-12 07:21:36','2023-06-12 07:51:28'),(90,19,21,42,'Tel + Net Socket','ST-MV-TEL+NETS','50','Switch','Regular','Black','1700',NULL,NULL,'Double Data Socket,Tel+Net Socket','STATA Double Data Socket / TEL+Net Socket','upload/products/thumbnail/1768482415752255.webp',NULL,1,NULL,NULL,NULL,1,'2023-06-12 07:45:39','2023-06-12 07:50:59');
-/*!40000 ALTER TABLE `products` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `products` (`id`, `brand_id`, `category_id`, `subcategory_id`, `product_name`, `product_code`, `product_qty`, `product_tags`, `product_size`, `product_color`, `selling_price`, `discount_price`, `discount`, `short_descp`, `long_descp`, `product_thambnail`, `c_meta_title`, `c_meta_description`, `video_link`, `new`, `sale`, `best_seller`, `combo`, `status`, `created_at`, `updated_at`) VALUES
+(43, 19, 15, 33, 'STATA Smart 1 Gang Switch', 'ST-SGS1', '39', 'Switch', 'Regular', 'Black,White', '2199', NULL, '2200', 'STATA Smart App,Smart Switch,Touch Switch, Scheduling,Remotely Controllable', 'Crystal glass panel, no fading, elegant and stylish \r\nIntegrated panel design, waterproof and anti-creeping, \r\nsafe to use Touch control ensures longer service life \r\nthan mechanical switch New imported IC processor for\r\n nice sensitivity and stable performance Humanized \r\ndesign.\r\nCan be scheduled, you can set timer for these smart devices. \r\nVoltage: 170V-240V Load Power: 5-300W/Gang \r\nCertification:CE, FCC, RoHS\r\nWorking Temperature: -20-70 Degree\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty', 'upload/products/thumbnail/1744663804387969.png', NULL, NULL, 'https://www.youtube.com/embed/NARuqgxPhtc', NULL, NULL, NULL, NULL, 1, '2023-04-16 06:25:22', '2023-04-16 06:25:22'),
+(44, 19, 15, 33, 'STATA Smart 2 Gang Switch', 'ST-SGS2', '48', 'Switch', 'Regular', 'Black,White', '2500', '2250', '250', 'STATA Smart App,Touch Switch,Smart Switch,Scheduling,Remotely Controllable', 'Crystal glass panel, no fading, elegant and stylish \r\nIntegrated panel design, waterproof and anti-creeping, \r\nsafe to use Touch control ensures longer service life \r\nthan mechanical switch New imported IC processor for\r\n nice sensitivity and stable performance Humanized \r\ndesign.\r\nCan be scheduled, you can set timer for these smart devices. \r\nVoltage: 170V-240V Load Power: 5-300W/Gang \r\nCertification:CE, FCC, RoHS\r\nWorking Temperature: -20-70 Degree\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty', 'upload/products/thumbnail/1744663814022118.png', NULL, NULL, 'https://www.youtube.com/embed/NARuqgxPhtc', NULL, NULL, 1, NULL, 1, '2023-04-16 06:24:51', '2023-04-16 06:24:51'),
+(45, 19, 15, 33, 'STATA Smart 3 Gang Switch', 'ST-SGS3', '71', 'Switch', 'Regular', 'Black,White', '2899', NULL, '2900', 'STATA Smart App,Touch Switch,Smart Switch,Scheduling,Remotely Controllable', 'Crystal glass panel, no fading, elegant and stylish \r\nIntegrated panel design, waterproof and anti-creeping, \r\nsafe to use Touch control ensures longer service life \r\nthan mechanical switch New imported IC processor for\r\n nice sensitivity and stable performance Humanized \r\ndesign.\r\nCan be scheduled, you can set timer for these smart devices. \r\nVoltage: 170V-240V Load Power: 5-300W/Gang \r\nCertification:CE, FCC, RoHS\r\nWorking Temperature: -20-70 Degree\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty', 'upload/products/thumbnail/1744663819731736.png', NULL, NULL, 'https://www.youtube.com/embed/NARuqgxPhtc', NULL, NULL, 1, NULL, 1, '2023-04-16 06:25:16', '2023-04-16 06:25:16'),
+(46, 19, 15, 33, 'STATA Smart 4 Gang Switch', 'ST-SGS4', '23', 'Switch', 'Regular', 'Black,White', '3299', NULL, '3300', 'STATA Smart App,Smart Switch,Touch Switch,Remotely Controllable,Scheduling,Glass Panel,Shock Resistant', 'Crystal glass panel, no fading, elegant and stylish \r\nIntegrated panel design, waterproof and anti-creeping, \r\nsafe to use Touch control ensures longer service life \r\nthan mechanical switch New imported IC processor for\r\n nice sensitivity and stable performance Humanized \r\ndesign.\r\nCan be scheduled, you can set timer for these smart devices. \r\nVoltage: 170V-240V Load Power: 5-300W/Gang \r\nCertification:CE, FCC, RoHS\r\nWorking Temperature: -20-70 Degree\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty', 'upload/products/thumbnail/1744663826808853.png', NULL, NULL, 'https://www.youtube.com/embed/NARuqgxPhtc', NULL, NULL, NULL, NULL, 1, '2023-04-16 06:24:58', '2023-04-16 06:24:58'),
+(47, 19, 16, 34, 'STATA X9 Plus', 'ST-SDLX9+', '15', 'Locks', 'Regular', 'Black,Rose Gold', '27999', NULL, '27999', 'STATA Smart App,Password,RFID Card,Generate Guest OTP,Fingerprint,App Unlock,Zinc and Aluminium Alloy', 'STATA Smart Door Locks are the security \r\nguards that you didn’t know you needed. \r\nStrong and Robust built with Aluminum and Zinc alloy, \r\nalways ready to protect your home. \r\nYou can unlock them in 6 different ways. \r\nSTATA Smart Door Lock Operate your home \r\nfrom any place around the world!! \r\n\r\nUnlock your door by \r\ni) Password \r\nii) RFID Card \r\niii) Fingerprint \r\niv) STATA Smart App \r\nv) Generate Guest OTP \r\nvi) Traditional Key.\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty', 'upload/products/thumbnail/1744656766342746.png', NULL, NULL, 'https://www.youtube.com/embed/mbM9GVfAcpw', NULL, NULL, 1, NULL, 1, '2023-02-27 05:10:01', '2023-02-27 05:10:01'),
+(49, 19, 16, 34, 'STATA X9', 'ST-SDLX9', '25', 'Locks', 'Regular', 'Black,Silver,Rose Gold', '24999', '21250', '3749', 'STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key', 'STATA Smart Door Locks are the security \r\nguards that you didn’t know you needed. \r\nStrong and Robust built with Aluminum and Zinc alloy, \r\nalways ready to protect your home. \r\nYou can unlock them in 6 different ways. \r\nSTATA Smart Door Lock Operate your home \r\nfrom any place around the world!! \r\n\r\nUnlock your door by \r\ni) Password \r\nii) RFID Card \r\niii) Fingerprint \r\niv) StataLife App \r\nv) Generate Guest OTP \r\nvi) Traditional Key.', 'upload/products/thumbnail/1762587329664777.png', NULL, NULL, 'https://www.youtube.com/embed/KdUNTpbHE04', 1, 1, 1, NULL, 1, '2023-03-30 07:06:27', '2023-04-08 06:11:06'),
+(50, 19, 17, 36, 'Robot Vacuum Cleaner', 'D960', '0', 'Cleaning Robot', 'Regular', 'White', '27999', NULL, '3000', 'STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key', 'Brand- Dibea\r\nModel-D960\r\n•Working Mode\r\nAuto, Spot, Edge, Daily Schedule\r\n•Self-Charging\r\nYes\r\n•Scheduled Reservation Function\r\nYes\r\n•Remote Control\r\nYes\r\n•Using Time\r\n120 – 150 minutes\r\n•Charging Time\r\nAbout 4 – 5 hours\r\n•Suction\r\n1200 Pa\r\n•Dust tank Capacity\r\n350ml\r\n•Water Tank\r\n350ml\r\n•Noise\r\nLess than 55dB\r\n•Application Area\r\n150-200㎡\r\n•Adapter Input\r\n100 – 240V 50 / 60Hz\r\n•Adapter Output\r\n26V 450mA\r\n•Voltage\r\n14.8V\r\n•Power\r\n30W\r\n•Lithium-ion battery capacity\r\n2600mAh\r\n•Lithium-ion battery output voltage\r\n26.5V\r\n•Power adapter\r\nEU plug & US plug\r\n•Package size (L x W x H)\r\n60.00 x 42.00 x 14.00 cm / 23.62 x 16.54 x 5.51 inches\r\n•Package weight\r\nAbout 12.90 pounds\r\n\r\n•Package Included :\r\n\r\n1 x Dibea D960 Smart Robot Vacuum Cleaner\r\n2 x Side Brush\r\n1 x Cleaning Brush\r\n1 x Mop Cloth\r\n1 x Changing Base\r\n1 x Remote Control\r\n1 x Power Adapter\r\n1 x English User Manual', 'upload/products/thumbnail/1744664067742040.png', NULL, NULL, 'https://www.youtube.com/embed/skh7dKg2pmo', NULL, NULL, NULL, NULL, 1, '2023-03-30 07:56:15', '2023-03-30 07:56:15'),
+(51, 19, 15, 33, 'STATA Economy Package', 'Economy Package', '2', 'Switch', 'Regular', 'Black,White,Gold', '4700', '3999', '701', 'STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key', 'STATA Smart Home\r\nPackage Name : Economy Package\r\nOriginal Price : 4,700/-\r\nBundle Price : 3,999/-\r\n\r\nWhat’s in the package :\r\n1) Smart Wifi Touch switch (2 Gang) *1\r\n2) Smart Wifi Touch switch (1 Gang) *1\r\n\r\nNumber of device : 2\r\n\r\nFree Replacement For 365 Days\r\n5 Years Service Warranty\r\n24/7 Customer Support', 'upload/products/thumbnail/1744505678975452.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2023-04-02 19:20:47', '2023-04-02 19:20:47'),
+(52, 19, 15, 32, 'STATA 3 Pin Smart Socket', 'ST-SS3', '40', 'Socket', 'Regular', 'Black,White', '2400', '2160', '240', 'STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key', 'Crystal glass panel, no fading, elegant and stylish \r\nIntegrated panel design, waterproof and anti-creeping, \r\nsafe to use Touch control ensures longer service life \r\nthan mechanical switch New imported IC processor for\r\n nice sensitivity and stable performance Humanized \r\ndesign.\r\nCan be scheduled, you can set timer for these smart devices. \r\nVoltage: 170V-240V Load Power: 5-300W/Gang \r\nCertification:CE, FCC, RoHS\r\nWorking Temperature: -20-70 Degree\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty', 'upload/products/thumbnail/1763033606633449.png', NULL, NULL, NULL, 1, NULL, 1, NULL, 1, '2023-04-01 07:40:39', '2023-04-13 04:24:29'),
+(53, 19, 16, 34, 'STATA X9 Lite', 'ST-SDLX9Li', '11', 'Locks', 'Regular', 'Black,Rose Gold', '20999', '17850', '3149', 'STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key,Fingerprint', 'STATA Smart Door Locks are the security\r\nguards that you didn’t know you needed.\r\nStrong and Robust built with Aluminum and Zinc alloy,\r\nalways ready to protect your home.\r\nYou can unlock them in 6 different ways.\r\nSTATA Smart Door Lock Operate your home\r\nfrom any place around the world!!\r\nUnlock your door by\r\ni) Password\r\nii) RFID Card\r\niii) Fingerprint\r\niv) STATA Smart App\r\nv) Generate Guest OTP\r\nvi) Traditional Key.\r\n1 Year Free Replacement\r\n5 Years Service Warranty', 'upload/products/thumbnail/1744662278926768.png', NULL, NULL, 'https://www.youtube.com/embed/KdUNTpbHE04', 1, 1, 1, NULL, 1, '2023-03-30 06:56:34', '2023-03-30 06:56:34'),
+(55, 19, 16, 34, 'STATA Bolt', 'ST-BOLT-SDL', '35', 'Locks', 'Regular', 'Black,Rose Gold,Silver', '34999', '29750', '5249', 'STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key,Fringerprint', 'STATA Smart Door Locks are the security\r\nguards that you didn’t know you needed.\r\nStrong and Robust built with Aluminum and Zinc alloy,\r\nalways ready to protect your home.\r\nYou can unlock them in 6 different ways.\r\nSTATA Smart Door Lock Operate your home\r\nfrom any place around the world!!\r\n\r\nUnlock your door by\r\ni) Password\r\nii) RFID Card\r\niii) Fingerprint\r\niv) STATA Smart App\r\nv) Generate Guest OTP\r\nvi) Traditional Key.\r\n1 Year Free Replacement\r\n5 Years Service Warranty', 'upload/products/thumbnail/1744662401920780.png', NULL, NULL, 'https://www.youtube.com/embed/KdUNTpbHE04', NULL, 1, 1, NULL, 1, '2023-03-30 06:55:27', '2023-03-30 06:55:27'),
+(56, 19, 16, 34, 'STATA Glass Door Lock', 'ST-SGL', '6', 'Locks', 'Regular', 'Black,Rose Gold', '24999', NULL, '25000', 'STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key', 'STATA Smart Glass Door Locks are the security \r\nguards that you didn’t know you needed. \r\nStrong and Robust built with stylish design suitable for office\r\nor shop entrance, private cabins and conferance halls. \r\nYou can unlock them in 6 different ways. \r\nSTATA Smart Glass Door Lock Operate your  \r\nfrom any place around the world!! \r\n\r\nUnlock your door by \r\ni) Password \r\nii) RFID Card \r\niii) Fingerprint \r\niv) STATA Smart App \r\nv) Generate Guest OTP \r\nvi) Traditional Key.\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty', 'upload/products/thumbnail/1744656434882629.png', NULL, NULL, 'https://www.youtube.com/embed/KdUNTpbHE04', NULL, NULL, NULL, NULL, 1, '2023-02-16 05:44:41', '2023-02-16 05:44:41'),
+(57, 19, 16, 34, 'STATA Bolt Pro', 'ST-DL-BP', '6', 'Locks', 'Regular', 'Black,Rose Gold', '42499', NULL, '42500', 'STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key,Fingerprint', 'STATA Smart Door Locks are the security \r\nguards that you didn’t know you needed. \r\nStrong and Robust built with Aluminium and Zinc alloy, \r\nalways ready to protect your home. \r\nYou can unlock them in 6 different ways. \r\nSTATA Smart Door Lock Operate your home \r\nfrom any place around the world!! \r\nDOOR LOCK with CAMERA and DISPLAY!!!!\r\nSTATA BOLT PRO has a built-in camera that will monitor the outside and can be recorded \r\nin the SD Card. \r\n\r\nUnlock your door by: \r\ni) Password \r\nii) RFID Card \r\niii) Fingerprint \r\niv) STATA Smart App \r\nv) Generate Guest OTP \r\nvi) Traditional Key.\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty', 'upload/products/thumbnail/1744665613023449.png', NULL, NULL, 'https://www.youtube.com/embed/OEOaR_I0eLw', 1, NULL, NULL, NULL, 1, '2023-02-27 05:09:09', '2023-02-27 05:09:09'),
+(58, 19, 16, 34, 'STATA Clutch', 'ST-CL-SDL', '1', 'Locks,smart lock', 'Regular', 'Black,Rose Gold', '17999', NULL, '18999', 'STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key,Fingerprint', 'STATA Smart Door Locks are the security \r\nguards that you didn’t know you needed. \r\nStrong and Robust built with ABS Plastic.\r\nalways ready to protect your home. \r\nYou can unlock them in 6 different ways. \r\nSTATA Smart Door Lock Operate your home \r\nfrom any place around the world!! \r\n\r\nUnlock your door by \r\ni) Password \r\nii) RFID Card \r\niii) Fingerprint \r\niv) STATA Smart App \r\nv) Generate Guest OTP \r\nvi) Traditional Key.\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty', 'upload/products/thumbnail/1744574859849203.png', NULL, NULL, 'https://www.youtube.com/embed/DgfFOLbwK_U', NULL, NULL, NULL, NULL, 1, '2023-02-27 05:05:38', '2023-02-27 05:05:38'),
+(60, 19, 18, 37, 'STATA HEX', 'ST-HEX', '10', 'Switch,Locks,Sensor', 'Regular', 'Black,White,Gold', '5199', NULL, '5200', 'STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key', 'STATA HEX\r\n\r\nPrice : 5200/-\r\n\r\nSTATA HEX Features :\r\n\r\n- 16 Million Color Option\r\n\r\n- Sync With Music\r\n\r\n- Schedule Time\r\n\r\n- Pre-Set Scene\r\n\r\n- Dimmer Mode\r\n\r\n- Controlled Using -StataLife App From any Place At Any Time Around The World\r\n\r\n- Amazon Alexa & Google Home Compatible\r\n\r\nWhat\'s In the box:\r\n\r\n6 × lights\r\n\r\n6 × PCB connector board\r\n\r\n10 × Corner connector\r\n\r\n8 × Double-sided tapes\r\n\r\n1 × STATA manual\r\n\r\n1 × Plastic stand\r\n\r\n1 × 1.5M USB cable\r\n\r\n1 Year Free Replacement\r\n\r\n24/7 Customer Care\r\n\r\nCall Now : 09678200509, 01720514565\r\n\r\nFor Dealership : 01312735557', 'upload/products/thumbnail/1744575249290822.jpeg', NULL, NULL, NULL, NULL, NULL, 1, NULL, 1, '2023-02-16 05:48:48', '2023-02-16 05:48:48'),
+(61, 19, 15, 33, 'STATA Smart Fan Dimmer', 'ST-SFS', '19', 'Switch', 'Regular', 'Black,White', '2900', '2610', '290', 'App Control,Touch,Remotely controllable,Schedualing', 'Crystal glass panel, no fading, elegant and stylish \r\nIntegrated panel design, waterproof and anti-creeping, \r\nsafe to use Touch control ensures longer service life \r\nthan mechanical switch New imported IC processor for\r\n nice sensitivity and stable performance Humanized \r\ndesign.\r\nCan be scheduled, you can set timer for these smart devices. \r\nVoltage: 170V-240V Load Power: 5-300W/Gang \r\nCertification:CE, FCC, RoHS\r\nWorking Temperature: -20-70 Degree\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty', 'upload/products/thumbnail/1762587268111029.png', NULL, NULL, 'https://www.youtube.com/embed/0HenG8pXARM', NULL, NULL, 1, NULL, 1, '2023-04-01 07:41:33', '2023-04-08 06:10:08'),
+(63, 19, 15, 33, 'STATA Smart Boiler Switch', 'ST-SBS', '56', 'Switch', 'Regular', 'Black,White', '3000', '2699', '301', 'STATA Smart App,Touch control,Remotely control,Schedualing', 'Crystal glass panel, no fading, elegant and stylish \r\nIntegrated panel design, waterproof and anti-creeping, \r\nsafe to use Touch control ensures longer service life \r\nthan mechanical switch New imported IC processor for\r\n nice sensitivity and stable performance Humanized \r\ndesign.\r\nCan be scheduled, you can set timer for these smart devices. \r\nVoltage: 170V-240V Load Power: 5-300W/Gang \r\nCertification:CE, FCC, RoHS\r\nWorking Temperature: -20-70 Degree\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty', 'upload/products/thumbnail/1744663566507727.png', NULL, NULL, 'https://www.youtube.com/embed/hxFS2A6XlVQ', 1, NULL, 1, NULL, 1, '2023-04-01 07:42:00', '2023-04-01 07:42:00'),
+(64, 19, 18, 37, 'STATA Smart Strip Light', 'ST-RGB Strip', '20', 'RGB Light', 'Regular', 'RGB', '3300', '2970', '330', 'STATA Smart App,16 million color,Schedualing,Voice Controll', '5M Strip light, 16 Million Color Option,\r\nSync With Music, Schedule Time, Pre-Set Scene,\r\nDimmer Mode, Controlled Using StataLife App From\r\nany Place At Any Time Around The World,\r\nAmazon Alexa & Google Home Compatible.\r\n\r\n1 Year Free Replacement', 'upload/products/thumbnail/1744662957877541.png', NULL, NULL, 'https://www.youtube.com/embed/NARuqgxPhtc', 1, NULL, 1, NULL, 1, '2023-04-01 07:43:47', '2023-04-01 07:43:47'),
+(65, 19, 14, 31, 'STATA Capsule', 'ST-CAP-IP', '5', 'IP Camera', 'Regular', 'White', '3300', '2970', '330', 'STATA Smart App,350 Degree,Two Way Communication,HD Camera,Motion Detection,SD Card Supported', 'Auto Smart Tracking, Supports StataLife App,\r\n1080P HD & SMART PAN/TILT/ZOOM,\r\nIntelligent Mobile Tracking Recognition,\r\nTWO-WAY AUDIO, Easy Set-up with 2.4G WiFi,\r\nHD Day & Night Monitoring,\r\nSensitive Motion Detection ,\r\nSupports both Cloud & Memory Card (upto128 GB)\r\n\r\n1 Year Free Replacement', 'upload/products/thumbnail/1744663266359722.png', NULL, NULL, 'https://www.youtube.com/embed/V4aKKEMPo9c', 1, 1, 1, NULL, 1, '2023-04-01 07:44:01', '2023-04-01 07:44:01'),
+(66, 19, 14, 30, 'STATA Smart Gas Sensor (With Valve)', '(ST-WGS-VL)', '0', 'Sensor', 'Regular', 'White', '11999', NULL, '12000', 'STATA Smart App,Remotely controll,Voice Controll,Schedualing', 'STATA Smart Gas Sensor (With Valve) GET Instant Notification !! Mobile App : StataLife High reliability semiconductor sensor;Using powerful microprocessor control Mobile APP remote connection, support for connecting tuya APP;Connect to tuya APP for remote notification Real-time reporting of detected gas concentration;Voice alarm prompt Can remotely control manipulator(Valve switch) .\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty', 'upload/products/thumbnail/1744664752090148.png', NULL, NULL, 'https://www.youtube.com/embed/thOWmnTzs04', NULL, NULL, NULL, NULL, 1, '2023-02-27 05:06:56', '2023-02-27 05:06:56'),
+(67, 19, 14, 30, 'STATA Smart Motion Sensor', '(ST-SMS)', '2', 'Sensor', 'Regular', 'White', '2499', NULL, '2500', 'STATA Smart App,Motion Detection,Voice Controll,Scheduling,Automation', 'STATA Smart Motion Sensor (S-SMS)\r\n\r\nProduct Description:\r\n\r\n1.Advanced Motion Sensor,PIR detect people or animals that are moving,7m detection distance,whether day or night can be real-time monitoring.\r\n\r\n2.Battery Wi-Fi powered,and have a mount bracket,easy to put on ceiling or tablet etc\r\n\r\n3.Provides remote home monitoring. Set push notifications to your mobile devices or sound and vibration for early alert of motion detection in your home.\r\n\r\n4.PLUG & PLAY, No hub required\r\n\r\nSpecification:\r\n\r\nBattery:CR123*1（Package includes battery）\r\n\r\nStandby current:20uA\r\n\r\nStandby time:1years(25times/day),2years(10times/day)\r\n\r\nWireless type:2.4GHz\r\n\r\nProtocol:IEEE 802.11b/g/n\r\n\r\nWireless Range:45m\r\n\r\nOperating temperature:0-40degree(32F-104F)\r\n\r\nOperation humidity:20%-85%\r\n\r\nStorage Temperature:0-90%\r\n\r\n1 Year Free Replacement\r\n5 Years Warranty\r\n24/7 Customer Care', 'upload/products/thumbnail/1744663336823404.png', NULL, NULL, 'https://www.youtube.com/embed/goAymIG2gJ', NULL, NULL, NULL, NULL, 1, '2023-07-12 00:23:49', '2023-07-12 00:23:49'),
+(68, 19, 15, 32, 'STATA Non-Smart 5 Pin Socket', 'ST-TS5N', '400', 'Socket', 'Regular', 'Black,White', '1799', '1620', '179', 'Type-C Port,USB Port,5-Pin', 'Crystal glass panel, no fading, elegant and stylish \r\nIntegrated panel design, waterproof and anti-creeping, \r\nsafe to use Touch control ensures longer service life \r\nthan mechanical switch New imported IC processor for\r\n nice sensitivity and stable performance Humanized design.\r\n\r\nVoltage: 170V-240V Load Power: 5-300W/Gang \r\nCertification:CE, FCC, RoHS\r\nWorking Temperature: -20-70 Degree\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty', 'upload/products/thumbnail/1744663622782497.png', NULL, NULL, 'https://www.youtube.com/embed/0HenG8pXARM', 1, NULL, 1, NULL, 1, '2023-04-01 07:40:18', '2023-04-01 07:40:18'),
+(69, 19, 15, 32, 'TV+Net Socket', 'ST-TVNS', '63', 'Sockets', 'Regular', 'Black,White', '1699', NULL, '1700', 'Type-C Port,USB Port,5-Pin,Glass Panel', 'Crystal glass panel, no fading, elegant and stylish \r\nIntegrated panel design, waterproof and anti-creeping, \r\nsafe to use Touch control ensures longer service life \r\nthan mechanical switch New imported IC processor for\r\n nice sensitivity and stable performance Humanized \r\ndesign.\r\n \r\nVoltage: 170V-240V Load Power: 5-300W/Gang \r\nCertification:CE, FCC, RoHS\r\nWorking Temperature: -20-70 Degree\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty', 'upload/products/thumbnail/1744664537859611.png', NULL, NULL, 'https://www.youtube.com/embed/hxFS2A6XlVQ', NULL, NULL, NULL, NULL, 1, '2023-02-16 05:47:13', '2023-02-16 05:47:13'),
+(70, 19, 15, 32, 'Telephone Socket', 'ST-TTS', '38', 'Sockets', 'Regular', 'Black,White', '1699', NULL, '1700', 'Glass Panel', 'Crystal glass panel, no fading, elegant and stylish \r\nIntegrated panel design, waterproof and anti-creeping, \r\nsafe to use Touch control ensures longer service life \r\nthan mechanical switch New imported IC processor for\r\n nice sensitivity and stable performance Humanized \r\ndesign.\r\n \r\nVoltage: 170V-240V Load Power: 5-300W/Gang \r\nCertification:CE, FCC, RoHS\r\nWorking Temperature: -20-70 Degree\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty', 'upload/products/thumbnail/1744651073721506.png', NULL, NULL, 'https://www.youtube.com/embed/NARuqgxPhtc', NULL, NULL, NULL, NULL, 1, '2023-02-16 05:47:24', '2023-02-16 05:47:24'),
+(71, 19, 17, 38, 'STATA UIR', 'ST-SUIR', '40', 'AC Controller', 'Regular', 'Black', '2900', '2610', '290', 'STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key', 'Supports StataLife, Work With Alexa, Google Home, Support IFTTT smart home scene automation, Smart Air Conditioner Controller :\r\nYou can say,\r\n“Alexa, turn on/off AC, \r\nturn up/down temperature, set temperature to (value)” etc.\r\nSet the comfort temperature by smartphone before you \r\ngo home, Interesting DIY : Supports  infrared remote control,\r\nnot RF. DIY controlled devices only support smartphones\r\nand not compatible with Alexa, google home.\r\nSmart IR blaster can replace most of the traditional \r\nremote controls in your home. Supports 80,000+ IR \r\n(IR only, not RF) controlled devices. Integrate almost all \r\ninfrared remotes to your smartphone, Control your home’s \r\ndevices from your smartphone anytime, anywhere, safe and \r\nefficient, Compatible with Android and IOS.\r\n\r\nMaterial: ABS\r\nPackage Contents: 1 x WIFI remote controller, \r\n1 x USB Cable, 1 x User Manual\r\n\r\n1 Year Free Replacement\r\n5 Years Service Warranty', 'upload/products/thumbnail/1744663222122822.png', NULL, NULL, 'https://www.youtube.com/embed/eB4PQg35CFA', 1, NULL, 1, NULL, 1, '2023-04-01 07:39:57', '2023-04-01 07:39:57'),
+(72, 19, 17, 38, 'Smart Video Door Bell', 'ST-SVD', '20', 'Switch,Locks,Sensor', 'Regular', 'Black,White,Gold', '7500', '6750', '750', 'STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key', 'STATA Smart Doorbell (1080P)\r\n\r\nTwo Way Intercom\r\n\r\nWhat’s In The Box :\r\n\r\n— Chime\r\n\r\n— 1080P HD pixels collocated with 166 ° wide-\r\n\r\nangle STATA Doorbell\r\n\r\nFunctions :\r\n\r\n— Supports StataLife App\r\n\r\n— 2.4G Wi-Fi connection (NOT support 5G)\r\n\r\n— High-quality two-way talk with noise\r\n\r\ncancellation\r\n\r\n–Support PIR motion detection, when someone\r\n\r\nhovers at the door, immediately alert push\r\n\r\nnotifications to the mobile phone.\r\n\r\n–Day and night mode automatic switching,\r\n\r\nwhether day or night, the image is clearly\r\n\r\nvisible, for your safety and family security.\r\n\r\n1 Year Free Replacement', 'upload/products/thumbnail/1761959365318106.png', NULL, NULL, 'https://www.youtube.com/watch?v=Fx5gdVZ4a_8', 1, NULL, 1, NULL, 1, '2023-04-01 07:40:58', '2023-04-01 07:49:53'),
+(73, 19, 17, 39, 'Human Presence Sensor', 'ST-HPSB', '50', 'Switch,Locks,Sensor,presense sensor', 'Regular', 'Black,White,Gold', '8499', NULL, '12000', 'STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key', 'Description:\r\n\r\nSize: 100*100*35mm\r\n\r\nDetection signal: 24Ghz mmwave Doppler radar\r\n\r\nCommunication protocol: WIFI\r\n\r\nColor: Black\r\n\r\nPower input: 5V 1A\r\n\r\nInstallation method: flat / ceiling mounted\r\n\r\nSpecifications:\r\n\r\n【Function introduction】 \r\nReal-time detection of whether someone exists, micro-motion detection, motion detection within certain range\r\n\r\n【Accurate detection of dynamic】\r\n\r\n-Static human presence This product uses advanced millimeter wave radar technology to accurately detect whether there are people in the area， whether they are moving or stationary\r\n\r\n-Accurate recognition and wide range of perception\r\n\r\n-Subtle human or animal movements Built in multiple people and precision sensors, the presence of people in the room can be accurately identified through MFA intelligent algorithm.\r\n\r\n-Conical detection range, applicable to room area of 6-25 square meters, induction angle of 90 degrees. The diameter of human sensing range is about 3m (installation height is 3m, ground projection)\r\n\r\n【Intelligent linkage】\r\n\r\n-It can create intelligent scenes together with Smart switches, lamps, curtains and other intelligent products to achieve energy saving, environmental protection, security alarm and other functions.\r\n\r\n-With other intelligent devices, it can realize rich automation and scene control. Make intelligent hardware respond faster and control more smoothly. It can still be used even if the network is disconnected.\r\n\r\n【Difference from traditional human PIR infrared sensor】\r\n\r\n-PIR infrared sensors can only detect human motion, but cannot detect when people are still, and the false alarm is serious.\r\n\r\n-The human presence sensor adopts the principle of radar microwave, and has the functions of human presence, human stillness, human micro-motion and human motion detection.', 'upload/products/thumbnail/1745288231101789.png', NULL, NULL, NULL, 1, NULL, 1, NULL, 1, '2023-02-27 05:04:26', '2023-02-27 05:04:26'),
+(77, 19, 16, 35, 'STATA TAP Pro', 'ST-DEF-BDL-TPP-BL', '20', 'Locks', 'Regular', 'Black', '15999', '13999', '2000', 'STATA Smart App,Password,Generate Guest OTP,Traditional Key', 'STATA TAP PRO\r\nSuitable for Bedroom\r\n \r\nWays to Unlock :\r\nFingerprint (100)\r\nPassword \r\nApp to Unlock \r\nTraditional Key\r\n\r\n1 Year Free Replacement\r\n5 years Service Warranty', 'upload/products/thumbnail/1761785191469480.jpg', NULL, NULL, NULL, 1, 1, 1, NULL, 1, '2023-03-30 09:41:28', NULL),
+(78, 19, 18, 37, 'STATA Smart Bulb 10W', 'ST-FLD-SLS-E2710W-RGB', '100', 'Light,Bulb', 'E27', 'RGB', '1650', '1485', '165', 'STATA Smart App', 'STATA SMART BULB \r\n16 Million Color to Choose\r\n\r\n10 W\r\nRGB\r\nStataLife App Compatible\r\nE27 Screw Type', 'upload/products/thumbnail/1761959307883821.png', NULL, NULL, NULL, 1, NULL, 1, NULL, 1, '2023-04-01 07:48:58', NULL),
+(79, 19, 17, 36, 'STATA UIR (Thermostat)', 'ST-NEO-SHA-IRT-WH', '15', 'Sensor', 'Regular', 'White', '6500', '5850', '650', 'STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key', 'STATA UIR (Thermostat)\r\n\r\nProduct name\r\nHome WiFi smart ac thermostat\r\nPower supply\r\nDC (5V / 1A)\r\nSolution\r\nStataLife App\r\nProtocol\r\nWiFi+Ble\r\nOperation Temperature\r\n0~90%RH (no condensation)\r\nFunction\r\nReal-time display of ambient temp,humidity and air conditioning status, local offline control\r\nDetection accuracy\r\nTemp 0.3°C; humidity 5%RH\r\nRemote control distance\r\n7m\r\nWifi distance\r\n45m\r\nSize\r\n88mm x 88mm x 16mm\r\nFreq/Communication\r\nBLE,others can be customized,such as 433、868、315、ZWAVE etc.', 'upload/products/thumbnail/1761960931171746.jpg', NULL, NULL, NULL, 1, NULL, 1, NULL, 1, '2023-04-01 08:14:46', NULL),
+(84, 19, 19, 40, 'Ramadan Package 2', 'STA-SHP-R2', '20', 'Switch,Locks,Sensor', 'Regular', 'Black,White', '29150', '25650', '3500', 'STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key', 'Smart Home Package Package Name : \r\nRamadan Package 2 \r\nAvailable Switch Color : Jet Black & Glacier White \r\n\r\nPackage Includes : \r\nSTATA Smart 2 Gang Switch \r\nSTATA Smart 4 Gang Switch \r\nSTATA Smart Fan Dimmer \r\n5-Pin Multi Socket (Type-C Port) \r\nSTATA Smart Boiler Switch (20 A)  \r\nSTATA Smart Led Bulb (10w) \r\nSTATA Tap Pro (Bed Room Lock)\r\n\r\nCompatible With : \r\nGoogle Home \r\nAmazon Alexa \r\nStataLife App \r\n\r\nFeatures :\r\nControl more than 1000+ STATA Smart Devices from any place at any time around the world using the mobile app StataLife. All our products are compatible with Google Home & Amazon Alexa.', 'upload/products/thumbnail/1762229899755576.png', NULL, NULL, NULL, 1, NULL, 1, '1', 1, '2023-04-04 07:29:55', NULL),
+(85, 19, 19, 40, 'Ramadan Package 3', 'STA-SHP-R3', '20', 'Switch,Locks,Sensor', 'Regular', 'Black,White', '57150', '50300', '6850', 'STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key', 'Smart Home Package Package Name : \r\nRamadan Package 3\r\nAvailable Switch Color : Jet Black & Glacier White \r\n\r\nPackage Includes :  \r\nSTATA Smart 4 Gang Switch \r\nSTATA Smart Fan Dimmer \r\n5-Pin Multi Socket (Type-C Port)\r\nSTATA Smart 3-Pin Socket \r\nSTATA Smart Boiler Switch (20 A)  \r\nSTATA Smart Led Bulb (10w) \r\nSTATA X9+\r\nSTATA UIR\r\nSTATA Capsule\r\nNet+TV Socket\r\nTelephone Socket\r\nSTATA Smart Video Doorbell\r\nCompatible With : \r\nGoogle Home \r\nAmazon Alexa \r\nStataLife App \r\n\r\nFeatures :\r\nControl more than 1000+ STATA Smart Devices from any place at any time around the world using the mobile app StataLife. All our products are compatible with Google Home & Amazon Alexa.', 'upload/products/thumbnail/1762230964504535.png', NULL, NULL, NULL, 1, NULL, 1, '1', 1, '2023-04-04 07:46:50', NULL),
+(86, 19, 19, 40, 'Ramadan Package 1', 'ST-SHP-R1', '20', 'Switch,Locks,Sensor', 'Regular', 'Black,White,Gold', '16750', '14750', '2000', 'STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key', 'Smart Home Package \r\nPackage Name : Ramadan Package 1\r\nAvailable Switch Color : Jet Black & Glacier White\r\n\r\nPackage Includes :\r\nSTATA Smart 1 Gang Switch\r\nSTATA Smart 3 Gang Switch\r\nSTATA Smart Fan Dimmer\r\n5-Pin Multi Socket (Type-C Port)\r\nSTATA Smart Boiler Switch (20 A) \r\nSTATA 3-Pin Smart Socket \r\nSTATA Smart Led Bulb (10w)\r\n\r\nCompatible With :\r\nGoogle Home \r\nAmazon Alexa \r\nStataLife App\r\n\r\nFeatures : \r\nControl more than 1000+ STATA Smart Devices from any place at any time around the world using the mobile app StataLife. All our products are compatible with Google Home & Amazon Alexa.', 'upload/products/thumbnail/1762231583887128.png', NULL, NULL, NULL, 1, NULL, 1, '1', 1, '2023-04-04 07:56:41', NULL),
+(87, 19, 21, 42, 'Touch DND Switch (3 Gang Set)', 'ST-ORB-TDND3', '100', 'Switch', 'Regular', 'Black', '7000', NULL, NULL, 'Do Not Disturb,Calling Bell,Make Up My Room', 'STATA Smart Hotel Solution\r\nTouch DND Switch (3 Gang Set)\r\nindoor & Outdoor Unit Included', 'upload/products/thumbnail/1767157867701267.png', NULL, NULL, NULL, 1, NULL, 1, NULL, 1, '2023-05-28 16:57:51', NULL),
+(88, 19, 21, 42, 'Hotel Switch Card (Mifare/General)', 'ST-SD-SHS-HCSMG', '50', 'Switch', 'Regular', 'Black', '3000', NULL, NULL, 'General Type,Mifare Type,Tempered Glass Panel', 'This hotel room energy saver key card power switch is designed specifically for energy saving and safety of hotels and guesthouses.\r\n\r\nAfter installation of key card power switch, as soon as guests check-in insert card into the power-saving switch at the side of interior door, the power is available for the electrical equipment in the room (lighting, air conditioner, television, etc.) can be used.\r\n\r\nWhen guests leave the room, the guests take out the door card (guests must pull the card out, because they have to use it to open the door after return), key card power switch shall be off automatically after delay about 15 seconds to ensure energy saving and safety.', 'upload/products/thumbnail/1768479514135634.png', NULL, NULL, NULL, 1, NULL, 1, NULL, 1, '2023-06-12 07:04:51', NULL),
+(89, 19, 21, 42, 'Shaver Socket', 'ST-SD-SHS-SVS', '50', 'Switch', 'Regular', 'Black', '2500', NULL, NULL, 'STATA Smart App,Password,RFID Card,Generate Guest OTP,Traditional Key', 'dhsbdjsabds', 'upload/products/thumbnail/1768482446341395.webp', NULL, NULL, NULL, 1, NULL, NULL, NULL, 1, '2023-06-12 07:21:36', '2023-06-12 07:51:28'),
+(90, 19, 21, 42, 'Tel + Net Socket', 'ST-MV-TEL+NETS', '50', 'Switch', 'Regular', 'Black', '1700', NULL, NULL, 'Double Data Socket,Tel+Net Socket', 'STATA Double Data Socket / TEL+Net Socket', 'upload/products/thumbnail/1768482415752255.webp', NULL, NULL, NULL, 1, NULL, NULL, NULL, 1, '2023-06-12 07:45:39', '2023-06-12 07:50:59');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `reviews`
 --
 
-DROP TABLE IF EXISTS `reviews`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `reviews` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `product_id` bigint unsigned NOT NULL,
-  `user_id` bigint unsigned NOT NULL,
-  `comment` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `summary` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `comment` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `summary` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `reviews_product_id_foreign` (`product_id`),
-  KEY `reviews_user_id_foreign` (`user_id`),
-  CONSTRAINT `reviews_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `reviews_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `reviews`
---
-
-LOCK TABLES `reviews` WRITE;
-/*!40000 ALTER TABLE `reviews` DISABLE KEYS */;
-/*!40000 ALTER TABLE `reviews` ENABLE KEYS */;
-UNLOCK TABLES;
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `seos`
 --
 
-DROP TABLE IF EXISTS `seos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `seos` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `meta_title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `meta_author` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `meta_keyword` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `meta_description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `google_analytics` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `meta_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_author` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_keyword` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `google_analytics` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `seos`
 --
 
-LOCK TABLES `seos` WRITE;
-/*!40000 ALTER TABLE `seos` DISABLE KEYS */;
-INSERT INTO `seos` VALUES (1,'STATA IT Limited','STATA','Smart Home Solution | Bangladesh','Transform your home with smart home automation in Bangladesh. Control your home\'s lighting, temperature, and security through the STATA Life App.','google_analytics',NULL,'2023-05-22 05:16:59');
-/*!40000 ALTER TABLE `seos` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `seos` (`id`, `meta_title`, `meta_author`, `meta_keyword`, `meta_description`, `google_analytics`, `created_at`, `updated_at`) VALUES
+(1, 'STATA IT Limited', 'STATA', 'Smart Home Solution | Bangladesh', 'Transform your home with smart home automation in Bangladesh. Control your home\'s lighting, temperature, and security through the STATA Life App.', 'google_analytics', NULL, '2023-05-22 05:16:59');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `sessions`
 --
 
-DROP TABLE IF EXISTS `sessions`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `sessions` (
-  `id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `user_id` bigint unsigned DEFAULT NULL,
-  `ip_address` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `user_agent` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `payload` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `last_activity` int NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `sessions_user_id_index` (`user_id`),
-  KEY `sessions_last_activity_index` (`last_activity`)
+  `id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `ip_address` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_agent` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `payload` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_activity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `sessions`
 --
 
-LOCK TABLES `sessions` WRITE;
-/*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
-INSERT INTO `sessions` VALUES ('01lGcBp72qRPeokaA0asBsLVAfqXkY5nVLfMqtA8',NULL,'54.36.149.248','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiN3IwY2dySFV4OFh2bFQzNU1hWUlLcDV6M1ZRekdPVWZ3cE9XZXN1ZSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDc6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9jYXRlZ29yeS9wcm9kdWN0LzE3Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689053809),('0g3Xvv2HO7HJwdVZkj2E3z77cGgrRvwlvYnIj5dS',NULL,'103.230.63.86','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36','YToyOntzOjY6Il90b2tlbiI7czo0MDoiZHVycWNnQkNhRnRONnd2VGRrWkdwTjU4elJEVTVaUnJtOHhGYkp2VCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689048813),('0TuutpltLNOEOdlFSMziiXAuzShRVrR7gX37i5ZC',NULL,'94.102.61.75','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.190 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiaTU5NmYyc3V5MGtzelZWallOc2RRMVFZMTNMWUdjdFc3NmhnbWdsMCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjI6Imh0dHBzOi8vMTQzLjE5OC4yMjEuNDQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689048448),('14RunA1p74i011QLedv61f1pHk8UXqCUYzmcjMXa',NULL,'54.36.149.249','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiWFAwSlhQeWV0am8zNzRLS1pOb2oyeGZrdVlSeEtyVDdjWmNacFY2TCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvdGFnL0xpZ2h0LEJ1bGIiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053019),('1B10emG0wpn5D4lAfd5OxiOCdSAZ4cjWrQECn5cG',NULL,'54.36.149.245','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiVHJJTDZ6MW1YdFlVcXhiRkVlUDI2Q2J5MmZmNE1TclZCMmQwNkRRYyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTQ6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvdGFnL0xvY2tzLHNtYXJ0JTIwbG9jayI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053169),('1D8FcLXlkj4OxKbhqCcHLtlMIirvRnnHakhIsVBl',NULL,'54.36.149.244','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoia01sVk1ldW1wa0Y4WW5MdEQzNGl5em1aQVJhblNhUUhTamR0dlNVVSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDM6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvdGFnL1NvY2tldHMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053275),('1OnGBV47HJpzRovikzOERVgk4v1nQWyaY9cBwU1R',NULL,'54.36.149.241','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiekt2Ym9Xa0ZsbVdEWGJ4cG5PQm9IMjVxUWt4a1RMUkNFYnloN2E0OCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L2RldGFpbHMvNzMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053857),('2GRPfPiQb5i58s9z2cYsVUQkLtaVqYag4PCTs8Er',NULL,'54.36.149.249','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiQW5DSGllQjVXcnhkMlZUMFJLMGsyYW1JMENJcTBqaURtb1RCVVFOMiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6OTM6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tLz9mYmNsaWQ9SXdBUjNmYy1IQUlUWnF2VzlTMkRDWWYwTzJTemlaQmFnTU5ZRml4RnJ1ZVVHNXJSajBTaWluSFY0WUN6ZyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689054601),('2HS7C0veXQtOitn6mnRK5ho2WbDi2ix0sGwi0YTq',NULL,'54.36.149.245','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiVWZZTGVTc3RNU0p4Y2pXMEprZGxqMlZKbnc0UWhsSW9PNnh1Q255YSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L2RldGFpbHMvNjQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053337),('2L2jYoyLvXD0LcfLqBTOuTCrIFuyXmH3W0lufzPk',NULL,'54.36.149.246','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiU1lsdlFISWxDVVNFNDFjVWdTN3lVZmdKYzVXanNnSTRnTXJvWTJsdiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy82NiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053287),('2OXOHWwUqV7yOgxRq1r5ZrpMIwiaDNBDsIMIyI3g',NULL,'54.36.149.247','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiQm5MYlhEekxHY3F0T2tLUmRmSVZlbXZzakdCU01CSGF6Q3NEQWxQYyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy84NCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053205),('2Q56cgs6F2MMN21d3bn7KWqw66LiUjug00i723AN',NULL,'54.36.149.244','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiWmNyNVNmSjd2TFRYOG0zbzBkbzhFdEpLWGdiY3V0ak1jZTByNVBCdSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L2RldGFpbHMvNTgiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053820),('2qkS7ODcJDnFdOitZrsVSvxZB388yJIA98DiBj6E',NULL,'54.36.149.246','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiejQ5SWx4TjJ6ZlQ2Z3BXTjRxTHVFdjloVGE0MEk4RndUVnlWUHJ0cSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDc6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvdGFnL1JHQiUyMExpZ2h0Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689053174),('2XkRaCK4SSHykuaEYIvmLvx1DnMQ8WJ6VfEqou6B',NULL,'54.36.149.241','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiaXFpWlI1aEI2VjlyTzE5SnZjdUNEY1ZxTDlwdTFrSTB1ckx4NGI3WiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy81NiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053035),('372iQ4TKBwp0BiI6dOzCK9NnOrbYXlI8GyUIRSET',NULL,'54.36.149.240','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiUzQwZHl2ZWZ0OTEwUkFOUG1WQWFERndqR1JVRnliSU1tb1pHRGh5RyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTE6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvdGFnL0FDJTIwQ29udHJvbGxlciI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053107),('3dyS10TZBBNTwXym6WZppPS9a0EGHc7rjYtu3TUa',NULL,'54.36.149.241','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiazJUUHRrOVBZWk9BbWRyWThGdUo4djFja1IwNmQ4NE1FV1FZWEZMaSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy83MSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053079),('3e0iTaXBzBhmC9IvX8S0oVXatij7yynGA6MpEH1m',NULL,'81.177.173.135','Mozilla/5.0 (Linux; Android 10; SM-G960U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.141 Mobile Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiUTBmV3gyU2ViUXF1N0F5MmZhdkcxMk5TVTFMcnBPVTZ1NlB0NWhWWSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjM6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689053741),('3iXwf4jiBjJqGW2k0f0O3Y37BBeI40VGzvcnoKhj',NULL,'66.249.79.33','Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Chrome/114.0.5735.179 Safari/537.36','YToyOntzOjY6Il90b2tlbiI7czo0MDoiR21vdHNoSVoybVNSbHpLQWw1amRHNWFxUDNuTVRzN1d6Ulh3WUFWTSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689048932),('3j3TZnzz5u28OEakGKLLJ8o44BttbPMmYkoduBnD',NULL,'54.36.149.249','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiS0VUUE92R0MyT0c3dnBEdXNFNFBtNlJHOE10cEF0UTdtTUhmcE5LSCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzg6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL2xvY2F0aW9uL3N0b3JlIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689053302),('40Zf5YgbSW7vkVOpmmB3MeUk7PshQexKSqCHXWDh',NULL,'54.36.149.248','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoieWdvYnVJRlNBakg3MkR0V0I1bmlJSDdPYzJ3UXVzMm1qNFdWOVlVNSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L2RldGFpbHMvNzgiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053351),('4idRPOBytU19AMFYjgvYpM2XyOjeWKyXNZgM38e0',NULL,'54.36.149.241','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoibllZNmJIa3lReFNPMU1JVENudEdWNFc4TGpNSjVzQ296NU0yY3J3biI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy83NyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053189),('4xdBm0jse4SNKB4dRFmE7QQPCEBBNNv6AF55We9s',NULL,'54.36.149.249','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiYVBmRVpZY1ljRVFjelo0Q0ZGNDJZNWhRdWNBZ0xoYXNvbTBoNUJ1WCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy80NiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053031),('58HNY84JEnr0sKy2jiVZURfMv6LqHRDyjNzFgAqP',NULL,'103.230.63.86','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiaWhUS1QwQWlHc0IzZkxPY2NKa1ZhVWs1TE9UVFlwQ201RGxpS1l0ayI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjM6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689054559),('5YGeWgGEBYLCRy9x3WVVShkqivGRHfkgqn3p4Qf8',NULL,'54.36.149.243','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiMnFuWjA2TXpHbUJIaUFYSndlSGJobm5RZzBweGo2T1dnNkkwNmZaayI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy82OCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053075),('69NR644nDOSTYz1xMISceVdX3tNosorwRccQSuJw',NULL,'54.36.149.248','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiejZUbE9DNTFaaHZGM2dPdEtkc1NQUVFoaTZhM3BTQnk3aTZqeXZNcCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L2RldGFpbHMvNjAiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689054165),('6XRVWXzZzYS2li0Ktr0W1ZNFlNXpdTuT74CPWg8t',NULL,'54.36.149.249','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiekE3encyZkxpMGt4d3NoYm5RaURpbnNRU2xsOW9OdjBFeDhKMThFUiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjg6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3NhbGUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053295),('6ZqoeK3gBnII61VIzlmsg3vxhFDGCqIO1l66aiuP',NULL,'54.36.149.241','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiYVFCdWFZVXFuOFVpdTdZeUc3QjY3bW1xSXBuRGVsMVNjVnZlZVJDbyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDc6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9jYXRlZ29yeS9wcm9kdWN0LzE2Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689053366),('84CduaIthclYLnGqoCfY9DFtHuQtgc3ICC6zpnqj',NULL,'51.15.164.30','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36','YToyOntzOjY6Il90b2tlbiI7czo0MDoiOXFCMEpxNVlIV1lPQ0xjT1c1S1ZyTVZwN3JwbWJiMWJoWElFZU5rTCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689053689),('8JP8Rtly1kDoB3awrURgitzmnpQ5O54ywtRdwMNN',NULL,'54.36.149.245','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiVTB2TkZMbzV3bEtXSDdpblBOYTg2ZndvUG92bHp5RmF1OTRzNFU0eCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDc6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9jYXRlZ29yeS9wcm9kdWN0LzE4Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689053927),('9HzlYI5zanexqMWF3sCPGM3chyVcgojxAyv69hUU',NULL,'54.36.149.245','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiUERxYm94ZE9ySk5ONEtKVzNvNU04WEQzU2RPeUplZHR4Z3Vob0ppVyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3N1YmNhdGVnb3J5L3Byb2R1Y3QvMzUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053055),('9L4tALU6zBjrdkTp0XkB3O38wlWGrCQUpJqXvQQs',NULL,'54.36.149.246','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiNGFGUk43QXRtTEJXUnZ4OEJJUWh1VkFSYk1IZDVmajd1WnUwSDFvQiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDc6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9jYXRlZ29yeS9wcm9kdWN0LzE1Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689053752),('9RCcH0SRmj7RQputlnDv3YkhmNJPUo92sz4zMpzH',NULL,'54.36.149.249','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoick53ZkxDeEFoc0hoZGdseVVDdG9vN2YyTTBNSFgzMDd4bG01Znh1eSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L2RldGFpbHMvNTYiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689054299),('9X5ZnAb7tNLs948xo2XVspglGW0glSE5UOTXR8ls',NULL,'54.36.149.242','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoibld3ekRvclF1bVYxcXNSdGNsZXRZU0lQVTlOMDFGd0kzZHdSNE5USCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L2RldGFpbHMvNDYiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053789),('9ZKjeF6M1W56sU0FtvwWBlvOq0SdhhBjscjdJjef',NULL,'54.36.149.246','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiMUdtV0oza0xEaHJOdnVER1kxM1FFdVUwUFRWREFvZFdhcFBjcGkyRCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L2RldGFpbHMvNTUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053557),('A3I5GMK2mreltl82ZoROFFX3qJIS9IgqMzW5eNsG',NULL,'54.36.149.247','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiWUEyektsSlQ3Y2YzMld4bExwVTBmNm1YZUNOM0l5VWxqdGFwWE8wZSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L3RhZy9TZW5zb3IiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689054350),('AeM8bF7L9wsl02fKjU3dB1yCssw89KuDk28rtNHT',NULL,'54.36.149.240','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiSGZKeGxFZGtrTGsxc3JGcUhzTnl6YlF0SGI3QVQ3U0JDRHZselplWSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy80OSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053244),('aHCZe6YI11Qz9nAFjqqnlu6Rl5gLp8MSR9y0Uwdq',NULL,'54.36.149.247','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiUEoyQkxsU2U0d092M3BobldqV2U3NUphcXNmNThhbFdCS1NZVUU3NCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3N1YmNhdGVnb3J5L3Byb2R1Y3QvMzIiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053063),('aM14w8rQvxp9w60SBhg4KTQBdU7SBEqX14Hxsx1s',NULL,'54.36.149.242','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiRjJObVV1UndqSkhhNm5kR2I0N3JzOTRwUUxvS0wzYmkyelJSYkJVRyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTU6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvdGFnL1N3aXRjaCxMb2NrcyxTZW5zb3IiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053263),('AmsJddQr0wEP1232XNrOdgsMTbu4vLAz7cBula8W',NULL,'54.36.149.248','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiTFd2ZjcwWmZwaEx3Z0k5SlliSnpDNGh6MzlRQ0lNSGNTR3BVcE5FMCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L2RldGFpbHMvNzIiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053797),('AUKGDNuyj4qrJFsBlGOUqY968lB6V8J4REZYEQly',NULL,'66.249.79.33','Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiT2xJaVR1THFIdERoUGl6YW94QldJaEpaYjBqMFF5Y0NSVnFka2RYdyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjM6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689048917),('AvZcWPjWiYuQy1W3BEbN4AhhXxI2ZyQFKZYL0yKT',NULL,'185.191.171.35','Mozilla/5.0 (compatible; SemrushBot/7~bl; +http://www.semrush.com/bot.html)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiUm1zbWs2QWc0eWI1NDh2dmZqUVhSV2pzeldMZzFMeURwbTNoeEVkOCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDc6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9jYXRlZ29yeS9wcm9kdWN0LzE3Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689047653),('B1LojWdclNMNkkzSNWBevr6pF8cVATMVx9Tnr71H',NULL,'54.36.149.244','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoieWFncXlUS1VFS1hkUk5EVjB6NWs4VTV1MzNjZWlGTFNVYlJRcUxIOCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDc6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvdGFnL0lQJTIwQ2FtZXJhIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689053182),('bFlrW15EPnQ6YQ7m7svHoiCwk0jHRi8NwkP4rcWj',NULL,'54.36.149.243','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTo0OntzOjY6Il90b2tlbiI7czo0MDoicGZwRUJ4MDhlbzBPZE0zTnZROWRVZmJqSVZuWUh4TUJwNTVydkphZCI7czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czozNzoiaHR0cHM6Ly93d3cuc3RhdGFnbG9iYWwuY29tL2Rhc2hib2FyZCI7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM3OiJodHRwczovL3d3dy5zdGF0YWdsb2JhbC5jb20vZGFzaGJvYXJkIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689054329),('BX9sky5Q2zX4QBgtmUcrKlSGedh8kEdqvp2BZ4Gf',NULL,'85.208.96.198','Mozilla/5.0 (compatible; SemrushBot/7~bl; +http://www.semrush.com/bot.html)','YTozOntzOjY6Il90b2tlbiI7czo0MDoib2VuZTRPNGx1dnJpUGRhTUpnOEtDa01VdWViRTRmNUpzYzFWRUNlZCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzg6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL2xvY2F0aW9uL3N0b3JlIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689047965),('c5VlBoNqc8afvnoZeNASNXwT9Bssxqq94k455So5',NULL,'54.36.149.241','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTo0OntzOjY6Il90b2tlbiI7czo0MDoiQVJudmpINUJFTUxJWTlBeDd0NW53c1Nmd3NWNzVUWFp6djZ1RkVQSyI7czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czo0MToiaHR0cHM6Ly93d3cuc3RhdGFnbG9iYWwuY29tL3VzZXIvd2lzaGxpc3QiO31zOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czo0MToiaHR0cHM6Ly93d3cuc3RhdGFnbG9iYWwuY29tL3VzZXIvd2lzaGxpc3QiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689054308),('Ca5WskK0wOJs9yULcBb5iYqkvLX2Qfc2gCZSxOyr',NULL,'54.36.149.247','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoidHJiM0pERlhUYTJTRVRQTGtmUlhpWVhXZ3lFQWJyd1N1dTk5ekRyRSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L2RldGFpbHMvNDkiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689054213),('cFYMCHAokD3BrXBQDgXvqfUACdNkhOLmRReZOiwO',NULL,'54.36.149.241','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoic2FrY0Zia0p5anBHTUxVREtVejY3RnpudFVkMXVQUkZVZFd3a3RwciI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvdGFnL1NlbnNvciI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053043),('chC7vjEM5lAckAzngWl0HzHcC3uwk7uOcDdLe8gN',NULL,'54.36.149.248','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiTFRxS1JQd25kdkhuNXlMY3ZHdmlrRHZKaGdrOFRkVEZKMm53WWZ0OCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3N1YmNhdGVnb3J5L3Byb2R1Y3QvMzQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053103),('CuP1RXWnZVjYMR7H6jMk86YaOPdNmE5UevS4PAoc',NULL,'54.36.149.241','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTo0OntzOjY6Il90b2tlbiI7czo0MDoiVTJ0RG1UZDZKU0hxWlJseWZ4Zmg4bTFVNFpPM0ZxNHVrSGNQdXFkNCI7czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czozODoiaHR0cHM6Ly9zdGF0YWdsb2JhbC5jb20vdXNlci9teS9vcmRlcnMiO31zOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czozODoiaHR0cHM6Ly9zdGF0YWdsb2JhbC5jb20vdXNlci9teS9vcmRlcnMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053572),('cY34pvGywjsyGMHg3XvJikP2Z2CTYQyV16VRpnY2',NULL,'54.36.149.247','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiN0RKSUhBeTZJMEdVck1tN3lsWmx3aDE5YlkxSHlnVExnYkUzZmZXdCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy83MCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053259),('D7jCvCO2AuZty6MlKvzM2bXht63jjSVlhHNgT8Jc',NULL,'216.244.66.250','Mozilla/5.0 (compatible; DotBot/1.2; +https://opensiteexplorer.org/dotbot; help@moz.com)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiWEtOVFFhbWZONTluQnNlZU5wdjl6ZHNwMnNIcWRhMkE4ZWRUZ2RvYSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTg6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L3RhZy9Mb2NrcyxzbWFydCUyMGxvY2siO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689050474),('D85M6AIvPjnWMnJuZyF0rEkKfM4bhZn5wWRx45LN',NULL,'66.249.79.33','Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Chrome/114.0.5735.179 Safari/537.36','YToyOntzOjY6Il90b2tlbiI7czo0MDoiREpJdUFVNEpGNUxnRlY3MDNpU3ZYNm8wS0YydU15aVN0WlhNUldqcSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689048933),('DlCM5r6tGHOBTORGXZYSTkORoteS3CQcnIxY8HZn',NULL,'54.36.149.247','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiWkx3eFczNDVTY3UxTFZXQ1dPejVld1hSNHVMUDA1SnlFS1NkTGdrbyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L3RhZy9Td2l0Y2giO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689054292),('ds8HHsJS9h91hru5SJfhUam81X9AXvzC8NeRMy58',NULL,'54.36.149.244','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiSmpvT3Bua2dyTGV5Y0xRa0RoQWR0blliMG1NdzFJOHZpdkhGdXA3WiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy81MiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053023),('dsh19C0IPDfGw8F2qoXSgBa4Ue3yqvSsRea3EFAg',NULL,'54.36.149.245','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoidVhUblM0c1hkSmxHZlZvcWh6bWJPVTRVcDF2U3ROYmFWYmQ0OHJqNSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L2RldGFpbHMvNDciO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053965),('EHgNznV6IuTmSHcA3v1caipeXrcL69tIie8TVQJC',NULL,'54.36.149.242','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiRnJWZ2JiNU5BUUpqa3kzYjlsQmVMeG9oRWl4YkNiV0tqb1RSSUtkOSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy80MyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053271),('EksUUbpK4gulnYHZdJeWgslqRTQApFW795HFynGk',NULL,'54.36.149.244','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiWGJqdU45UjIxTHZHVlpQZk83UmQ3QWhSUWlpZFJKWWVZblNaaWZLTiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L3RhZy9DbGVhbmluZyUyMFJvYm90Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689053839),('esWSfo2x9IhJVmIlihKiwbSI8sZi5RSTXrB0QqYe',NULL,'54.36.149.248','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiWkM5ZlhqOEJibGNCaG80VWc5UnVteEZYeFA1SGUxU1p4WkI3ekNkTSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjk6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL2xvZ2luIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689053299),('ez33gAHYcgCnNxtNFLsPLc6oq1gZcXehHFDDgpj1',NULL,'54.36.149.248','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiclZCN0J1MWRWbEdJbzJoa3N3VWg2QUxYTlBLRERXaHkyTG16bTVtTiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy81MSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053059),('FgslxD0IkJ8nAq3sD1Qs303Ket8402KJUyPjsbKH',NULL,'54.36.149.245','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiTGFrRXpBN3BVTVJ4NGcwNmJyYjI0b2RqemR6aTI2WTlMczVXcVNBSyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy82NyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053283),('FlUs4psztDpDv3CaRNuDS8hwNMUiyFcr1kTZHGMd',NULL,'103.230.63.86','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36','YToyOntzOjY6Il90b2tlbiI7czo0MDoibUxKenhXdTFHd0pvYTJ1Y01VNjA0dHA2alp1RXhTSWkxejA3bkFQWSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689048814),('fNX8YYGjhksydMrckj64eBeVUgkPU2C4NQFCref3',NULL,'54.36.149.243','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiUUUyTUQ1cnZsSlhxOGQxeEtucGFFVDZ1cjc3Q0U5NE1aZWEyTVU0TyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDE6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvdGFnL0xvY2tzIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689053051),('fT5M6Ry6ZyRGAb1TIB9Ihmx3hl9hFI8bxFJB0hxI',NULL,'54.36.149.240','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiNHBUUndDWVVROTZxaUNTQlFCd0RVZk9sdEY0U2NKMUNVWDgwbEVNTCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzI6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9ibG9nIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689053406),('FZpZrtst0AtSBpPbh4LpEIkhHBOJikSfojWb87sD',NULL,'103.230.63.86','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiU01BVkNTaHVQekxPazI1RDJCNFVzcDk4Skt3eTFrQlhBVTFzajBtZiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy84NSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689052152),('G7UGHviyv3eUqEAMaqfU72bK7s2b9JLlSXKRJN3B',NULL,'54.36.149.248','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiMm5GNTI0aUY3anRWc0dGVmw5M2dNVUdlUFlnYWhaeTFvUTZXRFhIayI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L2RldGFpbHMvNTMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689054343),('Ga94fYzqcmNInDMmoNByso5WZhYQ2k9r5aTzHayy',NULL,'54.36.149.240','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiSjBYTEVtYzgxbmRtSkxSdlE0bUhtNmdTV0VDV05VRFBzWkE5OW1GeSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy83OSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053099),('gcI8JUUJm6z3n8VradL3tQLIst77U6SoX84Jiug6',NULL,'54.36.149.244','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoicHhWNkx3VHk0Q1VrbkNsVWdhUjhOSnp0RVpkNmFnRTJCeGZMcmVPUiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDM6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL2NhdGVnb3J5L3Byb2R1Y3QvMTkiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053115),('gdTiBk1Cc8YekEm3Jbac1eYmfzvLghNAAn2DRMjd',NULL,'54.36.149.243','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiZFFreDByck9VZmdxSUJlVXc1cDZ1bVMyS3MwQ0x5QXJGRU9VY29rTiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDM6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL2NhdGVnb3J5L3Byb2R1Y3QvMTYiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053123),('GE8Xwxc5AFOdqXqGRp4ilD6uyPCRPsp6qZzWjo6W',NULL,'54.36.149.248','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiUlVpbHFneWI3VDNlMFVCVktxTWVrdnE4VGMxUEtrV29Sd1pkVUlEaCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L2RldGFpbHMvODciO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053539),('GflNXih0355z4PuyNBQAAyt1iCbjb64VwXowatC0',NULL,'54.36.149.243','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoidFRwSE5LcVdDVEl4UVE0UzdzSlZpS1lPOEp2U0VuUGd0WUNhcnFzTSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy81MCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053193),('gFxRkb8o0Zs0gXW9UNjxJVCAgCdHgQrAA9YPzu0v',NULL,'54.36.149.249','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoidmlLQldaSXZsT0VRMUI3dUowSXRzRXR4TXgwWWFna2NxMXdRendobCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L2RldGFpbHMvNjMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053467),('GgFlEzEoPEB3O2rJ9TjLiLJbLLbUkIiSYhRg0i1U',NULL,'54.36.149.242','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiZGpHbkRoYWFNQTFVaDNVV2ZDSFpNeEVOYW52d2FQYU5yTzY4WkJVbSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDc6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L3RhZy9Tb2NrZXRzIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689053359),('gNOf8PkWRDXRFqJleg9PaQsvNXjRlcwe7Yno21Tm',NULL,'54.36.149.240','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiczl3VVNjcW1IekN6NXFBR3ZDN3Vac2FVcFhCc0VjMUh4a29LYVFHUiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTg6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L3RhZy9Mb2NrcyxzbWFydCUyMGxvY2siO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053496),('hgGZ2dia7M2iVYQQ5tr8eU8W2sVzG4vHP5uHb2Kg',NULL,'54.36.149.243','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiZ0JUVHR5cGNucXp2SnZWYW1nNEdWMk5pbDcyUndWSTNjbWU0VVhjSiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9sb2NhdGlvbi9zdG9yZSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053744),('HGzTulhh5TujWt9uwWtzqdDVXemAgeuyT8CxGQdC',NULL,'54.36.149.246','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiQlEwdTJySHpMRHhOckdJZ1hPWFRnNjFQdEtNN1JQOWFHZEtVUFpCayI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9jb21ibyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053920),('HmCt0csSWzQsUxWmKJAWOS1Y61ktxQOe5IVeiTyD',NULL,'54.36.149.244','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiYlgwaEQxVm5SemRMRmNuY0RYdlk3dVRLemhBbnB1OHVYSmlHcU96YiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTA6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L3RhZy9MaWdodCxCdWxiIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689053511),('hrImSLZPogri4lPPTMQbRiO9cQtHRJLONsO1upzz',NULL,'66.249.79.33','Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Chrome/114.0.5735.179 Safari/537.36','YToyOntzOjY6Il90b2tlbiI7czo0MDoiZkdGN3FBZlZQY0Q4VllLQllENFR4SWVsZ2pyRXU5Tmk3Um9YZ1NFUSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689048935),('HSFVxOvuxQLFufbrbmgqMs9jgbNgH8gnnKJ9PNq6',NULL,'54.36.149.241','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiOWppUjl6Q3U3Rk9kNG1RZFNmbkhoazBIaGd0dDNyQTU5N3hqd05GTCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzI6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9zYWxlIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689054111),('i14Zyoe2vv2vDqndEZdKlZdA5jKZndk0VrDw285Z',NULL,'66.249.79.34','Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Chrome/114.0.5735.179 Safari/537.36','YToyOntzOjY6Il90b2tlbiI7czo0MDoiSG9NS05ISzBUQUIyeHFxbXB4bXphSFJTTXlxb0xXSEdubGRiMEllWiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689048934),('i1gK7olIIiGY7LjvPgddjOJlhz1buh5q72gi0aFV',NULL,'54.36.149.246','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiS3VPc0l0M1N0aElKdEkwNHVGcXZyTm5iVEJpWkdNWE9Ba2RwUGVaZiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTU6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L3RhZy9BQyUyMENvbnRyb2xsZXIiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689054088),('I7h2CalKoY1P0gLKhAnNxUYWIi2Sr0qM0nQWHIk8',NULL,'54.36.149.248','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiY295YjhiMzJFMHBaMWIzUG15QlZIblBMbFB5bXFtb1huQzYzdEtidSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzk6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL2ZvcmdvdC1wYXNzd29yZCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053213),('ICtXdSzyiDp1BsYOKXuKh5jEwNnGhoxHS9Xuy6Mz',NULL,'54.36.149.247','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiM1VSd2FmTXFmNHo0NGNvRENMOUNybXNMMXB6M2E3bVZsend6dnMwbyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy83MiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053140),('iEuR6v7I7Gh6JGzyHWccPt1vry5HdQV5NDhKMECh',NULL,'54.36.149.249','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiYTRXbnE2dFdkY3UwWXhUZFdGSENMRVlOV3Z0MWJiSW9QS0xPTjdhWiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvdGFnL0NsZWFuaW5nJTIwUm9ib3QiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053209),('IloqimCkSPMejfXjjPi6za5v2Jy2DytRNVXJoFpJ',NULL,'54.36.149.240','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiNG1VMUlNeFhNZ2FuTGJLTDZyRkhJd3BhR3BCTEwwYmhrandlVTVINyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzA6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL215Y2FydCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053225),('IMkrvY8Gre4InubJPjxhHenuecfyXFusOW0s7HwS',NULL,'54.36.149.246','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiRXlub0JBOU5nbXBFeHRSQjJZYU5pbzJVeHQ1dnY4SzBPZm8xUk1uNyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy80NyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053255),('in9QWGC24KUC6k7W6qX3O5AKTducMLSiVMr6j7Qf',NULL,'54.36.149.244','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiTG1XUDJENG9SS1ZvSHgwYnZjeGhZSjdWSURJY1R3ZHZIWXB6eDBTeCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjM6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689053221),('IQXJ71vxdyZYvlyecFDOvRW6zZAbSLTVzzdWhZxj',NULL,'208.92.218.66','Mozilla/5.0 (X11; U; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/96.0.4666.69 Chrome/96.0.4666.69 Safari/537.36','YToyOntzOjY6Il90b2tlbiI7czo0MDoiQ2ZlS1J1ajJyVUliRFlONWRocDVySm5QNUJSY0sxdmNuUHV6R2Y1VSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689053696),('ITtKxIO1qS9X638UYI7AnXIHzzj7mNlu2W3nVUPe',NULL,'54.36.149.244','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiZkhROG9oYVBNdk95TVNaeGtJYTk2R1Ntc1VNSzFOcFhLT1BCT0Q2VCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L2RldGFpbHMvNzAiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689054038),('IWR2MZ4dHmVXu1JNLbU7aqFmCGrri4QLUYnXs8V2',NULL,'54.36.149.240','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoic3U0TFU1WFVleU9jTWthRjVwWVZaN0dleGhUSzVIUTJqTEMxemUyNCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDc6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9jYXRlZ29yeS9wcm9kdWN0LzE5Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689053546),('j4xuYOYdxfIXaxIqlMp26LlUrB7MhYkpUYffN9Z3',NULL,'54.36.149.240','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiVTk2OVFNYjBNVEZuRlpCV0Jqc0tXUWl4MDF5Rnc4QkdhRUY3a3RociI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDM6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL2NhdGVnb3J5L3Byb2R1Y3QvMTQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053047),('JAPCidBTZ1Vp6HmWDK6vmiTTpTLzpQMxi1XamALS',NULL,'54.36.149.247','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiRlpXT2xTaFZkTFZMUjd6bkFUY2dTeVJxdGdMUDZYdlVETU9aVXh0eiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy82NCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053267),('jD6g1gXuJmmMW0IjGbLQ10O06gIPRjyxeVDJCAWU',NULL,'54.36.149.248','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiWkFHcTh1aDMzSkREMENQZjJMRW1VWVJEdWJnWU9UWlNDRzVkckRheCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L2RldGFpbHMvODkiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689054295),('jNgK68ASTyCMcFrnrZX0BlYgxDGI8sxBVS1g1ywL',NULL,'142.93.214.213','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiRFVlb0wxcWNKNlN1eXdCOXgwQ2N3YXhNc2hKeWtyMGFqNlJyNmR3YSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjI6Imh0dHBzOi8vMTQzLjE5OC4yMjEuNDQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689047960),('JYmYIGgeBp2UHxcN2r3IBd4hRXVVgHZsUdur7y70',NULL,'54.36.149.240','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoianplVUtrRmdDUWFrTEZKajBQcWV1Rk93V2l3SlcwOXRleEszTTdaYiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy83MyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053083),('k3tulS9OUIFAVmZWYLwIJSzpIwt6HUxzk9lyGHQ4',NULL,'54.36.149.243','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiUzRTUEg2QlR2TElRM2Z6eDdIdnYxY3VHQ043R25TQmx0T3hMWU9CTyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL2ZhcSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053782),('K5KBLI5RV1AOomRCZSiGQJPdxdS7Y6jumBDSk7cC',NULL,'54.36.149.248','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiVHptcTJOU1RPU1YwV1NDYTc5d1g3N01ITlJwV1h0OHNCTlJVMHU4cCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy81NSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053148),('KfxdSrx2oACmqszAs411COrTb28oPabv3ddRrQXn',NULL,'167.248.133.51','Mozilla/5.0 (compatible; CensysInspect/1.1; +https://about.censys.io/)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiaG11S1ROSkc4TThlMGJjZTA0ME5EdjRmOVVxRGt4SVFpMkJzSGZDVyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjM6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689054711),('KITBYzX2tuxrSlf1tppH3U2wHvcISin3FlRAdcIm',NULL,'54.36.149.246','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiRFp1dWZGVzI5VEpBcGdUWlVaN3owVTJ6NDJuWE5hSU16OVFualFRNCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L2RldGFpbHMvNzEiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053957),('kUMUTaOjJ75dqz1rTyZIDhFaVhHjiKSKPFMKM62S',NULL,'54.36.149.244','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiVVpDVEZ1ZzY5Rml3U0Z0bTAycEdOdWxXczRXQk5iZE5odDRXUFZqNCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTE6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L3RhZy9JUCUyMENhbWVyYSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053590),('KW9sLzHK3NTQI9jpaClRIdR19XFHMlCW88t4gALj',NULL,'54.36.149.245','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiNERPWUNjRjJTNUNYeFRFNEdXSWJLaDNGazRONEk0ZWpVR3cxck5acSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3N1YmNhdGVnb3J5L3Byb2R1Y3QvMzEiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053197),('kyysKOEcSJ9WBMggPRuogzj5rnsbp7zUc1ivRZIo',NULL,'54.36.149.241','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiVmd2dWNmTm9jUGJ1OFhJaHdPVXhFMEcyNHB0STU1am1DTWhVSWRuMCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3N1YmNhdGVnb3J5L3Byb2R1Y3QvMzciO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053027),('L3zbbraBR3INk1bL7eQVFdiVrQMqM2CQrZQF7aiW',NULL,'54.36.149.244','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiRnRQdFE1OXp6bmVMbm84OFNaa0hEMVdwTFdvdk1MNUdMamlBWTM4SyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDc6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9jYXRlZ29yeS9wcm9kdWN0LzIxIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689053683),('l6HMTrPfP8Yh3LI1CDdV0wLYEWGwF5Jm184u9O8M',NULL,'103.230.63.86','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36','YToyOntzOjY6Il90b2tlbiI7czo0MDoiWW9aenRVd1NXMFM0YjJBNldac3NXanhyQWRHU0xkbnFnd0s0UUhDNiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689048813),('L9qRmBNKCRDSbdJiOEGAi4D0ak1zJdqUOhXcLOb0',NULL,'54.36.149.242','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiQUVpa3J0dGZKVFZtMkUwc3VrdDNPSWxnOUY1eXlpUXo5aFFMWUVJOCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3N1YmNhdGVnb3J5L3Byb2R1Y3QvMzMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053232),('LfnKtUNxSpYADMMm2BunJI8fi9DPDBq46Jq0j0Df',NULL,'54.36.149.240','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoidW0xQUYxRldwdzlZWHI1R0VreWdTcjd4UVgyYnpBS29oNlJGSW9YWSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3N1YmNhdGVnb3J5L3Byb2R1Y3QvMzYiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053144),('lj95TEgeOoF0sk8lGZ2xZ5tFuD9WmTdlzlrQCTzU',NULL,'54.36.149.249','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTo1OntzOjY6Il90b2tlbiI7czo0MDoiYUd2T3FhUFZTTjZTbWlTeFk4Rjdha3NMYmhXY0RiZkxUMkJ3VFgwMSI7czo3OiJtZXNzYWdlIjtzOjIzOiJZb3UgTmVlZCB0byBMb2dpbiBGaXJzdCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJuZXciO2E6MDp7fXM6Mzoib2xkIjthOjI6e2k6MDtzOjc6Im1lc3NhZ2UiO2k6MTtzOjEwOiJhbGVydC10eXBlIjt9fXM6MTA6ImFsZXJ0LXR5cGUiO3M6NToiZXJyb3IiO3M6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjMyOiJodHRwczovL3N0YXRhZ2xvYmFsLmNvbS9jaGVja291dCI7fX0=',1689053698),('LKc8QZBJFG9nJjG0TuPTf2BhvoF009LwrOAkgOBU',NULL,'172.104.131.24','Mozilla/5.0 zgrab/0.x','YTozOntzOjY6Il90b2tlbiI7czo0MDoialFmbzlqYVRhaDhpQ1JDS25GT0R0N01rZXU3WDU2SWtLSkRMSjBWMyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTA6Imh0dHBzOi8vMTQzLjE5OC4yMjEuNDQvPzIwNjI4MTgyMDE2MTM0ODA1MTQzMzEyRXg9Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689048858),('LMN0rMEJDdNqK33VwPUXGFqTvgZ9JSpW2CLgy5GA',NULL,'54.36.149.249','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiZ0FwSXFjQnkyRFpmTmRYTWZEWDZiS1YyRzNmYmZKRWQzR2pPMWtQSyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDU6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L3RhZy9Mb2NrcyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689054224),('LosLtq59aArONGPWE0Ysnm8GURmYWWPtiUP72BO7',NULL,'54.36.149.249','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiRmR6UFFCdzF3bnV2SkExNWZXUkd1aVpJdWpSMWhGam5PU3BJYjQ2NyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTE6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L3RhZy9SR0IlMjBMaWdodCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689054273),('lPiqarhe0raKidvW0E3wXqARnDQWq5aJuZj1keHr',NULL,'54.36.149.244','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiSjQxM2k1YXJpbkR0bzZraHl4eFJGMVVCREN1ZDkxUXg3VHlHUDM1SyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L2RldGFpbHMvNjgiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053428),('Macbeano2RDF72HabqBM7silXxFKX9JDD3eozBYe',NULL,'54.36.149.240','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiQldtdERaS0JsN3FYOXFwUVh3TE1kMUhVd2N6d2FwQU50OUZEQWFoTyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDM6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9mb3Jnb3QtcGFzc3dvcmQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689054722),('mAXsabbtaN74ixHbntj0fMIvgB4HraRqVgkeK6xc',NULL,'54.36.149.240','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoicG5JV1J3RlJUQlc5S25mVTVidTF3QTg4SFAzV3Awalp6czB2Z2F2TyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L2RldGFpbHMvNDQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053409),('mG29qLx3kcTGnTWygu32PUJDvFiu3rl41iz1VKVg',NULL,'54.36.149.242','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiTnVDU0Rlb09RaDBKUkdQbWxpZWoyT3FYc2xMbUdoczlPem1VajBmOCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9teWNhcnQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053869),('MtWl3mBvAslqSfJBIvk73RpYA8eZwMhZxSQP4aBX',NULL,'54.36.149.244','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiREpVaGJDZ2Vndk95eDRTNTlGVmJkZEg4ZUlQZlhUbkFlRENIMzFvTSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDA6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS90b2RheXMvb2ZmZXIiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053432),('MxQoYJMi2lKatSsKWu68Nel0BWTy6MmsYyLvOBxz',NULL,'54.36.149.249','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiejZ3Vm91eXN4aDdCT2FXUG9leG53UFg1OXk4OXZya2U0OWtPc1NNayI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L2RldGFpbHMvNzkiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689054255),('nkSkeqc2RYOjZCUvaTc61E8nIIipJcMRszWxB6Vu',NULL,'54.36.149.243','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoieHhabTFGNlVUNjJLVWNENER0eFRCcWhnMTNBQzRCWFc5cnhra3dTRCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDU6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9jdXN0b21pemUvcHJvZHVjdCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053731),('nL6ax4kpXVOkpH70z1Rr0a4CMMpRAfdKm9bKaI9C',NULL,'54.36.149.242','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoibWtkQkhZNGRCY3hBd1RIOFlTbTNRN0tweVpjQlNDa085OWU5YkJISSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L2RldGFpbHMvNjciO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689054099),('o7pA6lhEBoAl4kezNVWWgNf2gInSqKTU1IQcFulx',NULL,'54.36.149.240','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiNGI5blNlMGpORmVWd045U1ZJWU9ZTE11ZXBMMlpPOHJMekNuUDlzeCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L2RldGFpbHMvNjkiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689054027),('o7yKN3RYPs6R8esZJ6xVhwU8ScbHb0daRAyr82sQ',NULL,'54.36.149.245','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiaGc2b2U2OTRQdWxXUlNSM2pzNktxTHRsNlpWeWFCYk1nbTUza2tGVyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy85MCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689054103),('oelpCMR7UshJPVWabyeLgIB4XggpCRYpIb5rwbSU',NULL,'54.36.149.245','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiaTVmTWZzcElpUXJBRDNkSFlHSXkwUU9Hb3BEUk0xbkF4ZTJDeTlVRiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9sb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689054714),('oGuwJVat3TphUrsjWOgp7WwuKUWg93SOH3SQ6eyN',NULL,'54.36.149.240','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiR3VxUE4yMXRHeVF5N29VSndmOWpVSGVlMzFnb3hLQ29QSXlJOFo3NCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L2RldGFpbHMvNjYiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053493),('oh0tQVWFwPpDMVcMD6uj9WQp6O1k8oe30wB1v2RE',NULL,'54.36.149.245','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoibm91VUtNUTlDZnN2dm05NmJiV1dwc1RTeGlHV3dUTWxiUVpDSlVacyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDM6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL2NhdGVnb3J5L3Byb2R1Y3QvMjEiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053976),('ONum4kTA6mAIdWsbQcbrLHfk7fHT4cQmaLkszyS0',NULL,'54.36.149.246','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoidEpqODFFUHpWUWFaMks5NDBnTGxWTzhGMzZtSTVuWUZrRGFVV3B4MiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy82MCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053087),('ONzKiIwqOBVlqwud8WRCwjYwHxofsGrnKKCw3mvn',NULL,'54.36.149.249','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiWktWU3k2WHdMcmd5UzdpRWEwY3lYZ2QwekZlVDVlZm9PcXU5ckZ2TSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Nzc6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L3RhZy9Td2l0Y2gsTG9ja3MsU2Vuc29yLHByZXNlbnNlJTIwc2Vuc29yIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689054281),('oqrl42gGvOIoe7avdw0Dj0kKXXTbwHDQYCemIoIR',NULL,'54.36.149.246','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTo0OntzOjY6Il90b2tlbiI7czo0MDoiNHlrTTBlUlpIT2RIaTIyYTBNeUZPTWFxQ1JVZ2RUNWFDM3MyRXNFQSI7czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czo0MjoiaHR0cHM6Ly93d3cuc3RhdGFnbG9iYWwuY29tL3VzZXIvbXkvb3JkZXJzIjt9czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS91c2VyL215L29yZGVycyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053828),('OW1OCg7ES5Q4IQ3wLPH40CpL1YDsYslVYxDpbJmq',NULL,'54.36.149.244','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiU0c1UVdWTFBORUlmUEdXNjJpZjQ5Y3FzMmZSS21TMG9CbXJKNndFWCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3N1YmNhdGVnb3J5L3Byb2R1Y3QvMzgiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053279),('pC5A7Dngjw41LST9LterqykPjMjwVH1CjlDlrS0P',NULL,'35.91.195.227','Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoibEJ6OXBybTBodjBzNThXalhXZUZ1WjgybHpJR3A4RHBUZlNTeTJ5TyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjI6Imh0dHBzOi8vMTQzLjE5OC4yMjEuNDQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689054111),('Pd3i1oW374xHpm2IBaofbZmvWreRFXQdnRkw2qDe',NULL,'54.36.149.247','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiRFhodGxtS2VGeUdnWUkyNVdRR0dyV3BoeXRtNVFMSVZYT05oREc2cCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L2RldGFpbHMvNDUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053771),('pk9JfgkiRigQ0btC3TK2RJ5sZCSB8vZQ7wS9aqNT',NULL,'54.36.149.242','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiWk5QaGNVamhIVUpaWjFtOXVVSHNrMzVzSWZTWU1CUzhVYmZ4S05YViI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L2RldGFpbHMvNTIiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689054315),('pM420dDvroNt1JYNFbT4FiB5bTTtx1ug1SKmUEJt',NULL,'66.249.79.35','Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Chrome/114.0.5735.179 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoibG45dnhFVk80SkdyZU1OQm1vaE02VEdwc3dWV01ZdzZIMzhScVhwSiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3N1YmNhdGVnb3J5L3Byb2R1Y3QvMzEiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689049254),('PPSaWkzHflXPVSed6WYdkzTa00xcvUkXiU4pZdwE',NULL,'54.36.149.242','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoicmVBZTRpYlBWY2t5MnNsc09OWTYzN1owTnZud200MFFPbEcyWEdkVyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L2RldGFpbHMvNTAiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053564),('pPVnQvGCsY17StWI4NCax45oQSSVZUrzGhKfagfq',NULL,'54.36.149.248','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiZVh1aUw5Vm43d0o2YWJQU3JmZXhLdHNydFFUOHhQMG9PNmFzOE5LUSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L2RldGFpbHMvODgiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053482),('prfci0ADpR0vaY2iduPNPprE6PPMUBvtO156LUZ1',NULL,'54.36.149.246','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiME1tUXdWbUM2OVpwbXpwQmZFRmpOcUF4eFJJZzU4SVUwNkx0NG9QaiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy82MSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053119),('PS09GyOnkxVsEVgw51LOAkn5ONhTxqkq4kbQ3Dct',NULL,'54.36.149.243','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiZjlkNHdONVJKQnBBZHNmTjBtYzhTQjh1NE1HODNpVElLZDdpMFltTCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3N1YmNhdGVnb3J5L3Byb2R1Y3QvMzkiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053248),('puHXRA0XlLLawrmYxSeZ4y3uGYmQ2ly7Hsecvfso',NULL,'54.36.149.245','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiNDVlYmhaME9tdTdBZGR3UU9JNWNEeDVHekJiWWlXNVNJaXI2aTdBTSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDc6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9jYXRlZ29yeS9wcm9kdWN0LzE0Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689053594),('PWywbD8yLhrktKIWwcRvy1IUgPtnlTzGEKDWtgXH',NULL,'66.249.79.33','Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Chrome/114.0.5735.179 Safari/537.36','YToyOntzOjY6Il90b2tlbiI7czo0MDoiRmZGOEJNRlNBYkNHUDlzdWEydWJmWHZVY21QVDdodUxIUHFiR1Q2ZSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689048934),('PYNndvIXSEAmY7pApX5LFGNKUptlW0OnETlvelTR',NULL,'54.36.149.244','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiSXA3dGd1bGJLQjJESThVdEtLVXB6MXUwZU9JS3F4bkJNRXNBcmZ3dSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy84OSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053424),('q1FucRg5II8XfWs8vYGTUyyTqi8STonU246tAY1d',NULL,'54.36.149.241','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiUUZ2V053TXgyWmZQck9hVnkxM0JKWUZ3Q21abWg2QkUxdjlPSUJLaiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3N1YmNhdGVnb3J5L3Byb2R1Y3QvNDAiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053251),('Q48zpIlYryCWB2OqmzgLVBU15yOJEKZg8nXJjxQt',NULL,'103.230.63.86','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiQ3F2Z2NOck9STnNYWnBQTFBCWUFmY2VBc1VXUGltQWtpWlJlZ2RaQSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTQ6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvdGFnL0xvY2tzLHNtYXJ0JTIwbG9jayI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689051363),('QIpLc74Ds2Pxru5jb87mH4Rslniyoq9r65hVdqFX',NULL,'54.36.149.241','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoib3JoRnlzaEVldEF3VHZIWEE0Y3VJTEU1WjF1SHF5NXAyMWFONkNmRSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvdGFnL1N3aXRjaCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053091),('qkOfY0qJkY3tPyGYz4u8ZOha65RWzMU9DbY3J6oz',NULL,'54.36.149.245','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiVWd1c1VDRjM3VEIwODJ0QXQ5bEVXVEphemZUU3BhcE9TZENBc1NSbiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L2RldGFpbHMvNjEiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689054325),('QpNrmoKudCD56fIYQSoEfEAf49Hfr4L8QtCM7Pwe',NULL,'54.36.149.248','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTo0OntzOjY6Il90b2tlbiI7czo0MDoiMVcxaWVyYzBpckNaS1hCOXJSdDVsNlFubU1PWnF5cVp3Y2U0c3pxcCI7czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czozNzoiaHR0cHM6Ly9zdGF0YWdsb2JhbC5jb20vdXNlci93aXNobGlzdCI7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM3OiJodHRwczovL3N0YXRhZ2xvYmFsLmNvbS91c2VyL3dpc2hsaXN0Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689054154),('QR4f4Da01OMHAX0iwauLuW2bhsg6fVtfP7YaAz95',NULL,'54.36.149.246','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoic2dpcnJKS3BIaWpHOW5zS3BrOU55QTNxRUhEUU1TU0VjN3dBZ21wdCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjg6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL2Jsb2ciO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053793),('qTgfO9R7LPKXrETslnrUcz1xTXyPbNq9AWQQw0Ta',NULL,'54.36.149.242','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiRHNVbkx5T1RreFM3Vm13WVNEOGx0b05PUlczSzIzM3V5aG1XYm45QSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053178),('QvG6ERhDgg22dkLjQqz2a5fqEvE17jj1Cqkwiv3l',NULL,'54.36.149.243','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiTWVsajlJMlBZTGliblFuWDBhNW9jQ2dHaml2OVpMaXd3YXRzVE9aZyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzY6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3RvZGF5cy9vZmZlciI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053152),('RHwme7GzCpQv8MbEc1s2RIKQ5HAwBPAgAKzhePBg',NULL,'54.36.149.247','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiRklldzNhdVRvMmg2V3FET3QxV3NrR1dMMkdscDdxY3dMZDN6d3d5cCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDM6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL2NhdGVnb3J5L3Byb2R1Y3QvMTUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053291),('RJr3UV09dMNZKf1mHfwxJ9TdUYGvaV9yeJ9hdVRC',NULL,'54.36.149.242','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiSjhBcHdXekFiemFLaGdXMWkzb05WOTZBNVM0eUkwZjd0OFowc2haaSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy82NSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053128),('rPEhgbSPJRL8eLiC91j7TNlGTd67fe7GFCEgcvdM',NULL,'54.36.149.240','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoidEx0REhyMHoxU25seUt6NFJxMjZLUjhWSnFUMmVCQjNqOEFYbkpiWCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy80NCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053136),('RYgerLchbkRLvXDFfRF5Bco1q9GHPJhhGPYOZB3R',NULL,'54.36.149.240','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiN3hwMHVWWlo2RHU4SWRxb0pFTmVDVktHUXUxaUdjMXNOeFQwenpWOCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy83OCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053067),('ryjNHT9rv1KshTfl6MzCCoQJh8DocKnhoRZRJamM',NULL,'52.167.144.168','Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm) Chrome/103.0.5060.134 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiYm9pOTV6dWFza1N3bW9yWjNuRU0xVFo5Z1pMUkxkbjJ0aHExdUYySSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L2RldGFpbHMvNDUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689054369),('s2448T3HIe4jrwfKIHzCze2MR8859T1HyHuHP5aO',NULL,'114.119.134.116','Mozilla/5.0 (Linux; Android 7.0;) AppleWebKit/537.36 (KHTML, like Gecko) Mobile Safari/537.36 (compatible; PetalBot;+https://webmaster.petalsearch.com/site/petalbot)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiM2xmVXpLb3F4Uk9SZWtkSFFyVUo5ZnVRUlJhTGxmdEZmeVVoVFllUyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDE6Imh0dHBzOi8vMTQzLjE5OC4yMjEuNDQvcHJvZHVjdC9kZXRhaWxzLzQ3Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689051543),('s5ilM0NBaKipQKvRgcG1dPuboWax5iqRa4cAsXAO',NULL,'54.36.149.244','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiQnkyam41cm5rODJURXZpazFhVlNqOEl1azhsM0ZZeTE4TWlEWVFybSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L2RldGFpbHMvODYiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053905),('s6ctwGswxeviDeaDAmb7Cyr55ziX7DRmgYcCgq9l',NULL,'54.36.149.243','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiNm1kMTRmUTZCTUN2dXN3WVEybEtpN3hTQlRjcmIyQUNJc0VuNXhYdyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy81OCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053217),('saWCgrv7u4qAhNdgDwCx6ucM1y8jCQEbZX09Hjs5',NULL,'54.36.149.242','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoic24yZndUbHZ3TExwUjZ3N0ZYaFJkNnR0NHZsQldSS0hhbmw2Qkh6ciI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTk6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L3RhZy9Td2l0Y2gsTG9ja3MsU2Vuc29yIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689053395),('scCNBoO9JzEMswRqRZQjAXTdTr0yVr0i9FH04wN7',NULL,'54.36.149.244','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoibTlTZk9NY1AwbUZyRlRYVW9oQ1owaXR2cDZuRXhoQTdxY05PREQ1cCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L2RldGFpbHMvNDMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053654),('SDuYsZYN2rKifls6alncq9KjqGnW04VOvcNqMKbl',NULL,'185.191.171.35','Mozilla/5.0 (compatible; SemrushBot/7~bl; +http://www.semrush.com/bot.html)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiVmRSUnJoWWVLaTZnRE1MU1VaVk5jQmk4WVk5SmZjb3ZyVHpKV2swdSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjg6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3NhbGUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689048343),('SEW6lDxPikjJskbG5NB54kuYuDO1Bu7jlELUS227',NULL,'54.36.149.249','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiaGR3YkE1OW5MOE16Y2RjVHVCZ0oxS2pxOEhZWEpURDhFc2RtSmxLbyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy84NyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689054354),('SnfE5dhgmIEu4GmJqmQJgS27kEKXKlLVki0oS1UH',NULL,'66.249.79.35','Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiVzE5dkV4dWpiNDY1RUNEZW12aThNcXMxc2J1aGtZVEhrZjQ3WEp3SCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3N1YmNhdGVnb3J5L3Byb2R1Y3QvMzUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689051650),('SPuV5IVtGOeC3eQgsBqS6rrsR5q76JdpkDUeF6Li',NULL,'54.36.149.245','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiRTg3ZjhVdzRXNG4zdHJMOXdPU1Z4M3FUWWRCZW1PalVUaUd2am5LNyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L2RldGFpbHMvNzciO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689054288),('SYufPoU6SdJB1Q3Ulzc7T7O8fXK7MBeduq0iH0Ro',NULL,'103.230.63.86','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36','YToyOntzOjY6Il90b2tlbiI7czo0MDoiWTlmZGNoaDVWOXBJTFFGQzhudUEzOG5Zc0dHNGtZNTJrWUJXeG5abSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689048813),('t17DT9OjvaOcWa4Jl8C6PvVQauAsUTrvdGPQe8mz',NULL,'54.36.149.248','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTo0OntzOjY6Il90b2tlbiI7czo0MDoiTlAzOFdMR3ZtTFNqUkxMSVhNRkJIYktDVWpMdmV4OEx2UHViRGdaNCI7czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czozMzoiaHR0cHM6Ly9zdGF0YWdsb2JhbC5jb20vZGFzaGJvYXJkIjt9czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL2Rhc2hib2FyZCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053443),('T5c4UCChsGgMDcdjEpApT2IQ7kRQFgKQEmh4Tde6',NULL,'54.36.149.242','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiWjl2TTNkTHFPNkI2Q0xGd2dtSWFnNHVyRTVmYUh5QkRKMlgyNkdWTCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L3RhZy9Tb2NrZXQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053586),('tlORJHgJhNSHLA0hXAGr7IQGY6t6JTEUv9ktycKG',NULL,'54.36.149.242','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoieVRrTmVMNVZMTGgydGVpVnZXeHlYc21Vb2VRWWFzMXlrSDFnTGU5eCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy84NSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053132),('txeb0oBslQdyIb9Zylai2Ai1xJfspDmF0sicUUzO',NULL,'103.230.63.86','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36','YToyOntzOjY6Il90b2tlbiI7czo0MDoiVkZxODluWUd3Tkxrb2tNZ29RZjk5blV3aHNITjJacnZHR3ZPaHpyRSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689048813),('UJGbEkhc08KzqTJ8Z8vvIELpcB2IdUNN53eaCk5W',NULL,'54.36.149.244','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoibTkzQ1o4and6WWEwRFZIZWp4ZHRST1VrTXJRUDltUjR5aHBJN2tidCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L2RldGFpbHMvNTEiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053942),('UN3ZBPX5JyLBxA66Dy8EGH8b45eRY9td3Mm6HOvX',NULL,'128.14.209.162','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiZmFaaFk0VFNUbENIWUNBRXJGNllTNG1xQmo4THF5SHpYa1VIalRmTCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjI6Imh0dHBzOi8vMTQzLjE5OC4yMjEuNDQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689049840),('uwIcH6rEcOqSN9EP17R0hEJ2PaaZhHHpO7w7w8oP',NULL,'54.36.149.245','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiNTFpcTJndHUwNDAzWFlGcmhpUzhDclFoNnR3VnNQeXNYNHJTN3p0WiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy80NSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053015),('uwSR0IZ3xlEIuVS2smouUvIJdY9gEXSRux8y0NBw',NULL,'54.36.149.240','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiYTVNbVlmMUJmQjBkMlNuYmo3aGtoaEI3NVN1WkdXdUFzcUVUUkh4cCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjk6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL2NvbWJvIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689053071),('VJyqSHNHH5ljMsbd4jXsJH3XitnOXyE9XA9yyuIr',NULL,'185.191.171.33','Mozilla/5.0 (compatible; SemrushBot/7~bl; +http://www.semrush.com/bot.html)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiaTBMdmlqVWxBcDBqUFg3V0J1OGNycE9STTc4QkQ0TFZnaFlUdDN4cyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy82MCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053883),('voZ4MtuArkXf5S18JgaYcWUbZ1Q2bKaSA3DJeSvZ',NULL,'54.36.149.245','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiUEtpVE52dTFxRExYOGV6NkliM3M2WjRuSnhyam15RHJsV2U4RTBuMyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy81MyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053228),('Vw19dRjPclPtUEFjMgbLCEKM6UqoBTqhebAmZSlE',NULL,'54.36.149.246','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTo1OntzOjY6Il90b2tlbiI7czo0MDoia3pEcEpod05QaWk0VFAxa0RtMXhKWWJtMG83TXRQQ0NyeFNmWm0xYSI7czo3OiJtZXNzYWdlIjtzOjIzOiJZb3UgTmVlZCB0byBMb2dpbiBGaXJzdCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJuZXciO2E6MDp7fXM6Mzoib2xkIjthOjI6e2k6MDtzOjc6Im1lc3NhZ2UiO2k6MTtzOjEwOiJhbGVydC10eXBlIjt9fXM6MTA6ImFsZXJ0LXR5cGUiO3M6NToiZXJyb3IiO3M6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM2OiJodHRwczovL3d3dy5zdGF0YWdsb2JhbC5jb20vY2hlY2tvdXQiO319',1689054652),('Vwl2UG0zhVtAVquWXROEWLVj7yOAeGZur9LxsS8I',NULL,'54.36.149.241','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiNnM4alRYYzVHNmhVTGM5bnVYakV2VWxGNUx2bk13U0R0c2FQQmRpUyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDM6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL2NhdGVnb3J5L3Byb2R1Y3QvMTgiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053166),('VxfkG9SfIJbDlp7B2HbtxMkEqL5uD05A3NlZfq7l',NULL,'54.36.149.240','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiZElFcnNOMG9iVHY1QkVuS253cEN4TjdzczJDNmU5c1FLQ241cUNlTiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy84OCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053805),('W7YeQqaoJQltICo1MARyOXDAmkyzrfQj6KoixTnw',NULL,'54.36.149.240','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiT282N1djWHEwcVpjQWQ3a2dsSDRXMUh5SmJqR0NuQ0F4RVExYW9MMCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy84NiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053039),('WVAGFlDCffd82UjdxdwbYSjfzcQU1dIv6f1uccU7',NULL,'54.36.149.243','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiVmZ0YU10cHR0TG8yZm5kWm82M3pLeG1pdVRHbHp2ZnRGUE9YQWxsUiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDE6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL2N1c3RvbWl6ZS9wcm9kdWN0Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689053449),('X125y6P7o7Sbt02hfY6dj2WYoZqpg66dCu1moLm2',NULL,'54.36.149.243','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiWWpUWFlyZ0VxM3VVSUhpMmtXYkZ3amwyUTBodEhicWhua05rRkowZSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDM6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL2NhdGVnb3J5L3Byb2R1Y3QvMTciO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053011),('x7tkI4SarpGqmI3yy4bie3QmKxiItlxexSBb8qr8',NULL,'54.36.149.248','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiS1d5Ymo0RHFOUGhlNDExNWQ3WlB5dlo2UFRHdnJKSDBtUXlWcExuaSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy81NyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053111),('Xj7an5AnetCye6K8P9cudX5r4CF7S6vefK2sJbL9',NULL,'54.36.149.242','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoid3pkR2xJOHluNU9TN0xHUTB1enZJUW1SVXQ5bU1Td2toaVEwYzU1diI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L2RldGFpbHMvOTAiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053865),('xLIR2HlmbDqIMDGAXHhMMv5s7FLqY7kr8TEs3vsH',NULL,'54.36.149.245','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiYVRYRFNScnVRSUY4MUR6ODJFcGxPY0lEcGZjUWhacTFiYnN6SmR6NCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L2RldGFpbHMvODQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053694),('XSY0Dl6zhFGaKdC5MrOwRU80fvhdto68GmfO5ZkR',NULL,'3.87.186.22','Mozilla/5.0 (compatible; redditbot/1.0; +http://www.reddit.com/feedback)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiOUVoeFhPS2hJTXNxRmszSjJUazVpTW9HUzNqdTdRV3pTSWF1bVg2cCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjM6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1689053678),('XX545akgybHGM5ACCEAXESEluiKK7KZpcjYfMlHr',NULL,'54.36.149.240','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiWFJXQ0pyem9wMFI4QzdSQXZtSGJYdGN1VU0xUkQ3OVJLYjFwU2VKdiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3N1YmNhdGVnb3J5L3Byb2R1Y3QvMzAiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053240),('xYfQ1T6pSKBSE74jIixzQ6FD0cZurTznVT3qtvgn',NULL,'54.36.149.249','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiVkNNYWhlSXdCNVl4M2tzRUgwTU8ydVhWTjZIWHZGSnZNR1BvbHhpTCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NzM6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvdGFnL1N3aXRjaCxMb2NrcyxTZW5zb3IscHJlc2Vuc2UlMjBzZW5zb3IiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053162),('y7wtwSyt18H4SKEewiPOZtJWo8px4ueBV3c4PHIx',NULL,'54.36.149.245','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiVEdqWlRGSTVzVGJ4R1ZWeDdPUXJoQnY2Nm52cGZQU2N3MFAwcFA2NCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy82MyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053095),('YDckRL69bVfd7xgoMpWJ2dXZnfqsRIPZ3HWEIKnw',NULL,'54.36.149.242','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoic1lJeDdYQ2xMQmJ4SVRybHlXd3FLYUFRUFlPOFlEN1lISzMyUVRSMCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L2RldGFpbHMvNjUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053464),('YdJ1A1NtBH0yjOVAaJeYbzQwwa3ZbYlmdNZu4jyh',NULL,'167.248.133.51','','YTozOntzOjY6Il90b2tlbiI7czo0MDoib3JjYVU5TlQ4dE1EUmVGTjlVU1JTVEcxeWdHRU54dTg4ZDVvR0RDdyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjI6Imh0dHBzOi8vMTQzLjE5OC4yMjEuNDQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689054710),('yH6BHscGgAgbaOSddk33uS6BKrgDQ3IhnfWmbj4y',NULL,'54.36.149.247','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiUWdpTjJER0R6Vkh6Z1VzS1JWbmpuYUlvRko3OXN3VXBnMHRYaW9KSCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L2RldGFpbHMvODUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053601),('YnG8T4eVjpSNRZAW1FdbU6oiTwzZTHZIW4E82JfU',NULL,'54.36.149.247','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiSDdEc3d3MUxPMHpYSXNuYzR1MDhiMHByN3Rmd1oxZ21mTkppakhjayI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy82OSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053236),('yvsDWrsFmZHuITPUxiJmrgKrANLLCK4fUyOxh2nh',NULL,'66.249.79.34','Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.5735.179 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)','YTozOntzOjY6Il90b2tlbiI7czo0MDoibm13a0I2WjBlaE5uUnd4NjFla0NHV0NrbDkzV0VoUG9sVjlKOE5nOCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvZGV0YWlscy84NCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689054651),('yxkJQlMuMK7OwOqyW6yZjdXUyQiRztqQvA4v7nRL',NULL,'54.36.149.248','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiV1ppaHdSQkk3ZlBjQk9NdTltb1FGTDhINmxtZEhKbFZ6UHZSd05PaCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHBzOi8vc3RhdGFnbG9iYWwuY29tL3Byb2R1Y3QvdGFnL1NvY2tldCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1689053201),('ZeJ2H8Cwo2alP5WYXdyqMrQKd99HGAUQPH5ONLyY',NULL,'54.36.149.243','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiWHJSbHVQSVo4Q3k1QnNkejN5MjB6cmg2M1NZMEF4Vm9aRml6emVzSiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9wcm9kdWN0L2RldGFpbHMvNTciO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689054132),('ZOIcHw7HPNu6zt92VR4N75pAQXqatZJASRfQem0o',NULL,'54.36.149.244','Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)','YTozOntzOjY6Il90b2tlbiI7czo0MDoickFPYzVoOWxlMWRyZllZWTVyMTlPN1ZrcjFnUlhnYnpSM3JTWnpwRCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzE6Imh0dHBzOi8vd3d3LnN0YXRhZ2xvYmFsLmNvbS9mYXEiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1689053643);
-/*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
+('5vFUKLTzgqpWmTEszq7oiYKpvuQm0SO4RcTFbpQg', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiYnZoM1NZbmdKRGJ5NmVKYjIzdHFGOWRoa0pyNVl6Y3RQU1U2UUN5TiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jYXRlZ29yeS9wcm9kdWN0LzE4Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTk6InBhc3N3b3JkX2hhc2hfYWRtaW4iO3M6NjA6IiQyeSQxMCRaQ29xQ1NOQ2lSYnFSTTNPbVJwYTRPNnNNWms4YmFvS1gybE9ncWwzZno2RHhLcEQxWVUxNiI7fQ==', 1690701812);
 
---
--- Table structure for table `ship_districts`
---
-
-DROP TABLE IF EXISTS `ship_districts`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `ship_districts` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `division_id` bigint unsigned NOT NULL,
-  `district_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `ship_districts`
---
-
-LOCK TABLES `ship_districts` WRITE;
-/*!40000 ALTER TABLE `ship_districts` DISABLE KEYS */;
-INSERT INTO `ship_districts` VALUES (6,4,'Dhaka','2022-09-13 06:15:44',NULL),(7,4,'Gazipur','2022-09-13 06:15:50',NULL),(8,4,'Tangail','2022-09-13 06:16:01',NULL),(9,4,'Kishoreganj','2022-09-13 06:16:41',NULL),(10,4,'Manikganj','2022-09-13 06:16:48',NULL),(11,4,'Munshiganj','2022-09-13 06:16:55',NULL),(12,4,'Narayanganj','2022-09-13 06:17:05',NULL),(13,4,'Narsingdi','2022-09-13 06:17:11',NULL),(14,4,'Faridpur','2022-09-13 06:17:21',NULL),(15,4,'Gopalganj','2022-09-13 06:17:31',NULL),(16,4,'Madaripur','2022-09-13 06:17:39',NULL),(17,4,'Rajbari','2022-09-13 06:17:46',NULL),(18,4,'Shariatpur','2022-09-13 06:17:56',NULL),(19,7,'Barguna','2022-09-13 06:18:26',NULL),(20,7,'Barisal','2022-09-13 06:18:32',NULL),(21,7,'Bhola','2022-09-13 06:18:38',NULL),(22,7,'Jhalokati','2022-09-13 06:18:44',NULL),(23,7,'Patuakhali','2022-09-13 06:18:50',NULL),(24,7,'Pirojpur','2022-09-13 06:18:56',NULL),(25,5,'Sylhet','2022-09-13 06:19:24',NULL),(26,5,'Sunamganj','2022-09-13 06:19:31',NULL),(27,5,'Moulvibazar','2022-09-13 06:19:38',NULL),(28,5,'Habiganj','2022-09-13 06:20:39',NULL),(29,10,'Thakurgaon','2022-09-13 06:20:48',NULL),(30,10,'Rangpur','2022-09-13 06:20:54',NULL),(31,10,'Panchagarh','2022-09-13 06:21:03',NULL),(32,10,'Nilphamari','2022-09-13 06:21:17',NULL),(33,10,'Lalmonirhat','2022-09-13 06:21:26',NULL),(34,10,'Kurigram','2022-09-13 06:21:51',NULL),(35,10,'Gaibandha','2022-09-13 06:21:57',NULL),(36,10,'Dinajpur','2022-09-13 06:22:03',NULL),(37,8,'Sirajganj','2022-09-13 06:22:19',NULL),(38,8,'Rajshahi','2022-09-13 06:22:26',NULL),(39,8,'Pabna','2022-09-13 06:22:36',NULL),(40,8,'Chapai Nawabganj','2022-09-13 06:22:45',NULL),(41,8,'Natore','2022-09-13 06:22:52',NULL),(42,8,'Naogaon','2022-09-13 06:22:57',NULL),(43,8,'Joypurhat','2022-09-13 06:23:05',NULL),(44,8,'Bogra','2022-09-13 06:23:11',NULL),(45,11,'Sherpur','2022-09-13 06:23:34',NULL),(46,11,'Netrokona','2022-09-13 06:23:39',NULL),(47,11,'Mymensingh','2022-09-13 06:23:45',NULL),(48,11,'Jamalpur','2022-09-13 06:23:50',NULL),(49,9,'Satkhira','2022-09-13 06:25:10',NULL),(50,9,'Narail','2022-09-13 06:25:15',NULL),(51,9,'Meherpur','2022-09-13 06:25:28',NULL),(52,9,'Magura','2022-09-13 06:25:34',NULL),(53,9,'Kushtia','2022-09-13 06:25:42',NULL),(54,9,'Khulna','2022-09-13 06:25:49',NULL),(55,9,'Jhenaidah','2022-09-13 06:25:57',NULL),(56,9,'Jessore','2022-09-13 06:26:02',NULL),(57,9,'Chuadanga','2022-09-13 06:26:10',NULL),(58,9,'Bagerhat','2022-09-13 06:26:19',NULL),(59,6,'Rangamati','2022-09-13 06:27:08',NULL),(60,6,'Noakhali','2022-09-13 06:27:18',NULL),(61,6,'Lakshmipur','2022-09-13 06:27:25',NULL),(62,6,'Khagrachhari','2022-09-13 06:27:31',NULL),(63,6,'Feni','2022-09-13 06:27:36',NULL),(64,6,'Cox\'s Bazar','2022-09-13 06:27:42',NULL),(65,6,'Comilla','2022-09-13 06:27:49',NULL),(66,6,'Chittagong','2022-09-13 06:27:54',NULL),(67,6,'Chandpur','2022-09-13 06:28:11',NULL),(68,6,'Brahmanbaria','2022-09-13 06:28:19',NULL),(69,6,'Bandarban','2022-09-13 06:28:24',NULL),(70,4,'--','2022-09-22 06:06:19',NULL),(71,7,'--','2022-09-22 06:07:03',NULL),(72,6,'--','2022-09-22 06:07:08',NULL),(73,9,'--','2022-09-22 06:07:12',NULL),(74,11,'--','2022-09-22 06:07:17',NULL),(75,8,'--','2022-09-22 06:07:21',NULL),(76,10,'--','2022-09-22 06:07:25',NULL),(77,5,'--','2022-09-22 06:07:30',NULL);
-/*!40000 ALTER TABLE `ship_districts` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `ship_divisions`
---
-
-DROP TABLE IF EXISTS `ship_divisions`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `ship_divisions` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `division_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `ship_divisions`
---
-
-LOCK TABLES `ship_divisions` WRITE;
-/*!40000 ALTER TABLE `ship_divisions` DISABLE KEYS */;
-INSERT INTO `ship_divisions` VALUES (4,'Dhaka','2022-09-13 05:13:37',NULL),(5,'Sylhet','2022-09-13 05:13:41',NULL),(6,'Chittagong','2022-09-13 05:13:45',NULL),(7,'Barisal','2022-09-13 05:13:49',NULL),(8,'Rajshahi','2022-09-13 05:13:53',NULL),(9,'Khulna','2022-09-13 05:13:56',NULL),(10,'Rangpur','2022-09-13 05:14:31',NULL),(11,'Mymensingh','2022-09-13 05:15:00',NULL);
-/*!40000 ALTER TABLE `ship_divisions` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `ship_states`
---
-
-DROP TABLE IF EXISTS `ship_states`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `ship_states` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `division_id` bigint unsigned NOT NULL,
-  `district_id` bigint unsigned NOT NULL,
-  `state_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=164 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `ship_states`
---
-
-LOCK TABLES `ship_states` WRITE;
-/*!40000 ALTER TABLE `ship_states` DISABLE KEYS */;
-INSERT INTO `ship_states` VALUES (26,4,7,'Gazipur','2022-09-18 07:20:31',NULL),(27,4,12,'Narayanganj','2022-09-18 07:20:49',NULL),(28,4,8,'Tangail','2022-09-18 07:21:02',NULL),(30,4,13,'Narsingdi','2022-09-18 07:21:48',NULL),(31,4,14,'Faridpur','2022-09-18 07:21:56',NULL),(32,4,11,'Munshiganj','2022-09-18 07:22:39',NULL),(33,6,64,'Cox\'s Bazar','2022-09-18 07:24:13',NULL),(34,6,63,'Feni','2022-09-18 07:24:20',NULL),(35,6,59,'Rangamati','2022-09-18 07:24:40',NULL),(36,6,69,'Bandarban','2022-09-18 07:24:54',NULL),(37,6,62,'Khagrachhari','2022-09-18 07:25:10',NULL),(38,7,23,'Patuakhali','2022-09-18 07:25:28',NULL),(39,7,21,'Bhola','2022-09-18 07:25:41',NULL),(40,6,66,'Karnafuli','2022-09-22 04:21:43',NULL),(41,6,66,'Kotwali','2022-09-22 04:21:53',NULL),(42,6,66,'Khulshi','2022-09-22 04:22:02',NULL),(43,6,66,'Chandgaon','2022-09-22 04:22:11',NULL),(44,6,66,'Double Mooring','2022-09-22 04:23:32',NULL),(45,6,66,'Panchlaish','2022-09-22 04:23:41',NULL),(46,6,66,'Pahartali','2022-09-22 04:23:50',NULL),(47,6,66,'Bandar','2022-09-22 04:24:04',NULL),(48,6,66,'Bakalia','2022-09-22 04:24:13',NULL),(49,6,66,'Bayejid Bustami','2022-09-22 04:24:24',NULL),(50,6,66,'Halishahar','2022-09-22 04:24:32',NULL),(51,6,66,'Anowara','2022-09-22 04:24:50',NULL),(52,6,66,'Chandanaish','2022-09-22 04:24:58',NULL),(53,6,66,'Patiya','2022-09-22 04:25:54',NULL),(54,6,66,'Fatikchhari','2022-09-22 04:26:03',NULL),(55,6,66,'Banshkhali','2022-09-22 04:26:43',NULL),(56,6,66,'Boalkhali','2022-09-22 04:26:50',NULL),(57,6,66,'Mirsharai','2022-09-22 04:27:20',NULL),(58,6,66,'Raozan','2022-09-22 04:29:20',NULL),(59,6,66,'Rangunia','2022-09-22 04:29:34',NULL),(60,6,66,'Lohagara','2022-09-22 04:29:44',NULL),(61,6,66,'Sandwip','2022-09-22 04:29:52',NULL),(62,6,66,'Satkania','2022-09-22 04:29:59',NULL),(63,6,66,'Sitakunda','2022-09-22 04:30:30',NULL),(64,6,66,'Hathazari','2022-09-22 04:30:48',NULL),(65,4,6,'Adabor','2022-09-22 04:38:06',NULL),(66,4,6,'Uttar Khan','2022-09-22 04:38:17',NULL),(67,4,6,'Uttara','2022-09-22 04:38:24',NULL),(68,4,6,'Kadamtali','2022-09-22 04:38:31',NULL),(69,4,6,'Kalabagan','2022-09-22 04:38:58',NULL),(70,4,6,'Kafrul','2022-09-22 04:39:07',NULL),(71,4,6,'Kamrangirchar','2022-09-22 04:39:22',NULL),(72,4,6,'Cantonment','2022-09-22 04:40:02',NULL),(73,4,6,'Kotwali','2022-09-22 04:40:11',NULL),(74,4,6,'Khilkhet','2022-09-22 04:40:18',NULL),(75,4,6,'Khilgaon','2022-09-22 04:40:25',NULL),(76,4,6,'Gulshan','2022-09-22 04:40:32',NULL),(77,4,6,'Gendaria','2022-09-22 04:40:39',NULL),(78,4,6,'Chawkbazar Model','2022-09-22 04:40:47',NULL),(79,4,6,'Demra','2022-09-22 04:40:55',NULL),(80,4,6,'Turag','2022-09-22 04:41:01',NULL),(81,4,6,'Tejgaon','2022-09-22 04:41:08',NULL),(82,4,6,'Dakshinkhan','2022-09-22 04:41:15',NULL),(83,4,6,'Darus Salam','2022-09-22 04:41:38','2022-09-22 04:41:38'),(84,4,6,'Dhanmondi','2022-09-22 04:41:47',NULL),(85,4,6,'New Market','2022-09-22 04:41:54',NULL),(86,4,6,'Paltan','2022-09-22 04:42:01',NULL),(87,4,6,'Pallabi','2022-09-22 04:42:17',NULL),(88,4,6,'Bangshal','2022-09-22 04:44:22',NULL),(89,4,6,'Badda','2022-09-22 04:44:30',NULL),(90,4,6,'Bimanbandar','2022-09-22 04:44:37',NULL),(91,4,6,'Motijheel','2022-09-22 04:44:43',NULL),(92,4,6,'Mirpur Model','2022-09-22 04:44:54',NULL),(93,4,6,'Mohammadpur','2022-09-22 04:45:02',NULL),(94,4,6,'Jatrabari','2022-09-22 04:45:10',NULL),(95,4,6,'Ramna','2022-09-22 04:45:17',NULL),(96,4,6,'Rampura','2022-09-22 04:45:23',NULL),(97,4,6,'Lalbagh','2022-09-22 04:45:31',NULL),(98,4,6,'Shah Ali','2022-09-22 04:45:39',NULL),(99,4,6,'Shahbagh','2022-09-22 04:45:45',NULL),(100,4,6,'Sher-e-Bangla Nagar','2022-09-22 04:45:51',NULL),(101,4,6,'Shyampur','2022-09-22 04:46:15',NULL),(102,4,6,'Sabujbagh','2022-09-22 04:46:22',NULL),(103,4,6,'Sutrapur','2022-09-22 04:46:46',NULL),(104,4,6,'Hazaribagh','2022-09-22 04:46:52',NULL),(105,4,6,'Keraniganj','2022-09-22 04:46:59',NULL),(106,4,6,'Nawabganj','2022-09-22 04:47:05',NULL),(107,4,6,'Dohar','2022-09-22 04:47:13',NULL),(108,4,6,'Dhamrai','2022-09-22 04:47:19',NULL),(109,4,6,'Savar','2022-09-22 04:47:31',NULL),(110,4,9,'Kishoreganj','2022-09-22 04:51:22',NULL),(111,4,10,'Manikganj','2022-09-22 04:51:34',NULL),(112,4,15,'Gopalganj','2022-09-22 04:52:32',NULL),(113,4,6,'Wari','2022-09-22 04:52:59',NULL),(114,4,16,'Madaripur','2022-09-22 04:53:10',NULL),(116,4,17,'Rajbari','2022-09-22 04:55:10',NULL),(117,4,18,'Shariatpur','2022-09-22 04:55:22',NULL),(118,11,47,'Mymensingh','2022-09-22 05:07:37',NULL),(119,11,48,'Jamalpur','2022-09-22 05:07:51',NULL),(120,11,46,'Netrokona','2022-09-22 05:08:02',NULL),(121,11,45,'Sherpur','2022-09-22 05:08:12',NULL),(122,5,25,'Balaganj','2022-09-22 05:35:30',NULL),(123,5,25,'Beanibazar','2022-09-22 05:35:39',NULL),(124,5,25,'Bishwanath','2022-09-22 05:35:47',NULL),(125,5,25,'Companiganj','2022-09-22 05:35:54',NULL),(126,5,25,'Dakshin Surma','2022-09-22 05:36:01',NULL),(127,5,25,'Fenchuganj','2022-09-22 05:36:13',NULL),(128,5,25,'Golapganj','2022-09-22 05:37:00',NULL),(129,5,25,'Gowainghat','2022-09-22 05:37:07',NULL),(130,5,25,'Jaintiapur','2022-09-22 05:37:15',NULL),(131,5,25,'Kanaighat','2022-09-22 05:37:23',NULL),(132,5,25,'Osmani Nagar','2022-09-22 05:37:30',NULL),(133,5,25,'Sylhet Sadar','2022-09-22 05:37:36',NULL),(134,5,25,'Zakiganj','2022-09-22 05:37:43',NULL),(135,5,27,'Moulvibazar','2022-09-22 05:37:54',NULL),(136,5,28,'Habiganj','2022-09-22 05:38:22',NULL),(137,5,26,'Sunamganj','2022-09-22 05:38:32',NULL),(138,8,41,'Natore','2022-09-22 05:41:01',NULL),(139,8,37,'Sirajganj','2022-09-22 05:41:15',NULL),(140,8,39,'Pabna','2022-09-22 05:41:27',NULL),(141,8,44,'Bogura','2022-09-22 05:41:56',NULL),(142,8,40,'Chapainawabganj','2022-09-22 05:42:09',NULL),(143,8,42,'Naogaon','2022-09-22 05:42:19',NULL),(144,8,43,'Joypurhat','2022-09-22 05:42:32',NULL),(145,8,38,'Rajshahi','2022-09-22 05:43:19',NULL),(146,10,30,'Rangpur','2022-09-22 05:47:08',NULL),(147,10,32,'Nilphamari','2022-09-22 05:47:34',NULL),(148,10,33,'Lalmonirhat','2022-09-22 05:47:44',NULL),(149,10,36,'Dinajpur','2022-09-22 05:47:53',NULL),(150,10,31,'Panchagarh','2022-09-22 05:48:06',NULL),(151,10,29,'Thakurgaon','2022-09-22 05:48:44',NULL),(152,10,35,'Gaibandha','2022-09-22 05:48:55',NULL),(153,10,34,'Kurigram','2022-09-22 05:49:31',NULL),(154,6,68,'Brahmanbaria','2022-09-22 05:52:41',NULL),(155,6,65,'Comilla','2022-09-22 05:52:51',NULL),(156,6,67,'Chandpur','2022-09-22 05:53:01',NULL),(157,6,61,'Lakshmipur','2022-09-22 05:53:12',NULL),(158,6,60,'Noakhali','2022-09-22 05:53:31',NULL),(159,7,19,'Barguna','2022-09-22 05:54:53',NULL),(160,7,22,'Jhalokati','2022-09-22 05:55:05',NULL),(161,7,24,'Pirojpur','2022-09-22 05:55:33',NULL),(162,7,20,'Barisal','2022-09-22 05:55:43',NULL),(163,4,6,'Banasree','2022-12-20 05:41:31',NULL);
-/*!40000 ALTER TABLE `ship_states` ENABLE KEYS */;
-UNLOCK TABLES;
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `shippings`
 --
 
-DROP TABLE IF EXISTS `shippings`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `shippings` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `order_id` bigint unsigned NOT NULL,
-  `division_id` bigint unsigned NOT NULL,
-  `district_id` bigint unsigned NOT NULL,
-  `state_id` bigint unsigned NOT NULL,
-  `shipping_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `shipping_email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `shipping_phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `post_code` int NOT NULL,
-  `notes` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `order_id` bigint(20) UNSIGNED NOT NULL,
+  `division_id` bigint(20) UNSIGNED NOT NULL,
+  `district_id` bigint(20) UNSIGNED NOT NULL,
+  `state_id` bigint(20) UNSIGNED NOT NULL,
+  `shipping_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `shipping_email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `shipping_phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `post_code` int(11) NOT NULL,
+  `notes` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `shippings`
+-- Table structure for table `ship_districts`
 --
 
-LOCK TABLES `shippings` WRITE;
-/*!40000 ALTER TABLE `shippings` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shippings` ENABLE KEYS */;
-UNLOCK TABLES;
+CREATE TABLE `ship_districts` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `division_id` bigint(20) UNSIGNED NOT NULL,
+  `district_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `ship_districts`
+--
+
+INSERT INTO `ship_districts` (`id`, `division_id`, `district_name`, `created_at`, `updated_at`) VALUES
+(6, 4, 'Dhaka', '2022-09-13 06:15:44', NULL),
+(7, 4, 'Gazipur', '2022-09-13 06:15:50', NULL),
+(8, 4, 'Tangail', '2022-09-13 06:16:01', NULL),
+(9, 4, 'Kishoreganj', '2022-09-13 06:16:41', NULL),
+(10, 4, 'Manikganj', '2022-09-13 06:16:48', NULL),
+(11, 4, 'Munshiganj', '2022-09-13 06:16:55', NULL),
+(12, 4, 'Narayanganj', '2022-09-13 06:17:05', NULL),
+(13, 4, 'Narsingdi', '2022-09-13 06:17:11', NULL),
+(14, 4, 'Faridpur', '2022-09-13 06:17:21', NULL),
+(15, 4, 'Gopalganj', '2022-09-13 06:17:31', NULL),
+(16, 4, 'Madaripur', '2022-09-13 06:17:39', NULL),
+(17, 4, 'Rajbari', '2022-09-13 06:17:46', NULL),
+(18, 4, 'Shariatpur', '2022-09-13 06:17:56', NULL),
+(19, 7, 'Barguna', '2022-09-13 06:18:26', NULL),
+(20, 7, 'Barisal', '2022-09-13 06:18:32', NULL),
+(21, 7, 'Bhola', '2022-09-13 06:18:38', NULL),
+(22, 7, 'Jhalokati', '2022-09-13 06:18:44', NULL),
+(23, 7, 'Patuakhali', '2022-09-13 06:18:50', NULL),
+(24, 7, 'Pirojpur', '2022-09-13 06:18:56', NULL),
+(25, 5, 'Sylhet', '2022-09-13 06:19:24', NULL),
+(26, 5, 'Sunamganj', '2022-09-13 06:19:31', NULL),
+(27, 5, 'Moulvibazar', '2022-09-13 06:19:38', NULL),
+(28, 5, 'Habiganj', '2022-09-13 06:20:39', NULL),
+(29, 10, 'Thakurgaon', '2022-09-13 06:20:48', NULL),
+(30, 10, 'Rangpur', '2022-09-13 06:20:54', NULL),
+(31, 10, 'Panchagarh', '2022-09-13 06:21:03', NULL),
+(32, 10, 'Nilphamari', '2022-09-13 06:21:17', NULL),
+(33, 10, 'Lalmonirhat', '2022-09-13 06:21:26', NULL),
+(34, 10, 'Kurigram', '2022-09-13 06:21:51', NULL),
+(35, 10, 'Gaibandha', '2022-09-13 06:21:57', NULL),
+(36, 10, 'Dinajpur', '2022-09-13 06:22:03', NULL),
+(37, 8, 'Sirajganj', '2022-09-13 06:22:19', NULL),
+(38, 8, 'Rajshahi', '2022-09-13 06:22:26', NULL),
+(39, 8, 'Pabna', '2022-09-13 06:22:36', NULL),
+(40, 8, 'Chapai Nawabganj', '2022-09-13 06:22:45', NULL),
+(41, 8, 'Natore', '2022-09-13 06:22:52', NULL),
+(42, 8, 'Naogaon', '2022-09-13 06:22:57', NULL),
+(43, 8, 'Joypurhat', '2022-09-13 06:23:05', NULL),
+(44, 8, 'Bogra', '2022-09-13 06:23:11', NULL),
+(45, 11, 'Sherpur', '2022-09-13 06:23:34', NULL),
+(46, 11, 'Netrokona', '2022-09-13 06:23:39', NULL),
+(47, 11, 'Mymensingh', '2022-09-13 06:23:45', NULL),
+(48, 11, 'Jamalpur', '2022-09-13 06:23:50', NULL),
+(49, 9, 'Satkhira', '2022-09-13 06:25:10', NULL),
+(50, 9, 'Narail', '2022-09-13 06:25:15', NULL),
+(51, 9, 'Meherpur', '2022-09-13 06:25:28', NULL),
+(52, 9, 'Magura', '2022-09-13 06:25:34', NULL),
+(53, 9, 'Kushtia', '2022-09-13 06:25:42', NULL),
+(54, 9, 'Khulna', '2022-09-13 06:25:49', NULL),
+(55, 9, 'Jhenaidah', '2022-09-13 06:25:57', NULL),
+(56, 9, 'Jessore', '2022-09-13 06:26:02', NULL),
+(57, 9, 'Chuadanga', '2022-09-13 06:26:10', NULL),
+(58, 9, 'Bagerhat', '2022-09-13 06:26:19', NULL),
+(59, 6, 'Rangamati', '2022-09-13 06:27:08', NULL),
+(60, 6, 'Noakhali', '2022-09-13 06:27:18', NULL),
+(61, 6, 'Lakshmipur', '2022-09-13 06:27:25', NULL),
+(62, 6, 'Khagrachhari', '2022-09-13 06:27:31', NULL),
+(63, 6, 'Feni', '2022-09-13 06:27:36', NULL),
+(64, 6, 'Cox\'s Bazar', '2022-09-13 06:27:42', NULL),
+(65, 6, 'Comilla', '2022-09-13 06:27:49', NULL),
+(66, 6, 'Chittagong', '2022-09-13 06:27:54', NULL),
+(67, 6, 'Chandpur', '2022-09-13 06:28:11', NULL),
+(68, 6, 'Brahmanbaria', '2022-09-13 06:28:19', NULL),
+(69, 6, 'Bandarban', '2022-09-13 06:28:24', NULL),
+(70, 4, '--', '2022-09-22 06:06:19', NULL),
+(71, 7, '--', '2022-09-22 06:07:03', NULL),
+(72, 6, '--', '2022-09-22 06:07:08', NULL),
+(73, 9, '--', '2022-09-22 06:07:12', NULL),
+(74, 11, '--', '2022-09-22 06:07:17', NULL),
+(75, 8, '--', '2022-09-22 06:07:21', NULL),
+(76, 10, '--', '2022-09-22 06:07:25', NULL),
+(77, 5, '--', '2022-09-22 06:07:30', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ship_divisions`
+--
+
+CREATE TABLE `ship_divisions` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `division_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `ship_divisions`
+--
+
+INSERT INTO `ship_divisions` (`id`, `division_name`, `created_at`, `updated_at`) VALUES
+(4, 'Dhaka', '2022-09-13 05:13:37', NULL),
+(5, 'Sylhet', '2022-09-13 05:13:41', NULL),
+(6, 'Chittagong', '2022-09-13 05:13:45', NULL),
+(7, 'Barisal', '2022-09-13 05:13:49', NULL),
+(8, 'Rajshahi', '2022-09-13 05:13:53', NULL),
+(9, 'Khulna', '2022-09-13 05:13:56', NULL),
+(10, 'Rangpur', '2022-09-13 05:14:31', NULL),
+(11, 'Mymensingh', '2022-09-13 05:15:00', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ship_states`
+--
+
+CREATE TABLE `ship_states` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `division_id` bigint(20) UNSIGNED NOT NULL,
+  `district_id` bigint(20) UNSIGNED NOT NULL,
+  `state_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `ship_states`
+--
+
+INSERT INTO `ship_states` (`id`, `division_id`, `district_id`, `state_name`, `created_at`, `updated_at`) VALUES
+(26, 4, 7, 'Gazipur', '2022-09-18 07:20:31', NULL),
+(27, 4, 12, 'Narayanganj', '2022-09-18 07:20:49', NULL),
+(28, 4, 8, 'Tangail', '2022-09-18 07:21:02', NULL),
+(30, 4, 13, 'Narsingdi', '2022-09-18 07:21:48', NULL),
+(31, 4, 14, 'Faridpur', '2022-09-18 07:21:56', NULL),
+(32, 4, 11, 'Munshiganj', '2022-09-18 07:22:39', NULL),
+(33, 6, 64, 'Cox\'s Bazar', '2022-09-18 07:24:13', NULL),
+(34, 6, 63, 'Feni', '2022-09-18 07:24:20', NULL),
+(35, 6, 59, 'Rangamati', '2022-09-18 07:24:40', NULL),
+(36, 6, 69, 'Bandarban', '2022-09-18 07:24:54', NULL),
+(37, 6, 62, 'Khagrachhari', '2022-09-18 07:25:10', NULL),
+(38, 7, 23, 'Patuakhali', '2022-09-18 07:25:28', NULL),
+(39, 7, 21, 'Bhola', '2022-09-18 07:25:41', NULL),
+(40, 6, 66, 'Karnafuli', '2022-09-22 04:21:43', NULL),
+(41, 6, 66, 'Kotwali', '2022-09-22 04:21:53', NULL),
+(42, 6, 66, 'Khulshi', '2022-09-22 04:22:02', NULL),
+(43, 6, 66, 'Chandgaon', '2022-09-22 04:22:11', NULL),
+(44, 6, 66, 'Double Mooring', '2022-09-22 04:23:32', NULL),
+(45, 6, 66, 'Panchlaish', '2022-09-22 04:23:41', NULL),
+(46, 6, 66, 'Pahartali', '2022-09-22 04:23:50', NULL),
+(47, 6, 66, 'Bandar', '2022-09-22 04:24:04', NULL),
+(48, 6, 66, 'Bakalia', '2022-09-22 04:24:13', NULL),
+(49, 6, 66, 'Bayejid Bustami', '2022-09-22 04:24:24', NULL),
+(50, 6, 66, 'Halishahar', '2022-09-22 04:24:32', NULL),
+(51, 6, 66, 'Anowara', '2022-09-22 04:24:50', NULL),
+(52, 6, 66, 'Chandanaish', '2022-09-22 04:24:58', NULL),
+(53, 6, 66, 'Patiya', '2022-09-22 04:25:54', NULL),
+(54, 6, 66, 'Fatikchhari', '2022-09-22 04:26:03', NULL),
+(55, 6, 66, 'Banshkhali', '2022-09-22 04:26:43', NULL),
+(56, 6, 66, 'Boalkhali', '2022-09-22 04:26:50', NULL),
+(57, 6, 66, 'Mirsharai', '2022-09-22 04:27:20', NULL),
+(58, 6, 66, 'Raozan', '2022-09-22 04:29:20', NULL),
+(59, 6, 66, 'Rangunia', '2022-09-22 04:29:34', NULL),
+(60, 6, 66, 'Lohagara', '2022-09-22 04:29:44', NULL),
+(61, 6, 66, 'Sandwip', '2022-09-22 04:29:52', NULL),
+(62, 6, 66, 'Satkania', '2022-09-22 04:29:59', NULL),
+(63, 6, 66, 'Sitakunda', '2022-09-22 04:30:30', NULL),
+(64, 6, 66, 'Hathazari', '2022-09-22 04:30:48', NULL),
+(65, 4, 6, 'Adabor', '2022-09-22 04:38:06', NULL),
+(66, 4, 6, 'Uttar Khan', '2022-09-22 04:38:17', NULL),
+(67, 4, 6, 'Uttara', '2022-09-22 04:38:24', NULL),
+(68, 4, 6, 'Kadamtali', '2022-09-22 04:38:31', NULL),
+(69, 4, 6, 'Kalabagan', '2022-09-22 04:38:58', NULL),
+(70, 4, 6, 'Kafrul', '2022-09-22 04:39:07', NULL),
+(71, 4, 6, 'Kamrangirchar', '2022-09-22 04:39:22', NULL),
+(72, 4, 6, 'Cantonment', '2022-09-22 04:40:02', NULL),
+(73, 4, 6, 'Kotwali', '2022-09-22 04:40:11', NULL),
+(74, 4, 6, 'Khilkhet', '2022-09-22 04:40:18', NULL),
+(75, 4, 6, 'Khilgaon', '2022-09-22 04:40:25', NULL),
+(76, 4, 6, 'Gulshan', '2022-09-22 04:40:32', NULL),
+(77, 4, 6, 'Gendaria', '2022-09-22 04:40:39', NULL),
+(78, 4, 6, 'Chawkbazar Model', '2022-09-22 04:40:47', NULL),
+(79, 4, 6, 'Demra', '2022-09-22 04:40:55', NULL),
+(80, 4, 6, 'Turag', '2022-09-22 04:41:01', NULL),
+(81, 4, 6, 'Tejgaon', '2022-09-22 04:41:08', NULL),
+(82, 4, 6, 'Dakshinkhan', '2022-09-22 04:41:15', NULL),
+(83, 4, 6, 'Darus Salam', '2022-09-22 04:41:38', '2022-09-22 04:41:38'),
+(84, 4, 6, 'Dhanmondi', '2022-09-22 04:41:47', NULL),
+(85, 4, 6, 'New Market', '2022-09-22 04:41:54', NULL),
+(86, 4, 6, 'Paltan', '2022-09-22 04:42:01', NULL),
+(87, 4, 6, 'Pallabi', '2022-09-22 04:42:17', NULL),
+(88, 4, 6, 'Bangshal', '2022-09-22 04:44:22', NULL),
+(89, 4, 6, 'Badda', '2022-09-22 04:44:30', NULL),
+(90, 4, 6, 'Bimanbandar', '2022-09-22 04:44:37', NULL),
+(91, 4, 6, 'Motijheel', '2022-09-22 04:44:43', NULL),
+(92, 4, 6, 'Mirpur Model', '2022-09-22 04:44:54', NULL),
+(93, 4, 6, 'Mohammadpur', '2022-09-22 04:45:02', NULL),
+(94, 4, 6, 'Jatrabari', '2022-09-22 04:45:10', NULL),
+(95, 4, 6, 'Ramna', '2022-09-22 04:45:17', NULL),
+(96, 4, 6, 'Rampura', '2022-09-22 04:45:23', NULL),
+(97, 4, 6, 'Lalbagh', '2022-09-22 04:45:31', NULL),
+(98, 4, 6, 'Shah Ali', '2022-09-22 04:45:39', NULL),
+(99, 4, 6, 'Shahbagh', '2022-09-22 04:45:45', NULL),
+(100, 4, 6, 'Sher-e-Bangla Nagar', '2022-09-22 04:45:51', NULL),
+(101, 4, 6, 'Shyampur', '2022-09-22 04:46:15', NULL),
+(102, 4, 6, 'Sabujbagh', '2022-09-22 04:46:22', NULL),
+(103, 4, 6, 'Sutrapur', '2022-09-22 04:46:46', NULL),
+(104, 4, 6, 'Hazaribagh', '2022-09-22 04:46:52', NULL),
+(105, 4, 6, 'Keraniganj', '2022-09-22 04:46:59', NULL),
+(106, 4, 6, 'Nawabganj', '2022-09-22 04:47:05', NULL),
+(107, 4, 6, 'Dohar', '2022-09-22 04:47:13', NULL),
+(108, 4, 6, 'Dhamrai', '2022-09-22 04:47:19', NULL),
+(109, 4, 6, 'Savar', '2022-09-22 04:47:31', NULL),
+(110, 4, 9, 'Kishoreganj', '2022-09-22 04:51:22', NULL),
+(111, 4, 10, 'Manikganj', '2022-09-22 04:51:34', NULL),
+(112, 4, 15, 'Gopalganj', '2022-09-22 04:52:32', NULL),
+(113, 4, 6, 'Wari', '2022-09-22 04:52:59', NULL),
+(114, 4, 16, 'Madaripur', '2022-09-22 04:53:10', NULL),
+(116, 4, 17, 'Rajbari', '2022-09-22 04:55:10', NULL),
+(117, 4, 18, 'Shariatpur', '2022-09-22 04:55:22', NULL),
+(118, 11, 47, 'Mymensingh', '2022-09-22 05:07:37', NULL),
+(119, 11, 48, 'Jamalpur', '2022-09-22 05:07:51', NULL),
+(120, 11, 46, 'Netrokona', '2022-09-22 05:08:02', NULL),
+(121, 11, 45, 'Sherpur', '2022-09-22 05:08:12', NULL),
+(122, 5, 25, 'Balaganj', '2022-09-22 05:35:30', NULL),
+(123, 5, 25, 'Beanibazar', '2022-09-22 05:35:39', NULL),
+(124, 5, 25, 'Bishwanath', '2022-09-22 05:35:47', NULL),
+(125, 5, 25, 'Companiganj', '2022-09-22 05:35:54', NULL),
+(126, 5, 25, 'Dakshin Surma', '2022-09-22 05:36:01', NULL),
+(127, 5, 25, 'Fenchuganj', '2022-09-22 05:36:13', NULL),
+(128, 5, 25, 'Golapganj', '2022-09-22 05:37:00', NULL),
+(129, 5, 25, 'Gowainghat', '2022-09-22 05:37:07', NULL),
+(130, 5, 25, 'Jaintiapur', '2022-09-22 05:37:15', NULL),
+(131, 5, 25, 'Kanaighat', '2022-09-22 05:37:23', NULL),
+(132, 5, 25, 'Osmani Nagar', '2022-09-22 05:37:30', NULL),
+(133, 5, 25, 'Sylhet Sadar', '2022-09-22 05:37:36', NULL),
+(134, 5, 25, 'Zakiganj', '2022-09-22 05:37:43', NULL),
+(135, 5, 27, 'Moulvibazar', '2022-09-22 05:37:54', NULL),
+(136, 5, 28, 'Habiganj', '2022-09-22 05:38:22', NULL),
+(137, 5, 26, 'Sunamganj', '2022-09-22 05:38:32', NULL),
+(138, 8, 41, 'Natore', '2022-09-22 05:41:01', NULL),
+(139, 8, 37, 'Sirajganj', '2022-09-22 05:41:15', NULL),
+(140, 8, 39, 'Pabna', '2022-09-22 05:41:27', NULL),
+(141, 8, 44, 'Bogura', '2022-09-22 05:41:56', NULL),
+(142, 8, 40, 'Chapainawabganj', '2022-09-22 05:42:09', NULL),
+(143, 8, 42, 'Naogaon', '2022-09-22 05:42:19', NULL),
+(144, 8, 43, 'Joypurhat', '2022-09-22 05:42:32', NULL),
+(145, 8, 38, 'Rajshahi', '2022-09-22 05:43:19', NULL),
+(146, 10, 30, 'Rangpur', '2022-09-22 05:47:08', NULL),
+(147, 10, 32, 'Nilphamari', '2022-09-22 05:47:34', NULL),
+(148, 10, 33, 'Lalmonirhat', '2022-09-22 05:47:44', NULL),
+(149, 10, 36, 'Dinajpur', '2022-09-22 05:47:53', NULL),
+(150, 10, 31, 'Panchagarh', '2022-09-22 05:48:06', NULL),
+(151, 10, 29, 'Thakurgaon', '2022-09-22 05:48:44', NULL),
+(152, 10, 35, 'Gaibandha', '2022-09-22 05:48:55', NULL),
+(153, 10, 34, 'Kurigram', '2022-09-22 05:49:31', NULL),
+(154, 6, 68, 'Brahmanbaria', '2022-09-22 05:52:41', NULL),
+(155, 6, 65, 'Comilla', '2022-09-22 05:52:51', NULL),
+(156, 6, 67, 'Chandpur', '2022-09-22 05:53:01', NULL),
+(157, 6, 61, 'Lakshmipur', '2022-09-22 05:53:12', NULL),
+(158, 6, 60, 'Noakhali', '2022-09-22 05:53:31', NULL),
+(159, 7, 19, 'Barguna', '2022-09-22 05:54:53', NULL),
+(160, 7, 22, 'Jhalokati', '2022-09-22 05:55:05', NULL),
+(161, 7, 24, 'Pirojpur', '2022-09-22 05:55:33', NULL),
+(162, 7, 20, 'Barisal', '2022-09-22 05:55:43', NULL),
+(163, 4, 6, 'Banasree', '2022-12-20 05:41:31', NULL);
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `site_settings`
 --
 
-DROP TABLE IF EXISTS `site_settings`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `site_settings` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `logo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `phone_one` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `phone_two` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `company_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `company_address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `facebook` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `twitter` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `linkedin` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `youtube` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `logo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone_one` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone_two` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company_address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `facebook` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `twitter` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `linkedin` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `youtube` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `site_settings`
 --
 
-LOCK TABLES `site_settings` WRITE;
-/*!40000 ALTER TABLE `site_settings` DISABLE KEYS */;
-INSERT INTO `site_settings` VALUES (1,'upload/logo/1745610575464051.png','+8801720514565','+8801312735557','statabangladesh@gmail.com','STATA','West Wind Point, Cha-89/4-5, Progati Sharani, North Badda, Bir Uttam Rafiqul Islam Avenue, Dhaka-1212','https://www.facebook.com/statabd/',NULL,NULL,'https://www.youtube.com/channel/UCcRIGAJHbYjvGsC_RNd6aiA',NULL,'2022-10-02 20:52:55');
-/*!40000 ALTER TABLE `site_settings` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `site_settings` (`id`, `logo`, `phone_one`, `phone_two`, `email`, `company_name`, `company_address`, `facebook`, `twitter`, `linkedin`, `youtube`, `created_at`, `updated_at`) VALUES
+(1, 'upload/logo/1745610575464051.png', '+8801720514565', '+8801312735557', 'statabangladesh@gmail.com', 'STATA', 'West Wind Point, Cha-89/4-5, Progati Sharani, North Badda, Bir Uttam Rafiqul Islam Avenue, Dhaka-1212', 'https://www.facebook.com/statabd/', NULL, NULL, 'https://www.youtube.com/channel/UCcRIGAJHbYjvGsC_RNd6aiA', NULL, '2022-10-02 20:52:55');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `sliders`
 --
 
-DROP TABLE IF EXISTS `sliders`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `sliders` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `slider_img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `subTitle` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `startingPrice` int DEFAULT NULL,
-  `slideStyle` int NOT NULL DEFAULT '1',
-  `status` int NOT NULL DEFAULT '1',
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `slider_img` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `subTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `startingPrice` int(11) DEFAULT NULL,
+  `slideStyle` int(11) NOT NULL DEFAULT 1,
+  `status` int(11) NOT NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `sliders`
 --
 
-LOCK TABLES `sliders` WRITE;
-/*!40000 ALTER TABLE `sliders` DISABLE KEYS */;
-INSERT INTO `sliders` VALUES (29,'upload/slider/1744568839075469.png','s1',NULL,NULL,1,1,NULL,'2022-11-16 05:47:58'),(30,'upload/slider/1744569135730987.png','s5',NULL,NULL,1,0,NULL,'2022-11-16 05:49:17'),(34,'upload/slider/1744915254819237.png','s3',NULL,NULL,1,1,NULL,'2022-11-16 05:48:24'),(35,'upload/slider/1744915263150196.png','s',NULL,NULL,1,1,NULL,'2022-11-16 05:47:53'),(38,'upload/slider/1745610668186817.png','f6',NULL,NULL,1,1,NULL,'2022-11-16 05:47:55');
-/*!40000 ALTER TABLE `sliders` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `sliders` (`id`, `slider_img`, `title`, `subTitle`, `startingPrice`, `slideStyle`, `status`, `created_at`, `updated_at`) VALUES
+(29, 'upload/slider/1744568839075469.png', 's1', NULL, NULL, 1, 1, NULL, '2022-11-16 05:47:58'),
+(30, 'upload/slider/1744569135730987.png', 's5', NULL, NULL, 1, 0, NULL, '2022-11-16 05:49:17'),
+(34, 'upload/slider/1744915254819237.png', 's3', NULL, NULL, 1, 1, NULL, '2022-11-16 05:48:24'),
+(35, 'upload/slider/1744915263150196.png', 's', NULL, NULL, 1, 1, NULL, '2022-11-16 05:47:53'),
+(38, 'upload/slider/1745610668186817.png', 'f6', NULL, NULL, 1, 1, NULL, '2022-11-16 05:47:55');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `sub_categories`
 --
 
-DROP TABLE IF EXISTS `sub_categories`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `sub_categories` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `category_id` int NOT NULL,
-  `subcategory_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `subcategory_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `sub_categories`
 --
 
-LOCK TABLES `sub_categories` WRITE;
-/*!40000 ALTER TABLE `sub_categories` DISABLE KEYS */;
-INSERT INTO `sub_categories` VALUES (30,14,'Smart Sensor','2022-09-10 07:18:39',NULL),(31,14,'Smart Camera','2022-09-12 09:13:56',NULL),(32,15,'Smart Socket','2022-09-12 09:15:23',NULL),(33,15,'Smart Switches','2022-09-15 06:33:00',NULL),(34,16,'Main Door Locks','2022-09-18 11:10:14',NULL),(35,16,'Bed Room Door Locks','2022-09-18 11:10:32',NULL),(36,17,'Cleaning Robot','2022-09-20 05:04:58',NULL),(37,18,'Smart Lighting','2022-09-21 10:32:02',NULL),(38,17,'Smart Device','2022-09-22 09:51:31',NULL),(39,17,'Smart Device & Gadgets','2023-01-13 02:23:52',NULL),(40,19,'Ramadan Package','2023-04-02 18:45:32',NULL),(42,21,'Hotel Switch & Socket','2023-05-28 16:54:26',NULL);
-/*!40000 ALTER TABLE `sub_categories` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `sub_categories` (`id`, `category_id`, `subcategory_name`, `created_at`, `updated_at`) VALUES
+(30, 14, 'Smart Sensor', '2022-09-10 07:18:39', NULL),
+(31, 14, 'Smart Camera', '2022-09-12 09:13:56', NULL),
+(32, 15, 'Smart Socket', '2022-09-12 09:15:23', NULL),
+(33, 15, 'Smart Switches', '2022-09-15 06:33:00', NULL),
+(34, 16, 'Main Door Locks', '2022-09-18 11:10:14', NULL),
+(35, 16, 'Bed Room Door Locks', '2022-09-18 11:10:32', NULL),
+(36, 17, 'Cleaning Robot', '2022-09-20 05:04:58', NULL),
+(37, 18, 'Smart Lighting', '2022-09-21 10:32:02', NULL),
+(38, 17, 'Smart Device', '2022-09-22 09:51:31', NULL),
+(39, 17, 'Smart Device & Gadgets', '2023-01-13 02:23:52', NULL),
+(40, 19, 'Ramadan Package', '2023-04-02 18:45:32', NULL),
+(42, 21, 'Hotel Switch & Socket', '2023-05-28 16:54:26', NULL);
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `users` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `last_seen` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `two_factor_secret` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `two_factor_recovery_codes` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_seen` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `two_factor_secret` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `two_factor_recovery_codes` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `two_factor_confirmed_at` timestamp NULL DEFAULT NULL,
-  `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `current_team_id` bigint unsigned DEFAULT NULL,
-  `profile_photo_path` varchar(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `current_team_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `profile_photo_path` varchar(2048) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (11,'Ifaz Alam','ifazalam69@gmail.com','+8801677341032',NULL,'$2y$10$gqZhMKaebKpH.PS9AaPQVeAE5AKA8P3gd1IIK3f4Hk3wRN7uN5WSG','2023-01-25 06:35:58',NULL,NULL,NULL,NULL,NULL,'202210220502STATA ECOM.png','2022-09-04 03:56:12','2023-01-25 12:35:58'),(13,'Kakon Chakraborty','debobrata.statabd@gmail.com','01731512180',NULL,'$2y$10$iYLpxYBQLagn80V2GQFZpuFHLdA/wys/s.nnW5pvm6UTYPuQOjd1G','2022-09-12 10:09:51',NULL,NULL,NULL,NULL,NULL,NULL,'2022-09-12 10:09:51','2022-09-12 10:09:51'),(14,'Yeasin Arafat Fahim','yeasin.stata@gmail.com','01322896400',NULL,'$2y$10$dQCyAE2oirsoRZGn/upCU.SLJ8QrQBlk9Kt2akrVkRLw0bG.ykohm','2022-09-18 06:05:10',NULL,NULL,NULL,NULL,NULL,NULL,'2022-09-18 05:55:02','2022-09-18 06:05:10'),(16,'Dewan Sakib Zawad','dewan.sakib98@yahoo.com','01711374372',NULL,'$2y$10$iBk4AZi.tYtT52RRBSca9O.c.bMSaaaGliNzSNmeBn/R778UbBs6K','2022-09-24 06:42:48',NULL,NULL,NULL,NULL,NULL,NULL,'2022-09-24 04:44:05','2022-09-24 06:42:48'),(17,'Akhtaruzzaman Sajib','sozibhasan121@gmail.com','01725343188',NULL,'$2y$10$YNu1mN/DtxLf7.XS4ikeqO/.Ag958Qs4VHKmo2Ckf55YDmvY6t6L.','2022-09-26 05:45:28',NULL,NULL,NULL,NULL,NULL,NULL,'2022-09-26 05:34:38','2022-09-26 05:45:28'),(20,'Samsul Islam','rupalihardwareandpaint@gmail.com','01710072737',NULL,'$2y$10$sppwEOhkod3nuHW3mGec.eQFNo5QGC/CNjxcaNkJwYe0PaPrWMfvq','2022-10-09 20:08:17',NULL,NULL,NULL,NULL,NULL,NULL,'2022-10-09 19:46:35','2022-10-09 20:08:17'),(22,'Shahajada Kabir','shahajada.kabir@gmail.com','01703424020',NULL,'$2y$10$L54rCJ1OwBw.rl5L/1djSu5wmBDRrOg6wDBzqoQtF1Tup2mMDF4gO','2022-11-19 14:41:05',NULL,NULL,NULL,NULL,NULL,NULL,'2022-11-19 13:01:16','2022-11-19 14:41:05'),(23,'ST Chowdhury','shahriar.statabd@gmail.com','01322896402',NULL,'$2y$10$3zODpKU0jEyHoC2rN/jaSORhHKx4Aao.dEQVMXUuqpaW6P1IuLaXa','2023-01-14 04:42:35',NULL,NULL,NULL,NULL,NULL,NULL,'2022-12-20 05:38:42','2023-01-14 10:42:35'),(24,'Syed Tasdiq','syedtasdiq97@gmail.com','01742205557',NULL,'$2y$10$7dzgO0g8GwLj4HD9e8EdgOjKzTYRG0LkRuFhqG7CurmEQZY6c5xy6','2023-01-12 20:35:35',NULL,NULL,NULL,NULL,NULL,NULL,'2023-01-05 06:38:27','2023-01-13 02:35:35'),(25,'Erfaan Chowdhury','erfaan.chowdhury007@gmail.com','01876105634',NULL,'$2y$10$pJ.dInq//.6H0qEbQYlyYeXLnvIvcXtI4oETaUkjMPZctmf/kcffG','2023-01-17 20:16:38',NULL,NULL,NULL,NULL,NULL,NULL,'2023-01-17 20:15:44','2023-01-17 20:16:38'),(26,'abda samio','abda.samio@gmail.com','01727653091',NULL,'$2y$10$5GSFbvcyYbneXS0KGfbw4.JJ2g/EQkaj4IRcHhNa4SiCaY2qW6wXe','2023-01-24 11:33:59',NULL,NULL,NULL,NULL,NULL,NULL,'2023-01-24 15:11:04','2023-01-24 17:33:59'),(27,'kaushik','kaushik.stata@gmail.com','01833093683',NULL,'$2y$10$FB5GbmQ/ejG1CL5HE1fevOHSSgOQ09eKoZC8PFCEaD08k6XCNis26','2023-03-25 05:09:27',NULL,NULL,NULL,NULL,NULL,NULL,'2023-01-25 12:11:40','2023-03-25 05:09:27'),(28,'Md. Anisur Rahman Rubel','rubelrana.rr346@gmail.com','01750892666',NULL,'$2y$10$Dt6gpsWDyJgJ.K86p2b9net0TCC9iUk1fN/pakPJkZX5fuUrldP6y','2023-01-30 07:00:57',NULL,NULL,NULL,NULL,NULL,NULL,'2023-01-30 12:38:00','2023-01-30 13:00:57'),(29,'Alrafid Rupak','alrafidrupak@gmail.com','01849620008',NULL,'$2y$10$MLXQfKGxhZhfbpCmvO3OP.UCJ3hy4BzTXQaXmCzaI7eGUri/8kuJ2','2023-02-02 07:48:25',NULL,NULL,NULL,NULL,NULL,NULL,'2023-02-02 13:29:46','2023-02-02 13:48:25'),(30,'Osman','osman.dhk@gmail.com','01706000000',NULL,'$2y$10$4oJ.S3zZK5K7vc6VAtD.We068g5BXGqpdoax0V8IkD9/43ZyMPHeO','2023-02-05 04:28:30',NULL,NULL,NULL,NULL,NULL,NULL,'2023-02-05 10:27:08','2023-02-05 10:28:30'),(31,'bdcs','bdcs1212@gmail.com','01748916421',NULL,'$2y$10$d4/M2kXjm/ffJLg6Nru/ZOCIbvBTo40Dn4pEH/.Z3zs.RB/U.T6sa','2023-02-14 05:27:39',NULL,NULL,NULL,NULL,NULL,NULL,'2023-02-14 05:27:37','2023-02-14 05:27:39'),(32,'Arabi','a.a.arabi66291@gmail.com','01710332020',NULL,'$2y$10$h.FNnajPvcukmy0J4v1H9.BrXD957ysdBfKCxhPI0gHDKP/ESNPjO','2023-03-18 21:11:15',NULL,NULL,NULL,NULL,NULL,NULL,'2023-03-16 09:35:09','2023-03-18 21:11:15'),(33,'kawshik','fahmidh26@gmail.com','01964870827',NULL,'$2y$10$nkDj4M7bc34R0Fguj32r1OVPkpcKPH.KdVKxf9Dnq7gXZJQKEERV2','2023-05-18 06:00:13',NULL,NULL,NULL,NULL,NULL,NULL,'2023-03-25 07:33:00','2023-05-18 06:00:13'),(34,'Saddam hossain','shsitu7878@gmail.com','01732755997',NULL,'$2y$10$./GWw4RWvb/reC71qGlzmerVmVr.R1xDSA8RwZs3QhwJ060FR8yxi','2023-04-11 20:00:54',NULL,NULL,NULL,NULL,NULL,NULL,'2023-04-11 19:44:46','2023-04-11 20:00:54'),(35,'SABBIR MUHAMMAD TANIM','smtanim77@gmail.com','01719447700',NULL,'$2y$10$2ZwSnuoIyeo4YBtOnXoos.nu.zYsGctaXZqdg1CFSQ9aEaw.tvP8.','2023-04-26 06:36:41',NULL,NULL,NULL,NULL,NULL,NULL,'2023-04-26 06:34:43','2023-04-26 06:36:41'),(36,'Mustafa Rabbi','mustafa_rabbi@live.com','+8801730438180',NULL,'$2y$10$p2KlB2FHfECwpduPLmVxfezeqZZMXN9sK5dpC7cC8IO63sLFjH7OW','2023-05-02 18:43:14',NULL,NULL,NULL,NULL,NULL,NULL,'2023-05-02 18:42:52','2023-05-02 18:43:14'),(37,'Ariful Haque','haq.ariful@gmail.com','+880 1619-815253',NULL,'$2y$10$Y2R1RUCa7ZXxcdETo2gNzuOSfa4q652SRZpybO.HvL/KiTYo3Ns9K','2023-06-30 09:38:19',NULL,NULL,NULL,NULL,NULL,NULL,'2023-06-30 09:36:28','2023-06-30 09:38:19'),(38,'Khawaja Azaan Rahman','azaanrahman2008@gmail.com','01707960787',NULL,'$2y$10$YnioGg6/M16DETcEjd1kje/p9r/cuGQ38DmCEu8wsPLLXv.QhDPKe','2023-07-07 08:39:25',NULL,NULL,NULL,NULL,NULL,NULL,'2023-07-06 14:29:34','2023-07-07 08:39:25');
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `users` (`id`, `name`, `email`, `phone`, `email_verified_at`, `password`, `last_seen`, `two_factor_secret`, `two_factor_recovery_codes`, `two_factor_confirmed_at`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
+(11, 'Ifaz Alam', 'ifazalam69@gmail.com', '+8801677341032', NULL, '$2y$10$gqZhMKaebKpH.PS9AaPQVeAE5AKA8P3gd1IIK3f4Hk3wRN7uN5WSG', '2023-01-25 06:35:58', NULL, NULL, NULL, NULL, NULL, '202210220502STATA ECOM.png', '2022-09-04 03:56:12', '2023-01-25 12:35:58'),
+(13, 'Kakon Chakraborty', 'debobrata.statabd@gmail.com', '01731512180', NULL, '$2y$10$iYLpxYBQLagn80V2GQFZpuFHLdA/wys/s.nnW5pvm6UTYPuQOjd1G', '2022-09-12 10:09:51', NULL, NULL, NULL, NULL, NULL, NULL, '2022-09-12 10:09:51', '2022-09-12 10:09:51'),
+(14, 'Yeasin Arafat Fahim', 'yeasin.stata@gmail.com', '01322896400', NULL, '$2y$10$dQCyAE2oirsoRZGn/upCU.SLJ8QrQBlk9Kt2akrVkRLw0bG.ykohm', '2022-09-18 06:05:10', NULL, NULL, NULL, NULL, NULL, NULL, '2022-09-18 05:55:02', '2022-09-18 06:05:10'),
+(16, 'Dewan Sakib Zawad', 'dewan.sakib98@yahoo.com', '01711374372', NULL, '$2y$10$iBk4AZi.tYtT52RRBSca9O.c.bMSaaaGliNzSNmeBn/R778UbBs6K', '2022-09-24 06:42:48', NULL, NULL, NULL, NULL, NULL, NULL, '2022-09-24 04:44:05', '2022-09-24 06:42:48'),
+(17, 'Akhtaruzzaman Sajib', 'sozibhasan121@gmail.com', '01725343188', NULL, '$2y$10$YNu1mN/DtxLf7.XS4ikeqO/.Ag958Qs4VHKmo2Ckf55YDmvY6t6L.', '2022-09-26 05:45:28', NULL, NULL, NULL, NULL, NULL, NULL, '2022-09-26 05:34:38', '2022-09-26 05:45:28'),
+(20, 'Samsul Islam', 'rupalihardwareandpaint@gmail.com', '01710072737', NULL, '$2y$10$sppwEOhkod3nuHW3mGec.eQFNo5QGC/CNjxcaNkJwYe0PaPrWMfvq', '2022-10-09 20:08:17', NULL, NULL, NULL, NULL, NULL, NULL, '2022-10-09 19:46:35', '2022-10-09 20:08:17'),
+(22, 'Shahajada Kabir', 'shahajada.kabir@gmail.com', '01703424020', NULL, '$2y$10$L54rCJ1OwBw.rl5L/1djSu5wmBDRrOg6wDBzqoQtF1Tup2mMDF4gO', '2022-11-19 14:41:05', NULL, NULL, NULL, NULL, NULL, NULL, '2022-11-19 13:01:16', '2022-11-19 14:41:05'),
+(23, 'ST Chowdhury', 'shahriar.statabd@gmail.com', '01322896402', NULL, '$2y$10$3zODpKU0jEyHoC2rN/jaSORhHKx4Aao.dEQVMXUuqpaW6P1IuLaXa', '2023-01-14 04:42:35', NULL, NULL, NULL, NULL, NULL, NULL, '2022-12-20 05:38:42', '2023-01-14 10:42:35'),
+(24, 'Syed Tasdiq', 'syedtasdiq97@gmail.com', '01742205557', NULL, '$2y$10$7dzgO0g8GwLj4HD9e8EdgOjKzTYRG0LkRuFhqG7CurmEQZY6c5xy6', '2023-01-12 20:35:35', NULL, NULL, NULL, NULL, NULL, NULL, '2023-01-05 06:38:27', '2023-01-13 02:35:35'),
+(25, 'Erfaan Chowdhury', 'erfaan.chowdhury007@gmail.com', '01876105634', NULL, '$2y$10$pJ.dInq//.6H0qEbQYlyYeXLnvIvcXtI4oETaUkjMPZctmf/kcffG', '2023-01-17 20:16:38', NULL, NULL, NULL, NULL, NULL, NULL, '2023-01-17 20:15:44', '2023-01-17 20:16:38'),
+(26, 'abda samio', 'abda.samio@gmail.com', '01727653091', NULL, '$2y$10$5GSFbvcyYbneXS0KGfbw4.JJ2g/EQkaj4IRcHhNa4SiCaY2qW6wXe', '2023-01-24 11:33:59', NULL, NULL, NULL, NULL, NULL, NULL, '2023-01-24 15:11:04', '2023-01-24 17:33:59'),
+(27, 'kaushik', 'kaushik.stata@gmail.com', '01833093683', NULL, '$2y$10$FB5GbmQ/ejG1CL5HE1fevOHSSgOQ09eKoZC8PFCEaD08k6XCNis26', '2023-03-25 05:09:27', NULL, NULL, NULL, NULL, NULL, NULL, '2023-01-25 12:11:40', '2023-03-25 05:09:27'),
+(28, 'Md. Anisur Rahman Rubel', 'rubelrana.rr346@gmail.com', '01750892666', NULL, '$2y$10$Dt6gpsWDyJgJ.K86p2b9net0TCC9iUk1fN/pakPJkZX5fuUrldP6y', '2023-01-30 07:00:57', NULL, NULL, NULL, NULL, NULL, NULL, '2023-01-30 12:38:00', '2023-01-30 13:00:57'),
+(29, 'Alrafid Rupak', 'alrafidrupak@gmail.com', '01849620008', NULL, '$2y$10$MLXQfKGxhZhfbpCmvO3OP.UCJ3hy4BzTXQaXmCzaI7eGUri/8kuJ2', '2023-02-02 07:48:25', NULL, NULL, NULL, NULL, NULL, NULL, '2023-02-02 13:29:46', '2023-02-02 13:48:25'),
+(30, 'Osman', 'osman.dhk@gmail.com', '01706000000', NULL, '$2y$10$4oJ.S3zZK5K7vc6VAtD.We068g5BXGqpdoax0V8IkD9/43ZyMPHeO', '2023-02-05 04:28:30', NULL, NULL, NULL, NULL, NULL, NULL, '2023-02-05 10:27:08', '2023-02-05 10:28:30'),
+(31, 'bdcs', 'bdcs1212@gmail.com', '01748916421', NULL, '$2y$10$d4/M2kXjm/ffJLg6Nru/ZOCIbvBTo40Dn4pEH/.Z3zs.RB/U.T6sa', '2023-02-14 05:27:39', NULL, NULL, NULL, NULL, NULL, NULL, '2023-02-14 05:27:37', '2023-02-14 05:27:39'),
+(32, 'Arabi', 'a.a.arabi66291@gmail.com', '01710332020', NULL, '$2y$10$h.FNnajPvcukmy0J4v1H9.BrXD957ysdBfKCxhPI0gHDKP/ESNPjO', '2023-03-18 21:11:15', NULL, NULL, NULL, NULL, NULL, NULL, '2023-03-16 09:35:09', '2023-03-18 21:11:15'),
+(33, 'kawshik', 'fahmidh26@gmail.com', '01964870827', NULL, '$2y$10$nkDj4M7bc34R0Fguj32r1OVPkpcKPH.KdVKxf9Dnq7gXZJQKEERV2', '2023-05-18 06:00:13', NULL, NULL, NULL, NULL, NULL, NULL, '2023-03-25 07:33:00', '2023-05-18 06:00:13'),
+(34, 'Saddam hossain', 'shsitu7878@gmail.com', '01732755997', NULL, '$2y$10$./GWw4RWvb/reC71qGlzmerVmVr.R1xDSA8RwZs3QhwJ060FR8yxi', '2023-04-11 20:00:54', NULL, NULL, NULL, NULL, NULL, NULL, '2023-04-11 19:44:46', '2023-04-11 20:00:54'),
+(35, 'SABBIR MUHAMMAD TANIM', 'smtanim77@gmail.com', '01719447700', NULL, '$2y$10$2ZwSnuoIyeo4YBtOnXoos.nu.zYsGctaXZqdg1CFSQ9aEaw.tvP8.', '2023-04-26 06:36:41', NULL, NULL, NULL, NULL, NULL, NULL, '2023-04-26 06:34:43', '2023-04-26 06:36:41'),
+(36, 'Mustafa Rabbi', 'mustafa_rabbi@live.com', '+8801730438180', NULL, '$2y$10$p2KlB2FHfECwpduPLmVxfezeqZZMXN9sK5dpC7cC8IO63sLFjH7OW', '2023-05-02 18:43:14', NULL, NULL, NULL, NULL, NULL, NULL, '2023-05-02 18:42:52', '2023-05-02 18:43:14'),
+(37, 'Ariful Haque', 'haq.ariful@gmail.com', '+880 1619-815253', NULL, '$2y$10$Y2R1RUCa7ZXxcdETo2gNzuOSfa4q652SRZpybO.HvL/KiTYo3Ns9K', '2023-06-30 09:38:19', NULL, NULL, NULL, NULL, NULL, NULL, '2023-06-30 09:36:28', '2023-06-30 09:38:19'),
+(38, 'Khawaja Azaan Rahman', 'azaanrahman2008@gmail.com', '01707960787', NULL, '$2y$10$YnioGg6/M16DETcEjd1kje/p9r/cuGQ38DmCEu8wsPLLXv.QhDPKe', '2023-07-07 08:39:25', NULL, NULL, NULL, NULL, NULL, NULL, '2023-07-06 14:29:34', '2023-07-07 08:39:25');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `wishlists`
 --
 
-DROP TABLE IF EXISTS `wishlists`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `wishlists` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` bigint unsigned NOT NULL,
-  `product_id` bigint unsigned NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `wishlists`
 --
 
-LOCK TABLES `wishlists` WRITE;
-/*!40000 ALTER TABLE `wishlists` DISABLE KEYS */;
-INSERT INTO `wishlists` VALUES (8,3,8,'2022-06-19 22:51:18',NULL),(9,3,7,'2022-06-19 22:51:21',NULL),(10,3,9,'2022-06-23 03:37:34',NULL),(11,7,10,'2022-07-23 03:46:58',NULL),(12,7,12,'2022-07-31 01:13:07',NULL),(13,7,6,'2022-07-31 01:37:53',NULL),(14,10,14,'2022-08-19 23:35:19',NULL),(15,11,37,'2022-09-12 07:47:17',NULL),(16,15,71,'2022-09-22 12:22:01',NULL),(17,20,65,'2022-10-09 19:56:07',NULL),(18,11,57,'2023-01-24 15:52:53',NULL),(19,11,71,'2023-01-24 15:52:56',NULL),(20,11,64,'2023-01-24 15:59:06',NULL),(21,11,69,'2023-01-24 15:59:08',NULL),(22,26,55,'2023-01-24 16:28:52',NULL),(23,33,86,'2023-05-18 06:00:00',NULL);
-/*!40000 ALTER TABLE `wishlists` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+INSERT INTO `wishlists` (`id`, `user_id`, `product_id`, `created_at`, `updated_at`) VALUES
+(8, 3, 8, '2022-06-19 22:51:18', NULL),
+(9, 3, 7, '2022-06-19 22:51:21', NULL),
+(10, 3, 9, '2022-06-23 03:37:34', NULL),
+(11, 7, 10, '2022-07-23 03:46:58', NULL),
+(12, 7, 12, '2022-07-31 01:13:07', NULL),
+(13, 7, 6, '2022-07-31 01:37:53', NULL),
+(14, 10, 14, '2022-08-19 23:35:19', NULL),
+(15, 11, 37, '2022-09-12 07:47:17', NULL),
+(16, 15, 71, '2022-09-22 12:22:01', NULL),
+(17, 20, 65, '2022-10-09 19:56:07', NULL),
+(18, 11, 57, '2023-01-24 15:52:53', NULL),
+(19, 11, 71, '2023-01-24 15:52:56', NULL),
+(20, 11, 64, '2023-01-24 15:59:06', NULL),
+(21, 11, 69, '2023-01-24 15:59:08', NULL),
+(22, 26, 55, '2023-01-24 16:28:52', NULL),
+(23, 33, 86, '2023-05-18 06:00:00', NULL);
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admins`
+--
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `admins_email_unique` (`email`);
+
+--
+-- Indexes for table `brands`
+--
+ALTER TABLE `brands`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `carts`
+--
+ALTER TABLE `carts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `contents`
+--
+ALTER TABLE `contents`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `content_images`
+--
+ALTER TABLE `content_images`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `coupons`
+--
+ALTER TABLE `coupons`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `c_contents`
+--
+ALTER TABLE `c_contents`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `c_content_images`
+--
+ALTER TABLE `c_content_images`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `locations`
+--
+ALTER TABLE `locations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `multi_imgs`
+--
+ALTER TABLE `multi_imgs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `news_letters`
+--
+ALTER TABLE `news_letters`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `order_items_order_id_foreign` (`order_id`);
+
+--
+-- Indexes for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indexes for table `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
+  ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `reviews`
+--
+ALTER TABLE `reviews`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `reviews_product_id_foreign` (`product_id`),
+  ADD KEY `reviews_user_id_foreign` (`user_id`);
+
+--
+-- Indexes for table `seos`
+--
+ALTER TABLE `seos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sessions`
+--
+ALTER TABLE `sessions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `sessions_user_id_index` (`user_id`),
+  ADD KEY `sessions_last_activity_index` (`last_activity`);
+
+--
+-- Indexes for table `shippings`
+--
+ALTER TABLE `shippings`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ship_districts`
+--
+ALTER TABLE `ship_districts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ship_divisions`
+--
+ALTER TABLE `ship_divisions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ship_states`
+--
+ALTER TABLE `ship_states`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `site_settings`
+--
+ALTER TABLE `site_settings`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sliders`
+--
+ALTER TABLE `sliders`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sub_categories`
+--
+ALTER TABLE `sub_categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
+-- Indexes for table `wishlists`
+--
+ALTER TABLE `wishlists`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admins`
+--
+ALTER TABLE `admins`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `brands`
+--
+ALTER TABLE `brands`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT for table `carts`
+--
+ALTER TABLE `carts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT for table `contents`
+--
+ALTER TABLE `contents`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `content_images`
+--
+ALTER TABLE `content_images`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `coupons`
+--
+ALTER TABLE `coupons`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `c_contents`
+--
+ALTER TABLE `c_contents`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `c_content_images`
+--
+ALTER TABLE `c_content_images`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `locations`
+--
+ALTER TABLE `locations`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
+--
+-- AUTO_INCREMENT for table `multi_imgs`
+--
+ALTER TABLE `multi_imgs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=223;
+
+--
+-- AUTO_INCREMENT for table `news_letters`
+--
+ALTER TABLE `news_letters`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+
+--
+-- AUTO_INCREMENT for table `order_items`
+--
+ALTER TABLE `order_items`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+
+--
+-- AUTO_INCREMENT for table `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+
+--
+-- AUTO_INCREMENT for table `reviews`
+--
+ALTER TABLE `reviews`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `seos`
+--
+ALTER TABLE `seos`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `shippings`
+--
+ALTER TABLE `shippings`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `ship_districts`
+--
+ALTER TABLE `ship_districts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+
+--
+-- AUTO_INCREMENT for table `ship_divisions`
+--
+ALTER TABLE `ship_divisions`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `ship_states`
+--
+ALTER TABLE `ship_states`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=164;
+
+--
+-- AUTO_INCREMENT for table `site_settings`
+--
+ALTER TABLE `site_settings`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `sliders`
+--
+ALTER TABLE `sliders`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+
+--
+-- AUTO_INCREMENT for table `sub_categories`
+--
+ALTER TABLE `sub_categories`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+
+--
+-- AUTO_INCREMENT for table `wishlists`
+--
+ALTER TABLE `wishlists`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD CONSTRAINT `order_items_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `reviews`
+--
+ALTER TABLE `reviews`
+  ADD CONSTRAINT `reviews_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `reviews_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2023-07-11  5:59:57

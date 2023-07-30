@@ -304,7 +304,11 @@
       <ul class="treeview-menu">
     <li class="{{ ($route == 'add.content')? 'active':'' }}"><a href="{{ route('add.content') }}"><i class="ti-more"></i>Add Content</a></li>
 
+    <li class="{{ ($route == 'add.category.content')? 'active':'' }}"><a href="{{ route('add.category.content') }}"><i class="ti-more"></i>Add Category Content</a></li>
+
     <li class="{{ ($route == 'manage.content')? 'active':'' }}"><a href="{{ route('manage.content') }}"><i class="ti-more"></i>Manage Content</a></li>
+
+    <li class="{{ ($route == 'manage.category.content')? 'active':'' }}"><a href="{{ route('manage.category.content') }}"><i class="ti-more"></i>Manage Category Content</a></li>
 
       </ul>
     </li> 
