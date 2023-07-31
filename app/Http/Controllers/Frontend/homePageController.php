@@ -117,7 +117,7 @@ class homePageController extends Controller
 
 	public function CatWiseeProduct($cat_id){
 		$name = Category::find($cat_id);
-		$categoryContents = CContent::where('category_id',$cat_id)->orderBy('id','DESC')->get();
+		$categoryContents = CContent::where('category_id',$cat_id)->orderBy('id','ASC')->get();
 		$products = Product::where('status',1)->where('category_id',$cat_id)->orderBy('id','DESC')->paginate(50);
 		$categories = Category::orderBy('category_name','ASC')->get();
 		return view('frontend.product.subcategory_view',compact('products','categories','name','categoryContents'));
