@@ -481,6 +481,8 @@ Route::prefix('product')->group(function(){
 
         Route::get('/delete/{id}', [ContentController::class, 'DeleteContent'])->name('delete.content');
 
+        Route::get('category/delete/{id}', [ContentController::class, 'DeleteCContent'])->name('delete.ccontent');
+
         Route::get('/category/view', [ContentController::class, 'AddCContent'])->name('add.category.content');
 
         Route::post('category/store', [ContentController::class, 'CContentStore'])->name('category.content.store');

@@ -140,5 +140,18 @@ public function ManageCContent(){
   return view('admin.Backend.Content.manage_ccontent',compact('contents'));
 }
 
+public function DeleteCContent($id){
+
+  CContent::findOrFail($id)->delete();
+
+   $notification = array(
+  'message' => 'Category Content Deleted Successfully',
+  'alert-type' => 'info'
+);
+
+return redirect()->back()->with($notification);
+
+} // end method 
+
 }
 
