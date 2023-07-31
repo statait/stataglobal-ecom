@@ -312,9 +312,22 @@
               
               @foreach($categoryContents as $item)
 <div>
-   <h1>{{ $item->heading }} </h1>
-   <p class="co">{{ $item->details1 }}</p>
-   <h2>{{ $item->details2 }}</h2>
+  @if ( $item->heading  == NULL)
+    
+  @else
+  <h1>{{ $item->heading }} </h1>
+  @endif
+ 
+  @if ($item->details1 == NULL)
+  @else
+  <p class="co">{{ $item->details1 }}</p>
+  @endif
+  
+  @if ( $item->details2 ==NULL)
+    
+  @else
+  <h2>{{ $item->details2 }}</h2>
+  @endif
 </div>
 @php
    $multiImgs = App\Models\CContentImage::where('c_content_id',$item->id)->get();
