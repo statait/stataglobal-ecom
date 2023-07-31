@@ -11,9 +11,9 @@
 <div class="container">
 @foreach($contents as $item)
 <div>
-   <h1>{{ $item->heading }} </h1>
-   <p class="co">{{ $item->details1 }}</p>
-   <h2>{{ $item->details2 }}</h2>
+   {{ $item->heading }}
+   {{ $item->details1 }}
+   {{ $item->details2 }}
 </div>
 @php
    $multiImgs = App\Models\ContentImage::where('content_id',$item->id)->get();
