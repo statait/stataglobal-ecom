@@ -11,18 +11,18 @@
 <div class="container">
 @foreach($contents as $item)
 <div>
-  @if ({{ $item->heading }} == NULL)
+  @if ( $item->heading  == NULL)
     
   @else
   <h1>{{ $item->heading }} </h1>
   @endif
  
-  @if ({{ $item->details1 }} == NULL)
+  @if ($item->details1 == NULL)
   @else
   <p class="co">{{ $item->details1 }}</p>
   @endif
   
-  @if ({{ $item->details2 }}==NULL)
+  @if ( $item->details2 ==NULL)
     
   @else
   <h2>{{ $item->details2 }}</h2>
