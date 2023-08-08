@@ -13,8 +13,8 @@
 	<div class="container">
 		<div class="breadcrumb-inner">
 			<ul class="list-inline list-unstyled">
-				<li><a href="#">Home</a></li>
-				<li><a href="#">Details</a></li>
+				<li><a href="https://stataglobal.com/">Home</a></li>
+				<li><a href="#description">Details</a></li>
 				<li class='active'>{{$product->product_name}}</li>
 			</ul>
 		</div><!-- /.breadcrumb-inner -->
