@@ -64,9 +64,9 @@
             {{-- <li><a href="#"><i class="icon fa fa-user"></i>My Account</a></li> --}}
             <li><a href="tel:09678200509"><i class="icon fa fa-phone"></i>09678200509</a></li>
             <li><a href="https://stataglobal.com"><img height="25" src="{{ asset('frontend/assets/images/bd.png') }}" alt="BD Flag"></a></li>
-            <li><a href="https://www.statauae.com"><img height="25" src="{{ asset('frontend/assets/images/uae.png') }}" alt="U.A.E Flag"></a></li>
+            <li><a href="https://statauae.com"><img height="25" src="{{ asset('frontend/assets/images/uae.png') }}" alt="U.A.E Flag"></a></li>
             <li><a href="{{route('todays.offer')}}"><i class="icon fa fa-money"></i>Today's Offer</a></li>
-            <li><a href="https://statabd.com/store-locator/"><i class="icon fa fa-map-marker"></i>Store Location</a></li>
+            <li><a href="{{route('frontend.location')}}"><i class="icon fa fa-map-marker"></i>Store Location</a></li>
             {{-- <li><a href="{{route('frontend.location')}}"><i class="icon fa fa-map-marker"></i>Store Location</a></li> --}}
             <li><a href="{{ route('wishlist') }}"><i class="icon fa fa-heart"></i>Wishlist</a></li>
             <li><a href="{{ route('mycart') }}"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>

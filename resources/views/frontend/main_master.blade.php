@@ -40,7 +40,7 @@ $seo = App\Models\Seo::find(1);
 
 <!-- /// Google Analytics Code // -->
 
-   <p hidden> {{ $seo->google_analytics }} </p>
+   {{-- <p hidden> {{ $seo->google_analytics }} </p> --}}
 
 <!-- /// Google Analytics Code // -->
 
