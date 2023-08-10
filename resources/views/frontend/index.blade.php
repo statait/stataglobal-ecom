@@ -7,7 +7,7 @@ STATA IT LIMITED | Smart Home Automation In Bangladesh
 
 {{-- Page Load Modal --}}
 
-@php
+{{-- @php
 	Cookie::queue(Cookie::make('modal_shown', true, 5));
 
 @endphp
@@ -16,7 +16,7 @@ STATA IT LIMITED | Smart Home Automation In Bangladesh
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    {{-- <h5 class="modal-title">Subscribe to Our Newsletter for Best Offers</h5> --}}
+                    <h5 class="modal-title">Subscribe to Our Newsletter for Best Offers</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -52,7 +52,7 @@ STATA IT LIMITED | Smart Home Automation In Bangladesh
             </div>
         </div>
     </div>
-@endif
+@endif --}}
 
 {{-- END PAGE LOAD MODAL --}}
 
