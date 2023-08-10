@@ -4,6 +4,6 @@
 STATA Store 
 @endsection
 
-
+<h1>Smart Home Automation Blog Section</h1>
 
 @endsection

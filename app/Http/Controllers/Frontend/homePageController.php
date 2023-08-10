@@ -99,9 +99,11 @@ class homePageController extends Controller
 	}
 
 	public function TagWiseProduct($tag){
+		$tagName = $tag;
+		$titleCaseTag = str_replace('-', ' ', ucwords(str_replace('-', ' ', $tagName)));
 		$products = Product::where('status',1)->where('product_tags',$tag)->orderBy('id','DESC')->paginate(50);
 		$categories = Category::orderBy('category_name','ASC')->get();
-		return view('frontend.tags.tags_view',compact('products','categories'));
+		return view('frontend.tags.tags_view',compact('products','categories','titleCaseTag'));
 
 	}
 

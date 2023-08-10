@@ -13,7 +13,9 @@ $tags = App\Models\Product::groupBy('product_tags')->select('product_tags')->get
 
 @foreach($tags as $tag)
 <a class="item active" title="Phone" href="{{ url('product/tag/'.$tag->product_tags) }}">
-	{{ str_replace(',',' ',$tag->product_tags)  }}</a> 
+     {{ str_replace('- || ,', ' ', ucwords(str_replace('-', ' ', $tag->product_tags)))}}</a> 
+   
+     
 @endforeach
 
 	 </div>

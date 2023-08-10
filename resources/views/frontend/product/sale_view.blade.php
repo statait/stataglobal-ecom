@@ -166,7 +166,14 @@ Product List
                 </ul>
               </div>
               <!-- /.filter-tabs --> 
+             
+              
             </div>
+            @if (request()->routeIs('combo.offer'))
+            <h1>Combo Package Offer</h1>
+            @elseif (request()->routeIs('sale.offer'))
+                <h1>Sale</h1>
+            @endif
             <!-- /.col -->
             {{-- <div class="col col-sm-12 col-md-6">
               <div class="col col-sm-3 col-md-6 no-padding">

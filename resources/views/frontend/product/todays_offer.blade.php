@@ -152,6 +152,7 @@ Todays's Offer
               </div>
               <!-- /.filter-tabs --> 
             </div>
+            <h1>Today's Offer</h1>
             <!-- /.col -->
             {{-- <div class="col col-sm-12 col-md-6">
               <div class="col col-sm-3 col-md-6 no-padding">

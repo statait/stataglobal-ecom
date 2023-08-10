@@ -82,6 +82,7 @@
               <!-- /.filter-tabs --> 
             </div>
             
+            <h2>{{$name->category_name}}</h2>
             <div class="col col-sm-6 col-md-4 text-right">
 
               <!-- /.pagination-container --> </div>
