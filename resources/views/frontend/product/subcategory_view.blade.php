@@ -107,7 +107,7 @@
     <div class="products">
       <div class="product">
         <div class="product-image">
-          <div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug ) }}"><img  src="{{ asset($product->product_thambnail) }}" alt="{{ $product->product_name }}"></a> </div>
+          <div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug ) }}"><img  src="{{ asset($product->product_thambnail) }}" alt="{{ $product->alt_text }}"></a> </div>
           <!-- /.image -->
 
            @php
@@ -202,7 +202,7 @@
       <div class="row product-list-row">
         <div class="col col-sm-4 col-lg-4">
           <div class="product-image">
-            <div class="image"> <img src="{{ asset($product->product_thambnail) }}" alt="{{ $product->product_name }}"> </div>
+            <div class="image"> <img src="{{ asset($product->product_thambnail) }}" alt="{{ $product->alt_text }}"> </div>
           </div>
           <!-- /.product-image --> 
         </div>

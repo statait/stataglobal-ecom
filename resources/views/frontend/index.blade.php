@@ -91,7 +91,7 @@ STATA IT LIMITED | Smart Home Automation In Bangladesh
 						<div class="row product-micro-row">
 						  <div class="col col-xs-5">
 							<div class="product-image">
-							  <div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}"> <img src="{{ asset($product->product_thambnail) }}" alt="{{ $product->product_name }}"> </a> </div>
+							  <div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}"> <img src="{{ asset($product->product_thambnail) }}" alt="{{ $product->alt_text }}"> </a> </div>
 							  <!-- /.image --> 
 				  
 							</div>
@@ -550,7 +550,7 @@ STATA IT LIMITED | Smart Home Automation In Bangladesh
 						<div class="product">
 							<a href="{{ url('product/details/'.$product->id) }}">
 						  <div class="product-image">
-							<div class="image"> <a href="{{ url('product/details/'.$product->id) }}"><img  src="{{ asset($product->product_thambnail) }}" alt="{{ $product->product_name }}"></a> </div>
+							<div class="image"> <a href="{{ url('product/details/'.$product->id) }}"><img  src="{{ asset($product->product_thambnail) }}" alt="{{ $product->alt_text }}"></a> </div>
 							<!-- /.image -->
 							
 							@php
@@ -635,7 +635,7 @@ STATA IT LIMITED | Smart Home Automation In Bangladesh
 					  <div class="products">
 						<div class="product">
 						  <div class="product-image">
-							<div class="image"> <a href="{{ url('product/details/'.$product->id) }}"><img  src="{{ asset($product->product_thambnail) }}" alt="{{ $product->product_name }}"></a> </div>
+							<div class="image"> <a href="{{ url('product/details/'.$product->id) }}"><img  src="{{ asset($product->product_thambnail) }}" alt="{{ $product->alt_text }}"></a> </div>
 							<!-- /.image -->
   
 		  @php
@@ -749,7 +749,7 @@ STATA IT LIMITED | Smart Home Automation In Bangladesh
 				<div class="products">
 				  <div class="product">
 					<div class="product-image">
-						<div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug ) }}"><img  src="{{ asset($product->product_thambnail) }}" alt="{{ $product->product_name }}"></a> </div>
+						<div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug ) }}"><img  src="{{ asset($product->product_thambnail) }}" alt="{{ $product->alt_text }}"></a> </div>
 						<!-- /.image -->
 
 	  @php
@@ -1129,7 +1129,7 @@ STATA IT LIMITED | Smart Home Automation In Bangladesh
 				<div class="products">
 				  <div class="product">
 					<div class="product-image">
-						<div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug ) }}"><img  src="{{ asset($product->product_thambnail) }}" alt="{{ $product->product_name }}"></a> </div>
+						<div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug ) }}"><img  src="{{ asset($product->product_thambnail) }}" alt="{{ $product->alt_text }}"></a> </div>
 						<!-- /.image -->
 
 	  @php
@@ -1205,7 +1205,7 @@ STATA IT LIMITED | Smart Home Automation In Bangladesh
 				<div class="products">
 				  <div class="product">
 					<div class="product-image">
-						<div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug ) }}"><img  src="{{ asset($product->product_thambnail) }}" alt="{{ $product->product_name }}"></a> </div>
+						<div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug ) }}"><img  src="{{ asset($product->product_thambnail) }}" alt="{{ $product->alt_text }}"></a> </div>
 						<!-- /.image -->
 
 	  @php
@@ -1279,7 +1279,7 @@ STATA IT LIMITED | Smart Home Automation In Bangladesh
 				<div class="products">
 				  <div class="product">
 					<div class="product-image">
-						<div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug ) }}"><img  src="{{ asset($product->product_thambnail) }}" alt="{{ $product->product_name }}"></a> </div>
+						<div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug ) }}"><img  src="{{ asset($product->product_thambnail) }}" alt="{{ $product->alt_text }}"></a> </div>
 						<!-- /.image -->
 
 	  @php

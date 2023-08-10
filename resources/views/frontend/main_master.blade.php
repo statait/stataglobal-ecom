@@ -35,6 +35,8 @@ $seo = App\Models\Seo::find(1);
 <meta name="robots" content="all">
 <meta name="google-site-verification" content="Om4QyzJuC184VLzJC6aLkJCcfX_GltcDUXi4RzQAOkc" />
 
+<link rel="canonical" href="https://stataglobal.com/">
+
 {{-- Favicon --}}
 <link rel="icon"  href="{{ asset('frontend/assets/images/statafav.png') }}">
 

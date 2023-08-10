@@ -70,22 +70,12 @@
 
 			<div class="col-md-4">
 
-				 <div class="form-group">
-	<h5>SubCategory Select <span class="text-danger">*</span></h5>
-	<div class="controls">
-		<select name="subcategory_id" class="form-control" required="" >
-			<option value="" selected="" disabled="">Select SubCategory</option>
-			
-			 @foreach($subcategory as $sub)
- <option value="{{ $sub->id }}" {{ $sub->id == $products->subcategory_id ? 'selected': '' }} >{{ $sub->subcategory_name }}</option>	
-			@endforeach
-
-		</select>
-		@error('subcategory_id') 
-	 <span class="text-danger">{{ $message }}</span>
-	 @enderror 
-	 </div>
-		 </div>
+				<div class="form-group">
+					<h6>Image Alt-Text <span class="text-danger">*</span></h6>
+					<div class="controls">
+						<input type="text" name="alt_text" class="form-control" required="" value="{{ $products->alt_text }}">
+					 </div>
+						 </div>
 				
 			</div> <!-- end col md 4 -->
 			

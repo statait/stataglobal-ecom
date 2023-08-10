@@ -34,9 +34,10 @@ class productController extends Controller
       $product_id = Product::insertGetId([
       	'brand_id' => $request->brand_id,
       	'category_id' => $request->category_id,
-      	'subcategory_id' => $request->subcategory_id,
+      	// 'subcategory_id' => $request->subcategory_id,
       	'product_name' => $request->product_name,
       	'product_code' => $request->product_code,
+      	'alt_text' => $request->alt_text,
 
       	'product_qty' => $request->product_qty,
       	'product_tags' => $request->product_tags,
@@ -126,8 +127,9 @@ class productController extends Controller
          Product::findOrFail($product_id)->update([
       	'brand_id' => $request->brand_id,
       	'category_id' => $request->category_id,
-      	'subcategory_id' => $request->subcategory_id,
+      	// 'subcategory_id' => $request->subcategory_id,
       	'product_name' => $request->product_name,
+      	'alt_text' => $request->alt_text,
 
       	'product_code' => $request->product_code,
 
