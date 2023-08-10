@@ -150,6 +150,8 @@ Tag Wise Product
               </div>
               <!-- /.filter-tabs --> 
             </div>
+
+            <h1>{{ $titleCaseTag}}</h1>
             <!-- /.col -->
             {{-- <div class="col col-sm-12 col-md-6">
               <div class="col col-sm-3 col-md-6 no-padding">
