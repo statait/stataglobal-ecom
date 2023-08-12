@@ -253,7 +253,15 @@ class homePageController extends Controller
 		$item = $request->search;
 		// echo "$item";
         $categories = Category::orderBy('category_name','ASC')->get();
-		$products = Product::where('product_name','LIKE',"%$item%")->get();
+
+		$searchTerms = explode(' ', $item);
+    
+		$products = Product::where(function ($query) use ($searchTerms) {
+			foreach ($searchTerms as $term) {
+				$query->orWhere('product_name', 'LIKE', "%$term%")
+					  ->orWhere('long_descp', 'LIKE', "%$term%");
+			}
+		})->get();
 		
 		return view('frontend.product.search',compact('products','categories'));
 
