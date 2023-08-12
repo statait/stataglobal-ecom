@@ -225,8 +225,8 @@
   <!-- /.main-header --> 
   
   <!-- ============================================== NAVBAR ============================================== -->
-  <div style="background-color: #106710;"  class="header-nav animate-dropdown">
-    <div class="container">
+  <div style="background-color: #106710;"  class="header-nav animate-dropdown navbar navbar-expand navbar-dark bg-dark">
+    <div class="container-fluid">
       <div class="yamm navbar navbar-default" role="navigation">
         <div class="navbar-header">
        <button data-target="#mc-horizontal-menu-collapse" data-toggle="collapse" class="navbar-toggle collapsed" type="button"> 
