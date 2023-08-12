@@ -225,7 +225,7 @@
   <!-- /.main-header --> 
   
   <!-- ============================================== NAVBAR ============================================== -->
-  <div style="background-color: #106710;"  class="header-nav animate-dropdown navbar navbar-expand">
+  <div style="background-color: #106710;"  class="header-nav animate-dropdown navbar navbar-expand" id="navbar">
     <div class="container-fluid">
       <div class="yamm navbar navbar-default" role="navigation">
         <div class="navbar-header">
@@ -328,7 +328,7 @@
     }
   </script> 
 
-{{-- <script>
+<script>
   // When the user scrolls down 20px from the top of the document, slide down the navbar
   window.onscroll = function() {scrollFunction()};
   
@@ -339,7 +339,7 @@
       document.getElementById("navbar").style.top = "-50px";
     }
   }
-  </script> --}}
+  </script>
 
   {{-- <script>
  @if(Session::has('message'))
