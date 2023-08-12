@@ -19,7 +19,13 @@
  
   @if ($item->details1 == NULL)
   @else
-  <p class="co">{{ $item->details1 }}</p>
+  @php
+  // $savedContent = {{ $item->details1 }};
+  //   $decodedContent = html_entity_decode($savedContent);
+  @endphp
+  {{-- <p class="co">{{ $item->details1 }}</p> --}}
+  <pre class="co">{!! html_entity_decode($item->details1) !!}
+  </pre>
   @endif
   
   @if ( $item->details2 ==NULL)

@@ -18,7 +18,6 @@
 	<link rel="stylesheet" href="{{ asset('backend/css/skin_color.css') }}">
 
    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
-     
   </head> 
 
 <body class="hold-transition dark-skin sidebar-mini theme-primary fixed">
@@ -79,6 +78,11 @@
 
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+   <!-- tinymce -->
+   <script src="{{ asset('backend/tinymce/tinymce.min.js') }}"></script>
+   <script src="{{ asset('backend/js/tinymce.js') }}"></script>
+<!-- tinymce -->
 
 <script>
  @if(Session::has('message'))

@@ -69,6 +69,9 @@ $seo = App\Models\Seo::find(1);
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/rateit.css') }}">
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/bootstrap-select.min.css') }}">
 
+{{-- LightbOX --}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+
 {{-- TOP BUTTON STYLE --}}
 <style>
 
@@ -247,13 +250,15 @@ rel="stylesheet">
 <script src="{{ asset('frontend/assets/js/jquery.easing-1.3.min.js') }}"></script> 
 <script src="{{ asset('frontend/assets/js/bootstrap-slider.min.js') }}"></script> 
 <script src="{{ asset('frontend/assets/js/jquery.rateit.min.js') }}"></script> 
-<script src="{{ asset('frontend/assets/js/lightbox.min.js') }}"></script> 
+{{-- <script src="{{ asset('frontend/assets/js/lightbox.min.js') }}"></script>  --}}
 <script src="{{ asset('frontend/assets/js/bootstrap-select.min.js') }}"></script> 
 <script src="{{ asset('frontend/assets/js/wow.min.js') }}"></script> 
 <script src="{{ asset('frontend/assets/js/scripts.js') }}"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+{{-- Lightbox --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 
 <script>
     $(document).ready(function(){

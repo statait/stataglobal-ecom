@@ -35,7 +35,8 @@
  <div class="form-group">
 			<h5>Details 1</h5>
 			<div class="controls">
-	<textarea name="details_1" id="textarea" class="form-control"></textarea>     
+	{{-- <textarea name="details_1" id="textarea" class="form-control"></textarea>   --}}
+	<textarea name="details_1" class="form-control" id="tinymceExample" rows="10"></textarea>   
 	 		 </div>
 		</div>
 
