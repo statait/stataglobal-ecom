@@ -223,8 +223,8 @@
   <!-- /.main-header --> 
   
   <!-- ============================================== NAVBAR ============================================== -->
-  <div style="padding-left: 10%; padding-right: 10%" id="navbar" class="header-nav animate-dropdown">
-    
+  <div style="background-color: #106710;"  class="header-nav animate-dropdown">
+    <div class="container">
       <div class="yamm navbar navbar-default" role="navigation">
         <div class="navbar-header">
        <button data-target="#mc-horizontal-menu-collapse" data-toggle="collapse" class="navbar-toggle collapsed" type="button"> 
@@ -234,23 +234,19 @@
           <div class="navbar-collapse collapse" id="mc-horizontal-menu-collapse">
             <div class="nav-outer">
               <ul class="nav navbar-nav">
-                
-                <li class="dropdown yamm-fw"> <a href="{{ url('/') }}" >Home</a> </li>
+                <li class="active dropdown yamm-fw"> <a href="home.html" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown">Home</a> </li>
 
                 @php
                 $categories = App\Models\Category::orderBy('category_name','ASC')->get();
                 @endphp
 
                 @foreach ($categories as $category)
-                {{-- <li class="dropdown"> <a href="contact.html">Kids & Girls</a> </li> --}}
-                <li class="dropdown"> <a href="{{ url('category/product/'.$category->id.'/'.$category->category_slug ) }}" class="dropdown-toggle">{{$category->category_name}}</a>
-                 
+                <li class="dropdown yamm mega-menu"> <a href="{{ url('category/product/'.$category->id.'/'.$category->category_slug ) }}"  >{{$category->category_name}}</a>
                 </li>
-                @endforeach
 
-                
+                @endforeach
+           
                 <li class="dropdown  navbar-right special-menu"> <a href="{{route('todays.offer')}}">Todays offer</a> </li>
-                {{-- <a style="float: right" href="{{route('frontend.location')}}"> <button class="btn btn-link icon btn-xs" type="button" title="STATA Store"> <i class="fa fa-map-marker fa-lg"></i> </button></a> --}}
               </ul>
               <!-- /.navbar-nav -->
               <div class="clearfix"></div>
@@ -263,7 +259,7 @@
         <!-- /.nav-bg-class --> 
       </div>
       <!-- /.navbar-default --> 
-    
+    </div>
     <!-- /.container-class --> 
     
   </div>
