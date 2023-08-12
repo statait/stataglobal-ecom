@@ -150,7 +150,9 @@
                 <input class="search-field" onfocus="search_result_show()" onblur="search_result_hide()" id="search" name="search" placeholder="Search here..." />
                 <button class="search-button" type="submit"></button> </div>
             </form>
-            <div id="searchProducts"></div>
+            <div id="searchProducts">
+           
+            </div>
           </div>
           <!-- /.search-area --> 
           <!-- ============================================================= SEARCH AREA : END ============================================================= --> </div>
