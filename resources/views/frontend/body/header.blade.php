@@ -225,7 +225,7 @@
   <!-- /.main-header --> 
   
   <!-- ============================================== NAVBAR ============================================== -->
-  <div style="background-color: #106710;"  class="header-nav animate-dropdown navbar navbar-expand navbar-dark bg-dark">
+  <div style="background-color: #106710;"  class="header-nav animate-dropdown navbar navbar-expand">
     <div class="container-fluid">
       <div class="yamm navbar navbar-default" role="navigation">
         <div class="navbar-header">
@@ -236,7 +236,7 @@
           <div class="navbar-collapse collapse" id="mc-horizontal-menu-collapse">
             <div class="nav-outer">
               <ul class="nav navbar-nav">
-                <li class="active dropdown yamm-fw"> <a href="home.html" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown">Home</a> </li>
+                <li class="yamm-fw"> <a href="{{ url('/') }}" >Home</a> </li>
 
                 @php
                 $categories = App\Models\Category::orderBy('category_name','ASC')->get();

@@ -1024,13 +1024,13 @@ function scrollFunction1() {
   }
 }
 
-function myFunction() {
-    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 450) {
-      document.getElementById("navbar").style.top = "0px";
-    } else {
-      document.getElementById("navbar").style.top = "-90px";
-    }
-  }
+// function myFunction() {
+//     if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 450) {
+//       document.getElementById("navbar").style.top = "0px";
+//     } else {
+//       document.getElementById("navbar").style.top = "-90px";
+//     }
+//   }
 
 // When the user clicks on the button, scroll to the top of the document
 function topFunction() {
