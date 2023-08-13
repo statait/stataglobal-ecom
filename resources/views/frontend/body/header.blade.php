@@ -111,6 +111,7 @@
     <!-- /.container --> 
   </div>
   <!-- /.header-top --> 
+  
   <!-- ============================================== TOP MENU : END ============================================== -->
   <div class="main-header">
     <div class="container">
@@ -329,16 +330,31 @@
   </script> 
 
 <script>
-  // When the user scrolls down 20px from the top of the document, slide down the navbar
-  window.onscroll = function() {scrollFunction()};
-  
-  function scrollFunction() {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-      document.getElementById("navbar").style.top = "0";
-    } else {
-      document.getElementById("navbar").style.top = "-50px";
-    }
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 20) {
+      return document.querySelector('#myBtn').style.display = "block"
   }
+  return document.querySelector('#myBtn').style.display = "none"
+
+});
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 20) {
+      return document.querySelector('#myBt').classList.add('side')
+  }
+  return document.querySelector('#myBt').classList.remove('side')
+
+});
+
+  
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 100) {
+      return document.querySelector('#navbar').classList.add('show')
+  }
+  return document.querySelector('#navbar').classList.remove('show')
+
+});
   </script>
 
   {{-- <script>

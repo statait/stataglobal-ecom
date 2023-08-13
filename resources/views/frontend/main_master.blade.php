@@ -104,6 +104,7 @@ $seo = App\Models\Seo::find(1);
   font-weight: 600;
 }
 
+
     #myBt {
   display: contents; /* Hidden by default */
   position: fixed; /* Fixed/sticky position */
@@ -117,6 +118,10 @@ $seo = App\Models\Seo::find(1);
    /* Some padding */
   border-radius: 10px; /* Rounded corners */
   font-size: 13px; /* Increase font size */
+}
+
+#myBt.side{
+    display: block;
 }
 
 #myBtn:hover {
@@ -290,6 +295,10 @@ rel="stylesheet">
 </script>
 
 <!-- Add to Cart Product Modal -->
+
+<button onclick="topFunction()" id="myBtn" class="btn-hover color-1" title="Go to top">^</button>
+
+
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
    <div class="modal-dialog">
      <div class="modal-content">
@@ -988,22 +997,31 @@ function cartIncrement(rowId){
     {{-- TOP BUTTON JS --}}
 <script>
     //Get the button:
-mybutton = document.getElementById("myBtn");
-mybutton1 = document.getElementById("myBt");
+// mybutton = document.getElementById("myBtn");
+// mybutton1 = document.getElementById("myBt");
 mysp = document.getElementById("sp");
 
 // When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function() {scrollFunction(); myFunction(); scrollFunction1(); sp1()};
+window.onscroll = function() {sp1()};
 
-function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    mybutton.style.display = "block";
+// function scrollFunction() {
+//   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+//     mybutton.style.display = "block";
 
    
-  } else {
-    mybutton.style.display = "none";
+//   } else {
+//     mybutton.style.display = "none";
+//   }
+// }
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 20) {
+      return document.querySelector('#myBtn').style.display = "block"
   }
-}
+  return document.querySelector('#myBtn').style.display = "none"
+
+});
+
 
 function sp1() {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
@@ -1014,23 +1032,31 @@ function sp1() {
   }
 }
 
-function scrollFunction1() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    mybutton1.style.display = "block";
+// function scrollFunction1() {
+//   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+//     mybutton1.style.display = "block";
 
    
-  } else {
-    mybutton1.style.display = "";
-  }
-}
+//   } else {
+//     mybutton1.style.display = "";
+//   }
+// }
 
-function myFunction() {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-      document.getElementById("navbar").style.top = "0px";
-    } else {
-      document.getElementById("navbar").style.top = "-50px";
-    }
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 20) {
+      return document.querySelector('#myBt').classList.add('side')
   }
+  return document.querySelector('#myBt').classList.remove('side')
+
+});
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 100) {
+      return document.querySelector('#navbar').classList.add('show')
+  }
+  return document.querySelector('#navbar').classList.remove('show')
+
+});
 
 // When the user clicks on the button, scroll to the top of the document
 function topFunction() {

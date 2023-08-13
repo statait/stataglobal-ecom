@@ -521,7 +521,7 @@ STATA IT LIMITED | Smart Home Automation In Bangladesh
 		  <!-- ============================================== SCROLL TABS ============================================== -->
 		 
 		  {{-- TOP BUTTON --}}
-		  <button onclick="topFunction()" id="myBtn" class="btn-hover color-1" title="Go to top">^</button>
+
 
 		  <div id="product-tabs-slider" class="scroll-tabs outer-top-vs wow fadeInUp">
 			<div class="more-info-tab clearfix ">
