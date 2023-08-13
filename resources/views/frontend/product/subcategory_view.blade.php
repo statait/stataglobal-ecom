@@ -321,7 +321,8 @@
  
   @if ($item->details1 == NULL)
   @else
-  <p class="co">{{ $item->details1 }}</p>
+  <div class="co">{!! preg_replace('/^<p>(.*?)<\/p>$/i', '$1', html_entity_decode($item->details1)) !!}
+  </div>
   @endif
   
   @if ( $item->details2 ==NULL)
