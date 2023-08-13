@@ -24,8 +24,9 @@
   //   $decodedContent = html_entity_decode($savedContent);
   @endphp
   {{-- <p class="co">{{ $item->details1 }}</p> --}}
-  <pre class="co">{!! html_entity_decode($item->details1) !!}
-  </pre>
+
+  <div class="co">{!! preg_replace('/^<p>(.*?)<\/p>$/i', '$1', html_entity_decode($item->details1)) !!}
+  </div>
   @endif
   
   @if ( $item->details2 ==NULL)

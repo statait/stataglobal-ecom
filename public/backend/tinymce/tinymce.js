@@ -6459,7 +6459,7 @@
             };
           }
         },
-        default: 'p'
+        default: ''
       });
       registerOption('forced_root_block_attrs', {
         processor: 'object',
@@ -16265,7 +16265,7 @@
       if (name === false) {
         return '';
       } else if (name === true) {
-        return 'p';
+        return '';
       } else {
         return name;
       }

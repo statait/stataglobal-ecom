@@ -22,23 +22,25 @@
 					  <div class="row">
 						<div class="col-12">
 
-			<div class="row">
+							<div class="form-group">
+								<h5>Details</h5>
+								<div class="controls">
+						{{-- <textarea name="details_1" id="textarea" class="form-control"></textarea>   --}}
+						<textarea name="details_1" class="form-control" id="tinymceExample" rows="20"></textarea>   
+								  </div>
+							</div>
+
+			<div class="row" hidden>
 				<div class="col-md-6">
 
 
-	<div class="form-group">
+	<div class="form-group" >
 		<h5>Heading</h5>
 		<div class="controls">
-	 <input type="text" name="heading" class="form-control"> </div>
+	 <input type="text"  name="heading" class="form-control"> </div>
 	</div>
 
- <div class="form-group">
-			<h5>Details 1</h5>
-			<div class="controls">
-	{{-- <textarea name="details_1" id="textarea" class="form-control"></textarea>   --}}
-	<textarea name="details_1" class="form-control" id="tinymceExample" rows="10"></textarea>   
-	 		 </div>
-		</div>
+
 
 
 	<div class="form-group">
