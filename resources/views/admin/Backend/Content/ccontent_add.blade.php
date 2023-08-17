@@ -21,21 +21,31 @@
 
 					  <div class="row">
 						<div class="col-12">
+							<div class="form-group">
+								<h6>Select Category<span class="text-danger">*</span></h6>
+								<div class="controls">
+									<select name="category_id" class="form-control" required="" >
+										<option value="" selected="" disabled="">Select Category</option>
+										@foreach($categories as $category)
+							 <option value="{{ $category->id }}">{{ $category->category_name }}</option>	
+										@endforeach
+									</select>
+								
+								 </div>
+									 </div>
 
-			<div class="row">
+
+									 <div class="form-group">
+										<h5>Details</h5>
+										<div class="controls">
+								{{-- <textarea name="details_1" id="textarea" class="form-control"></textarea>   --}}
+								<textarea name="details_1" class="form-control" id="tinymceExample" rows="20"></textarea>   
+										  </div>
+									</div>
+		
+			<div class="row" hidden>
 				<div class="col-md-6">
-					<div class="form-group">
-						<h6>Select Category<span class="text-danger">*</span></h6>
-						<div class="controls">
-							<select name="category_id" class="form-control" required="" >
-								<option value="" selected="" disabled="">Select Category</option>
-								@foreach($categories as $category)
-					 <option value="{{ $category->id }}">{{ $category->category_name }}</option>	
-								@endforeach
-							</select>
-						
-						 </div>
-							 </div>
+				
 
 	<div class="form-group">
 		<h5>Heading</h5>
@@ -43,12 +53,12 @@
 	 <input type="text" name="heading" class="form-control"> </div>
 	</div>
 
- <div class="form-group">
+ {{-- <div class="form-group">
 			<h5>Details 1</h5>
 			<div class="controls">
 	<textarea name="details_1" id="textarea" class="form-control"></textarea>     
 	 		 </div>
-		</div>
+		</div> --}}
 
 
 	<div class="form-group">
