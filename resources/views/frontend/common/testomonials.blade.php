@@ -2,8 +2,8 @@
   <div id="advertisement" class="advertisement">
     <div class="item">
       <div class="avatar"><img src="{{ asset('frontend/assets/images/testimonials/member1.png') }}" alt="member1"></div>
-      <div class="testimonials"><em>"</em> I appreciate your after sales service... so far I experienced!!<em>"</em></div>
-      <div class="clients_author">Abrar Haque<span></span> </div>
+      <div class="testimonials"><em>"</em> STATA delivers smart, secure, stylish living with top-notch customer support!!<em>"</em></div>
+      <div class="clients_author">Lamia<span></span> </div>
       <!-- /.container-fluid --> 
     </div>
     <!-- /.item -->
