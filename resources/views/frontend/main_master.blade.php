@@ -469,46 +469,77 @@ if (id == 119) {
 
  // Start Add To Cart Product 
  function addToCart(){
-        var product_name = $('#pname').text();
-        var id = $('#product_id').val();
-        var color = $('#color option:selected').text();
-        var size = $('#size option:selected').text();
-        var quantity = $('#qty').val();
-        
-        $.ajax({
-            type: "POST",
-            dataType: 'json',
-            data:{
-                color:color, size:size, quantity:quantity, product_name:product_name
-            },
-            url: "/cart/data/store/"+id,
-            success:function(data){
-               miniCart()
-               $('#closeModel').click();
-               //  console.log(data)
-                // Start Message 
-                const Toast = Swal.mixin({
-                      toast: true,
-                      position: 'top-end',
-                      icon: 'success',
-                      showConfirmButton: false,
-                      timer: 3000
-                    })
-                if ($.isEmptyObject(data.error)) {
-                    Toast.fire({
-                        type: 'success',
-                        title: data.success
-                    })
-                }else{
-                    Toast.fire({
-                        type: 'error',
-                        title: data.error
-                    })
+    var product_name = $('#pname').text();
+    var id = $('#product_id').val();
+    var color = $('#color option:selected').text();
+    var size = $('#size option:selected').text();
+    var quantity = $('#qty').val();
+    
+    // Check if the product with ID 119 is already in the cart
+    $.ajax({
+        type: 'GET',
+        url: '/product/mini/cart',
+        dataType: 'json',
+        success: function(response) {
+            var productExists = false;
+            $.each(response.carts, function(key, value) {
+                if (value.id == 119) {
+                    productExists = true;
+                    return false; // Exit the loop early since we found the product
                 }
-                // End Message 
+            });
+            
+            // If the product with ID 119 is already in the cart, display a message and return
+            if (productExists) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    icon: 'error',
+                    showConfirmButton: false,
+                    timer: 3000
+                });
+                Toast.fire({
+                    type: 'error',
+                    title: 'Cant add more than One Bulb per Checkout'
+                });
+                return;
             }
-        })
-    }
+            
+            // If the product with ID 119 is not in the cart, proceed with adding the product
+            $.ajax({
+                type: "POST",
+                dataType: 'json',
+                data: {
+                    color: color, size: size, quantity: quantity, product_name: product_name
+                },
+                url: "/cart/data/store/" + id,
+                success: function(data) {
+                    miniCart();
+                    $('#closeModel').click();
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 3000
+                    });
+                    if ($.isEmptyObject(data.error)) {
+                        Toast.fire({
+                            type: 'success',
+                            title: data.success
+                        });
+                    } else {
+                        Toast.fire({
+                            type: 'error',
+                            title: data.error
+                        });
+                    }
+                }
+            });
+        }
+    });
+}
+
 
 
 </script>
