@@ -459,7 +459,6 @@ if (id == 119) {
             // Reset quantity to 1 for all products
             $('#qty').val(1);
 
-
        }
    })
 

@@ -245,7 +245,12 @@
 								                </div>
 												<div class="form-group">
 													{{-- <label for="exampleFormControlInput1">Quantity</label> --}}
+													@if ($product->id == 119)
+													<input disabled type="number" class="form-control" id="qty" value="1" min="1" >
+													@else
 													<input type="number" class="form-control" id="qty" value="1" min="1" >
+													@endif
+													{{-- <input type="number" class="form-control" id="qty" value="1" min="1" > --}}
 												  </div> <!-- // end form group -->
 							              </div>
 							            </div>
