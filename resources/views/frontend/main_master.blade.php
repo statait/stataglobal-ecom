@@ -467,29 +467,29 @@ if (id == 119) {
 
 
  // Start Add To Cart Product 
- function addToCart(){
+ function addToCart() {
     var product_name = $('#pname').text();
     var id = $('#product_id').val();
     var color = $('#color option:selected').text();
     var size = $('#size option:selected').text();
     var quantity = $('#qty').val();
-    
-    // Check if the product with ID 119 is already in the cart
+
+    // Check if the product with ID 119 exists in the cart
     $.ajax({
         type: 'GET',
         url: '/product/mini/cart',
         dataType: 'json',
         success: function(response) {
-            var productExists = false;
+            var product119Exists = false;
             $.each(response.carts, function(key, value) {
                 if (value.id == 119) {
-                    productExists = true;
+                    product119Exists = true;
                     return false; // Exit the loop early since we found the product
                 }
             });
-            
-            // If the product with ID 119 is already in the cart, display a message and return
-            if (productExists) {
+
+            // If the product with ID 119 exists in the cart, display a message and return
+            if (product119Exists && id == 119) {
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
@@ -503,8 +503,8 @@ if (id == 119) {
                 });
                 return;
             }
-            
-            // If the product with ID 119 is not in the cart, proceed with adding the product
+
+            // If the product with ID 119 is not in the cart or if it's another product, proceed with adding the product
             $.ajax({
                 type: "POST",
                 dataType: 'json',
