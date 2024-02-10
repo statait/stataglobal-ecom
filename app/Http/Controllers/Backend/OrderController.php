@@ -46,7 +46,7 @@ class OrderController extends Controller
 
 	// Confirmed Orders 
 	public function ConfirmedOrders(){
-		$orders = Order::where('status','confirm')->orderBy('id','DESC')->get();
+		$orders = Order::where('status','confirm')->latest()->get();
 		return view('admin.Backend.Order.confirmed_orders',compact('orders'));
 
 	} // end mehtod 

@@ -78,6 +78,20 @@
 
   </div>
 
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script>
+
+$(document).ready(function() {
+    $('#example1').DataTable({
+        "columnDefs": [
+            { "orderable": false, "targets": 0 } // Disable sorting on the first column (date)
+        ],
+        "order": [] // Disables default sorting
+    });
+});
+
+  </script>
 
 
 
