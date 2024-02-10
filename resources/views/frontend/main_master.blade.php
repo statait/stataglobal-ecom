@@ -499,7 +499,7 @@ if (id == 119) {
                 });
                 Toast.fire({
                     type: 'error',
-                    title: 'Cant add more than One Bulb per Checkout'
+                    title: 'Offer Bulb 1 Pcs per checkout'
                 });
                 return;
             }
