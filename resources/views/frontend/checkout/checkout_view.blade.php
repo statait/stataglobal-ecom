@@ -82,10 +82,10 @@ My Checkout
 				<div class="form-group">
 					<h5><b>Division</b> <span class="text-danger">*</span></h5>
 					<div class="controls">
-						<select name="division_id" class="form-control" required="" >
-							<option value="" selected="" disabled="">Select Division</option>
+						<select name="division_id" class="form-control" required="">
+							<option value="" selected disabled>Select Division</option>
 							@foreach($divisions as $item)
-				 <option value="{{ $item->id }}">{{ $item->division_name }}</option>	
+							<option value="{{ $item->id }}">{{ $item->division_name }}</option>
 							@endforeach
 						</select>
 						@error('division_id') 
@@ -127,6 +127,8 @@ My Checkout
 					 <label class="info-title" for="exampleInputEmail1">Address Details <span>*</span></label>
 						 <textarea class="form-control" cols="30" rows="5" placeholder="Notes" name="notes" required=""></textarea>
 					  </div>  <!-- // end form group  -->
+
+					  <input type="hidden" id="total_amount_input" name="total_amount" value="">
 				
 				
 				
@@ -180,32 +182,29 @@ My Checkout
 					</li>
                     @endforeach 
 <hr>
-		 <li>
-		 	@if(Session::has('coupon'))
-
-<strong>SubTotal: </strong> TK {{ $cartTotal }} <hr>
-
-<strong>Coupon Name : </strong> {{ session()->get('coupon')['coupon_name'] }}
-( {{ session()->get('coupon')['coupon_discount'] }} % )
- <hr>
-
- <strong>Coupon Discount : </strong> TK {{ session()->get('coupon')['discount_amount'] }} 
- <hr>
-
-  <strong>Grand Total : </strong> TK {{ session()->get('coupon')['total_amount'] }} 
- <hr>
 
 
-		 	@else
+<li>
+    @if(Session::has('coupon'))
+    <strong>SubTotal: </strong> TK {{ $cartTotal }} <hr>
 
-<strong>SubTotal: </strong> TK {{ $cartTotal }} <hr>
+    <strong>Coupon Name : </strong> {{ session()->get('coupon')['coupon_name'] }}
+    ( {{ session()->get('coupon')['coupon_discount'] }} % ) <hr>
 
-<strong>Grand Total : </strong> TK {{ $cartTotal }} <hr>
+    <strong>Coupon Discount : </strong> TK {{ session()->get('coupon')['discount_amount'] }} <hr>
 
+    <strong id="delivery_fee">Delivery Fee: </strong><hr>
 
-		 	@endif 
+	<strong id="grand_total">Grand Total: TK {{ session()->get('coupon')['total_amount'] }}</strong> <hr>
 
-		 </li>
+    @else
+    <strong>SubTotal: </strong> TK {{ $cartTotal }} <hr>
+
+    <p id="delivery_fee"></p> <hr>
+
+	<strong id="grand_total">Grand Total: TK {{ $cartTotal }}</strong> <hr>
+    @endif
+</li>
 
 
 
@@ -270,6 +269,41 @@ My Checkout
 <!-- ===== == BRANDS CAROUSEL : END === === -->	
 </div><!-- /.container -->
 </div><!-- /.body-content -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function(){
+        // Function to update delivery fee based on division
+        function updateDeliveryFee(divisionId) {
+            var deliveryFee = 0;
+			if(divisionId == 4) {
+                deliveryFee = 70;
+            } else if (divisionId == 5 || divisionId == 6 || divisionId == 7 || divisionId == 9 || divisionId == 11 || divisionId == 8 || divisionId == 10) {
+                deliveryFee = 140; // Example delivery fee for division IDs 5, 6, 7, and 8
+            } else {
+                deliveryFee = 0; // Default delivery fee for other divisions
+            }
+            // Update delivery fee on the page
+            $('#delivery_fee').html('<strong>Delivery Fee:</strong> TK ' + deliveryFee);
+            
+            // Calculate and update total amount including delivery fee
+            var cartTotal = parseFloat('{{ $cartTotal }}');
+            var totalAmount = cartTotal + deliveryFee;
+			$('#grand_total').text('Grand Total: TK ' + totalAmount);
+			$('#total_amount_input').val(totalAmount);
+        }
+
+        // Event listener for division dropdown change
+        $('select[name="division_id"]').on('change', function(){
+            var divisionId = $(this).val();
+            updateDeliveryFee(divisionId);
+        });
+
+        // Initialize delivery fee and total amount based on default division
+        var defaultDivisionId = $('select[name="division_id"]').val();
+        updateDeliveryFee(defaultDivisionId);
+    });
+</script>
+
 
 
 <script type="text/javascript">

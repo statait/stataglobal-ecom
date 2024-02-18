@@ -40,6 +40,8 @@ class CheckoutController extends Controller
     	$data['notes'] = $request->notes;
 		// $data['coupon'] = $request->;
 		$cartTotal = Cart::total();
+
+		$totalAmount = $request->total_amount;
 		// $total = (int)str_replace(',','',Cart::total());
 		// $total_amount = round($total - $total * $coupon->coupon_discount/100);
 
@@ -48,11 +50,11 @@ class CheckoutController extends Controller
 
 
     	if ($request->payment_method == 'stripe') {
-    		return view('frontend.payment.cash',compact('data','cartTotal'));
+    		return view('frontend.payment.cash',compact('data','cartTotal','totalAmount'));
     	}elseif ($request->payment_method == 'card') {
-    		return view('frontend.payment.cash',compact('data','cartTotal'));
+    		return view('frontend.payment.cash',compact('data','cartTotal','totalAmount'));
     	}else{
-			return view('frontend.payment.cash',compact('data','cartTotal'));
+			return view('frontend.payment.cash',compact('data','cartTotal','totalAmount'));
     	}
 
 

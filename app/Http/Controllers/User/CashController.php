@@ -51,6 +51,9 @@ class CashController extends Controller
 	  }else{
 		$payment = 'Cash on Delivery';
 	  }
+
+	   // Retrieve total amount from the request
+	   $total_amount = $request->total_amount;
 	  
      $order_id = Order::insertGetId([
      	'user_id' => Auth::id(),

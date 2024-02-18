@@ -63,9 +63,9 @@ Cash On Delivery
 
 		 	@else
 
-<strong>SubTotal: </strong> TK {{ $cartTotal }} <hr>
+<strong>SubTotal: </strong>TK {{ $totalAmount }} <hr>
 
-<strong>Grand Total : </strong> TK {{ $cartTotal }} <hr>
+<strong>Grand Total : </strong>TK {{ $totalAmount }} <hr>
 
 
 		 	@endif 
@@ -113,6 +113,7 @@ Cash On Delivery
       <input type="hidden" name="district_id" value="{{ $data['district_id'] }}">
       <input type="hidden" name="state_id" value="{{ $data['state_id'] }}">
       <input type="hidden" name="notes" value="{{ $data['notes'] }}"> 
+	  <input type="hidden" name="total_amount" value="{{ $totalAmount }}">
 
             </label>
 
