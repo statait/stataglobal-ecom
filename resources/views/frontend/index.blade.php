@@ -102,7 +102,11 @@ STATA IT LIMITED | Smart Home Automation In Bangladesh
 							<div class="product-info">
 							  <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}"> {{ $product->product_name }} </a></h3>
 							   
-				   <div class="product-price"> <span class="price"> TK {{ $product->selling_price }} </span> </div>
+							  @if ($product->discount_price == NULL)
+							  <div class="product-price"> <span class="price"> TK {{ $product->selling_price }} </span>  </div>
+								  @else
+							  <div class="product-price"> <span class="price"> TK {{ $product->discount_price }} </span> <span class="price-before-discount">TK {{ $product->selling_price }}</span> </div>
+								  @endif
 							  <!-- /.product-price --> 
 				  
 							</div>
