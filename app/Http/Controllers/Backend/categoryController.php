@@ -18,6 +18,8 @@ class categoryController extends Controller
 
     public function CategoryStore(Request $request){
 
+		// dd($request->file('cat_img'));
+
        $request->validate([
     		'category_name' => 'required',
     		// 'category_icon' => 'required',
@@ -58,16 +60,14 @@ class categoryController extends Controller
 
     public function CategoryUpdate(Request $request ,$id){
 
-		dd($request);
 		if ($request->hasFile('cat_img')) {
 			
-			$image = $request->file('cat_img');
+				$image = $request->file('cat_img');
 			
 				$name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
 				$save_url = 'upload/category/' . $name_gen;
 				Image::make($image)->resize(600, 550)->save($save_url);
 				$save_url = 'upload/category/'.$name_gen;
-				
 				Category::findOrFail($id)->update([
 					'cat_img' => $save_url,
 					]);

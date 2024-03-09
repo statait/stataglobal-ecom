@@ -13,6 +13,7 @@
       <div class="product">
       <div class="product-image">
         @if ($item->cat_img == NULL)
+        
         <div class="image"> <a href="#"><img  src="" alt=""></a> </div>
         @else
         <div class="image"> <a href="{{ url('category/product/'.$item->id ) }}"><img  src="{{ asset($item->cat_img) }}"></a> </div>

@@ -27,7 +27,8 @@
 						<thead>
 							<tr>
 								{{-- <th>Category Icon </th> --}}
-								<th>Category Name</th>
+								<th>Image</th>
+								<th>Category Name</th>								
 								<th>Action</th>
 								 
 							</tr>
@@ -36,6 +37,7 @@
 	 @foreach($category as $item)
 	 <tr>
 		{{-- <td> <span><i class="{{ $item->category_icon }}"></i></span>  </td> --}}
+		<td> <img src="{{ asset($item->cat_img) }}" style="width: 60px; height: 50px;">  </td>
 		<td>{{ $item->category_name }}</td>
 		<td>
  <a href="{{ route('category.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a>
@@ -73,8 +75,8 @@
 					<div class="table-responsive">
 
 
- <form method="post" action="{{ route('category.store') }}" enctype="multipart/form-data" >
-	 	@csrf
+	<form method="post" action="{{ route('category.store') }}" enctype="multipart/form-data">
+		@csrf
 					   
 
 	 <div class="form-group">
@@ -109,18 +111,6 @@
 
 		</div>
 	</div>
-
-{{-- 
-
-	<div class="form-group">
-		<h5>Category Icon  <span class="text-danger">*</span></h5>
-		<div class="controls">
-	 <input type="text" name="category_icon" class="form-control" >
-     @error('category_icon') 
-	 <span class="text-danger">{{ $message }}</span>
-	 @enderror 
-	  </div>
-	</div>  --}}
 					 
 
 			 <div class="text-xs-right">
