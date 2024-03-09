@@ -29,7 +29,7 @@
 					<div class="table-responsive">
 
 
- <form method="post" action="{{ route('category.update',$category->id) }}" >
+ <form method="post" action="{{ route('category.update',$category->id) }}" enctype="multipart/form-data" >
 	 	@csrf
 					    
 	 	 
@@ -55,6 +55,15 @@
 	 <input type="text"  name="c_meta_description" class="form-control" value="{{ $category->c_meta_description }}" > 
 	
 	</div>
+	</div>
+
+	<div class="form-group">
+		<h6>Insert Image<span class="text-danger">*</span></h6>
+		<div class="controls">
+			<input type="file" name="cat_img" class="form-control" onChange="mainThamUrl(this)">
+			<img src="" id="cat_img">
+
+		</div>
 	</div>
 					 
 
@@ -84,6 +93,18 @@
 	  
 	  </div>
   
+
+	  <script type="text/javascript">
+		function mainThamUrl(input){
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+				reader.onload = function(e){
+					$('#cat_img').attr('src',e.target.result).width(80).height(80);
+				};
+				reader.readAsDataURL(input.files[0]);
+			}
+		}	
+	</script>
 
 
 

@@ -285,8 +285,13 @@ My Checkout
             // Update delivery fee on the page
             $('#delivery_fee').html('<strong>Delivery Fee:</strong> TK ' + deliveryFee);
             
-            // Calculate and update total amount including delivery fee
-            var cartTotal = parseFloat('{{ $cartTotal }}');
+
+			var cartTotalString = '{{ $cartTotal }}';
+			// Remove the comma from the string
+			var cartTotalWithoutComma = cartTotalString.replace(/,/g, '');
+			// Parse the string as a float
+			var cartTotal = parseFloat(cartTotalWithoutComma);
+
             var totalAmount = cartTotal + deliveryFee;
 			$('#grand_total').text('Grand Total: TK ' + totalAmount);
 			$('#total_amount_input').val(totalAmount);
