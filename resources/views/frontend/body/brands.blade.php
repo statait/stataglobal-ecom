@@ -6,8 +6,8 @@
           <div class="single-client image-switcher" title="List Title">
               
                   <div class="content-image">
-
-<img width="166" height="110" src="https://ckthemes.com/flipmart/layout-2/wp-content/uploads/sites/12/2021/09/brand6-2.png" class="" alt="" loading="lazy">                                        </div>
+                    <img width="166" height="110" src="/upload/category/electric.png" class="" alt="" loading="lazy"> 
+                                      </div>
 
               
           </div>
@@ -21,7 +21,7 @@
             
                 <div class="content-image">
 
-<img width="166" height="110" src="https://ckthemes.com/flipmart/layout-2/wp-content/uploads/sites/12/2021/09/brand6-2.png" class="" alt="" loading="lazy">                                        </div>
+<img width="166" height="110" src="{{ asset('/upload/category/lifestyle.png') }}" class="" alt="" loading="lazy">                                        </div>
 
             
         </div>
@@ -35,7 +35,7 @@
           
               <div class="content-image">
 
-<img width="166" height="110" src="https://ckthemes.com/flipmart/layout-2/wp-content/uploads/sites/12/2021/09/brand6-2.png" class="" alt="" loading="lazy">                                        </div>
+<img width="166" height="110" src="{{ asset('/upload/category/lighting.png') }}" class="" alt="" loading="lazy">                                        </div>
 
           
       </div>
@@ -50,7 +50,8 @@
           
               <div class="content-image">
 
-<img width="166" height="110" src="https://ckthemes.com/flipmart/layout-2/wp-content/uploads/sites/12/2021/09/brand6-2.png" class="" alt="" loading="lazy">                                        </div>
+<img width="166" height="110" src="/upload/category/agrotech.png" class="" alt="" loading="lazy">               
+ </div>
 
           
       </div>
