@@ -727,7 +727,8 @@ STATA IT LIMITED | Smart Home Automation In Bangladesh
 
 		  <div class="elementor-element elementor-element-c4effe7 elementor-widget elementor-widget-image" data-id="c4effe7" data-element_type="widget" data-settings="{&quot;ekit_we_effect_on&quot;:&quot;none&quot;}" data-widget_type="image.default">
 			<div class="elementor-widget-container">
-				<img width="870" height="250" src="https://ckthemes.com/flipmart/layout-2/wp-content/uploads/sites/12/2022/05/Screenshot-2022-05-20-162747.png" class="attachment-full size-full" alt="" loading="lazy">															</div>
+				<img width="870" height="250" src="frontend/assets/images/banner.png" class="attachment-full size-full" alt="" loading="lazy">															
+			</div>
 			</div>
 
 
