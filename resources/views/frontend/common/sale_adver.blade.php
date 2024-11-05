@@ -1,10 +1,23 @@
 @php
 $sale = App\Models\Product::where('sale',1)->where('discount_price','!=',NULL)->orderBy('id','DESC')->limit(10)->get();
 @endphp
-
+<style>
+  @keyframes orangeGlow {
+      0% {
+          text-shadow: 0 0 8px #FFA500, 0 0 12px #FFA500, 0 0 18px #FF8C00, 0 0 24px #FF8C00, 0 0 30px #FF4500;
+      }
+      100% {
+          text-shadow: 0 0 15px #FFA500, 0 0 25px #FF8C00, 0 0 35px #FFA500, 0 0 45px #FF4500, 0 0 55px #FF4500;
+      }
+  }
+  </style>
 <div style="border: 3px solid #ed174a; border-radius:5%; margin-top:20px" class="sidebar-widget hot-deals wow fadeInUp outer-bottom-xs">
     {{-- <h3 class="section-title" > --}}
-      <a href=" {{route('sale.offer')}}"><b> SALE</b></a> 
+      <a href="{{ route('sale.offer') }}">
+        <span style="display: inline-block; padding: 5px 10px; font-weight: bold; color: #fff; background: linear-gradient(45deg, #FFA500, #FF4500); border-radius: 5px; text-shadow: 0 0 8px #FFA500, 0 0 12px #FFA500, 0 0 18px #FF8C00, 0 0 24px #FF8C00, 0 0 30px #FF4500; animation: orangeGlow 1.5s infinite alternate;">
+            11.11 Offer
+        </span>
+    </a>
     </h3>
     <div class="owl-carousel sidebar-carousel custom-carousel owl-theme outer-top-ss">
     @foreach($sale as $product)
