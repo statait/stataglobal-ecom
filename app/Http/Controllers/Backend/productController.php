@@ -171,34 +171,55 @@ class productController extends Controller
 
 
 /// Multiple Image Update
-	public function MultiImageUpdate(Request $request){
+public function MultiImageUpdate(Request $request) {
+	$product_id = $request->product_id;
+    // Handle existing images update
+    if ($request->multi_img) {
+        foreach ($request->multi_img as $id => $img) {
+            $imgDel = MultiImg::findOrFail($id);
 
-		$imgs = $request->multi_img;
+            // Unlink only if an image file is uploaded for an existing image
+            if ($img) {
+                if (file_exists($imgDel->photo_name)) {
+                    unlink($imgDel->photo_name);
+                }
 
-		foreach ($imgs as $id => $img) {
-	    $imgDel = MultiImg::findOrFail($id);
-	    unlink($imgDel->photo_name);
-	     
-    	$make_name = hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
-    	Image::make($img)->resize(600,550)->save('upload/products/multi-image/'.$make_name);
-    	$uploadPath = 'upload/products/multi-image/'.$make_name;
+                $make_name = hexdec(uniqid()) . '.' . $img->getClientOriginalExtension();
+                Image::make($img)->resize(600, 550)->save('upload/products/multi-image/' . $make_name);
+                $uploadPath = 'upload/products/multi-image/' . $make_name;
 
-    	MultiImg::where('id',$id)->update([
-    		'photo_name' => $uploadPath,
-    		'updated_at' => Carbon::now(),
+                MultiImg::where('id', $id)->update([
+                    'photo_name' => $uploadPath,
+                    'updated_at' => Carbon::now(),
+                ]);
+            }
+        }
+    }
 
-    	]);
+    // Handle new images upload
+    if ($request->new_multi_img) {
+        foreach ($request->new_multi_img as $img) {
+            if ($img) {
+                $make_name = hexdec(uniqid()) . '.' . $img->getClientOriginalExtension();
+                Image::make($img)->resize(600, 550)->save('upload/products/multi-image/' . $make_name);
+                $uploadPath = 'upload/products/multi-image/' . $make_name;
 
-	 } // end foreach
+                MultiImg::create([
+					'product_id' => $product_id,
+                    'photo_name' => $uploadPath,
+                    'created_at' => Carbon::now(),
+                ]);
+            }
+        }
+    }
 
-       $notification = array(
-			'message' => 'Product Image Updated Successfully',
-			'alert-type' => 'info'
-		);
+    $notification = array(
+        'message' => 'Product Images Updated Successfully',
+        'alert-type' => 'info'
+    );
 
-		return redirect()->back()->with($notification);
-
-	} // end mehtod 
+    return redirect()->back()->with($notification);
+}
 
 
  /// Product Main Thambnail Update /// 

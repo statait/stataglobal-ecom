@@ -391,55 +391,45 @@
  <section class="content">
  	<div class="row">
 
-<div class="col-md-12">
-				<div class="box bt-3 border-info">
-				  <div class="box-header">
-		 <h4 class="box-title">Product Multiple Image <strong>Update</strong></h4>
-				  </div>
+	 <div class="col-md-12">
+    <div class="box bt-3 border-info">
+        <div class="box-header">
+            <h4 class="box-title">Product Multiple Image <strong>Update</strong></h4>
+        </div>
 
-			
-		<form method="post" action="{{ route('update-product-image') }}" enctype="multipart/form-data">
-        @csrf
-			<div class="row row-sm">
-				@foreach($multiImgs as $img)
-				<div class="col-md-3">
+        <form method="post" action="{{ route('update-product-image') }}" enctype="multipart/form-data">
+            @csrf
+			<input type="hidden" name="product_id" value="{{ $products->id }}">
+            <div class="row row-sm" id="image-container">
+                @foreach($multiImgs as $img)
+                <div class="col-md-3 existing-image">
+                    <div class="card">
+                        <img src="{{ asset($img->photo_name) }}" class="card-img-top" style="height: 200px; width: 200px;">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="{{ route('product.multiimg.delete', $img->id) }}" class="btn btn-sm btn-danger" id="delete" title="Delete Data"><i class="fa fa-trash"></i></a>
+                            </h5>
+                            <p class="card-text">
+                                <div class="form-group">
+                                    <label class="form-control-label">Change Image <span class="tx-danger">*</span></label>
+                                    <input class="form-control" type="file" name="multi_img[{{ $img->id }}]">
+                                </div>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
 
-<div class="card">
-  <img src="{{ asset($img->photo_name) }}" class="card-img-top" style="height: 200px; width: 200px;">
-  <div class="card-body">
-    <h5 class="card-title">
-<a href="{{ route('product.multiimg.delete',$img->id) }}" class="btn btn-sm btn-danger" id="delete" title="Delete Data"><i class="fa fa-trash"></i> </a>
-     </h5>
-    <p class="card-text"> 
-    	<div class="form-group">
-    		<label class="form-control-label">Change Image <span class="tx-danger">*</span></label>
-    		<input class="form-control" type="file" name="multi_img[{{ $img->id }}]" >
-    	</div> 
-    </p>
-   
-  </div>
-</div> 		
-				
-				</div><!--  end col md 3		 -->	
-				@endforeach
+            <!-- Button to add new image fields -->
+            <button type="button" class="btn btn-sm btn-success mt-3" onclick="addImageField()">Add Image</button>
 
-			</div>			
-
-			<div class="text-xs-right">
-<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update Image">
-		 </div>
-<br><br>
-
-
-
-		</form>		   
-
-
-
-
-
-				</div>
-			  </div>
+            <div class="text-xs-right mt-3">
+                <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update Image">
+            </div>
+        </form>
+    </div>
+</div>
  
 
  		
@@ -613,6 +603,25 @@
       }
    });
   });
+
+  function addImageField() {
+        const imageContainer = document.getElementById('image-container');
+        const newImageField = `
+            <div class="col-md-3 new-image">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">New Image</h5>
+                        <p class="card-text">
+                            <div class="form-group">
+                                <label class="form-control-label">Upload Image <span class="tx-danger">*</span></label>
+                                <input class="form-control" type="file" name="new_multi_img[]">
+                            </div>
+                        </p>
+                    </div>
+                </div>
+            </div>`;
+        imageContainer.insertAdjacentHTML('beforeend', newImageField);
+    }
    
   </script>
 
