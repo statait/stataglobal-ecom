@@ -23,7 +23,7 @@
       </div>
 
       
-      <div class="product-info text-left">
+      <div class="product-info text-center">
         <h3 class="name"><a href="{{ url('category/product/'.$item->id) }}">
           {{ $item->category_name }} 
             </a></h3>
