@@ -278,7 +278,7 @@ My Checkout
 			if(divisionId == 4) {
                 deliveryFee = 70;
             } else if (divisionId == 5 || divisionId == 6 || divisionId == 7 || divisionId == 9 || divisionId == 11 || divisionId == 8 || divisionId == 10) {
-                deliveryFee = 140; // Example delivery fee for division IDs 5, 6, 7, and 8
+                deliveryFee = 150; // Example delivery fee for division IDs 5, 6, 7, and 8
             } else {
                 deliveryFee = 0; // Default delivery fee for other divisions
             }
