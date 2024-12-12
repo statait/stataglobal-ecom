@@ -15,7 +15,7 @@ $sale = App\Models\Product::where('sale',1)->where('discount_price','!=',NULL)->
     {{-- <h3 class="section-title" > --}}
       <a href="{{ route('sale.offer') }}">
         <span style="display: inline-block; padding: 5px 10px; font-weight: bold; color: #fff; background: linear-gradient(45deg, #FFA500, #FF4500); border-radius: 5px; text-shadow: 0 0 8px #FFA500, 0 0 12px #FFA500, 0 0 18px #FF8C00, 0 0 24px #FF8C00, 0 0 30px #FF4500; animation: orangeGlow 1.5s infinite alternate;">
-            12 . 12
+            12.12
         </span>
     </a>
     </h3>
