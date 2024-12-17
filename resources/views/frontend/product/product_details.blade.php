@@ -140,7 +140,7 @@
 									<div class="col-sm-9">
 										<div class="stock-box">
 											@if ($product->product_qty < 1)
-											<span class="value">Out of Stock <span style="color: black">(Pre-Order)</span></span>
+											<span class="value">Out of Stock <span style="color: black"><strong>(Pre-Order)</strong></span></span>
 											@else
 											<span style="color: green" class="value">In Stock</span>
 											@endif
