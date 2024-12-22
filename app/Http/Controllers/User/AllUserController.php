@@ -30,17 +30,31 @@ class AllUserController extends Controller
     } // end mehtod 
 
 
-    public function InvoiceDownload($order_id){
-        $order = Order::with('division','district','state','user')->where('id',$order_id)->where('user_id',Auth::id())->first();
-         $orderItem = OrderItem::with('product')->where('order_id',$order_id)->orderBy('id','DESC')->get();
+    public function InvoiceDownload($order_id)
+    {
+        $order = Order::with('division', 'district', 'state', 'user')
+            ->where('id', $order_id)
+            ->where('user_id', Auth::id())
+            ->first();
 
-         $pdf = PDF::loadView('frontend.user.order.order_invoice',compact('order','orderItem'))->setPaper('a4')->setOptions([
-            'tempDir' => public_path(),
-            'chroot' => public_path(),
-    ]);
-    return $pdf->download('invoice.pdf');
- 
-     } // end mehtod 
+        $orderItem = OrderItem::with('product')
+            ->where('order_id', $order_id)
+            ->orderBy('id', 'DESC')
+            ->get();
+
+        // Calculate delivery charge based on district_id
+        $deliveryCharge = $order->district_id == 6 ? 80 : 150;
+
+        $pdf = PDF::loadView('frontend.user.order.order_invoice', compact('order', 'orderItem', 'deliveryCharge'))
+            ->setPaper('a4')
+            ->setOptions([
+                'tempDir' => public_path(),
+                'chroot' => public_path(),
+            ]);
+
+        return $pdf->download('invoice.pdf');
+    }
+
 
      public function ReturnOrder(Request $request,$order_id){
 

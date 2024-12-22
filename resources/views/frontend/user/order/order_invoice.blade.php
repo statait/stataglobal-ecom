@@ -160,10 +160,11 @@
           <h2><span style="color: green;">Discount Amount ({{ $order->coupon_percentage }}%): </span>{{ $order->coupon_discount }}</h2>
           @endif
          
+          <h2><span style="color: green;">Delivery Charge: </span>TK {{ $deliveryCharge }}</h2>
           <h2><span style="color: green;">Subtotal: </span>TK {{ $order->amount }}</h2>
 
-            <h2><span style="color: green;">Total:</span> TK {{ $order->amount }}</h2>
-            {{-- <h2><span style="color: green;">Full Payment PAID</h2> --}}
+          <h2><span style="color: green;">Total:</span> TK {{ $order->amount }}</h2>
+          {{-- <h2><span style="color: green;">Full Payment PAID</h2> --}}
         </td>
     </tr>
   </table>
