@@ -180,30 +180,30 @@ My Checkout
 						 <strong>Size: </strong>
 						 {{ $item->options->size }}
 					</li>
-                    @endforeach 
+					@endforeach 
 <hr>
 
 
 <li>
-    @if(Session::has('coupon'))
-    <strong>SubTotal: </strong> TK {{ $cartTotal }} <hr>
+	@if(Session::has('coupon'))
+	<strong>SubTotal: </strong> TK {{ $cartTotal }} <hr>
 
-    <strong>Coupon Name : </strong> {{ session()->get('coupon')['coupon_name'] }}
-    ( {{ session()->get('coupon')['coupon_discount'] }} % ) <hr>
+	<strong>Coupon Name : </strong> {{ session()->get('coupon')['coupon_name'] }}
+	( {{ session()->get('coupon')['coupon_discount'] }} % ) <hr>
 
-    <strong>Coupon Discount : </strong> TK {{ session()->get('coupon')['discount_amount'] }} <hr>
+	<strong>Coupon Discount : </strong> TK {{ session()->get('coupon')['discount_amount'] }} <hr>
 
-    <strong id="delivery_fee">Delivery Fee: </strong><hr>
+	<strong id="delivery_fee">Delivery Fee: </strong><hr>
 
 	<strong id="grand_total">Grand Total: TK {{ session()->get('coupon')['total_amount'] }}</strong> <hr>
 
-    @else
-    <strong>SubTotal: </strong> TK {{ $cartTotal }} <hr>
+	@else
+	<strong>SubTotal: </strong> TK {{ $cartTotal }} <hr>
 
-    <p id="delivery_fee"></p> <hr>
+	<p id="delivery_fee"></p> <hr>
 
 	<strong id="grand_total">Grand Total: TK {{ $cartTotal }}</strong> <hr>
-    @endif
+	@endif
 </li>
 
 
@@ -271,17 +271,15 @@ My Checkout
 </div><!-- /.body-content -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    $(document).ready(function(){
-        // Function to update delivery fee based on division
-        function updateDeliveryFee(divisionId) {
-            var deliveryFee = 0;
-			if(divisionId == 4) {
-                deliveryFee = 70;
-            } else if (divisionId == 5 || divisionId == 6 || divisionId == 7 || divisionId == 9 || divisionId == 11 || divisionId == 8 || divisionId == 10) {
-                deliveryFee = 150; // Example delivery fee for division IDs 5, 6, 7, and 8
-            } else {
-                deliveryFee = 0; // Default delivery fee for other divisions
-            }
+	$(document).ready(function(){
+		// Function to update delivery fee based on division
+		function updateDeliveryFee(divisionId) {
+			var deliveryFee = 0;
+			if(divisionId == 6) {
+				deliveryFee = 80;
+			} else {
+				deliveryFee = 150; // Default delivery fee for other divisions
+			}
             // Update delivery fee on the page
             $('#delivery_fee').html('<strong>Delivery Fee:</strong> TK ' + deliveryFee);
             
@@ -298,13 +296,13 @@ My Checkout
         }
 
         // Event listener for division dropdown change
-        $('select[name="division_id"]').on('change', function(){
+        $('select[name="district_id"]').on('change', function(){
             var divisionId = $(this).val();
             updateDeliveryFee(divisionId);
         });
 
         // Initialize delivery fee and total amount based on default division
-        var defaultDivisionId = $('select[name="division_id"]').val();
+        var defaultDivisionId = $('select[name="district_id"]').val();
         updateDeliveryFee(defaultDivisionId);
     });
 </script>
