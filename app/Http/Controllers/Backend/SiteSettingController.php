@@ -39,6 +39,7 @@ class SiteSettingController extends Controller
 		'twitter' => $request->twitter,
 		'linkedin' => $request->linkedin,
 		'youtube' => $request->youtube,
+		'sale_label' => $request->sale_label,
 		'logo' => $save_url,
 
     	]);
@@ -62,6 +63,7 @@ class SiteSettingController extends Controller
 		'twitter' => $request->twitter,
 		'linkedin' => $request->linkedin,
 		'youtube' => $request->youtube,
+		'sale_label' => $request->sale_label,
 
 
     	]);

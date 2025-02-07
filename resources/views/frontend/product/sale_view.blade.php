@@ -166,13 +166,15 @@ Product List
                 </ul>
               </div>
               <!-- /.filter-tabs --> 
-             
+              @php
+              $setting = App\Models\SiteSetting::find(1);
+              @endphp
               
             </div>
             @if (request()->routeIs('combo.offer'))
             <h1>Combo Package Offer</h1>
             @elseif (request()->routeIs('sale.offer'))
-                <h1>12.12</h1>
+                <h1> {{$setting->sale_label}}</h1>
             @endif
             <!-- /.col -->
             {{-- <div class="col col-sm-12 col-md-6">

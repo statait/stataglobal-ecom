@@ -92,6 +92,12 @@
             <input type="text" name="youtube" class="form-control"  value="{{ $setting->youtube }}"  > </div>
 	</div>
 
+	<div class="form-group">
+		<h5>Sale Label <span class="text-danger">*</span></h5>
+		<div class="controls">
+            <input type="text" name="sale_label" class="form-control"  value="{{ $setting->sale_label }}" required> </div>
+	</div>
+
 				</div> <!-- end cold md 6 --> 
 
 			</div>	<!-- end row 	 -->	
