@@ -222,31 +222,44 @@ public function MultiImageUpdate(Request $request) {
 }
 
 
- /// Product Main Thambnail Update /// 
- public function ThambnailImageUpdate(Request $request){
- 	$pro_id = $request->id;
- 	$oldImage = $request->old_img;
- 	unlink($oldImage);
+public function ThambnailImageUpdate(Request $request)
+{
+    $pro_id = $request->id;
+    $product = Product::findOrFail($pro_id);
 
-    $image = $request->file('product_thambnail');
-    	$name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-    	Image::make($image)->resize(600,550)->save('upload/products/thumbnail/'.$name_gen);
-    	$save_url = 'upload/products/thumbnail/'.$name_gen;
+    if ($request->hasFile('product_thambnail')) {
+        $image = $request->file('product_thambnail');
+        $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+        $save_path = 'upload/products/thumbnail/' . $name_gen;
 
-    	Product::findOrFail($pro_id)->update([
-    		'product_thambnail' => $save_url,
-    		'updated_at' => Carbon::now(),
+        // Resize and save the new image
+        Image::make($image)->resize(600, 550)->save($save_path);
 
-    	]);
+        // Delete the old image if it exists
+        if (!empty($product->product_thambnail) && file_exists($product->product_thambnail)) {
+            unlink($product->product_thambnail);
+        }
 
-         $notification = array(
-			'message' => 'Product Image Thambnail Updated Successfully',
-			'alert-type' => 'info'
-		);
+        // Update product with the new image
+        $product->update([
+            'product_thambnail' => $save_path,
+            'updated_at' => Carbon::now(),
+        ]);
 
-		return redirect()->back()->with($notification);
+        $notification = [
+            'message' => 'Product Thumbnail Updated Successfully',
+            'alert-type' => 'info'
+        ];
+    } else {
+        $notification = [
+            'message' => 'No image was uploaded',
+            'alert-type' => 'warning'
+        ];
+    }
 
-     } // end method
+    return redirect()->back()->with($notification);
+}
+
 
 
  //// Multi Image Delete ////
