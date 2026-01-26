@@ -378,6 +378,7 @@ rel="stylesheet">
   
     <input type="hidden" id="product_id">
     <button type="submit" class="btn btn-primary mb-2" onclick="addToCart()" >Add to Cart</button>
+    <button type="submit" class="btn btn-primary mb-2" onclick="buyNow()" >Buy Now</button>
   
  
          </div><!-- // end col md -->
@@ -527,6 +528,82 @@ if (id == 119) {
                 success: function(data) {
                     miniCart();
                     $('#closeModel').click();
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 3000
+                    });
+                    if ($.isEmptyObject(data.error)) {
+                        Toast.fire({
+                            type: 'success',
+                            title: data.success
+                        });
+                    } else {
+                        Toast.fire({
+                            type: 'error',
+                            title: data.error
+                        });
+                    }
+                }
+            });
+        }
+    });
+}
+
+ // Start Buy Now Product 
+ function buyNow() {
+    var product_name = $('#pname').text();
+    var id = $('#product_id').val();
+    var color = $('#color option:selected').text();
+    var size = $('#size option:selected').text();
+    var quantity = $('#qty').val();
+
+    // Check if the product with ID 119 exists in the cart
+    $.ajax({
+        type: 'GET',
+        url: '/product/mini/cart',
+        dataType: 'json',
+        success: function(response) {
+            var product119Exists = false;
+            $.each(response.carts, function(key, value) {
+                if (value.id == 119) {
+                    product119Exists = true;
+                    return false; // Exit the loop early since we found the product
+                }
+            });
+
+            // If the product with ID 119 exists in the cart, display a message and return
+            if (product119Exists && id == 119) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    icon: 'error',
+                    showConfirmButton: false,
+                    timer: 3000
+                });
+                Toast.fire({
+                    type: 'error',
+                    title: 'Offer Bulb 1 Pcs per checkout'
+                });
+                return;
+            }
+
+            // If the product with ID 119 is not in the cart or if it's another product, proceed with adding the product
+            $.ajax({
+                type: "POST",
+                dataType: 'json',
+                data: {
+                    color: color, size: size, quantity: quantity, product_name: product_name
+                },
+                url: "/cart/data/store/" + id,
+                success: function(data) {
+                    miniCart();
+                    $('#closeModel').click();
+                    // Redirect to checkout page
+                    window.location.href = '/checkout';
+                    
                     const Toast = Swal.mixin({
                         toast: true,
                         position: 'top-end',

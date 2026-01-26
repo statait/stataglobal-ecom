@@ -57,6 +57,7 @@ STATA Customize Product
 
 {{-- Shopping Cart --}}
   <button data-toggle="modal" data-target="#cexampleModal" onclick="productCustomizeView($('#productId').val(), $('#frameId').val())" class="btn btn-primary icon" type="button" title="Add Cart"> <i class="fa fa-shopping-cart"></i></button>
+  <button data-toggle="modal" data-target="#cexampleModal" onclick="productCustomizeView($('#productId').val(), $('#frameId').val())" class="btn btn-primary icon" type="button" title="Buy Now"> <i class="fa fa-check-circle"></i></button>
 
   <span id="showGang"></span>
   
@@ -235,6 +236,7 @@ STATA Customize Product
      <input type="hidden" id="product_id">
      <input type="hidden" id="frame_id">
      <button type="submit" class="btn btn-primary mb-2" onclick="addCustomizeToCart()" >Add to Cart</button>
+     <button type="submit" class="btn btn-primary mb-2" onclick="buyCustomizeNow()" >Buy Now</button>
    
   
           </div><!-- // end col md -->
@@ -503,6 +505,55 @@ STATA Customize Product
                minicCart()
                $('#closeModel').click();
                 console.log("inside Suceess"+data)
+                // Start Message 
+                const Toast = Swal.mixin({
+                      toast: true,
+                      position: 'top-end',
+                      icon: 'success',
+                      showConfirmButton: false,
+                      timer: 3000
+                    })
+                if ($.isEmptyObject(data.error)) {
+                    Toast.fire({
+                        type: 'success',
+                        title: data.success
+                    })
+                }else{
+                    Toast.fire({
+                        type: 'error',
+                        title: data.error
+                    })
+                }
+                // End Message 
+            }
+        })
+    }
+
+    // Start Buy Now Customize Product 
+    function buyCustomizeNow(){
+        var product_name = $('#pname').text();
+        var id = $('#product_id').val();
+        var frameid = $('#frame_id').val();
+        var color = $('#color option:selected').text();
+        var size = $('#size option:selected').text();
+        var quantity = $('#qty').val();
+        console.log("Buy Customize Now:"+ id + "Color:"+size);
+        $.ajax({
+            type: "POST",
+            dataType: 'json',
+            data:{
+                color:color, size:size, quantity:quantity, product_name:product_name,
+            },
+            url: "/customize/cart/data/store/"+id+"/"+frameid,
+            success:function(data){
+              console.log("Add to cart" + data);
+               minicCart()
+               $('#closeModel').click();
+                console.log("inside Suceess"+data)
+                
+                // Redirect to checkout
+                window.location.href = '/checkout';
+
                 // Start Message 
                 const Toast = Swal.mixin({
                       toast: true,
