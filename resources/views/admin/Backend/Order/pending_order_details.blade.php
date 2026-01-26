@@ -102,12 +102,12 @@
 <table class="table">
         <tr>
           <th>  Name : </th>
-           <th> {{ $order->user->name }} </th>
+           <th> {{ $order->user ? $order->user->name : $order->name }} </th>
         </tr>
 
          <tr>
           <th>  Phone : </th>
-           <th> {{ $order->user->phone }} </th>
+           <th> {{ $order->user ? $order->user->phone : $order->phone }} </th>
         </tr>
 
          <tr>
