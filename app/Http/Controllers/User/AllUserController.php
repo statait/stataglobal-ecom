@@ -103,7 +103,9 @@ class AllUserController extends Controller
             // echo "<pre>";
             // print_r($track);
 
-        return view('frontend.track.track_order',compact('track'));
+            $orderItem = OrderItem::with('product')->where('order_id',$track->id)->orderBy('id','DESC')->get();
+
+        return view('frontend.track.track_order',compact('track', 'orderItem'));
 
         }else{
 

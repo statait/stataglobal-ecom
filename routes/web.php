@@ -362,7 +362,7 @@ Route::prefix('product')->group(function(){
 
     Route::get('/order_details/{order_id}', [AllUserController::class, 'OrderDetails']);
 
-    Route::post('/cash/order', [CashController::class, 'CashOrder'])->name('cash.order');
+
 
     Route::get('/invoice_download/{order_id}', [AllUserController::class, 'InvoiceDownload']);
 
@@ -373,7 +373,7 @@ Route::prefix('product')->group(function(){
     Route::get('/cancel/orders', [AllUserController::class, 'CancelOrders'])->name('cancel.orders');
 
     /// Order Traking Route 
-    Route::post('/order/tracking', [AllUserController::class, 'OrderTraking'])->name('order.tracking');      
+
 
 
     }); 
@@ -577,6 +577,11 @@ Route::prefix('product')->group(function(){
     Route::get('/state-get/ajax/{district_id}', [CheckoutController::class, 'StateGetAjax']);
 
     Route::post('/checkout/store', [CheckoutController::class, 'CheckoutStore'])->name('checkout.store');
+
+    // Guest Order Routes
+    Route::post('/cash/order', [CashController::class, 'CashOrder'])->name('cash.order');
+    Route::post('/order/tracking', [AllUserController::class, 'OrderTraking'])->name('order.tracking');
+    Route::get('/order/success', [CashController::class, 'OrderSuccess'])->name('order.success');
 
 
     // 

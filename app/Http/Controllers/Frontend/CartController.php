@@ -262,7 +262,6 @@ class CartController extends Controller
      // Checkout Method 
      public function CheckoutCreate(){
 
-        if (Auth::check()) {
             if (Cart::total() > 0) {
 
         $carts = Cart::content();
@@ -282,18 +281,6 @@ class CartController extends Controller
         return redirect()->to('/')->with($notification);
 
             }
-
-
-        }else{
-
-             $notification = array(
-            'message' => 'You Need to Login First',
-            'alert-type' => 'error'
-        );
-
-        return redirect()->route('login')->with($notification);
-
-        }
 
     } // end method 
 

@@ -56,7 +56,7 @@ class CashController extends Controller
 	   $total_amount = $request->total_amount;
 	  
      $order_id = Order::insertGetId([
-     	'user_id' => Auth::id(),
+     	'user_id' => Auth::check() ? Auth::id() : null,
      	'division_id' => $request->division_id,
      	'district_id' => $request->district_id,
      	'state_id' => $request->state_id,
@@ -124,10 +124,16 @@ class CashController extends Controller
 			'alert-type' => 'success'
 		);
 
-		return redirect()->route('dashboard')->with($notification);
+		return redirect()->route('order.success', ['invoice_no' => $invoice->invoice_no])->with($notification);
 
 
     } // end method 
+
+
+    public function OrderSuccess(Request $request){
+        $invoice_no = $request->invoice_no;
+        return view('frontend.order.order_success',compact('invoice_no'));
+    } 
 
 
 

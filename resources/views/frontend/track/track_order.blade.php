@@ -278,6 +278,136 @@ Order Traking Page
             <hr><br><br>
 
 
+            <hr>
+            <h4>Order Items</h4>
+            <div class="table-responsive">
+                  <table class="table">
+                    <tbody>
+        
+                      <tr style="background: #e2e2e2;">
+                        <td class="col-md-1">
+                          <label for=""> Image</label>
+                        </td>
+        
+                        <td class="col-md-2">
+                          <label for=""> Product Name </label>
+                        </td>
+        
+                        <td class="col-md-2">
+                          <label for=""> Product Code</label>
+                        </td>
+        
+        
+                        <td class="col-md-2">
+                          <label for=""> Color </label>
+                        </td>
+        
+                         <td class="col-md-1">
+                          <label for=""> Size </label>
+                        </td>
+        
+                         <td class="col-md-1">
+                          <label for=""> Quantity </label>
+                        </td>
+        
+                        <td class="col-md-3">
+                          <label for=""> Price </label>
+                        </td>
+        
+                      </tr>
+        
+        
+                      @foreach($orderItem as $item)
+
+                      <?php
+                      $jsonFile = 'customize.json';
+                      $jsonData = file_get_contents($jsonFile);
+                      $data = json_decode($jsonData, true);
+                      $imageUrl = null;
+                      $pName = null;
+                      $pCode = null;
+
+                      $productsId = App\Models\Product::find($item->product_id);
+
+                      if (!$productsId) {
+                        foreach ($data as $product) {
+                          if ($product['id'] === $item->product_id) {
+                              $imageUrl = $product['image'];
+                              $pName = $product['name'];
+                              $pCode = $product['code'];
+                              break;
+                          }
+                    }
+                      }
+                      ?>
+               <tr>
+                        <td class="col-md-1">
+                          @if ($item->product && $item->product->product_thambnail)
+                          <label for=""><img src="{{ asset($item->product->product_thambnail) }}" height="50px;" width="50px;"></label>
+                      @else
+                         
+                          @if ($imageUrl)
+                              <label for=""><img src="{{ $imageUrl }}" height="50px;" width="50px;"></label>
+                          @else
+                              <label for=""><img src="default-image-url.jpg" height="50px;" width="50px;"></label>
+                          @endif
+                      @endif
+                        </td>
+        
+                        <td class="col-md-2">
+                          @if ($item->product && $item->product->product_thambnail)
+                            <label for=""> {{ $item->product->product_name }}</label>
+                      @else
+                         
+                          @if ($pName)
+                          <label for=""> {{ $pName }}</label>
+                          @else
+                          <label for="">No Product name</label>
+                          @endif
+                      @endif
+                        </td>
+        
+        
+                         <td class="col-md-2">
+                          @if ($item->product && $item->product->product_thambnail)
+                          <label for=""> {{ $item->product->product_code }}</label>
+                    @else
+                       
+                        @if ($pCode)
+                        <label for=""> {{ $pCode }}</label>
+                        @else
+                        <label for="">No Product Code</label>
+                        @endif
+                    @endif
+                         
+                        </td>
+        
+                        <td class="col-md-2">
+                          <label for=""> {{ $item->color }}</label>
+                        </td>
+        
+                        <td class="col-md-1">
+                          <label for=""> {{ $item->size }}</label>
+                        </td>
+        
+                         <td class="col-md-1">
+                          <label for=""> {{ $item->qty }}</label>
+                        </td>
+        
+                  <td class="col-md-3">
+                          <label for=""> TK{{ $item->price }}  ( TK {{ $item->price * $item->qty}} ) </label>
+                        </td>
+        
+                      </tr>
+                      @endforeach
+
+                    </tbody>
+        
+                  </table>
+        
+            </div>
+            <br><br>
+
         </div>
     </article>
 </div>

@@ -49,19 +49,19 @@ My Checkout
 						@csrf
                 <div class="form-group">
 					<label class="info-title" for="exampleInputEmail1"><b>Shipping Name</b>  <span>*</span></label>
-                    <input type="text" name="shipping_name" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Full Name" value="{{ Auth::user()->name }}" required="">
+                    <input type="text" name="shipping_name" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Full Name" value="{{ Auth::check() ? Auth::user()->name : '' }}" required="">
                   </div>  <!-- // end form group  -->
             
             
             <div class="form-group">
 				<label class="info-title" for="exampleInputEmail1"><b>Email </b> <span>*</span></label>
-                    <input type="email" name="shipping_email" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Email" value="{{ Auth::user()->email }}" required="">
+                    <input type="email" name="shipping_email" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Email" value="{{ Auth::check() ? Auth::user()->email : '' }}" required="">
                   </div>  <!-- // end form group  -->
             
             
             <div class="form-group">
 				<label class="info-title" for="exampleInputEmail1"><b>Phone</b>  <span>*</span></label>
-                    <input type="text" name="shipping_phone" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Phone" value="{{ Auth::user()->phone }}" required="">
+                    <input type="text" name="shipping_phone" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Phone" value="{{ Auth::check() ? Auth::user()->phone : '' }}" required="">
                   </div>  <!-- // end form group  -->
             
             
