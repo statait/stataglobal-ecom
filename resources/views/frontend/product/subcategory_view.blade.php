@@ -26,7 +26,7 @@
 <div class="body-content outer-top-xs">
   <div class='container'>
     <div class='row'>
-      <div class='col-md-3 sidebar'> 
+      <div class='col-md-3 sidebar hidden-xs' id="mobile-sidebar"> 
 
         <!-- ===== == TOP NAVIGATION ======= ==== -->
         {{-- @include('frontend.common.verticalMenu') --}}
@@ -46,7 +46,7 @@
             <!-- ============================================== SIDEBAR CATEGORY : END ============================================== --> 
             
 
-
+            <div class="hidden-xs">
             <!-- == ====== PRODUCT TAGS ==== ======= -->
               @include('frontend.common.product_tags')
             <!-- /.sidebar-widget -->
@@ -61,6 +61,7 @@
 
 
             <div class="home-banner"> <img style="height: 200px; width:260px;" src="{{ asset('frontend/assets/images/banners/LHS-banner.jpg') }}" alt="Image"> </div>
+            </div>
           </div>
           <!-- /.sidebar-filter --> 
         </div>
@@ -69,6 +70,9 @@
       <!-- /.sidebar -->
       <div class='col-md-9'> 
 
+        <button class="btn btn-primary visible-xs btn-block" id="mobile-category-toggle" style="margin-bottom: 20px;">
+             <i class="fa fa-filter"></i> Change Category
+        </button>
 
         <div class="clearfix filters-container m-t-10">
           <div class="row">
@@ -363,3 +367,23 @@
 
 
 @endsection
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(event) { 
+        var toggleBtn = document.getElementById('mobile-category-toggle');
+        var sidebar = document.getElementById('mobile-sidebar');
+        
+        if (toggleBtn && sidebar) {
+            toggleBtn.addEventListener('click', function() {
+                // Check if hidden-xs is present
+                if (sidebar.classList.contains('hidden-xs')) {
+                    sidebar.classList.remove('hidden-xs');
+                    toggleBtn.innerHTML = '<i class="fa fa-times"></i> Close Category';
+                } else {
+                    sidebar.classList.add('hidden-xs');
+                    toggleBtn.innerHTML = '<i class="fa fa-filter"></i> Change Category';
+                }
+            });
+        }
+    });
+</script>
