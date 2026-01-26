@@ -224,21 +224,10 @@ My Checkout
 	
 	
 	<div class="row">
-	<div class="col-md-4">
-	<label for="">Online Payment</label> 		
-	<input type="radio" name="payment_method" value="Online Payment">
-	<img src="{{ asset('frontend/assets/images/payments/bcash.png') }}">		    		
-	</div> <!-- end col md 4 -->
-	
-	<div class="col-md-4">
-		<label for="">POS on Delivery</label> 		
-	<input type="radio" name="payment_method" value="card">	
-	<img src="{{ asset('frontend/assets/images/payments/3.png') }}">    		
-	</div> <!-- end col md 4 -->
 	
 	<div class="col-md-4">
 		<label for="">Cash on Delivery</label> 		
-	<input type="radio" name="payment_method" value="cash">	
+	<input type="radio" name="payment_method" value="cash" checked>	
 	<img src="{{ asset('frontend/assets/images/payments/cash.png') }}">  		
 	</div> <!-- end col md 4 -->
 	
