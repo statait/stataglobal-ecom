@@ -49,18 +49,18 @@ use App\Models\subCategory;
 
 
 Route::get('/', function () {
-    $products = Product::where('status',1)->inRandomOrder()->get();
+    $products = Product::where('status',1)->inRandomOrder()->limit(20)->get();
     $sliders = Slider::where('status',1)->limit(4)->inRandomOrder()->get();
     $categories = Category::orderBy('category_name','ASC')->get();
     $brands = Brand::orderBy('brand_name','ASC')->get();
 
-    $best_seller = Product::where('status',1)->where('best_seller',1)->inRandomOrder()->get();
-    $sale = Product::where('status',1)->where('sale',1)->inRandomOrder()->get();
+    $best_seller = Product::where('status',1)->where('best_seller',1)->inRandomOrder()->limit(10)->get();
+    $sale = Product::where('status',1)->where('sale',1)->inRandomOrder()->limit(10)->get();
 
-    $new = Product::where('status',1)->where('new',1)->inRandomOrder()->get();
+    $new = Product::where('status',1)->where('new',1)->inRandomOrder()->limit(10)->get();
     $combo = Product::where('status',1)->where('combo',1)->inRandomOrder()->limit(6)->get();
 
-    $justforyou = Product::where('status',1)->inRandomOrder()->get();
+    $justforyou = Product::where('status',1)->inRandomOrder()->limit(20)->get();
 
     $combobars = Product::where('status',1)->where('combo',1)->inRandomOrder()->get();
 

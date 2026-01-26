@@ -323,7 +323,9 @@ jQuery(function(){
 /*===================================================================================*/
 
 jQuery(function () {
-    new WOW().init();
+    new WOW({
+        mobile: false
+    }).init();
 });
 
 

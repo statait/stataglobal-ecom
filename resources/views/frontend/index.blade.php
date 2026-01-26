@@ -631,7 +631,7 @@ STATA IT LIMITED | Smart Home Automation In Bangladesh
 				  <div class="owl-carousel home-owl-carousel custom-carousel owl-theme" data-item="4">
   
   @php
-	$catwiseProduct = App\Models\Product::where('category_id',$category->id)->orderBy('id','DESC')->get(); 
+	$catwiseProduct = App\Models\Product::where('category_id',$category->id)->orderBy('id','DESC')->limit(10)->get(); 
   @endphp
 					
   

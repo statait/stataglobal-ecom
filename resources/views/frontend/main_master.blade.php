@@ -1196,33 +1196,41 @@ function cartIncrement(rowId){
     {{-- TOP BUTTON JS --}}
 <script>
     // Unified Scroll Event Listener
+    // Unified Scroll Event Listener with Throttling
+    let ticking = false;
     window.addEventListener('scroll', () => {
-        const scrollY = window.scrollY;
-        
-        // Back to Top Button
-        const myBtn = document.querySelector('#myBtn');
-        if (myBtn) {
-            myBtn.style.display = scrollY > 300 ? "flex" : "none";
-        }
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                const scrollY = window.scrollY;
+                
+                // Back to Top Button
+                const myBtn = document.getElementById('myBtn');
+                if (myBtn) {
+                    myBtn.style.display = scrollY > 300 ? "flex" : "none";
+                }
 
-        // Floating Cart
-        const myBt = document.querySelector('#myBt');
-        if (myBt) {
-            if (scrollY > 150) {
-                myBt.classList.add('side');
-            } else {
-                myBt.classList.remove('side');
-            }
-        }
+                // Floating Cart
+                const myBt = document.getElementById('myBt');
+                if (myBt) {
+                    if (scrollY > 150) {
+                        myBt.classList.add('side');
+                    } else {
+                        myBt.classList.remove('side');
+                    }
+                }
 
-        // Navbar Sticky Effect
-        const navbar = document.querySelector('#navbar');
-        if (navbar) {
-             if (scrollY > 100) {
-                navbar.classList.add('show');
-             } else {
-                navbar.classList.remove('show');
-             }
+                // Navbar Sticky Effect
+                const navbar = document.getElementById('navbar');
+                if (navbar) {
+                     if (scrollY > 100) {
+                        navbar.classList.add('show');
+                     } else {
+                        navbar.classList.remove('show');
+                     }
+                }
+                ticking = false;
+            });
+            ticking = true;
         }
     });
 
