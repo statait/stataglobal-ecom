@@ -329,33 +329,7 @@
     }
   </script> 
 
-<script>
 
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 20) {
-      return document.querySelector('#myBtn').style.display = "block"
-  }
-  return document.querySelector('#myBtn').style.display = "none"
-
-});
-
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 20) {
-      return document.querySelector('#myBt').classList.add('side')
-  }
-  return document.querySelector('#myBt').classList.remove('side')
-
-});
-
-  
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 100) {
-      return document.querySelector('#navbar').classList.add('show')
-  }
-  return document.querySelector('#navbar').classList.remove('show')
-
-});
-  </script>
 
   {{-- <script>
  @if(Session::has('message'))

@@ -92,48 +92,110 @@ $seo = App\Models\Seo::find(1);
         color: yellow
     }
 
+
     #myBtn {
-  display: none; /* Hidden by default */
-  position: fixed; /* Fixed/sticky position */
-  bottom: 20px; /* Place the button at the bottom of the page */
-  right: 30px; /* Place the button 30px from the right */
-  z-index: 99; /* Make sure it does not overlap */
-  border: none; /* Remove borders */
-  outline: none; /* Remove outline */
-  background-image: linear-gradient(to right, #094919 0%, #09681d 51%, #185824 100%); /* Set a background color */
-  color: white; /* Text color */
-  cursor: pointer; /* Add a mouse pointer on hover */
-  padding: 1px; /* Some padding */
-  border-radius: 30%; /* Rounded corners */
-  font-size: 30px; /* Increase font size */
-  width: 50px;
-  height: 40px;
-  font-weight: 600;
-}
+        display: none;
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 999;
+        border: none;
+        outline: none;
+        background: #106710;
+        color: white;
+        cursor: pointer;
+        padding: 0;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        transition: all 0.3s ease;
+        justify-content: center;
+        align-items: center;
+    }
 
+    #myBtn:hover {
+        background-color: #0d520d;
+        transform: translateY(-3px);
+    }
 
+    /* Floating Cart Styles */
     #myBt {
-  display: contents; /* Hidden by default */
-  position: fixed; /* Fixed/sticky position */
-  bottom: 50%; /* Place the button at the bottom of the page */
-  right: 0%; /* Place the button 30px from the right */
-  z-index: 1; /* Make sure it does not overlap */
-  border: none; /* Remove borders */
-  outline: none; /* Remove outline */
-  color: rgb(12, 12, 12); /* Text color */
-  cursor: pointer; /* Add a mouse pointer on hover */
-   /* Some padding */
-  border-radius: 10px; /* Rounded corners */
-  font-size: 13px; /* Increase font size */
-}
+        display: contents;
+    }
 
-#myBt.side{
-    display: block;
-}
+    #myBt.side {
+        display: flex;
+        position: fixed;
+        bottom: 90px; /* Above back to top button */
+        right: 30px;
+        z-index: 990;
+        background: #fff;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
 
-#myBtn:hover {
-  background-color: rgb(192, 5, 5); /* Add a dark-grey background on hover */
-}
+    #myBt.side .items-cart-inner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+    
+    #myBt.side .basket {
+        font-size: 24px;
+        color: #106710;
+        margin: 0;
+        padding: 0;
+        display: flex !important;
+    }
+
+    #myBt.side .basket-item-count {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background: #ff0000;
+        color: #fff;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        font-size: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+    }
+
+    #myBt.side .total-price-basket {
+        display: none !important;
+    }
+
+    #myBt.side > a {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+    }
+
+    /* Adjust dropdown position when floating */
+    #myBt.side .dropdown-menu {
+        right: 0;
+        left: auto;
+        bottom: 70px;
+        top: auto;
+        transform-origin: bottom right;
+    }
+
 
 
 /* asasassaasassa */
@@ -308,7 +370,7 @@ rel="stylesheet">
 
 <!-- Add to Cart Product Modal -->
 
-<button onclick="topFunction()" id="myBtn" class="btn-hover color-1" title="Go to top">^</button>
+<button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa fa-angle-up"></i></button>
 
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -1133,73 +1195,41 @@ function cartIncrement(rowId){
 
     {{-- TOP BUTTON JS --}}
 <script>
-    //Get the button:
-// mybutton = document.getElementById("myBtn");
-// mybutton1 = document.getElementById("myBt");
-mysp = document.getElementById("sp");
+    // Unified Scroll Event Listener
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        
+        // Back to Top Button
+        const myBtn = document.querySelector('#myBtn');
+        if (myBtn) {
+            myBtn.style.display = scrollY > 300 ? "flex" : "none";
+        }
 
-// When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function() {sp1()};
+        // Floating Cart
+        const myBt = document.querySelector('#myBt');
+        if (myBt) {
+            if (scrollY > 150) {
+                myBt.classList.add('side');
+            } else {
+                myBt.classList.remove('side');
+            }
+        }
 
-// function scrollFunction() {
-//   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-//     mybutton.style.display = "block";
+        // Navbar Sticky Effect
+        const navbar = document.querySelector('#navbar');
+        if (navbar) {
+             if (scrollY > 100) {
+                navbar.classList.add('show');
+             } else {
+                navbar.classList.remove('show');
+             }
+        }
+    });
 
-   
-//   } else {
-//     mybutton.style.display = "none";
-//   }
-// }
-
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 20) {
-      return document.querySelector('#myBtn').style.display = "block"
-  }
-  return document.querySelector('#myBtn').style.display = "none"
-
-});
-
-
-function sp1() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    sp.style.display = "none";
-
-  } else {
-    sp.style.display = "";
-  }
-}
-
-// function scrollFunction1() {
-//   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-//     mybutton1.style.display = "block";
-
-   
-//   } else {
-//     mybutton1.style.display = "";
-//   }
-// }
-
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 20) {
-      return document.querySelector('#myBt').classList.add('side')
-  }
-  return document.querySelector('#myBt').classList.remove('side')
-
-});
-
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 100) {
-      return document.querySelector('#navbar').classList.add('show')
-  }
-  return document.querySelector('#navbar').classList.remove('show')
-
-});
-
-// When the user clicks on the button, scroll to the top of the document
-function topFunction() {
-  document.body.scrollTop = 0; // For Safari
-  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-}
+    // Scroll to Top Function
+    function topFunction() {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }
 </script>
 
 
