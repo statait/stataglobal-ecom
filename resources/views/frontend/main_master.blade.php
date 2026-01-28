@@ -417,7 +417,7 @@ rel="stylesheet">
  
          <div class="col-md-4">
  
-             <div class="form-group">
+             <div class="form-group" id="colorArea">
    <label for="exampleFormControlSelect1">Choose Color</label>
    <select class="form-control" id="color" name="color">
      </select>
@@ -507,6 +507,11 @@ function productView(id){
     $('select[name="color"]').empty();        
     $.each(data.color,function(key,value){
         $('select[name="color"]').append('<option value=" '+value+' ">'+value+' </option>')
+        if (data.color == "") {
+            $('#colorArea').hide();
+        }else{
+            $('#colorArea').show();
+        }
     }) // end color
 
      // Size

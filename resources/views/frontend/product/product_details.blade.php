@@ -188,6 +188,7 @@
 					<div class="row">
 														
 						<div class="col-sm-6">
+						@if(!empty($product->product_color))
 					<div class="form-group">
 
 						<label class="info-title control-label">Choose Color <span> </span></label>
@@ -198,15 +199,14 @@
 							@endforeach
 						</select> 
 					</div> <!-- // end form group -->
+						@endif
 							 
 						</div> <!-- // end col 6 -->
 
 							<div class="col-sm-6">
 
 					<div class="form-group">
-						@if($product->product_size == null)
-
-						@else	
+						@if(!empty($product->product_size))
 
 						<label class="info-title control-label">Choose Size <span> </span></label>
 						<select class="form-control unicase-form-control selectpicker" style="display: none;" id="size">
@@ -303,7 +303,9 @@
 						<div class="col-sm-3">
 							<ul id="product-tabs" class="nav nav-tabs nav-tab-cell">
 								<li class="active"><a data-toggle="tab" href="#description">DESCRIPTION</a></li>
+								@if(!empty($product->product_color))
 								<li><a data-toggle="tab" href="#colors">COLORS</a></li>
+								@endif
 								{{-- <li><a data-toggle="tab" href="#dimensions">DIMENSIONS</a></li> --}}
 								 <li><a data-toggle="tab" href="#review">REVIEW</a></li>
 								{{-- <li><a data-toggle="tab" href="#tags">DIMENSIONS</a></li> --}}
@@ -319,6 +321,7 @@
 									</div>	
 								</div><!-- /.tab-pane -->
 
+								@if(!empty($product->product_color))
 								<div id="colors" class="tab-pane in">
 									<div class="product-tab">
 										@foreach($product_color as $color)
@@ -326,6 +329,7 @@
 										@endforeach
 									</div>	
 								</div><!-- /.tab-pane -->
+								@endif
 
 
 

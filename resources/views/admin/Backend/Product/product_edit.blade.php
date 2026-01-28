@@ -131,7 +131,7 @@
 				<div class="form-group">
 					<h5>Product Color<span class="text-danger">*</span></h5>
 					<div class="controls">
-			 <input type="text" name="product_color" class="form-control" value="{{ $products->product_color }}" data-role="tagsinput" required="">
+			 <input type="text" name="product_color" class="form-control" value="{{ $products->product_color }}" data-role="tagsinput">
 			 @error('product_color') 
 			 <span class="text-danger">{{ $message }}</span>
 			 @enderror
