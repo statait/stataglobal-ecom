@@ -31,13 +31,13 @@ class CheckoutController extends Controller
 
         $data = array();
     	$data['shipping_name'] = $request->shipping_name;
-    	$data['shipping_email'] = $request->shipping_email;
+    	$data['shipping_email'] = "noemail@gmail.com";
     	$data['shipping_phone'] = $request->shipping_phone;
-    	$data['post_code'] = $request->post_code;
-    	$data['division_id'] = $request->division_id;
-    	$data['district_id'] = $request->district_id;
-    	$data['state_id'] = $request->state_id;
-    	$data['notes'] = $request->notes;
+    	$data['post_code'] = NULL;
+    	$data['division_id'] = NULL;
+    	$data['district_id'] = NULL;
+    	$data['state_id'] = NULL;
+    	$data['notes'] = $request->notes . " (Delivery: " . $request->delivery_area . ")";
 		// $data['coupon'] = $request->;
 		$cartTotal = Cart::total();
 

@@ -43,33 +43,20 @@ My Checkout
 
 				<!-- guest-login -->			
                 <div class="col-md-6 col-sm-6 already-registered-login">
-                    <h4 class="checkout-subtitle"><b>Shipping Address</b></h4>
+                    <h4 class="checkout-subtitle"><b>Shipping Info</b></h4>
            
 					<form class="register-form" action="{{ route('checkout.store') }}" method="POST">
 						@csrf
                 <div class="form-group">
-					<label class="info-title" for="exampleInputEmail1"><b>Shipping Name</b>  <span>*</span></label>
-                    <input type="text" name="shipping_name" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Full Name" value="{{ Auth::check() ? Auth::user()->name : '' }}" required="">
+					<label class="info-title" for="shipping_name"><b>Name</b>  <span>*</span></label>
+                    <input type="text" name="shipping_name" class="form-control unicase-form-control text-input" id="shipping_name" placeholder="Full Name" value="{{ Auth::check() ? Auth::user()->name : '' }}" required="">
                   </div>  <!-- // end form group  -->
             
             
             <div class="form-group">
-				<label class="info-title" for="exampleInputEmail1"><b>Email </b> <span>*</span></label>
-                    <input type="email" name="shipping_email" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Email" value="{{ Auth::check() ? Auth::user()->email : '' }}" required="">
+				<label class="info-title" for="shipping_phone"><b>Phone</b>  <span>*</span></label>
+                    <input type="text" name="shipping_phone" class="form-control unicase-form-control text-input" id="shipping_phone" placeholder="Phone" value="{{ Auth::check() ? Auth::user()->phone : '' }}" required="">
                   </div>  <!-- // end form group  -->
-            
-            
-            <div class="form-group">
-				<label class="info-title" for="exampleInputEmail1"><b>Phone</b>  <span>*</span></label>
-                    <input type="text" name="shipping_phone" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Phone" value="{{ Auth::check() ? Auth::user()->phone : '' }}" required="">
-                  </div>  <!-- // end form group  -->
-            
-            
-                  <div class="form-group">
-					<label class="info-title" for="exampleInputEmail1"><b>Post Code </b> <span>*</span></label>
-                    <input type="text" name="post_code" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Post Code">
-                  </div>  <!-- // end form group  -->
-            
             
                  </div>	
 
@@ -80,52 +67,20 @@ My Checkout
 
 
 				<div class="form-group">
-					<h5><b>Division</b> <span class="text-danger">*</span></h5>
+					<h5><b>Delivery Area</b> <span class="text-danger">*</span></h5>
 					<div class="controls">
-						<select name="division_id" class="form-control" required="">
-							<option value="" selected disabled>Select Division</option>
-							@foreach($divisions as $item)
-							<option value="{{ $item->id }}">{{ $item->division_name }}</option>
-							@endforeach
+						<select name="delivery_area" class="form-control" required="" id="delivery_area">
+							<option value="" selected disabled>Select Delivery Area</option>
+							<option value="inside">Inside Dhaka (80 TK)</option>
+                            <option value="outside">Outside Dhaka (150 TK)</option>
 						</select>
-						@error('division_id') 
-					 <span class="text-danger">{{ $message }}</span>
-					 @enderror 
-					 </div>
-						 </div> <!-- // end form group -->
-				
-				
-						 <div class="form-group">
-					<h5><b>District</b>  <span class="text-danger">*</span></h5>
-					<div class="controls">
-						<select name="district_id" class="form-control" required="" >
-							<option value="" selected="" disabled="">Select District</option>
-				
-						</select>
-						@error('district_id') 
-					 <span class="text-danger">{{ $message }}</span>
-					 @enderror 
-					 </div>
-						 </div> <!-- // end form group -->
-				
-				
-						 <div class="form-group">
-					<h5><b>Area</b> <span class="text-danger">*</span></h5>
-					<div class="controls">
-						<select name="state_id" class="form-control" required="" >
-							<option value="" selected="" disabled="">Select State</option>
-				
-						</select>
-						@error('state_id') 
-					 <span class="text-danger">{{ $message }}</span>
-					 @enderror 
 					 </div>
 						 </div> <!-- // end form group -->
 				
 				
 					<div class="form-group">
-					 <label class="info-title" for="exampleInputEmail1">Address Details <span>*</span></label>
-						 <textarea class="form-control" cols="30" rows="5" placeholder="Notes" name="notes" required=""></textarea>
+					 <label class="info-title" for="notes">Address Details <span>*</span></label>
+						 <textarea class="form-control" cols="30" rows="5" placeholder="Full Address" name="notes" id="notes" required=""></textarea>
 					  </div>  <!-- // end form group  -->
 
 					  <input type="hidden" id="total_amount_input" name="total_amount" value="">
@@ -261,13 +216,13 @@ My Checkout
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 	$(document).ready(function(){
-		// Function to update delivery fee based on division
-		function updateDeliveryFee(divisionId) {
+		// Function to update delivery fee based on delivery area
+		function updateDeliveryFee(area) {
 			var deliveryFee = 0;
-			if(divisionId == 6) {
+			if(area == 'inside') {
 				deliveryFee = 80;
-			} else {
-				deliveryFee = 150; // Default delivery fee for other divisions
+			} else if (area == 'outside') {
+				deliveryFee = 150; 
 			}
             // Update delivery fee on the page
             $('#delivery_fee').html('<strong>Delivery Fee:</strong> TK ' + deliveryFee);
@@ -284,62 +239,19 @@ My Checkout
 			$('#total_amount_input').val(totalAmount);
         }
 
-        // Event listener for division dropdown change
-        $('select[name="district_id"]').on('change', function(){
-            var divisionId = $(this).val();
-            updateDeliveryFee(divisionId);
+        // Event listener for delivery area dropdown change
+        $('select[name="delivery_area"]').on('change', function(){
+            var area = $(this).val();
+            updateDeliveryFee(area);
         });
 
-        // Initialize delivery fee and total amount based on default division
-        var defaultDivisionId = $('select[name="district_id"]').val();
-        updateDeliveryFee(defaultDivisionId);
+        // Initialize delivery fee and total amount based on default
+        // setTimeout(function() {
+        //     var defaultArea = $('select[name="delivery_area"]').val();
+        //     if(defaultArea) updateDeliveryFee(defaultArea);
+        // }, 500);
     });
 </script>
-
-
-
-<script type="text/javascript">
-	$(document).ready(function() {
-	  $('select[name="division_id"]').on('change', function(){
-		  var division_id = $(this).val();
-		  if(division_id) {
-			  $.ajax({
-				  url: "{{  url('/district-get/ajax') }}/"+division_id,
-				  type:"GET",
-				  dataType:"json",
-				  success:function(data) {
-					  $('select[name="state_id"]').empty(); 
-					 var d =$('select[name="district_id"]').empty();
-						$.each(data, function(key, value){
-							$('select[name="district_id"]').append('<option value="'+ value.id +'">' + value.district_name + '</option>');
-						});
-				  },
-			  });
-		  } else {
-			  alert('danger');
-		  }
-	  });
-$('select[name="district_id"]').on('change', function(){
-		  var district_id = $(this).val();
-		  if(district_id) {
-			  $.ajax({
-				  url: "{{  url('/state-get/ajax') }}/"+district_id,
-				  type:"GET",
-				  dataType:"json",
-				  success:function(data) {
-					 var d =$('select[name="state_id"]').empty();
-						$.each(data, function(key, value){
-							$('select[name="state_id"]').append('<option value="'+ value.id +'">' + value.state_name + '</option>');
-						});
-				  },
-			  });
-		  } else {
-			  alert('danger');
-		  }
-	  });
-
-  });
-  </script>
 
 
 

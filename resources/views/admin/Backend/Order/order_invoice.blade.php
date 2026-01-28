@@ -77,12 +77,28 @@
            <strong>Email:</strong> {{ $order->email }} <br>
            <strong>Phone:</strong> {{ $order->phone }} <br>
            @php
-            $div = $order->division->division_name;
-            $dis = $order->district->district_name;
-            $state = $order->state->state_name;
+            $div = $order->division ? $order->division->division_name : '';
+            $dis = $order->district ? $order->district->district_name : '';
+            $state = $order->state ? $order->state->state_name : '';
            @endphp
             
-           <strong>Address:</strong>{{ $order->notes }} <br> {{ $div }},{{ $dis }}.{{ $state }} <br>
+           <strong>Address:</strong>{{ $order->notes }} <br> 
+           @php
+            $deliveryInfo = '';
+            if (strpos($order->notes, 'Delivery: inside') !== false) {
+                $deliveryInfo = 'Inside Dhaka (80 TK)';
+            } elseif (strpos($order->notes, 'Delivery: outside') !== false) {
+                $deliveryInfo = 'Outside Dhaka (150 TK)';
+            }
+           @endphp
+
+           @if($deliveryInfo)
+           <strong>Delivery Area:</strong> {{ $deliveryInfo }} <br>
+           @endif
+
+           @if($div || $dis || $state)
+           {{ $div }} {{ $dis }} {{ $state }} <br>
+           @endif
            <strong>Post Code:</strong> {{ $order->post_code }}
          </p>
         </td>

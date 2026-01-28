@@ -59,20 +59,42 @@
              <th> {{ $order->notes }} </th>
           </tr>
 
+          @php
+            $deliveryInfo = '';
+            if (strpos($order->notes, 'Delivery: inside') !== false) {
+                $deliveryInfo = 'Inside Dhaka (80 TK)';
+            } elseif (strpos($order->notes, 'Delivery: outside') !== false) {
+                $deliveryInfo = 'Outside Dhaka (150 TK)';
+            }
+          @endphp
+
+          @if($deliveryInfo)
+          <tr>
+            <th> Delivery Area : </th>
+             <th> <strong>{{ $deliveryInfo }}</strong> </th>
+          </tr>
+          @endif
+
+        @if($order->division)
          <tr>
           <th> Division : </th>
            <th> {{ $order->division->division_name }} </th>
         </tr>
+        @endif
 
+        @if($order->district)
          <tr>
           <th> District : </th>
            <th> {{ $order->district->district_name }} </th>
         </tr>
+        @endif
 
+        @if($order->state)
          <tr>
           <th> State : </th>
            <th>{{ $order->state->state_name }} </th>
         </tr>
+        @endif
 
         <tr>
           <th> Post Code : </th>
@@ -82,6 +104,11 @@
         <tr>
           <th> Order Date : </th>
            <th> {{ $order->order_date }} </th>
+        </tr>
+
+        <tr>
+          <th> Order Time : </th>
+           <th> {{ $order->created_at->setTimezone('Asia/Dhaka')->format('h:i:s A') }} </th>
         </tr>
 
        </table>
