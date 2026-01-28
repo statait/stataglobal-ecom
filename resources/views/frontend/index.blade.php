@@ -721,9 +721,8 @@ STATA IT LIMITED | Smart Home Automation In Bangladesh
 		  <!-- /.scroll-tabs --> 
 
 
-		  <div class="elementor-element elementor-element-c4effe7 elementor-widget elementor-widget-image" data-id="c4effe7" data-element_type="widget" data-settings="{&quot;ekit_we_effect_on&quot;:&quot;none&quot;}" data-widget_type="image.default">
 			<div class="elementor-widget-container">
-				<img width="870" height="250" src="frontend/assets/images/banner.png" class="attachment-full size-full" alt="" loading="lazy">															
+				<img style="max-width: 100%; height: auto;" src="frontend/assets/images/banner.png" class="attachment-full size-full img-responsive" alt="" loading="lazy">															
 			</div>
 			</div>
 
