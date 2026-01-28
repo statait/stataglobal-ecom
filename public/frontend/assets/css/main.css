@@ -90,6 +90,10 @@ a {
   transition: all 0.2s linear 0s;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   font-size: 13px;
   color: #333;
@@ -98,6 +102,7 @@ body {
   padding: 0;
   font-family: 'Open Sans', sans-serif;
   background-color: #f3f3f3;
+  width: 100%;
 }
 
 .cnt-home {
@@ -6467,7 +6472,7 @@ header {
 
 .shopping-cart .shopping-cart-table table tbody tr .romove-item a:hover,
 .shopping-cart .shopping-cart-table table tbody tr .romove-item a:focus {
-  color: #ff000 !important;
+  color: #ff0000 !important;
 }
 
 .shopping-cart .shopping-cart-table table tbody tr .cart-image .entry-thumbnail {
