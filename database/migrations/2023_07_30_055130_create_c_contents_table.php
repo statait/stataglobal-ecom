@@ -13,14 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('c_contents', function (Blueprint $table) {
-            $table->id();
-            $table->integer('category_id');
-            $table->string('heading')->nullable();
-            $table->string('details1')->nullable();
-            $table->string('details2')->nullable();
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('c_contents')) {
+            Schema::create('c_contents', function (Blueprint $table) {
+                $table->id();
+                $table->integer('category_id');
+                $table->string('heading')->nullable();
+                $table->string('details1')->nullable();
+                $table->string('details2')->nullable();
+                $table->timestamps();
+            });
+        }
     }
 
     /**
