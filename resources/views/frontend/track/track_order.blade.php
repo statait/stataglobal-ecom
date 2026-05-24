@@ -157,7 +157,7 @@ Order Traking Page
        
                 <div class="col-md-2">
                     <b> Shipping By - {{ $track->name }} </b><br>
-             {{ $track->division->division_name }} / {{ $track->district->district_name }}
+             {{ $track->division ? $track->division->division_name . ' / ' : '' }}{{ $track->district ? $track->district->district_name : '' }}
                 </div> <!-- // end col md 2 -->
        
                 <div class="col-md-2">

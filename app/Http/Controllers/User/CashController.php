@@ -10,7 +10,7 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
-use Carbon\Carbon; 
+use Carbon\Carbon;
 
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Contracts\Mail\Mailable;
@@ -28,7 +28,7 @@ class CashController extends Controller
 			$discount_percentage = Session::get('coupon')['coupon_discount'];
     		$total_amount = Session::get('coupon')['total_amount'];
     	}else{
-			
+
 			$total_amount =  (string)(Cart::total());
     	}
 
@@ -42,29 +42,29 @@ class CashController extends Controller
 			$coupon_percentage = '0';
 		}
 
-	  // dd($charge);
-
-	  if ($request->payment_method == 'stripe') {
-		$payment = 'Bkash';
-	  }elseif($request->payment_method == 'card'){
-		$payment = 'POS on Delivery';
-	  }else{
 		$payment = 'Cash on Delivery';
-	  }
 
-	   // Retrieve total amount from the request
-	   $total_amount = $request->total_amount;
-	  
-     $order_id = Order::insertGetId([
+		$total_amount = $request->total_amount;
+
+		// Support direct checkout form fields (shipping_name/shipping_phone) or intermediate page fields (name/phone)
+		$name = $request->shipping_name ?? $request->name;
+		$phone = $request->shipping_phone ?? $request->phone;
+		$notes = $request->notes;
+		if ($request->delivery_area) {
+			$delivery_label = $request->delivery_area === 'inside' ? 'Inside Dhaka (80 TK)' : 'Outside Dhaka (150 TK)';
+			$notes = $notes . " (Delivery: " . $delivery_label . ")";
+		}
+
+      $order_id = Order::insertGetId([
      	'user_id' => Auth::check() ? Auth::id() : null,
      	'division_id' => $request->division_id,
      	'district_id' => $request->district_id,
      	'state_id' => $request->state_id,
-     	'name' => $request->name,
-     	'email' => $request->email,
-     	'phone' => $request->phone,
+     	'name' => $name,
+     	'email' => $request->email ?? 'noemail@gmail.com',
+     	'phone' => $phone,
      	'post_code' => $request->post_code,
-     	'notes' => $request->notes,
+     	'notes' => $notes,
 
      	'payment_type' => $payment,
      	'payment_method' => $payment,
@@ -80,11 +80,11 @@ class CashController extends Controller
      	'order_month' => Carbon::now()->format('F'),
      	'order_year' => Carbon::now()->format('Y'),
      	'status' => 'pending',
-     	'created_at' => Carbon::now(),	 
+     	'created_at' => Carbon::now(),
 
      ]);
 
-     // Start Send Email 
+     // Start Send Email
      $invoice = Order::findOrFail($order_id);
      	$data = [
      		'invoice_no' => $invoice->invoice_no,
@@ -95,13 +95,13 @@ class CashController extends Controller
 
      	// Mail::to($request->email)->send(new OrderMail($data));
 
-     // End Send Email 
+     // End Send Email
 
 
      $carts = Cart::content();
      foreach ($carts as $cart) {
      	OrderItem::insert([
-     		'order_id' => $order_id, 
+     		'order_id' => $order_id,
      		'product_id' => $cart->id,
      		'color' => $cart->options->color,
      		'size' => $cart->options->size,
@@ -127,14 +127,13 @@ class CashController extends Controller
 		return redirect()->route('order.success', ['invoice_no' => $invoice->invoice_no])->with($notification);
 
 
-    } // end method 
+    } // end method
 
 
     public function OrderSuccess(Request $request){
         $invoice_no = $request->invoice_no;
         return view('frontend.order.order_success',compact('invoice_no'));
-    } 
-
+    }
 
 
 

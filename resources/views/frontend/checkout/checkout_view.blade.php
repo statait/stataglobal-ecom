@@ -45,7 +45,7 @@ My Checkout
                 <div class="col-md-6 col-sm-6 already-registered-login">
                     <h4 class="checkout-subtitle"><b>Shipping Info</b></h4>
            
-					<form class="register-form" action="{{ route('checkout.store') }}" method="POST">
+					<form class="register-form" action="{{ route('cash.order') }}" method="POST">
 						@csrf
                 <div class="form-group">
 					<label class="info-title" for="shipping_name"><b>Name</b>  <span>*</span></label>
@@ -189,7 +189,7 @@ My Checkout
 	
 	</div> <!-- // end row  -->
 	<hr>
-	<button type="submit" class="btn-upper btn btn-primary checkout-page-button">Payment Step</button>
+	<button type="submit" class="btn-upper btn btn-primary checkout-page-button">Submit Payment</button>
 	
 	
 	</div>
